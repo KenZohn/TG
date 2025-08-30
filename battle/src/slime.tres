@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c4vqalnrxhtqu"]
+
+[ext_resource type="Script" uid="uid://ddvcnnm3b56d0" path="res://src/baseEnemy.gd" id="1_ia0fk"]
+[ext_resource type="Texture2D" uid="uid://caimxngpyw4mx" path="res://sprites/Slime (Blue).png" id="2_gva42"]
+
+[resource]
+script = ExtResource("1_ia0fk")
+name = "Slime"
+texture = ExtResource("2_gva42")
+health = 45
+damage = 15

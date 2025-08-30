@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d2d0r3fpr3ncw"]
+
+[ext_resource type="Script" uid="uid://ddvcnnm3b56d0" path="res://src/baseEnemy.gd" id="1_tlgxh"]
+[ext_resource type="Texture2D" uid="uid://cmguj1el0ql54" path="res://sprites/Cuttlefish.png" id="2_asitx"]
+
+[resource]
+script = ExtResource("1_tlgxh")
+name = "Cuttlefish"
+texture = ExtResource("2_asitx")
+health = 100
+damage = 15
