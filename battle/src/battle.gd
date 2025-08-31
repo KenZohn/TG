@@ -18,6 +18,7 @@ func _ready():
 	
 	$TextBox.hide()
 	$ActionsPanel.hide()
+	$BattleBGM.play()
 	
 	display_text("Um %s selvagem apareceu!" % enemy.name.to_upper())
 	await self.textbox_closed
@@ -55,6 +56,7 @@ func enemy_turn():
 		set_health($PlayerPanel/PlayerData/ProgressBar, current_player_health, State.max_health)
 		
 		$AnimationPlayer.play("shake")
+		$GetHitSE.play()
 		await $AnimationPlayer.animation_finished
 		
 		display_text("O %s causou %d de danoninho em você!" % [enemy.name, enemy.damage])
@@ -76,6 +78,7 @@ func _on_attack_pressed() -> void:
 	set_health($EnemyContainer/ProgressBar, current_enemy_health, enemy.health)
 	
 	$AnimationPlayer.play("enemy_damaged")
+	$AttackSE.play()
 	await $AnimationPlayer.animation_finished
 	
 	display_text("Você causou %d de daninho!" % State.damage)
@@ -86,6 +89,7 @@ func _on_attack_pressed() -> void:
 		await self.textbox_closed
 		
 		$AnimationPlayer.play("enemy_died")
+		$DefeatSE.play()
 		await $AnimationPlayer.animation_finished
 		
 		await get_tree().create_timer(0.25).timeout

@@ -1,9 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://b1jg0kxl8nmsf"]
+[gd_scene load_steps=21 format=3 uid="uid://b1jg0kxl8nmsf"]
 
 [ext_resource type="Script" uid="uid://b4qmf3jjfoct4" path="res://src/battle.gd" id="1_fluly"]
 [ext_resource type="Resource" uid="uid://c4vqalnrxhtqu" path="res://src/slime.tres" id="2_rr1fq"]
 [ext_resource type="Texture2D" uid="uid://dwmbkqq8v4vu8" path="res://sprites/battleback10.png" id="2_sb4ph"]
 [ext_resource type="Texture2D" uid="uid://caimxngpyw4mx" path="res://sprites/Slime (Blue).png" id="3_rr1fq"]
+[ext_resource type="AudioStream" uid="uid://ciybav3gxs2aq" path="res://se/maou_se_battle03.ogg" id="5_rr1fq"]
+[ext_resource type="AudioStream" uid="uid://co8sbedig2hjk" path="res://bgm/maou_bgm_fantasy15.ogg" id="6_d4yhw"]
+[ext_resource type="AudioStream" uid="uid://bvlmnj0qrihu6" path="res://se/maou_se_battle12.ogg" id="6_h4qsw"]
+[ext_resource type="AudioStream" uid="uid://bjjmb8yom0xod" path="res://se/maou_se_battle_explosion03.ogg" id="8_muv5k"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7sfm4"]
 bg_color = Color(0.91881, 0.278098, 0.0990321, 1)
@@ -106,20 +110,19 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_h4qsw"]
-resource_name = "shake"
-length = 0.5
+[sub_resource type="Animation" id="Animation_muv5k"]
+resource_name = "enemy_died"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera2D:position")
+tracks/0/path = NodePath("EnemyContainer:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(16, 17), Vector2(16, -19), Vector2(-6, 22), Vector2(-11, -7), Vector2(0, 0)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_d4yhw"]
@@ -138,19 +141,20 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(6, 6), Vector2(6, -6), Vector2(-6, 6), Vector2(-6, -6), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_muv5k"]
-resource_name = "enemy_died"
+[sub_resource type="Animation" id="Animation_h4qsw"]
+resource_name = "shake"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("EnemyContainer:modulate")
+tracks/0/path = NodePath("Camera2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Vector2(0, 0), Vector2(16, 17), Vector2(16, -19), Vector2(-6, 22), Vector2(-11, -7), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h4qsw"]
@@ -393,6 +397,22 @@ libraries = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+
+[node name="AttackSE" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_rr1fq")
+volume_db = 8.0
+
+[node name="BattleBGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_d4yhw")
+volume_db = -3.0
+
+[node name="GetHitSE" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_h4qsw")
+volume_db = 8.0
+
+[node name="DefeatSE" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_muv5k")
+volume_db = 8.0
 
 [connection signal="pressed" from="ActionsPanel/Actions/Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="ActionsPanel/Actions/Defend" to="." method="_on_defend_pressed"]
