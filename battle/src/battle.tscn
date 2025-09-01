@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b1jg0kxl8nmsf"]
+[gd_scene load_steps=22 format=3 uid="uid://b1jg0kxl8nmsf"]
 
 [ext_resource type="Script" uid="uid://b4qmf3jjfoct4" path="res://src/battle.gd" id="1_fluly"]
 [ext_resource type="Resource" uid="uid://c4vqalnrxhtqu" path="res://src/slime.tres" id="2_rr1fq"]
@@ -10,27 +10,31 @@
 [ext_resource type="AudioStream" uid="uid://bjjmb8yom0xod" path="res://se/maou_se_battle_explosion03.ogg" id="8_muv5k"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7sfm4"]
-bg_color = Color(0.91881, 0.278098, 0.0990321, 1)
+bg_color = Color(0.188235, 0.188235, 0.188235, 1)
+border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.215902, 0.215902, 0.215902, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+border_color = Color(0.188235, 0.188235, 0.188235, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i431l"]
-bg_color = Color(0.184055, 0.714752, 0.282676, 1)
+bg_color = Color(0.933333, 0.305882, 0.305882, 1)
 border_width_left = 2
 border_width_top = 2
+border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.237539, 0.237539, 0.237539, 1)
-corner_radius_top_left = 5
-corner_radius_bottom_left = 5
+border_color = Color(0.188235, 0.188235, 0.188235, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxp8w"]
 bg_color = Color(0, 0, 0, 0.470588)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_muv5k"]
+bg_color = Color(0.251042, 0.725299, 0.276599, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.188235, 0.188235, 0.188235, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6t8i5"]
 bg_color = Color(1, 1, 1, 1)
@@ -192,17 +196,14 @@ texture = ExtResource("2_sb4ph")
 
 [node name="EnemyContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
 offset_left = -104.0
-offset_top = -105.0
+offset_top = 53.0
 offset_right = 104.0
-offset_bottom = 105.0
+offset_bottom = 263.0
 grow_horizontal = 2
-grow_vertical = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 alignment = 1
@@ -245,7 +246,9 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -64.0
+offset_top = -242.0
+offset_right = -952.0
+offset_bottom = -178.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_oxp8w")
@@ -259,19 +262,13 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="PlayerPanel/PlayerData"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "PLAYER"
-horizontal_alignment = 1
-
 [node name="ProgressBar" type="ProgressBar" parent="PlayerPanel/PlayerData"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_styles/background = SubResource("StyleBoxFlat_7sfm4")
-theme_override_styles/fill = SubResource("StyleBoxFlat_i431l")
+theme_override_styles/fill = SubResource("StyleBoxFlat_muv5k")
 step = 1.0
 value = 50.0
 show_percentage = false
@@ -297,7 +294,8 @@ vertical_alignment = 1
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 64.0
+offset_top = 584.0
+offset_bottom = 648.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_oxp8w")
 
@@ -354,9 +352,9 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 32.0
-offset_top = 32.0
+offset_top = 488.0
 offset_right = -25.0
-offset_bottom = 160.0
+offset_bottom = 616.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0npn6")
 
@@ -396,21 +394,26 @@ libraries = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 anchor_mode = 0
 
 [node name="AttackSE" type="AudioStreamPlayer2D" parent="."]
+visible = false
 stream = ExtResource("5_rr1fq")
 volume_db = 8.0
 
 [node name="BattleBGM" type="AudioStreamPlayer2D" parent="."]
+visible = false
 stream = ExtResource("6_d4yhw")
 volume_db = -3.0
 
 [node name="GetHitSE" type="AudioStreamPlayer2D" parent="."]
+visible = false
 stream = ExtResource("6_h4qsw")
 volume_db = 8.0
 
 [node name="DefeatSE" type="AudioStreamPlayer2D" parent="."]
+visible = false
 stream = ExtResource("8_muv5k")
 volume_db = 8.0
 

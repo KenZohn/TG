@@ -7,6 +7,7 @@ signal textbox_closed
 var current_player_health = 0
 var current_enemy_health = 0
 var is_defending = false
+var sudoku_instance: Node = null
 
 func _ready():
 	set_health($EnemyContainer/ProgressBar, enemy.health, enemy.health)
@@ -18,11 +19,13 @@ func _ready():
 	
 	$TextBox.hide()
 	$ActionsPanel.hide()
+	$PlayerPanel.hide()
 	$BattleBGM.play()
 	
 	display_text("Um %s selvagem apareceu!" % enemy.name.to_upper())
 	await self.textbox_closed
 	$ActionsPanel.show()
+	$PlayerPanel.show()
 
 func set_health(progress_bar, health, max_health):
 	progress_bar.value = health
@@ -61,6 +64,14 @@ func enemy_turn():
 		
 		display_text("O %s causou %d de danoninho em você!" % [enemy.name, enemy.damage])
 		await self.textbox_closed
+		
+	if current_player_health == 0:
+		display_text("Você perdeu!")
+		await self.textbox_closed
+		
+		await get_tree().create_timer(0.25).timeout
+		get_tree().quit()
+	
 	$ActionsPanel.show()
 
 func _on_run_pressed() -> void:
@@ -69,17 +80,33 @@ func _on_run_pressed() -> void:
 	await get_tree().create_timer(0.25).timeout
 	get_tree().quit()
 
+func _on_sudoku_finished(resultado: bool):
+	if resultado:
+		await continue_attack()
+	else:
+		await get_tree().create_timer(0.5).timeout
+		sudoku_instance.queue_free() # Finalizar instância do Sudoku
+		display_text("Você errou o Sudoku... nada de daninho dessa vez.")
+		await self.textbox_closed
+		enemy_turn()
 
-func _on_attack_pressed() -> void:
-	display_text("Você deu um tapão!")
-	await self.textbox_closed
+func _on_attack_pressed():
+	$ActionsPanel.hide()
 	
+	var sudoku_scene = preload("res://src/sudoku3x3.tscn")
+	sudoku_instance = sudoku_scene.instantiate()
+	add_child(sudoku_instance)
+	sudoku_instance.connect("sudoku_finished", Callable(self, "_on_sudoku_finished"))
+	
+func continue_attack():
 	current_enemy_health = max(0, current_enemy_health - State.damage)
 	set_health($EnemyContainer/ProgressBar, current_enemy_health, enemy.health)
 	
 	$AnimationPlayer.play("enemy_damaged")
 	$AttackSE.play()
 	await $AnimationPlayer.animation_finished
+	await get_tree().create_timer(0.25).timeout
+	sudoku_instance.queue_free() # Finalizar instância do Sudoku
 	
 	display_text("Você causou %d de daninho!" % State.damage)
 	await self.textbox_closed
