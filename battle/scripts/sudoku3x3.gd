@@ -31,7 +31,19 @@ func populate_grid():
 		var button = Button.new()
 		button.custom_minimum_size = Vector2(80, 80)
 		button.set("theme_override_font_sizes/font_size", 32)
-
+		
+		# Estilo
+		var stylebox := StyleBoxFlat.new()
+		stylebox.bg_color = Color(0.2, 0.2, 0.2)
+		stylebox.set_border_width_all(2)
+		stylebox.corner_radius_top_left = 4
+		stylebox.corner_radius_top_right = 4
+		stylebox.corner_radius_bottom_left = 4
+		stylebox.corner_radius_bottom_right = 4
+		stylebox.border_color = Color.BLACK
+		button.add_theme_stylebox_override("normal", stylebox)
+		button.add_theme_stylebox_override("disabled", stylebox)
+		
 		if i == empty_index:
 			button.text = ""
 			empty_button = button
@@ -69,6 +81,10 @@ func highlight_button(color:Color):
 	var stylebox := StyleBoxFlat.new()
 	stylebox.bg_color = color
 	stylebox.set_border_width_all(2)
+	stylebox.corner_radius_top_left = 4
+	stylebox.corner_radius_top_right = 4
+	stylebox.corner_radius_bottom_left = 4
+	stylebox.corner_radius_bottom_right = 4
 	stylebox.border_color = Color.BLACK
 	empty_button.add_theme_stylebox_override("normal", stylebox)
 	empty_button.add_theme_stylebox_override("disabled", stylebox)

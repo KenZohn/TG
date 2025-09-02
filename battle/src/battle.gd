@@ -11,7 +11,7 @@ var sudoku_instance: Node = null
 
 func _ready():
 	set_health($EnemyContainer/ProgressBar, enemy.health, enemy.health)
-	set_health($PlayerPanel/PlayerData/ProgressBar, State.current_health, State.max_health)
+	set_health($PlayerPanel/ProgressBar, State.current_health, State.max_health)
 	$EnemyContainer/Enemy.texture = enemy.texture
 	
 	current_player_health = State.current_health
@@ -30,7 +30,7 @@ func _ready():
 func set_health(progress_bar, health, max_health):
 	progress_bar.value = health
 	progress_bar.max_value = max_health
-	progress_bar.get_node("Label").text = "HP %d/%d" % [health, max_health]
+	progress_bar.get_node("Label").text = "%d/%d" % [health, max_health]
 
 func _input(event):
 	if (Input.is_action_just_pressed("ui_accept") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)) and $TextBox.visible:
@@ -56,7 +56,7 @@ func enemy_turn():
 		await self.textbox_closed
 	else:
 		current_player_health = max(0, current_player_health - enemy.damage)
-		set_health($PlayerPanel/PlayerData/ProgressBar, current_player_health, State.max_health)
+		set_health($PlayerPanel/ProgressBar, current_player_health, State.max_health)
 		
 		$AnimationPlayer.play("shake")
 		$GetHitSE.play()
@@ -119,7 +119,7 @@ func continue_attack():
 		$DefeatSE.play()
 		await $AnimationPlayer.animation_finished
 		
-		await get_tree().create_timer(0.25).timeout
+		await get_tree().create_timer(0.5).timeout
 		get_tree().quit()
 	
 	enemy_turn()

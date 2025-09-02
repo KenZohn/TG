@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b4qmf3jjfoct4" path="res://src/battle.gd" id="1_fluly"]
 [ext_resource type="Resource" uid="uid://c4vqalnrxhtqu" path="res://src/slime.tres" id="2_rr1fq"]
 [ext_resource type="Texture2D" uid="uid://dwmbkqq8v4vu8" path="res://sprites/battleback10.png" id="2_sb4ph"]
-[ext_resource type="Texture2D" uid="uid://caimxngpyw4mx" path="res://sprites/Slime (Blue).png" id="3_rr1fq"]
+[ext_resource type="Texture2D" uid="uid://db7x0hrtg6eto" path="res://sprites/Slime (Purple 150px).png" id="4_muv5k"]
 [ext_resource type="AudioStream" uid="uid://ciybav3gxs2aq" path="res://se/maou_se_battle03.ogg" id="5_rr1fq"]
 [ext_resource type="AudioStream" uid="uid://co8sbedig2hjk" path="res://bgm/maou_bgm_fantasy15.ogg" id="6_d4yhw"]
 [ext_resource type="AudioStream" uid="uid://bvlmnj0qrihu6" path="res://se/maou_se_battle12.ogg" id="6_h4qsw"]
@@ -11,29 +11,24 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7sfm4"]
 bg_color = Color(0.188235, 0.188235, 0.188235, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.188235, 0.188235, 0.188235, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i431l"]
 bg_color = Color(0.933333, 0.305882, 0.305882, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
 border_color = Color(0.188235, 0.188235, 0.188235, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxp8w"]
-bg_color = Color(0, 0, 0, 0.470588)
+bg_color = Color(0, 0, 0, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_muv5k"]
 bg_color = Color(0.251042, 0.725299, 0.276599, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
 border_color = Color(0.188235, 0.188235, 0.188235, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6t8i5"]
@@ -41,11 +36,15 @@ bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dw4jg"]
 bg_color = Color(0, 0, 0, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0npn6"]
 bg_color = Color(0, 0, 0, 1)
@@ -196,14 +195,17 @@ texture = ExtResource("2_sb4ph")
 
 [node name="EnemyContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -104.0
-offset_top = 53.0
-offset_right = 104.0
-offset_bottom = 263.0
+anchor_bottom = 0.5
+offset_left = -90.5
+offset_top = -211.0
+offset_right = 90.5
+offset_bottom = -49.0
 grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 alignment = 1
@@ -214,7 +216,7 @@ layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_7sfm4")
 theme_override_styles/fill = SubResource("StyleBoxFlat_i431l")
 step = 1.0
-value = 50.0
+value = 100.0
 show_percentage = false
 
 [node name="Label" type="Label" parent="EnemyContainer/ProgressBar"]
@@ -224,21 +226,24 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -104.0
-offset_top = -11.5
-offset_right = 104.0
-offset_bottom = 11.5
+offset_left = 2.0
+offset_top = -1.0
+offset_right = 97.0
+offset_bottom = 22.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "HP 50/50"
-horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.933333, 0.305882, 0.305882, 1)
+theme_override_colors/font_outline_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_constants/outline_size = 15
+text = "50/50"
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Enemy" type="TextureRect" parent="EnemyContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("3_rr1fq")
+texture = ExtResource("4_muv5k")
 
 [node name="PlayerPanel" type="Panel" parent="."]
 layout_mode = 1
@@ -246,47 +251,75 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -242.0
-offset_right = -952.0
-offset_bottom = -178.0
+offset_left = 7.0
+offset_top = -241.0
+offset_right = -945.0
+offset_bottom = -169.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_oxp8w")
 
-[node name="PlayerData" type="HBoxContainer" parent="PlayerPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="PlayerPanel/PlayerData"]
+[node name="ProgressBar" type="ProgressBar" parent="PlayerPanel"]
 custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-theme_override_styles/background = SubResource("StyleBoxFlat_7sfm4")
-theme_override_styles/fill = SubResource("StyleBoxFlat_muv5k")
-step = 1.0
-value = 50.0
-show_percentage = false
-
-[node name="Label" type="Label" parent="PlayerPanel/PlayerData/ProgressBar"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -34.5
-offset_top = -11.5
-offset_right = 34.5
-offset_bottom = 11.5
+offset_left = -100.0
+offset_top = -10.0
+offset_right = 100.0
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "HP 50/50"
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_7sfm4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_muv5k")
+step = 1.0
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="PlayerPanel/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 26.0
+offset_top = -3.0
+offset_right = 95.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.25098, 0.72549, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 22
+text = "50/50"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="PlayerPanel/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = -42.0
+offset_right = -56.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.25098, 0.72549, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 22
+text = "HP"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -294,8 +327,8 @@ vertical_alignment = 1
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 584.0
-offset_bottom = 648.0
+offset_top = 568.0
+offset_bottom = 632.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_oxp8w")
 
@@ -304,6 +337,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 16.0
+offset_right = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
@@ -320,7 +355,7 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_styles/hover = SubResource("StyleBoxFlat_6t8i5")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_6t8i5")
 theme_override_styles/normal = SubResource("StyleBoxFlat_dw4jg")
-text = "ATTACK"
+text = "ATACAR"
 
 [node name="Defend" type="Button" parent="ActionsPanel/Actions"]
 layout_mode = 2
@@ -332,7 +367,7 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_styles/hover = SubResource("StyleBoxFlat_6t8i5")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_6t8i5")
 theme_override_styles/normal = SubResource("StyleBoxFlat_dw4jg")
-text = "DEFEND"
+text = "DEFENDER"
 
 [node name="Run" type="Button" parent="ActionsPanel/Actions"]
 layout_mode = 2
@@ -344,7 +379,7 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_styles/hover = SubResource("StyleBoxFlat_6t8i5")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_6t8i5")
 theme_override_styles/normal = SubResource("StyleBoxFlat_dw4jg")
-text = "RUN"
+text = "FUGIR"
 
 [node name="TextBox" type="Panel" parent="."]
 visible = false
