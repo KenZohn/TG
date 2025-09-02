@@ -1,5 +1,2 @@
-res://src/battle.tscn
-res://scene/battle.tscn
 res://scenes/battle.tscn
 res://scripts/battle.gd
-res://scenes/damageLabel.tscn

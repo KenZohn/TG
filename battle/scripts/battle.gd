@@ -10,9 +10,9 @@ var is_defending = false
 var sudoku_instance: Node = null
 
 func _ready():
-	set_health($EnemyContainer/ProgressBar, enemy.health, enemy.health)
+	set_health($EnemyPanel/ProgressBar, enemy.health, enemy.health)
 	set_health($PlayerPanel/ProgressBar, State.current_health, State.max_health)
-	$EnemyContainer/Enemy.texture = enemy.texture
+	$EnemyPanel/Enemy.texture = enemy.texture
 	
 	current_player_health = State.current_health
 	current_enemy_health = enemy.health
@@ -100,16 +100,15 @@ func _on_attack_pressed():
 	
 func continue_attack():
 	current_enemy_health = max(0, current_enemy_health - State.damage)
-	set_health($EnemyContainer/ProgressBar, current_enemy_health, enemy.health)
+	set_health($EnemyPanel/ProgressBar, current_enemy_health, enemy.health)
 	
+	$EnemyPanel/DamageLabel.show()
 	$AnimationPlayer.play("enemy_damaged")
 	$AttackSE.play()
 	await $AnimationPlayer.animation_finished
+	$EnemyPanel/DamageLabel.hide()
 	await get_tree().create_timer(0.25).timeout
 	sudoku_instance.queue_free() # Finalizar instância do Sudoku
-	
-	display_text("Você causou %d de daninho!" % State.damage)
-	await self.textbox_closed
 	
 	if current_enemy_health == 0:
 		display_text("O %s foi derrotado!" % enemy.name)
