@@ -1,28 +1,30 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1756851341
-icon.svg::CompressedTexture2D/CompressedTexture2D::1216472296338356013::1756777421::1756777493::1::::<><><>0<>0<>bbf2cf7fcd33de9ad782f6dc77314cd2<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-::res://assets/::1756840699
-::res://assets/bgm/::1756840694
-maou_bgm_fantasy15.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::5824704550966714192::1756777421::1756840694::1::::<><><>0<>0<>b191f7737079024d68e3e0d497d9ec4a<>res://.godot/imported/maou_bgm_fantasy15.ogg-d3d36a67d548b8e1242d3c9c9f48aa30.oggvorbisstr::
-::res://assets/se/::1756840700
-maou_se_battle03.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::5383959046129625916::1756777421::1756840699::1::::<><><>0<>0<>97a7a7de81fa919de9e86f82c5b47b37<>res://.godot/imported/maou_se_battle03.ogg-0995db62f5272e6ebd268d9590f8629c.oggvorbisstr::
-maou_se_battle12.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::3883846886700669299::1756777421::1756840699::1::::<><><>0<>0<>523a707c906b5a4459ccf6dcaa87c1d5<>res://.godot/imported/maou_se_battle12.ogg-b6f31e88110a739ac1fbc03aabedebd3.oggvorbisstr::
-maou_se_battle17.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::8270828069851879263::1756777421::1756840699::1::::<><><>0<>0<>6ea63589bbf043c8d87d7a5295b10e85<>res://.godot/imported/maou_se_battle17.ogg-b53f18730985a36960a4256bc6e4f5c1.oggvorbisstr::
-maou_se_battle_explosion03.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::3037431836928035331::1756777421::1756840699::1::::<><><>0<>0<>cdf781ce2fb244c73c57e763030f08c4<>res://.godot/imported/maou_se_battle_explosion03.ogg-b0b7eca5726792764542948d754f7814.oggvorbisstr::
-::res://assets/sprites/::1756840698
-battleback10.png::CompressedTexture2D/CompressedTexture2D::8728268585715618165::1756777421::1756840698::1::::<><><>0<>0<>a54787f8518542342bca31b07386589c<>res://.godot/imported/battleback10.png-9ce08c61a17ab27fd5b20d124fa72dd0.ctex::
-Cuttlefish.png::CompressedTexture2D/CompressedTexture2D::5628725541887584821::1756777421::1756840698::1::::<><><>0<>0<>a5e43586ba1acf0e98ce1ef7df445e37<>res://.godot/imported/Cuttlefish.png-f83c4ec81289d5367c2adb3315ddd7b0.ctex::
-Slime (Blue).png::CompressedTexture2D/CompressedTexture2D::4790126759378570931::1756777421::1756840698::1::::<><><>0<>0<>f090c767e7d41695b6c58d7c7fba28d5<>res://.godot/imported/Slime (Blue).png-1d6a7fda65ccf2fc65695786d02d5354.ctex::
-Slime (Purple 150px).png::CompressedTexture2D/CompressedTexture2D::7296952513326140316::1756777421::1756840698::1::::<><><>0<>0<>8c63ec9bc996024d0028f01f019c858d<>res://.godot/imported/Slime (Purple 150px).png-e74e58bff3c11a49386fba6fdbbfbe35.ctex::
-::res://resources/::1756840736
-cuttlefish.tres::Resource/Resource::9062103724967092510::1756840697::0::1::::<><><>0<>0<><>::uid://ddvcnnm3b56d0::::res://scripts/baseEnemy.gd<>uid://cmguj1el0ql54::::res://assets/sprites/Cuttlefish.png
-slime.tres::Resource/Resource::6852641836251404552::1756840697::0::1::::<><><>0<>0<><>::uid://ddvcnnm3b56d0::::res://scripts/baseEnemy.gd<>uid://db7x0hrtg6eto::::res://assets/sprites/Slime (Purple 150px).png
-::res://scenes/::1756843161
-battle.tscn::PackedScene::4230319526181119409::1756843161::0::1::::<><><>0<>0<><>::uid://b4qmf3jjfoct4::::res://scripts/battle.gd<>uid://c4vqalnrxhtqu::::res://resources/slime.tres<>uid://dwmbkqq8v4vu8::::res://assets/sprites/battleback10.png<>uid://db7x0hrtg6eto::::res://assets/sprites/Slime (Purple 150px).png<>uid://ciybav3gxs2aq::::res://assets/se/maou_se_battle03.ogg<>uid://co8sbedig2hjk::::res://assets/bgm/maou_bgm_fantasy15.ogg<>uid://bvlmnj0qrihu6::::res://assets/se/maou_se_battle12.ogg<>uid://bjjmb8yom0xod::::res://assets/se/maou_se_battle_explosion03.ogg
-sudoku3x3.tscn::PackedScene/PackedScene::8562804328537470165::1756777421::0::1::::<><><>0<>0<><>::uid://crmlqfr4dojcm::::res://scripts/sudoku3x3.gd
-::res://scripts/::1756843121
-baseEnemy.gd::GDScript/GDScript::7413325866750900347::1756777421::0::1::::<>Resource<><>0<>0<><>::
-battle.gd::GDScript::4455666211116916171::1756843121::0::1::::<>Control<><>0<>0<><>::
-settings.gd::GDScript/GDScript::1548454192862081245::1756777421::0::1::::<>Node<><>0<>0<><>::
-state.gd::GDScript/GDScript::8501903537712707343::1756777421::0::1::::<>Node<><>0<>0<><>::
-sudoku3x3.gd::GDScript/GDScript::5991520992105002228::1756777421::0::1::::<>Node2D<><>0<>0<><>::
+::res://::1758561296
+icon.svg::CompressedTexture2D/CompressedTexture2D::1216472296338356013::1758561261::1758561298::1::::<><><>0<>0<>bbf2cf7fcd33de9ad782f6dc77314cd2<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+::res://assets/::1758561261
+::res://assets/bgm/::1758561261
+maou_bgm_fantasy15.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::5824704550966714192::1758561261::1758561298::1::::<><><>0<>0<>b191f7737079024d68e3e0d497d9ec4a<>res://.godot/imported/maou_bgm_fantasy15.ogg-d3d36a67d548b8e1242d3c9c9f48aa30.oggvorbisstr::
+::res://assets/se/::1758561261
+maou_se_battle03.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::5383959046129625916::1758561261::1758561298::1::::<><><>0<>0<>97a7a7de81fa919de9e86f82c5b47b37<>res://.godot/imported/maou_se_battle03.ogg-0995db62f5272e6ebd268d9590f8629c.oggvorbisstr::
+maou_se_battle12.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::3883846886700669299::1758561261::1758561298::1::::<><><>0<>0<>523a707c906b5a4459ccf6dcaa87c1d5<>res://.godot/imported/maou_se_battle12.ogg-b6f31e88110a739ac1fbc03aabedebd3.oggvorbisstr::
+maou_se_battle17.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::8270828069851879263::1758561261::1758561298::1::::<><><>0<>0<>6ea63589bbf043c8d87d7a5295b10e85<>res://.godot/imported/maou_se_battle17.ogg-b53f18730985a36960a4256bc6e4f5c1.oggvorbisstr::
+maou_se_battle_explosion03.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::3037431836928035331::1758561261::1758561298::1::::<><><>0<>0<>cdf781ce2fb244c73c57e763030f08c4<>res://.godot/imported/maou_se_battle_explosion03.ogg-b0b7eca5726792764542948d754f7814.oggvorbisstr::
+::res://assets/sprites/::1758561261
+battleback10.png::CompressedTexture2D/CompressedTexture2D::8728268585715618165::1758561261::1758561298::1::::<><><>0<>0<>a54787f8518542342bca31b07386589c<>res://.godot/imported/battleback10.png-9ce08c61a17ab27fd5b20d124fa72dd0.ctex::
+Cuttlefish.png::CompressedTexture2D/CompressedTexture2D::5628725541887584821::1758561261::1758561298::1::::<><><>0<>0<>a5e43586ba1acf0e98ce1ef7df445e37<>res://.godot/imported/Cuttlefish.png-f83c4ec81289d5367c2adb3315ddd7b0.ctex::
+Slime (Blue).png::CompressedTexture2D/CompressedTexture2D::4790126759378570931::1758561261::1758561298::1::::<><><>0<>0<>f090c767e7d41695b6c58d7c7fba28d5<>res://.godot/imported/Slime (Blue).png-1d6a7fda65ccf2fc65695786d02d5354.ctex::
+Slime (Purple 150px).png::CompressedTexture2D/CompressedTexture2D::7296952513326140316::1758561261::1758561298::1::::<><><>0<>0<>8c63ec9bc996024d0028f01f019c858d<>res://.godot/imported/Slime (Purple 150px).png-e74e58bff3c11a49386fba6fdbbfbe35.ctex::
+::res://resources/::1758561261
+cuttlefish.tres::Resource::9062103724967092510::1758561261::0::1::::<><><>0<>0<><>::uid://ddvcnnm3b56d0::::res://scripts/baseEnemy.gd<>uid://cmguj1el0ql54::::res://assets/sprites/Cuttlefish.png
+slime.tres::Resource::6852641836251404552::1758561261::0::1::::<><><>0<>0<><>::uid://ddvcnnm3b56d0::::res://scripts/baseEnemy.gd<>uid://db7x0hrtg6eto::::res://assets/sprites/Slime (Purple 150px).png
+::res://scenes/::1758561261
+battle.tscn::PackedScene::4230319526181119409::1758561261::0::1::::<><><>0<>0<><>::uid://b4qmf3jjfoct4::::res://scripts/battle.gd<>uid://c4vqalnrxhtqu::::res://resources/slime.tres<>uid://dwmbkqq8v4vu8::::res://assets/sprites/battleback10.png<>uid://db7x0hrtg6eto::::res://assets/sprites/Slime (Purple 150px).png<>uid://ciybav3gxs2aq::::res://assets/se/maou_se_battle03.ogg<>uid://co8sbedig2hjk::::res://assets/bgm/maou_bgm_fantasy15.ogg<>uid://bvlmnj0qrihu6::::res://assets/se/maou_se_battle12.ogg<>uid://bjjmb8yom0xod::::res://assets/se/maou_se_battle_explosion03.ogg
+sudoku3x3.tscn::PackedScene::8562804328537470165::1758561261::0::1::::<><><>0<>0<><>::uid://crmlqfr4dojcm::::res://scripts/sudoku3x3.gd
+title_screen.tscn::PackedScene::2869841659665047167::1758561261::0::1::::<><><>0<>0<><>::uid://cnqhuw8f5m46m::::res://scripts/title_screen.gd<>uid://dwmbkqq8v4vu8::::res://assets/sprites/battleback10.png
+::res://scripts/::1758561261
+baseEnemy.gd::GDScript::7413325866750900347::1758561261::0::1::::<>Resource<><>0<>0<><>::
+battle.gd::GDScript::4455666211116916171::1758561261::0::1::::<>Control<><>0<>0<><>::
+settings.gd::GDScript::1548454192862081245::1758561261::0::1::::<>Node<><>0<>0<><>::
+state.gd::GDScript::8501903537712707343::1758561261::0::1::::<>Node<><>0<>0<><>::
+sudoku3x3.gd::GDScript::5991520992105002228::1758561261::0::1::::<>Node2D<><>0<>0<><>::
+title_screen.gd::GDScript::5718788320333065022::1758561261::0::1::::<>Control<><>0<>0<><>::
