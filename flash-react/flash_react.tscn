@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccw7w52qemm3q"]
+
+[ext_resource type="Script" uid="uid://brbdf76ki0yfy" path="res://flash_react.gd" id="1_q8mxy"]
+[ext_resource type="AudioStream" uid="uid://l3dsfx4k8wyq" path="res://maou_se_voice_human03.mp3" id="2_flp5k"]
+
+[node name="FlashReact" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q8mxy")
+
+[node name="LabelMensagem" type="Label" parent="."]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 45.0
+offset_right = 167.0
+offset_bottom = 68.0
+text = "A"
+
+[node name="BotaoReagir" type="Button" parent="."]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 113.0
+offset_right = 183.0
+offset_bottom = 145.0
+text = "Reagir"
+
+[node name="TimerEspera" type="Timer" parent="."]
+
+[node name="TimerReacao" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_flp5k")
+
+[connection signal="pressed" from="BotaoReagir" to="." method="_on_botao_reagir_pressed"]
