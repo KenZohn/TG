@@ -1,6 +1,6 @@
 extends Node2D
 
-signal sudoku_finished(result)
+signal game_finished(result)
 
 @onready var grid:GridContainer = $GridContainer
 @onready var feedback_label:Label = $FeedbackLabel
@@ -70,11 +70,11 @@ func _on_selectgrid_button_pressed(number_pressed):
 		empty_button.disabled = true
 		feedback_label.text = "✅ Correto! O número faltante era " + str(number_pressed)
 		highlight_button(Color.SEA_GREEN)
-		emit_signal("sudoku_finished", true) # Resultado retornado
+		emit_signal("game_finished", true) # Resultado retornado
 	else:
 		feedback_label.text = "❌ Tente novamente. Esse número já está presente."
 		highlight_button(Color.DARK_RED)
-		emit_signal("sudoku_finished", false) # Resultado retornado
+		emit_signal("game_finished", false) # Resultado retornado
 
 
 func highlight_button(color:Color):

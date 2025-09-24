@@ -18,3 +18,4 @@ config/icon="res://icon.svg"
 [autoload]
 
 State="*res://scripts/state.gd"
+GameState="*res://scripts/GameState.gd"

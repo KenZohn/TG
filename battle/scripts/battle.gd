@@ -6,8 +6,14 @@ signal textbox_closed
 
 var current_player_health = 0
 var current_enemy_health = 0
-var is_defending = false
-var sudoku_instance: Node = null
+var game_scene: Node = null
+
+# No emit_signal dos jogos, enviar: dano, se foi o finalizado e a animação desejada.s
+
+var games = {
+	"sudoku3x3": "res://scenes/sudoku3x3.tscn",
+	"agility1": "res://scenes/GameFlashReact.tscn"
+}
 
 func _ready():
 	set_health($EnemyPanel/ProgressBar, enemy.health, enemy.health)
@@ -46,24 +52,15 @@ func enemy_turn():
 	display_text("O %s te devolveu o tapão!" % enemy.name)
 	await self.textbox_closed
 	
-	if is_defending:
-		is_defending = false
-		
-		$AnimationPlayer.play("mini_shake")
-		await $AnimationPlayer.animation_finished
-		
-		display_text("Você defendeu! Você defendeu!")
-		await self.textbox_closed
-	else:
-		current_player_health = max(0, current_player_health - enemy.damage)
-		set_health($PlayerPanel/ProgressBar, current_player_health, State.max_health)
-		
-		$AnimationPlayer.play("shake")
-		$GetHitSE.play()
-		await $AnimationPlayer.animation_finished
-		
-		display_text("O %s causou %d de danoninho em você!" % [enemy.name, enemy.damage])
-		await self.textbox_closed
+	current_player_health = max(0, current_player_health - enemy.damage)
+	set_health($PlayerPanel/ProgressBar, current_player_health, State.max_health)
+	
+	$AnimationPlayer.play("shake")
+	$GetHitSE.play()
+	await $AnimationPlayer.animation_finished
+	
+	display_text("O %s causou %d de danoninho em você!" % [enemy.name, enemy.damage])
+	await self.textbox_closed
 		
 	if current_player_health == 0:
 		display_text("Você perdeu!")
@@ -74,30 +71,32 @@ func enemy_turn():
 	
 	$ActionsPanel.show()
 
-func _on_run_pressed() -> void:
-	display_text("Corra quem puder!")
-	await self.textbox_closed
-	await get_tree().create_timer(0.25).timeout
-	get_tree().quit()
-
-func _on_sudoku_finished(resultado: bool):
+func _on_game_finished(resultado: bool):
 	if resultado:
 		await continue_attack()
 	else:
 		await get_tree().create_timer(0.5).timeout
-		sudoku_instance.queue_free() # Finalizar instância do Sudoku
-		display_text("Você errou o Sudoku... nada de daninho dessa vez.")
+		game_scene.queue_free() # Finalizar instância do jogo
+		display_text("Você errou no jogo... nada de daninho dessa vez.")
 		await self.textbox_closed
 		enemy_turn()
 
 func _on_attack_pressed():
 	$ActionsPanel.hide()
 	
-	var sudoku_scene = preload("res://scenes/sudoku3x3.tscn")
-	sudoku_instance = sudoku_scene.instantiate()
-	add_child(sudoku_instance)
-	sudoku_instance.connect("sudoku_finished", Callable(self, "_on_sudoku_finished"))
-	
+	if games.has(GameState.game):
+		var game_path = games[GameState.game]
+		var game_resource = ResourceLoader.load(game_path)
+		
+		if game_resource:
+			game_scene = game_resource.instantiate()
+			add_child(game_scene)
+			game_scene.connect("game_finished", Callable(self, "_on_game_finished"))
+		else:
+			print("Erro ao carregar cena:", game_path)
+	else:
+		print("Jogo não encontrado:", GameState.game)
+
 func continue_attack():
 	current_enemy_health = max(0, current_enemy_health - State.damage)
 	set_health($EnemyPanel/ProgressBar, current_enemy_health, enemy.health)
@@ -108,7 +107,7 @@ func continue_attack():
 	await $AnimationPlayer.animation_finished
 	$EnemyPanel/DamageLabel.hide()
 	await get_tree().create_timer(0.25).timeout
-	sudoku_instance.queue_free() # Finalizar instância do Sudoku
+	game_scene.queue_free() # Finalizar instância do jogo
 	
 	if current_enemy_health == 0:
 		display_text("O %s foi derrotado!" % enemy.name)
@@ -123,13 +122,8 @@ func continue_attack():
 	
 	enemy_turn()
 
-
-func _on_defend_pressed() -> void:
-	is_defending = true
-	
-	display_text("Você entrou na defensiva!")
+func _on_run_pressed() -> void:
+	display_text("Corra quem puder!")
 	await self.textbox_closed
-	
 	await get_tree().create_timer(0.25).timeout
-	
-	enemy_turn()
+	get_tree().quit()

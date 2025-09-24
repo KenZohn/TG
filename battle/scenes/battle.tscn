@@ -459,18 +459,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_6t8i5")
 theme_override_styles/normal = SubResource("StyleBoxFlat_dw4jg")
 text = "ATACAR"
 
-[node name="Defend" type="Button" parent="ActionsPanel/Actions"]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_default_cursor_shape = 2
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_styles/hover = SubResource("StyleBoxFlat_6t8i5")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_6t8i5")
-theme_override_styles/normal = SubResource("StyleBoxFlat_dw4jg")
-text = "DEFENDER"
-
 [node name="Run" type="Button" parent="ActionsPanel/Actions"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -555,5 +543,4 @@ stream = ExtResource("8_muv5k")
 volume_db = 8.0
 
 [connection signal="pressed" from="ActionsPanel/Actions/Attack" to="." method="_on_attack_pressed"]
-[connection signal="pressed" from="ActionsPanel/Actions/Defend" to="." method="_on_defend_pressed"]
 [connection signal="pressed" from="ActionsPanel/Actions/Run" to="." method="_on_run_pressed"]

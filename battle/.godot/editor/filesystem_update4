@@ -1,2 +1,4 @@
+res://scenes/stage_select.gd
+res://scenes/stage_select.tscn
 res://scenes/battle.tscn
-res://scenes/title_screen.tscn
+res://scenes/GameFlashReact.tscn
