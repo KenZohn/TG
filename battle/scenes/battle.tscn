@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b1jg0kxl8nmsf"]
+[gd_scene load_steps=26 format=3 uid="uid://b1jg0kxl8nmsf"]
 
 [ext_resource type="Script" uid="uid://b4qmf3jjfoct4" path="res://scripts/battle.gd" id="1_fluly"]
 [ext_resource type="Resource" uid="uid://c4vqalnrxhtqu" path="res://resources/slime.tres" id="2_rr1fq"]
@@ -250,6 +250,28 @@ _data = {
 &"shake": SubResource("Animation_h4qsw")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yahae"]
+bg_color = Color(0.196078, 0.196078, 0.196078, 0.705882)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v7i3o"]
+bg_color = Color(0.207843, 0.207843, 0.207843, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [node name="Battle" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -275,11 +297,18 @@ scale = Vector2(1.1, 1.1)
 texture = ExtResource("2_sb4ph")
 
 [node name="EnemyPanel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 458.0
-offset_top = 115.0
-offset_right = 690.0
-offset_bottom = 299.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = -209.0
+offset_right = 116.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_f4pi3")
 
 [node name="ProgressBar" type="ProgressBar" parent="EnemyPanel"]
@@ -302,9 +331,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 2.0
+offset_left = -13.0
 offset_top = -1.0
-offset_right = 97.0
+offset_right = 82.0
 offset_bottom = 22.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -426,6 +455,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ActionsPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -542,5 +572,70 @@ visible = false
 stream = ExtResource("8_muv5k")
 volume_db = 8.0
 
+[node name="RulesPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.5
+offset_top = -26.5
+offset_right = 199.5
+offset_bottom = 308.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yahae")
+
+[node name="TitleLabel" type="Label" parent="RulesPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -33.0
+offset_top = 20.0
+offset_right = 33.0
+offset_bottom = 54.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Título"
+
+[node name="RulesLabel" type="Label" parent="RulesPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.0
+offset_top = -40.5
+offset_right = 161.0
+offset_bottom = 40.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 18
+text = "Texto"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="RulesPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -80.0
+offset_right = 50.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_v7i3o")
+text = "Iniciar"
+
 [connection signal="pressed" from="ActionsPanel/Actions/Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="ActionsPanel/Actions/Run" to="." method="_on_run_pressed"]
+[connection signal="pressed" from="RulesPanel/StartButton" to="." method="_on_start_button_pressed"]

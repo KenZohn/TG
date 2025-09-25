@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1758748128
+::res://::1758760712
 icon.svg::CompressedTexture2D/CompressedTexture2D::1216472296338356013::1758561261::1758561298::1::::<><><>0<>0<>bbf2cf7fcd33de9ad782f6dc77314cd2<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 ::res://assets/::1758561261
 ::res://assets/bgm/::1758561298
@@ -18,18 +18,18 @@ Slime (Purple 150px).png::CompressedTexture2D/CompressedTexture2D::7296952513326
 ::res://resources/::1758561261
 cuttlefish.tres::Resource/Resource::9062103724967092510::1758561261::0::1::::<><><>0<>0<><>::uid://ddvcnnm3b56d0::::res://scripts/baseEnemy.gd<>uid://cmguj1el0ql54::::res://assets/sprites/Cuttlefish.png
 slime.tres::Resource/Resource::6852641836251404552::1758561261::0::1::::<><><>0<>0<><>::uid://ddvcnnm3b56d0::::res://scripts/baseEnemy.gd<>uid://db7x0hrtg6eto::::res://assets/sprites/Slime (Purple 150px).png
-::res://scenes/::1758748044
-battle.tscn::PackedScene::4230319526181119409::1758748044::0::1::::<><><>0<>0<><>::uid://b4qmf3jjfoct4::::res://scripts/battle.gd<>uid://c4vqalnrxhtqu::::res://resources/slime.tres<>uid://dwmbkqq8v4vu8::::res://assets/sprites/battleback10.png<>uid://db7x0hrtg6eto::::res://assets/sprites/Slime (Purple 150px).png<>uid://ciybav3gxs2aq::::res://assets/se/maou_se_battle03.ogg<>uid://co8sbedig2hjk::::res://assets/bgm/maou_bgm_fantasy15.ogg<>uid://bvlmnj0qrihu6::::res://assets/se/maou_se_battle12.ogg<>uid://bjjmb8yom0xod::::res://assets/se/maou_se_battle_explosion03.ogg
-GameFlashReact.tscn::PackedScene::4960619214629038680::1758748044::0::1::::<><><>0<>0<><>::uid://brbdf76ki0yfy::::res://scripts/GameFlashReact.gd<>uid://l3dsfx4k8wyq::::res://assets/se/maou_se_voice_human03.mp3
-stage_select.gd::GDScript/GDScript::2004156400036542718::1758744948::0::1::::<>Control<><>0<>0<><>::
-stage_select.tscn::PackedScene::7534048935914205344::1758748044::0::1::::<><><>0<>0<><>::uid://3s3fssnkts4e::::res://scenes/stage_select.gd
+::res://scenes/::1758750646
+battle.tscn::PackedScene::4230319526181119409::1758750646::0::1::::<><><>0<>0<><>::uid://b4qmf3jjfoct4::::res://scripts/battle.gd<>uid://c4vqalnrxhtqu::::res://resources/slime.tres<>uid://dwmbkqq8v4vu8::::res://assets/sprites/battleback10.png<>uid://db7x0hrtg6eto::::res://assets/sprites/Slime (Purple 150px).png<>uid://ciybav3gxs2aq::::res://assets/se/maou_se_battle03.ogg<>uid://co8sbedig2hjk::::res://assets/bgm/maou_bgm_fantasy15.ogg<>uid://bvlmnj0qrihu6::::res://assets/se/maou_se_battle12.ogg<>uid://bjjmb8yom0xod::::res://assets/se/maou_se_battle_explosion03.ogg
+GameFlashReact.tscn::PackedScene::4960619214629038680::1758750646::0::1::::<><><>0<>0<><>::uid://brbdf76ki0yfy::::res://scripts/GameFlashReact.gd<>uid://l3dsfx4k8wyq::::res://assets/se/maou_se_voice_human03.mp3
+stage_select.gd::GDScript/GDScript::2004156400036542718::1758748174::0::1::::<>Control<><>0<>0<><>::
+stage_select.tscn::PackedScene::7534048935914205344::1758750646::0::1::::<><><>0<>0<><>::uid://3s3fssnkts4e::::res://scenes/stage_select.gd
 sudoku3x3.tscn::PackedScene/PackedScene::8562804328537470165::1758561261::0::1::::<><><>0<>0<><>::uid://crmlqfr4dojcm::::res://scripts/sudoku3x3.gd
 title_screen.tscn::PackedScene/PackedScene::2869841659665047167::1758744948::0::1::::<><><>0<>0<><>::uid://cnqhuw8f5m46m::::res://scripts/title_screen.gd<>uid://dwmbkqq8v4vu8::::res://assets/sprites/battleback10.png
-::res://scripts/::1758748044
+::res://scripts/::1758750646
 baseEnemy.gd::GDScript/GDScript::7413325866750900347::1758561261::0::1::::<>Resource<><>0<>0<><>::
-battle.gd::GDScript::4455666211116916171::1758747628::0::1::::<>Control<><>0<>0<><>::
-GameFlashReact.gd::GDScript::3581888212343732202::1758748044::0::1::::<>Control<><>0<>0<><>::
-GameState.gd::GDScript::8172165838314338673::1758747628::0::1::::<>Node<><>0<>0<><>::
+battle.gd::GDScript/GDScript::4455666211116916171::1758747628::0::1::::<>Control<><>0<>0<><>::
+GameFlashReact.gd::GDScript::3581888212343732202::1758750646::0::1::::<>Control<><>0<>0<><>::
+GameState.gd::GDScript/GDScript::8172165838314338673::1758747628::0::1::::<>Node<><>0<>0<><>::
 settings.gd::GDScript/GDScript::1548454192862081245::1758561261::0::1::::<>Node<><>0<>0<><>::
 stage.gd::GDScript/GDScript::2345814700882731893::1758742471::0::1::::Fase<>Node<><>0<>0<><>::
 state.gd::GDScript/GDScript::8501903537712707343::1758561261::0::1::::<>Node<><>0<>0<><>::

@@ -15,23 +15,36 @@ var games = {
 	"agility1": "res://scenes/GameFlashReact.tscn"
 }
 
+var titles = {
+	"sudoku3x3": "Mini Sudoku",
+	"agility1": "Reação"
+}
+
+var rules = {
+	"sudoku3x3": "Complete a tabela com os números de 1 a 9 sem repetir.",
+	"agility1": "Clique no botão o mais rápido possível quando o sinal aparecer."
+}
+
 func _ready():
 	set_health($EnemyPanel/ProgressBar, enemy.health, enemy.health)
 	set_health($PlayerPanel/ProgressBar, State.current_health, State.max_health)
 	$EnemyPanel/Enemy.texture = enemy.texture
 	
+	$RulesPanel/RulesLabel.text = rules.get(GameState.game, "Descrição não disponível.")
+	$RulesPanel/TitleLabel.text = titles.get(GameState.game, "Título não disponível.")
+	
 	current_player_health = State.current_health
 	current_enemy_health = enemy.health
 	
 	$TextBox.hide()
-	$ActionsPanel.hide()
+	$RulesPanel.hide()
 	$PlayerPanel.hide()
 	$BattleBGM.play()
 	
 	display_text("Um %s selvagem apareceu!" % enemy.name.to_upper())
 	await self.textbox_closed
-	$ActionsPanel.show()
 	$PlayerPanel.show()
+	$RulesPanel.show()
 
 func set_health(progress_bar, health, max_health):
 	progress_bar.value = health
@@ -44,7 +57,7 @@ func _input(event):
 		emit_signal("textbox_closed")
 
 func display_text(text):
-	$ActionsPanel.hide()
+	$RulesPanel.hide()
 	$TextBox.show()
 	$TextBox/Label.text = text
 
@@ -67,9 +80,9 @@ func enemy_turn():
 		await self.textbox_closed
 		
 		await get_tree().create_timer(0.25).timeout
-		get_tree().quit()
+		get_tree().change_scene_to_file("res://scenes/stage_select.tscn")
 	
-	$ActionsPanel.show()
+	$RulesPanel.show()
 
 func _on_game_finished(resultado: bool):
 	if resultado:
@@ -81,8 +94,8 @@ func _on_game_finished(resultado: bool):
 		await self.textbox_closed
 		enemy_turn()
 
-func _on_attack_pressed():
-	$ActionsPanel.hide()
+func _on_start_button_pressed() -> void:
+	$RulesPanel.hide()
 	
 	if games.has(GameState.game):
 		var game_path = games[GameState.game]
@@ -118,7 +131,7 @@ func continue_attack():
 		await $AnimationPlayer.animation_finished
 		
 		await get_tree().create_timer(0.5).timeout
-		get_tree().quit()
+		get_tree().change_scene_to_file("res://scenes/stage_select.tscn")
 	
 	enemy_turn()
 
