@@ -19,3 +19,7 @@ config/icon="res://icon.svg"
 
 State="*res://scripts/state.gd"
 GameState="*res://scripts/GameState.gd"
+
+[display]
+
+window/stretch/aspect="expand"
