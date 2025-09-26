@@ -1,8 +1,0 @@
-res://scenes/battle.tscn
-res://scripts/battle.gd
-res://scenes/stage_select.tscn
-res://scenes/GameFlashReact.tscn
-res://scripts/title_screen.gd
-res://scenes/title_screen.tscn
-res://scripts/GameFlashReact.gd
-res://scenes/stage_select.gd
