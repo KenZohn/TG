@@ -573,6 +573,7 @@ stream = ExtResource("8_muv5k")
 volume_db = 8.0
 
 [node name="RulesPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
