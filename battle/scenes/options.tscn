@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dyvywwxa4u4af"]
 
 [ext_resource type="Texture2D" uid="uid://dwmbkqq8v4vu8" path="res://assets/sprites/battleback10.png" id="1_c2u1v"]
-[ext_resource type="Script" uid="uid://dkmck2v7h5ei0" path="res://scenes/options.gd" id="1_yjkok"]
+[ext_resource type="Script" uid="uid://reh64sax3356" path="res://scenes/options.gd" id="1_yjkok"]
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -57,13 +57,27 @@ vertical_alignment = 1
 [node name="VolumeVContainer" type="VBoxContainer" parent="MarginContainer/OptionsContainer"]
 layout_mode = 2
 
-[node name="Volume" type="Label" parent="MarginContainer/OptionsContainer/VolumeVContainer"]
+[node name="Music" type="Label" parent="MarginContainer/OptionsContainer/VolumeVContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "Volume"
+text = "Música"
 vertical_alignment = 1
 
-[node name="SoundControl" type="HSlider" parent="MarginContainer/OptionsContainer/VolumeVContainer"]
+[node name="MusicControl" type="HSlider" parent="MarginContainer/OptionsContainer/VolumeVContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+min_value = -30.0
+max_value = 0.0
+
+[node name="SFX" type="Label" parent="MarginContainer/OptionsContainer/VolumeVContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Efeitos Sonoros"
+vertical_alignment = 1
+
+[node name="SFXControl" type="HSlider" parent="MarginContainer/OptionsContainer/VolumeVContainer"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -78,5 +92,6 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "Voltar"
 
-[connection signal="value_changed" from="MarginContainer/OptionsContainer/VolumeVContainer/SoundControl" to="." method="_on_sound_control_value_changed"]
+[connection signal="value_changed" from="MarginContainer/OptionsContainer/VolumeVContainer/MusicControl" to="." method="_on_sound_control_value_changed"]
+[connection signal="value_changed" from="MarginContainer/OptionsContainer/VolumeVContainer/SFXControl" to="." method="_on_sfx_control_value_changed"]
 [connection signal="pressed" from="MarginContainer/Return" to="." method="_on_return_pressed"]

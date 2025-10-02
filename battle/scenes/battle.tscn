@@ -34,9 +34,6 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.188235, 0.188235, 0.188235, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6t8i5"]
-bg_color = Color(1, 1, 1, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dw4jg"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 2
@@ -48,6 +45,9 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6t8i5"]
+bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0npn6"]
 bg_color = Color(0, 0, 0, 1)
@@ -313,7 +313,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_f4pi3")
 
 [node name="ProgressBar" type="ProgressBar" parent="EnemyPanel"]
 custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
+layout_mode = 0
 offset_left = 27.5
 offset_top = 24.0
 offset_right = 208.5
@@ -345,7 +345,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Enemy" type="TextureRect" parent="EnemyPanel"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 42.5
 offset_top = 48.0
 offset_right = 192.5
@@ -481,24 +481,24 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_styles/hover = SubResource("StyleBoxFlat_6t8i5")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_6t8i5")
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_dw4jg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6t8i5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6t8i5")
 text = "ATACAR"
 
 [node name="Run" type="Button" parent="ActionsPanel/Actions"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_styles/hover = SubResource("StyleBoxFlat_6t8i5")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_6t8i5")
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_dw4jg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6t8i5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6t8i5")
 text = "FUGIR"
 
 [node name="TextBox" type="Panel" parent="."]
@@ -556,21 +556,25 @@ anchor_mode = 0
 visible = false
 stream = ExtResource("5_rr1fq")
 volume_db = 8.0
+bus = &"SFX"
 
 [node name="BattleBGM" type="AudioStreamPlayer2D" parent="."]
 visible = false
 stream = ExtResource("6_d4yhw")
 volume_db = -3.0
+bus = &"Music"
 
 [node name="GetHitSE" type="AudioStreamPlayer2D" parent="."]
 visible = false
 stream = ExtResource("6_h4qsw")
 volume_db = 8.0
+bus = &"SFX"
 
 [node name="DefeatSE" type="AudioStreamPlayer2D" parent="."]
 visible = false
 stream = ExtResource("8_muv5k")
 volume_db = 8.0
+bus = &"SFX"
 
 [node name="RulesPanel" type="Panel" parent="."]
 visible = false
