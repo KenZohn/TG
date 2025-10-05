@@ -25,14 +25,27 @@ func generate_cells():
 		cell.gui_input.connect(func(event): _on_cell_gui_input(event, i))
 
 func generate_points():
-	var indices = []
-	for i in range(TOTAL_CELLS):
-		indices.append(i)
+	var indices = range(TOTAL_CELLS)
 		
 	# Selects 2 random indices to allocate the dots
-	dots.append(indices.pick_random())
-	indices.erase(dots[0])
-	dots.append(indices.pick_random())
+	var first = indices.pick_random()
+	dots.append(first)
+	indices.shuffle()
+	
+	var second = null
+	for i in range(indices.size()):
+		var possible = indices[i]
+		if not is_diagonal(first, possible) and distance_between(first, possible) >= 5:
+			second = possible
+			indices.remove_at(i)
+			break
+	
+	# If, for some reason, it doesn't find a possible
+	if second == null and indices.size() > 0:
+		second = indices.pick_random()
+	
+	if second != null:
+		dots.append(second)
 	
 	for dot in dots:
 		var cell = $Grid.get_node("Celula_%d" % dot)
@@ -97,6 +110,23 @@ func is_adjacent(a, b):
 	var dy = abs(ay - by)
 	
 	return (dx == 1 and dy == 0) or (dx == 0 and dy == 1)
+	
+func is_diagonal(a, b):
+	var ax = a % 5
+	var ay = a / 5
+	var bx = b % 5
+	var by = b / 5
+
+	return abs(ax - bx) == abs(ay - by) and a != b
+
+# Manhattan distance 
+func distance_between(a, b):
+	var ax = a % 5
+	var ay = a / 5
+	var bx = b % 5
+	var by = b / 5
+
+	return abs(ax - bx) + abs(ay - by) 
 
 func _on_cell_mouse_entered(index):
 	if dragging:
