@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://45i1on7bkk3u"]
 
-[ext_resource type="Script" uid="uid://blletq4do04k3" path="res://corCorreta.gd" id="1_s02hk"]
+[ext_resource type="Script" uid="uid://blletq4do04k3" path="res://scripts/corCorreta.gd" id="1_hruif"]
 
 [node name="CorCorreta" type="Control"]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_s02hk")
+script = ExtResource("1_hruif")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1

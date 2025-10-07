@@ -2,7 +2,7 @@
 extends Node
 
 var game = "agility1"
-var enemy = ""
+var enemy = "slime"
 
 # sudoku3x3
 # agility1

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b4qmf3jjfoct4" path="res://scripts/battle.gd" id="1_fluly"]
 [ext_resource type="Resource" uid="uid://c4vqalnrxhtqu" path="res://resources/slime.tres" id="2_rr1fq"]
 [ext_resource type="Texture2D" uid="uid://dwmbkqq8v4vu8" path="res://assets/sprites/battleback10.png" id="2_sb4ph"]
-[ext_resource type="Texture2D" uid="uid://db7x0hrtg6eto" path="res://assets/sprites/Slime (Purple 150px).png" id="4_muv5k"]
+[ext_resource type="Texture2D" uid="uid://b5lesekpnmdum" path="res://assets/sprites/fantasy_game_character_slime.png" id="4_f4pi3"]
 [ext_resource type="AudioStream" uid="uid://ciybav3gxs2aq" path="res://assets/se/maou_se_battle03.ogg" id="5_rr1fq"]
 [ext_resource type="AudioStream" uid="uid://co8sbedig2hjk" path="res://assets/bgm/maou_bgm_fantasy15.ogg" id="6_d4yhw"]
 [ext_resource type="AudioStream" uid="uid://bvlmnj0qrihu6" path="res://assets/se/maou_se_battle12.ogg" id="6_h4qsw"]
@@ -345,27 +345,32 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Enemy" type="TextureRect" parent="EnemyPanel"]
-layout_mode = 0
-offset_left = 42.5
-offset_top = 48.0
-offset_right = 192.5
-offset_bottom = 161.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -73.0
+offset_top = -141.0
+offset_right = 73.0
+grow_horizontal = 2
+grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("4_muv5k")
+texture = ExtResource("4_f4pi3")
+expand_mode = 1
 
 [node name="DamageLabel" type="Label" parent="EnemyPanel"]
 visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -90.5
-offset_top = -17.5
-offset_right = 90.5
-offset_bottom = 17.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.5
+offset_top = 74.5
+offset_right = 25.5
+offset_bottom = 74.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -375,6 +380,7 @@ theme_override_font_sizes/font_size = 25
 text = "-30"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="PlayerPanel" type="Panel" parent="."]
 layout_mode = 1

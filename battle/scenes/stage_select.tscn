@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dflsxker1ppx5"]
 
-[ext_resource type="Script" uid="uid://3s3fssnkts4e" path="res://scenes/stage_select.gd" id="1_tne6o"]
+[ext_resource type="Script" uid="uid://3s3fssnkts4e" path="res://scripts/stage_select.gd" id="1_tne6o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38erg"]
 bg_color = Color(0.20871, 0.20871, 0.20871, 1)
@@ -89,7 +89,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "A-1"
 
 [node name="A-2" type="Button" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -302,4 +301,5 @@ text = "Voltar para o Menu Inicial"
 
 [connection signal="pressed" from="M-1" to="." method="_on_m_1_pressed"]
 [connection signal="pressed" from="A-1" to="." method="_on_a_1_pressed"]
+[connection signal="pressed" from="A-2" to="." method="_on_a_2_pressed"]
 [connection signal="pressed" from="TittleScreenButton" to="." method="_on_tittle_screen_button_pressed"]

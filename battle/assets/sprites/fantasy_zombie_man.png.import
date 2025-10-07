@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://caimxngpyw4mx"
-path="res://.godot/imported/Slime (Blue).png-1d6a7fda65ccf2fc65695786d02d5354.ctex"
+uid="uid://df4eg57s02n3p"
+path="res://.godot/imported/fantasy_zombie_man.png-38540fbe7ce75df2de3ae24555227dc5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Slime (Blue).png"
-dest_files=["res://.godot/imported/Slime (Blue).png-1d6a7fda65ccf2fc65695786d02d5354.ctex"]
+source_file="res://assets/sprites/fantasy_zombie_man.png"
+dest_files=["res://.godot/imported/fantasy_zombie_man.png-38540fbe7ce75df2de3ae24555227dc5.ctex"]
 
 [params]
 

@@ -12,17 +12,20 @@ var game_scene: Node = null
 
 var games = {
 	"sudoku3x3": "res://scenes/sudoku3x3.tscn",
-	"agility1": "res://scenes/GameFlashReact.tscn"
+	"agility1": "res://scenes/GameFlashReact.tscn",
+	"colors": "res://scenes/corCorreta.tscn"
 }
 
 var titles = {
 	"sudoku3x3": "Mini Sudoku",
-	"agility1": "Reação"
+	"agility1": "Reação",
+	"colors": "Cor Correta"
 }
 
 var rules = {
 	"sudoku3x3": "Complete a tabela com os números de 1 a 9 sem repetir.",
-	"agility1": "Clique no botão o mais rápido possível quando o sinal aparecer."
+	"agility1": "Clique no botão o mais rápido possível quando o sinal aparecer.",
+	"colors": "Observe a cor do texto e pressione o botão que representa essa cor. Exemplo: se estiver escrito azul, porém a cor do texto for verde, pressione o botão que estiver escrito verde."
 }
 
 func _ready():

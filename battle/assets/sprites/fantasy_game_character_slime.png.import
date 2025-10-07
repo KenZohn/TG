@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmguj1el0ql54"
-path="res://.godot/imported/Cuttlefish.png-f83c4ec81289d5367c2adb3315ddd7b0.ctex"
+uid="uid://b5lesekpnmdum"
+path="res://.godot/imported/fantasy_game_character_slime.png-8ba7286b6b9cc51ec7e6b36e520b7d84.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Cuttlefish.png"
-dest_files=["res://.godot/imported/Cuttlefish.png-f83c4ec81289d5367c2adb3315ddd7b0.ctex"]
+source_file="res://assets/sprites/fantasy_game_character_slime.png"
+dest_files=["res://.godot/imported/fantasy_game_character_slime.png-8ba7286b6b9cc51ec7e6b36e520b7d84.ctex"]
 
 [params]
 

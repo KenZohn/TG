@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://db7x0hrtg6eto"
-path="res://.godot/imported/Slime (Purple 150px).png-e74e58bff3c11a49386fba6fdbbfbe35.ctex"
+uid="uid://cmpmac6s1a0q4"
+path="res://.godot/imported/character_cthulhu_night_gaunts.png-e6ccbdd5c87ba8ea130ab637ca178e4e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Slime (Purple 150px).png"
-dest_files=["res://.godot/imported/Slime (Purple 150px).png-e74e58bff3c11a49386fba6fdbbfbe35.ctex"]
+source_file="res://assets/sprites/character_cthulhu_night_gaunts.png"
+dest_files=["res://.godot/imported/character_cthulhu_night_gaunts.png-e6ccbdd5c87ba8ea130ab637ca178e4e.ctex"]
 
 [params]
 

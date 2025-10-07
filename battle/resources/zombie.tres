@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d2d0r3fpr3ncw"]
+
+[ext_resource type="Script" uid="uid://ddvcnnm3b56d0" path="res://scripts/baseEnemy.gd" id="1_pot77"]
+[ext_resource type="Texture2D" uid="uid://df4eg57s02n3p" path="res://assets/sprites/fantasy_zombie_man.png" id="2_otncy"]
+
+[resource]
+script = ExtResource("1_pot77")
+name = "Cuttlefish"
+texture = ExtResource("2_otncy")
+health = 100
+damage = 15
