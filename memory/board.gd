@@ -73,11 +73,21 @@ func generate_bombs():
 		
 	bombs.clear()
 		
-	# Generates 4 bombs
-	for i in range(4):
-		var bomb_index = indices.pick_random()
-		bombs.append(bomb_index)
-		indices.erase(bomb_index)
+	# Generates 6 bombs
+	while true:
+		var possible = indices.duplicate()
+		var temp_bombs = []
+
+		for i in range(6):
+			if possible.size() == 0:
+				break
+			var bomb_index = possible.pick_random()
+			temp_bombs.append(bomb_index)
+			possible.erase(bomb_index)
+			
+		bombs = temp_bombs
+		if is_path_possible(dots[0], dots[1]):
+			break
 		
 	await reveal_bombs()
 		
@@ -99,6 +109,32 @@ func reset_trail():
 	dragging = false
 	start_dot = null
 	trail.clear()
+	
+func is_path_possible(start, goal):
+	var visited = []
+	var queue = [start]
+
+	while queue.size() > 0:
+		var current = queue.pop_front()
+		if current == goal:
+			return true
+		if visited.has(current):
+			continue
+		visited.append(current)
+		
+		var x = current % 5
+		var y = current / 5
+		var neighbors = []
+		
+		if x > 0: neighbors.append(current - 1)
+		if x < 4: neighbors.append(current + 1)
+		if y > 0: neighbors.append(current - 5)
+		if y < 4: neighbors.append(current + 5)
+		
+		for n in neighbors:
+			if not visited.has(n) and not bombs.has(n):
+				queue.append(n)
+	return false
 	
 func is_adjacent(a, b):
 	var ax = a % 5
