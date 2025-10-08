@@ -1,46 +1,94 @@
 extends Control
 
-signal game_finished(result)
+signal game_finished(score)
 
 var color_map = {
-	"Vermelho": Color.RED,
-	"Azul": Color.BLUE,
-	"Verde": Color.GREEN,
-	"Amarelo": Color.YELLOW
+	"Red": Color.RED,
+	"Blue": Color.BLUE,
+	"Green": Color.GREEN,
+	"Yellow": Color.YELLOW
 }
 
-var cor_correta = Color.WHITE
+var correct_answer: bool = false
+var score: int = 0
+var awaiting_response: bool = false
 
 func _ready():
-	gerar_desafio()
-	conectar_botoes()
+	connect_buttons()
+	setup_timers()
+	start_game()
 
-func gerar_desafio():
-	var nomes = color_map.keys()
-	var nome_aleatorio = nomes[randi() % nomes.size()]
-	var cor_aleatoria = color_map[nomes[randi() % nomes.size()]]
+func setup_timers():
+	$TimerGame.wait_time = 15.0
+	$TimerGame.one_shot = true
+	$TimerGame.timeout.connect(_on_game_timeout)
 
-	$Panel/Label.text = nome_aleatorio
-	$Panel/Label.add_theme_color_override("font_color", cor_aleatoria)
+	$TimerInterval.wait_time = 0.1
+	$TimerInterval.one_shot = true
+	$TimerInterval.timeout.connect(_on_interval_timeout)
 
-	cor_correta = cor_aleatoria
+func start_game():
+	score = 0
+	awaiting_response = false
+	$TimerGame.start()
+	generate_challenge()
 
-func conectar_botoes():
-	for botao in $Panel/ColorButtons.get_children():
-		botao.pressed.connect(func():
-			_on_botao_pressionado(botao.text)
-		)
+func generate_challenge():
+	var names = color_map.keys()
+	var meaning = names[randi() % names.size()]
+	var color_text = names[randi() % names.size()]
+	var text_color = color_map[names[randi() % names.size()]]
 
-func _on_botao_pressionado(nome_cor: String):
-	$Panel/ColorButtons/ButtonEsquerda.disabled = true
-	$Panel/ColorButtons/ButtonDireita.disabled = true
-	$Panel/ColorButtons/ButtonCima.disabled = true
-	$Panel/ColorButtons/ButtonBaixo.disabled = true
-	var cor_escolhida = color_map.get(nome_cor, Color.WHITE)
-	if cor_escolhida == cor_correta:
-		print("✅ Correto!")
-		emit_signal("game_finished", true) # Resultado retornado
+	$Panel/LabelMeaning.text = meaning
+	$Panel/LabelColor.text = color_text
+	$Panel/LabelColor.add_theme_color_override("font_color", text_color)
+
+	correct_answer = color_map[meaning] == text_color
+	awaiting_response = true
+
+	$Panel/ButtonYes.disabled = false
+	$Panel/ButtonNo.disabled = false
+
+func connect_buttons():
+	$Panel/ButtonYes.pressed.connect(func(): _on_user_response(true))
+	$Panel/ButtonNo.pressed.connect(func(): _on_user_response(false))
+
+func _on_user_response(response: bool):
+	if not awaiting_response:
+		return
+
+	awaiting_response = false
+	$Panel/ButtonYes.disabled = true
+	$Panel/ButtonNo.disabled = true
+
+	if response == correct_answer:
+		score += 1
+		print("✅ Correct!")
 	else:
-		print("❌ Errado!")
-		emit_signal("game_finished", false) # Resultado retornado
-	#gerar_desafio()
+		print("❌ Wrong!")
+		_apply_time_penalty()
+
+	$TimerInterval.start()
+
+func _apply_time_penalty():
+	var remaining = $TimerGame.time_left
+	var new_time = max(remaining - 1.0, 0.1) # Evita tempo zero ou negativo
+	$TimerGame.stop()
+	$TimerGame.wait_time = new_time
+	$TimerGame.start()
+
+func _on_interval_timeout():
+	if $TimerGame.is_stopped():
+		return
+	generate_challenge()
+
+func _on_game_timeout():
+	$TimerInterval.stop()
+	awaiting_response = false
+
+	$Panel/ButtonYes.disabled = true
+	$Panel/ButtonNo.disabled = true
+	$Panel/LabelMeaning.text = "Time's up!"
+	$Panel/LabelColor.text = "Score: %d" % score
+
+	emit_signal("game_finished", score)
