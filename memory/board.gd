@@ -10,7 +10,8 @@ var start_dot = null
 func _ready():
 	generate_cells()
 	generate_points()
-	generate_bombs()
+	await generate_bombs()
+	show_dots()
 
 func generate_cells():
 	var grid = $Grid
@@ -46,7 +47,8 @@ func generate_points():
 	
 	if second != null:
 		dots.append(second)
-	
+
+func show_dots():
 	for dot in dots:
 		var cell = $Grid.get_node("Celula_%d" % dot)
 		cell.modulate = Color(0, 0.5, 1)
@@ -56,7 +58,7 @@ func reveal_bombs():
 		var cell = $Grid.get_node("Celula_%d" % bomb)
 		cell.modulate = Color(1, 0, 0)
 	
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(1.5).timeout
 
 	for bomb in bombs:
 		var cell = $Grid.get_node("Celula_%d" % bomb)
@@ -90,7 +92,7 @@ func generate_bombs():
 			break
 		
 	await reveal_bombs()
-		
+
 func add_to_trail(index):
 	trail.append(index)
 	var cell = $Grid.get_node("Celula_%d" % index)
@@ -100,7 +102,7 @@ func add_to_trail(index):
 		#cell.modulate = Color(1, 1, 1)
 	else:
 		cell.modulate = Color(0, 1, 0)
-		
+
 func reset_trail():
 	for i in range(TOTAL_CELLS):
 		if not dots.has(i):
@@ -109,7 +111,7 @@ func reset_trail():
 	dragging = false
 	start_dot = null
 	trail.clear()
-	
+
 func is_path_possible(start, goal):
 	var visited = []
 	var queue = [start]
@@ -135,7 +137,7 @@ func is_path_possible(start, goal):
 			if not visited.has(n) and not bombs.has(n):
 				queue.append(n)
 	return false
-	
+
 func is_adjacent(a, b):
 	var ax = a % 5
 	var ay = a / 5
@@ -146,7 +148,7 @@ func is_adjacent(a, b):
 	var dy = abs(ay - by)
 	
 	return (dx == 1 and dy == 0) or (dx == 0 and dy == 1)
-	
+
 func is_diagonal(a, b):
 	var ax = a % 5
 	var ay = a / 5
