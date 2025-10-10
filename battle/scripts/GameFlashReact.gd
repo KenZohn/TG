@@ -1,5 +1,6 @@
 extends Control
 
+signal correct_answer_hit(damage)
 signal game_finished(result)
 
 var tempo_inicio: float = 0.0
@@ -24,6 +25,7 @@ func _on_botao_reagir_pressed():
 		tempo_reacao = (Time.get_ticks_msec() / 1000.0) - tempo_inicio
 		$LabelMensagem.text = "%.3f segundos" % tempo_reacao
 		pronto_para_reagir = false
+		emit_signal("correct_answer_hit", 30) # Cada acerto causa 2 de dano
 		emit_signal("game_finished", true) # Resultado retornado
 	else:
 		$ReactButton.disabled = true

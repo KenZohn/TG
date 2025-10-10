@@ -1,12 +1,13 @@
 extends Control
 
+signal correct_answer_hit(damage)
 signal game_finished(score)
 
 var color_map = {
-	"Red": Color.RED,
-	"Blue": Color.BLUE,
-	"Green": Color.GREEN,
-	"Yellow": Color.YELLOW
+	"Vermelho": Color.RED,
+	"Azul": Color.BLUE,
+	"Verde": Color.GREEN,
+	"Amarelo": Color.YELLOW
 }
 
 var correct_answer: bool = false
@@ -22,7 +23,7 @@ func setup_timers():
 	$TimerGame.wait_time = 15.0
 	$TimerGame.one_shot = true
 	$TimerGame.timeout.connect(_on_game_timeout)
-
+	
 	$TimerInterval.wait_time = 0.1
 	$TimerInterval.one_shot = true
 	$TimerInterval.timeout.connect(_on_interval_timeout)
@@ -38,14 +39,14 @@ func generate_challenge():
 	var meaning = names[randi() % names.size()]
 	var color_text = names[randi() % names.size()]
 	var text_color = color_map[names[randi() % names.size()]]
-
+	
 	$Panel/LabelMeaning.text = meaning
 	$Panel/LabelColor.text = color_text
 	$Panel/LabelColor.add_theme_color_override("font_color", text_color)
-
+	
 	correct_answer = color_map[meaning] == text_color
 	awaiting_response = true
-
+	
 	$Panel/ButtonYes.disabled = false
 	$Panel/ButtonNo.disabled = false
 
@@ -56,23 +57,24 @@ func connect_buttons():
 func _on_user_response(response: bool):
 	if not awaiting_response:
 		return
-
+	
 	awaiting_response = false
 	$Panel/ButtonYes.disabled = true
 	$Panel/ButtonNo.disabled = true
-
+	
 	if response == correct_answer:
 		score += 1
 		print("✅ Correct!")
+		emit_signal("correct_answer_hit", 2)
 	else:
 		print("❌ Wrong!")
 		_apply_time_penalty()
-
+	
 	$TimerInterval.start()
 
 func _apply_time_penalty():
 	var remaining = $TimerGame.time_left
-	var new_time = max(remaining - 1.0, 0.1) # Evita tempo zero ou negativo
+	var new_time = max(remaining - 2.0, 0.1) # Evita tempo zero ou negativo
 	$TimerGame.stop()
 	$TimerGame.wait_time = new_time
 	$TimerGame.start()
@@ -85,10 +87,10 @@ func _on_interval_timeout():
 func _on_game_timeout():
 	$TimerInterval.stop()
 	awaiting_response = false
-
+	
 	$Panel/ButtonYes.disabled = true
 	$Panel/ButtonNo.disabled = true
 	$Panel/LabelMeaning.text = "Time's up!"
 	$Panel/LabelColor.text = "Score: %d" % score
-
-	emit_signal("game_finished", score)
+	
+	emit_signal("game_finished", false)

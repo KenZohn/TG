@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b1jg0kxl8nmsf"]
+[gd_scene load_steps=24 format=3 uid="uid://b1jg0kxl8nmsf"]
 
 [ext_resource type="Script" uid="uid://b4qmf3jjfoct4" path="res://scripts/battle.gd" id="1_fluly"]
 [ext_resource type="Resource" uid="uid://c4vqalnrxhtqu" path="res://resources/slime.tres" id="2_rr1fq"]
@@ -33,21 +33,6 @@ border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.188235, 0.188235, 0.188235, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dw4jg"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6t8i5"]
-bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0npn6"]
 bg_color = Color(0, 0, 0, 1)
@@ -364,23 +349,24 @@ expand_mode = 1
 [node name="DamageLabel" type="Label" parent="EnemyPanel"]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 25.5
-offset_top = 74.5
-offset_right = 25.5
-offset_bottom = 74.5
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.5
+offset_top = -17.5
+offset_right = -53.5
+offset_bottom = 17.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.188235, 0.188235, 0.188235, 1)
 theme_override_constants/outline_size = 15
 theme_override_font_sizes/font_size = 25
-text = "-30"
+text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="PlayerPanel" type="Panel" parent="."]
 layout_mode = 1
@@ -459,53 +445,6 @@ theme_override_font_sizes/font_size = 22
 text = "HP"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="ActionsPanel" type="Panel" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 568.0
-offset_bottom = 632.0
-grow_horizontal = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_oxp8w")
-
-[node name="Actions" type="HBoxContainer" parent="ActionsPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 16.0
-offset_right = -16.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 16
-alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="Attack" type="Button" parent="ActionsPanel/Actions"]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_dw4jg")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_6t8i5")
-theme_override_styles/hover = SubResource("StyleBoxFlat_6t8i5")
-text = "ATACAR"
-
-[node name="Run" type="Button" parent="ActionsPanel/Actions"]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_dw4jg")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_6t8i5")
-theme_override_styles/hover = SubResource("StyleBoxFlat_6t8i5")
-text = "FUGIR"
 
 [node name="TextBox" type="Panel" parent="."]
 visible = false
@@ -647,6 +586,4 @@ theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_v7i3o")
 text = "Iniciar"
 
-[connection signal="pressed" from="ActionsPanel/Actions/Attack" to="." method="_on_attack_pressed"]
-[connection signal="pressed" from="ActionsPanel/Actions/Run" to="." method="_on_run_pressed"]
 [connection signal="pressed" from="RulesPanel/StartButton" to="." method="_on_start_button_pressed"]
