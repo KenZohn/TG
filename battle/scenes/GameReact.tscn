@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://brbdf76ki0yfy" path="res://scripts/GameReact.gd" id="1_qhx4h"]
 [ext_resource type="AudioStream" uid="uid://l3dsfx4k8wyq" path="res://assets/se/maou_se_voice_human03.mp3" id="2_nstwc"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nstwc"]
-bg_color = Color(0.270588, 0.270588, 0.270588, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhx4h"]
+bg_color = Color(0.207843, 0.207843, 0.207843, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -14,8 +14,8 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhx4h"]
-bg_color = Color(0.207843, 0.207843, 0.207843, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nstwc"]
+bg_color = Color(0.270588, 0.270588, 0.270588, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -34,7 +34,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qhx4h")
 
-[node name="LabelMensagem" type="Label" parent="."]
+[node name="LabelMensage" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -64,15 +64,13 @@ offset_bottom = 258.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 20
-theme_override_styles/hover = SubResource("StyleBoxFlat_nstwc")
 theme_override_styles/normal = SubResource("StyleBoxFlat_qhx4h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nstwc")
 text = "Reagir"
 
-[node name="TimerEspera" type="Timer" parent="."]
-
-[node name="TimerReacao" type="Timer" parent="."]
+[node name="WaitTimer" type="Timer" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_nstwc")
 
-[connection signal="pressed" from="ReactButton" to="." method="_on_botao_reagir_pressed"]
+[connection signal="pressed" from="ReactButton" to="." method="_on_react_button_pressed"]

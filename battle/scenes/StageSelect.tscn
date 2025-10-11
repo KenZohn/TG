@@ -22,7 +22,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tne6o")
 
-[node name="M-1" type="Button" parent="."]
+[node name="M1" type="Button" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -38,7 +39,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "M-1"
 
-[node name="M-2" type="Button" parent="."]
+[node name="M2" type="Button" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -55,7 +56,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "M-2"
 
-[node name="M-3" type="Button" parent="."]
+[node name="M3" type="Button" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -72,7 +73,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "M-3"
 
-[node name="A-1" type="Button" parent="."]
+[node name="A1" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -88,7 +89,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "A-1"
 
-[node name="A-2" type="Button" parent="."]
+[node name="A2" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -104,8 +105,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "A-2"
 
-[node name="A-3" type="Button" parent="."]
-visible = false
+[node name="A3" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -121,8 +121,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "A-3"
 
-[node name="F-1" type="Button" parent="."]
-visible = false
+[node name="F1" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -138,8 +137,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "F-1"
 
-[node name="F-2" type="Button" parent="."]
-visible = false
+[node name="F2" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -155,8 +153,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "F-2"
 
-[node name="F-3" type="Button" parent="."]
-visible = false
+[node name="F3" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -172,7 +169,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "F-3"
 
-[node name="R-1" type="Button" parent="."]
+[node name="R1" type="Button" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -189,7 +186,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "R-1"
 
-[node name="R-2" type="Button" parent="."]
+[node name="R2" type="Button" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -206,7 +203,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "R-2"
 
-[node name="R-3" type="Button" parent="."]
+[node name="R3" type="Button" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -223,7 +220,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "R-3"
 
-[node name="C-1" type="Button" parent="."]
+[node name="C1" type="Button" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -240,7 +237,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "C-1"
 
-[node name="C-2" type="Button" parent="."]
+[node name="C2" type="Button" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -257,7 +254,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "C-2"
 
-[node name="C-3" type="Button" parent="."]
+[node name="C3" type="Button" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -299,7 +296,11 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "Voltar para o Menu Inicial"
 
-[connection signal="pressed" from="M-1" to="." method="_on_m_1_pressed"]
-[connection signal="pressed" from="A-1" to="." method="_on_a_1_pressed"]
-[connection signal="pressed" from="A-2" to="." method="_on_a_2_pressed"]
+[connection signal="pressed" from="M1" to="." method="_on_m_1_pressed"]
+[connection signal="pressed" from="A1" to="." method="_on_a_1_pressed"]
+[connection signal="pressed" from="A2" to="." method="_on_a_2_pressed"]
+[connection signal="pressed" from="A3" to="." method="_on_a_3_pressed"]
+[connection signal="pressed" from="F1" to="." method="_on_f_1_pressed"]
+[connection signal="pressed" from="F2" to="." method="_on_f_2_pressed"]
+[connection signal="pressed" from="F3" to="." method="_on_f_3_pressed"]
 [connection signal="pressed" from="TittleScreenButton" to="." method="_on_tittle_screen_button_pressed"]
