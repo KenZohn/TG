@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ccw7w52qemm3q"]
 
-[ext_resource type="Script" uid="uid://brbdf76ki0yfy" path="res://scripts/GameFlashReact.gd" id="1_qhx4h"]
+[ext_resource type="Script" uid="uid://brbdf76ki0yfy" path="res://scripts/GameReact.gd" id="1_qhx4h"]
 [ext_resource type="AudioStream" uid="uid://l3dsfx4k8wyq" path="res://assets/se/maou_se_voice_human03.mp3" id="2_nstwc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nstwc"]

@@ -1,9 +1,9 @@
 # GameState.gd
 extends Node
 
-var game = "colors"
+var game = "color"
 var enemy = "slime"
 
-# sudoku3x3
-# agility1
-# colors
+# Games:
+#	react
+#	color

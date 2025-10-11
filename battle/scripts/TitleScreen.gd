@@ -13,11 +13,11 @@ func _process(delta: float) -> void:
 
 func _on_start_pressed() -> void:
 	# Supposed to open the world map (we don't have one yet :c) 
-	get_tree().change_scene_to_file("res://scenes/stage_select.tscn")
+	get_tree().change_scene_to_file("res://scenes/StageSelect.tscn")
 
 
 func _on_options_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/options.tscn")
+	get_tree().change_scene_to_file("res://scenes/Options.tscn")
 
 
 func _on_quit_pressed() -> void:

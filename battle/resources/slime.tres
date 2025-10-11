@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://c4vqalnrxhtqu"]
 
-[ext_resource type="Script" uid="uid://ddvcnnm3b56d0" path="res://scripts/baseEnemy.gd" id="1_ia0fk"]
+[ext_resource type="Script" uid="uid://ddvcnnm3b56d0" path="res://scripts/BaseEnemy.gd" id="1_ia0fk"]
 [ext_resource type="Texture2D" uid="uid://b5lesekpnmdum" path="res://assets/sprites/fantasy_game_character_slime.png" id="2_hjcbr"]
 
 [resource]

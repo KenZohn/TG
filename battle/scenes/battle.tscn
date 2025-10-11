@@ -1,13 +1,13 @@
 [gd_scene load_steps=24 format=3 uid="uid://b1jg0kxl8nmsf"]
 
-[ext_resource type="Script" uid="uid://b4qmf3jjfoct4" path="res://scripts/battle.gd" id="1_fluly"]
-[ext_resource type="Resource" uid="uid://c4vqalnrxhtqu" path="res://resources/slime.tres" id="2_rr1fq"]
-[ext_resource type="Texture2D" uid="uid://dwmbkqq8v4vu8" path="res://assets/sprites/battleback10.png" id="2_sb4ph"]
-[ext_resource type="Texture2D" uid="uid://b5lesekpnmdum" path="res://assets/sprites/fantasy_game_character_slime.png" id="4_f4pi3"]
-[ext_resource type="AudioStream" uid="uid://ciybav3gxs2aq" path="res://assets/se/maou_se_battle03.ogg" id="5_rr1fq"]
-[ext_resource type="AudioStream" uid="uid://co8sbedig2hjk" path="res://assets/bgm/maou_bgm_fantasy15.ogg" id="6_d4yhw"]
-[ext_resource type="AudioStream" uid="uid://bvlmnj0qrihu6" path="res://assets/se/maou_se_battle12.ogg" id="6_h4qsw"]
-[ext_resource type="AudioStream" uid="uid://bjjmb8yom0xod" path="res://assets/se/maou_se_battle_explosion03.ogg" id="8_muv5k"]
+[ext_resource type="Script" uid="uid://b4qmf3jjfoct4" path="res://scripts/Battle.gd" id="1_2cxp4"]
+[ext_resource type="Resource" uid="uid://c4vqalnrxhtqu" path="res://resources/slime.tres" id="2_7xoqm"]
+[ext_resource type="Texture2D" uid="uid://dwmbkqq8v4vu8" path="res://assets/sprites/battleback10.png" id="3_ob7dw"]
+[ext_resource type="Texture2D" uid="uid://b5lesekpnmdum" path="res://assets/sprites/fantasy_game_character_slime.png" id="4_8umis"]
+[ext_resource type="AudioStream" uid="uid://ciybav3gxs2aq" path="res://assets/se/maou_se_battle03.ogg" id="5_ora22"]
+[ext_resource type="AudioStream" uid="uid://co8sbedig2hjk" path="res://assets/bgm/maou_bgm_fantasy15.ogg" id="6_dpg7a"]
+[ext_resource type="AudioStream" uid="uid://bvlmnj0qrihu6" path="res://assets/se/maou_se_battle12.ogg" id="7_8h0x3"]
+[ext_resource type="AudioStream" uid="uid://bjjmb8yom0xod" path="res://assets/se/maou_se_battle_explosion03.ogg" id="8_l0ske"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f4pi3"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -264,8 +264,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_fluly")
-enemy = ExtResource("2_rr1fq")
+script = ExtResource("1_2cxp4")
+enemy = ExtResource("2_7xoqm")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -279,7 +279,7 @@ offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.1, 1.1)
-texture = ExtResource("2_sb4ph")
+texture = ExtResource("3_ob7dw")
 
 [node name="EnemyPanel" type="Panel" parent="."]
 layout_mode = 1
@@ -343,7 +343,7 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("4_f4pi3")
+texture = ExtResource("4_8umis")
 expand_mode = 1
 
 [node name="DamageLabel" type="Label" parent="EnemyPanel"]
@@ -499,25 +499,25 @@ anchor_mode = 0
 
 [node name="AttackSE" type="AudioStreamPlayer2D" parent="."]
 visible = false
-stream = ExtResource("5_rr1fq")
+stream = ExtResource("5_ora22")
 volume_db = 8.0
 bus = &"SFX"
 
 [node name="BattleBGM" type="AudioStreamPlayer2D" parent="."]
 visible = false
-stream = ExtResource("6_d4yhw")
+stream = ExtResource("6_dpg7a")
 volume_db = -3.0
 bus = &"Music"
 
 [node name="GetHitSE" type="AudioStreamPlayer2D" parent="."]
 visible = false
-stream = ExtResource("6_h4qsw")
+stream = ExtResource("7_8h0x3")
 volume_db = 8.0
 bus = &"SFX"
 
 [node name="DefeatSE" type="AudioStreamPlayer2D" parent="."]
 visible = false
-stream = ExtResource("8_muv5k")
+stream = ExtResource("8_l0ske")
 volume_db = 8.0
 bus = &"SFX"
 

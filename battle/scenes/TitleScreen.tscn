@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bg5f4xak7sftv"]
 
-[ext_resource type="Script" uid="uid://cnqhuw8f5m46m" path="res://scripts/title_screen.gd" id="1_ak2if"]
+[ext_resource type="Script" uid="uid://cnqhuw8f5m46m" path="res://scripts/TitleScreen.gd" id="1_ak2if"]
 [ext_resource type="Texture2D" uid="uid://dwmbkqq8v4vu8" path="res://assets/sprites/battleback10.png" id="1_v6p8y"]
 
 [sub_resource type="Theme" id="Theme_v6p8y"]

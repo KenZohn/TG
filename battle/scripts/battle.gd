@@ -11,21 +11,18 @@ var game_scene: Node = null
 # No emit_signal dos jogos, enviar: dano, se foi o finalizado e a animação desejada.s
 
 var games = {
-	"sudoku3x3": "res://scenes/sudoku3x3.tscn",
-	"agility1": "res://scenes/GameFlashReact.tscn",
-	"colors": "res://scenes/corCorreta.tscn"
+	"react": "res://scenes/GameReact.tscn",
+	"color": "res://scenes/GameColor.tscn"
 }
 
 var titles = {
-	"sudoku3x3": "Mini Sudoku",
-	"agility1": "Reação",
-	"colors": "Cor Correta"
+	"react": "Reação",
+	"color": "Cor Correta"
 }
 
 var rules = {
-	"sudoku3x3": "Complete a tabela com os números de 1 a 9 sem repetir.",
-	"agility1": "Clique no botão o mais rápido possível quando o sinal aparecer.",
-	"colors": "Verifique se o SIGNIFICADO da palavra de CIMA coincide com a COR da palavra de BAIXO."
+	"react": "Clique no botão o mais rápido possível quando o sinal aparecer.",
+	"color": "Verifique se o SIGNIFICADO da palavra de CIMA coincide com a COR da palavra de BAIXO."
 }
 
 func _ready():
@@ -102,7 +99,7 @@ func _on_game_finished(_resultado: bool):
 		
 		await get_tree().create_timer(0.5).timeout
 		if is_inside_tree():
-			get_tree().change_scene_to_file("res://scenes/stage_select.tscn")
+			get_tree().change_scene_to_file("res://scenes/StageSelect.tscn")
 	
 	enemy_turn()
 
@@ -139,7 +136,7 @@ func enemy_turn():
 		await self.textbox_closed
 		
 		await get_tree().create_timer(0.25).timeout
-		get_tree().change_scene_to_file("res://scenes/stage_select.tscn")
+		get_tree().change_scene_to_file("res://scenes/StageSelect.tscn")
 	
 	$RulesPanel.show()
 
