@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="Battle"
-run/main_scene="uid://b1jg0kxl8nmsf"
+run/main_scene="uid://bg5f4xak7sftv"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 State="*res://scripts/State.gd"
-GameState="*res://scripts/GameState.gd"
+GameState="*res://scripts/State.gd"
 
 [display]
 
