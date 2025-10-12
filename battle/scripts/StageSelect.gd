@@ -17,7 +17,11 @@ func reset_state():
 	GameState.coordination = 0
 
 func _on_m_1_pressed() -> void:
-	pass
+	GameState.stage = "m1"
+	GameState.game = "bomb"
+	GameState.enemy = "slime"
+	
+	get_tree().change_scene_to_file("res://scenes/Battle.tscn")
 
 func _on_a_1_pressed() -> void:
 	GameState.stage = "a1"
