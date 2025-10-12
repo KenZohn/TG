@@ -90,12 +90,21 @@ func _on_game_finished(_resultado: bool):
 		game_scene = null
 		
 	if current_enemy_health == 0:
-		# Salvar jogo
-		GameState.save_data[GameState.stage] = {"cleared": true}
-		var file = FileAccess.open("res://saves/save1.save", FileAccess.WRITE)
-		var json_string = JSON.stringify(GameState.save_data)
-		file.store_string(json_string)
-		file.close()
+		# Primeira vez completando o estágio
+		if GameState.save_data[GameState.stage] == false:
+			# Atribuir atributos
+			GameState.save_data["memory"] += GameState.memory
+			GameState.save_data["agility"] += GameState.agility
+			GameState.save_data["focus"] += GameState.focus
+			GameState.save_data["reasoning"] += GameState.reasoning
+			GameState.save_data["coordination"] += GameState.coordination
+			
+			# Salvar jogo
+			GameState.save_data[GameState.stage] = true
+			var file = FileAccess.open("res://saves/save1.save", FileAccess.WRITE)
+			var json_string = JSON.stringify(GameState.save_data)
+			file.store_string(json_string)
+			file.close()
 		
 		display_text("O %s foi derrotado!" % enemy.name)
 		await self.textbox_closed

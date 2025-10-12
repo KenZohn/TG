@@ -1,12 +1,17 @@
 # GameState.gd
 extends Node
 
+# Estágio
 var stage = "a2"
-var game = "color"
+var game = "color" # react, color
 var enemy = "slime"
 
-var save_data = {}
+# Recompensas
+var memory = 0
+var agility = 0
+var focus = 0
+var reasoning = 0
+var coordination = 0
 
-# Games:
-#	react
-#	color
+# Save
+var save_data = {}

@@ -296,6 +296,46 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "Voltar para o Menu Inicial"
 
+[node name="LabelMemory" type="Label" parent="."]
+layout_mode = 0
+offset_left = 705.0
+offset_top = 88.0
+offset_right = 780.0
+offset_bottom = 111.0
+text = "Memória:"
+
+[node name="LabelAgility" type="Label" parent="."]
+layout_mode = 0
+offset_left = 707.0
+offset_top = 130.0
+offset_right = 783.0
+offset_bottom = 153.0
+text = "Agilidade:"
+
+[node name="LabelFocus" type="Label" parent="."]
+layout_mode = 0
+offset_left = 708.0
+offset_top = 171.0
+offset_right = 783.0
+offset_bottom = 194.0
+text = "Foco:"
+
+[node name="LabelReasoning" type="Label" parent="."]
+layout_mode = 0
+offset_left = 709.0
+offset_top = 211.0
+offset_right = 792.0
+offset_bottom = 234.0
+text = "Reciocínio:"
+
+[node name="LabelCoordination" type="Label" parent="."]
+layout_mode = 0
+offset_left = 708.0
+offset_top = 249.0
+offset_right = 815.0
+offset_bottom = 272.0
+text = "Coordenação:"
+
 [connection signal="pressed" from="M1" to="." method="_on_m_1_pressed"]
 [connection signal="pressed" from="A1" to="." method="_on_a_1_pressed"]
 [connection signal="pressed" from="A2" to="." method="_on_a_2_pressed"]
