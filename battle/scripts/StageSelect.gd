@@ -5,8 +5,16 @@ var save_data = {}
 func _ready():
 	GameState.save_data = load_game()
 	#save_game()
+	reset_state()
 	update_stages()
 	show_stats()
+
+func reset_state():
+	GameState.memory = 0
+	GameState.agility = 0
+	GameState.focus = 0
+	GameState.reasoning = 0
+	GameState.coordination = 0
 
 func _on_m_1_pressed() -> void:
 	pass
@@ -70,22 +78,19 @@ func load_game():
 		return data
 	else:
 		#return progresso # estrutura inicial
-		return {
+		var initial_data = {
 			"memory": 0,
 			"agility": 0,
 			"focus": 0,
 			"reasoning": 0,
-			"coordination": 0,
-			"m1": false,
-			"m2": false,
-			"m3": false,
-			"a1": false,
-			"a2": false,
-			"a3": false,
-			"f1": false,
-			"f2": false,
-			"f3": false
-	 	}
+			"coordination": 0
+		}
+		
+		for prefix in ["m", "a", "f", "r", "c"]:
+			for i in range(1, 13):
+				initial_data["%s%d" % [prefix, i]] = false
+		
+		return initial_data
 
 func update_stages():
 	if "m1" in GameState.save_data and GameState.save_data["m1"]:
