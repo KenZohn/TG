@@ -25,7 +25,7 @@ func _update_timer_display():
 	$LabelTimer.text = "%.1f" % remaining
 
 func setup_timers():
-	$TimerGame.wait_time = 15.0 + GameState.save_data["agility"] * 0.05
+	$TimerGame.wait_time = 15.0 + State.save_data["agility"] * 0.05
 	$TimerGame.one_shot = true
 	$TimerGame.timeout.connect(_on_game_timeout)
 	
@@ -73,7 +73,7 @@ func _on_user_response(response: bool):
 	if response == correct_answer:
 		score += 1
 		print("✅ Correct!")
-		emit_signal("correct_answer_hit", int(2 + 2 * GameState.save_data["focus"] * 0.05))
+		emit_signal("correct_answer_hit", int(2 + 2 * State.save_data["focus"] * 0.05))
 	else:
 		print("❌ Wrong!")
 		_apply_time_penalty()

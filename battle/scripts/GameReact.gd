@@ -25,7 +25,7 @@ func _on_react_button_pressed():
 		reaction_time = (Time.get_ticks_msec() / 1000.0) - start_time
 		$LabelMensage.text = "%.3f segundos" % reaction_time
 		ready_to_react = false
-		emit_signal("correct_answer_hit", int(30 + 30 * GameState.save_data["focus"] * 0.05)) # Cada acerto causa 30 de dano
+		emit_signal("correct_answer_hit", int(30 + 30 * State.save_data["focus"] * 0.05)) # Cada acerto causa 30 de dano
 		emit_signal("game_finished", true) # Resultado retornado
 	else:
 		$ReactButton.disabled = true
