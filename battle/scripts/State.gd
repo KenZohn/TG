@@ -1,6 +1,10 @@
 # State.gd
 extends Node
 
+# Controle de Jogo
+var is_new_game = false
+var save_path = "";
+
 # Personagem
 var current_hp = 35
 var max_hp = 35

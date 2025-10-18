@@ -1,5 +1,7 @@
 extends Control
 
+var save_manager = preload("res://scripts/SaveManager.gd").new()
+
 signal textbox_closed
 
 @export var enemy: Resource = null
@@ -116,10 +118,8 @@ func _on_game_finished(_resultado: bool):
 			
 			# Salvar jogo
 			State.save_data[State.stage] = true
-			var file = FileAccess.open("res://saves/save1.save", FileAccess.WRITE)
-			var json_string = JSON.stringify(State.save_data)
-			file.store_string(json_string)
-			file.close()
+			
+			save_manager.save_game(State.save_path)
 		
 		display_text("O %s foi derrotado!" % enemy.name)
 		await self.textbox_closed

@@ -3,9 +3,7 @@ extends Control
 #var save_data = {}
 
 func _ready():
-	State.save_data = load_game()
-	#save_game()
-	#State.reset_state()
+	State.reset_state()
 	update_stages()
 	show_stats()
 
@@ -69,27 +67,6 @@ func _on_f_3_pressed() -> void:
 func _on_tittle_screen_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/TitleScreen.tscn")
 
-func load_game():
-	if FileAccess.file_exists("res://saves/save1.save"):
-		var file = FileAccess.open("res://saves/save1.save", FileAccess.READ)
-		var data = JSON.parse_string(file.get_as_text())
-		file.close()
-		return data
-	else:
-		#return progresso # estrutura inicial
-		var initial_data = {
-			"memory": 0,
-			"agility": 0,
-			"focus": 0,
-			"reasoning": 0,
-			"coordination": 0
-		}
-		
-		for prefix in ["m", "a", "f", "r", "c"]:
-			for i in range(1, 13):
-				initial_data["%s%d" % [prefix, i]] = false
-		
-		return initial_data
 
 func update_stages():
 	if "m1" in State.save_data and State.save_data["m1"]:
@@ -121,7 +98,7 @@ func show_stats():
 	$LabelCoordination.text = "Coordenação: " + str(int(State.save_data["coordination"]))
 
 func save_game():
-	var file = FileAccess.open("res://saves/save1.save", FileAccess.WRITE)
+	var file = FileAccess.open(State.save_path, FileAccess.WRITE)
 	var json_string = JSON.stringify(State.save_data)
 	file.store_string(json_string)
 	file.close()
