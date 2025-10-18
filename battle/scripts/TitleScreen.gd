@@ -17,7 +17,7 @@ func _on_new_pressed() -> void:
 	
 func _on_start_pressed() -> void:
 	# Supposed to open the world map (we don't have one yet :c) 
-	get_tree().change_scene_to_file("res://scenes/StageSelect.tscn")
+	get_tree().change_scene_to_file("res://scenes/LoadScreen.tscn")
 
 func _on_options_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/Options.tscn")
