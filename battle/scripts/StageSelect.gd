@@ -1,20 +1,14 @@
 extends Control
 
-var save_data = {}
+#var save_data = {}
 
 func _ready():
 	State.save_data = load_game()
 	#save_game()
-	reset_state()
+	#State.reset_state()
 	update_stages()
 	show_stats()
 
-func reset_state():
-	State.memory = 0
-	State.agility = 0
-	State.focus = 0
-	State.reasoning = 0
-	State.coordination = 0
 
 func _on_m_1_pressed() -> void:
 	State.stage = "m1"
@@ -128,6 +122,6 @@ func show_stats():
 
 func save_game():
 	var file = FileAccess.open("res://saves/save1.save", FileAccess.WRITE)
-	var json_string = JSON.stringify(save_data)
+	var json_string = JSON.stringify(State.save_data)
 	file.store_string(json_string)
 	file.close()
