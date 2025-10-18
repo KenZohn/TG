@@ -72,5 +72,6 @@ text = "Reagir"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_nstwc")
+bus = &"SFX"
 
 [connection signal="pressed" from="ReactButton" to="." method="_on_react_button_pressed"]

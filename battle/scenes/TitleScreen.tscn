@@ -73,7 +73,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = SubResource("Theme_v6p8y")
-text = "START"
+text = "LOAD GAME"
 icon_alignment = 1
 
 [node name="Options" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]

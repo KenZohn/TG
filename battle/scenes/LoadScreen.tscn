@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvjxi7iw3ivl4"]
+[gd_scene load_steps=3 format=3 uid="uid://dvjxi7iw3ivl4"]
 
 [ext_resource type="Script" uid="uid://bqyki1qv1e0nx" path="res://scripts/LoadScreen.gd" id="1_ocbus"]
+[ext_resource type="Texture2D" uid="uid://dwmbkqq8v4vu8" path="res://assets/sprites/battleback10.png" id="2_ovub4"]
 
 [node name="LoadScreen" type="Control"]
 layout_mode = 3
@@ -18,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_ovub4")
 
 [node name="MarginContainer" type="MarginContainer" parent="TextureRect"]
 layout_mode = 1
@@ -34,7 +36,7 @@ theme_override_constants/margin_bottom = 20
 [node name="HomeLabel" type="Label" parent="TextureRect/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 24
 text = "SELECIONE UM SAVE PARA CONTINUAR"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -85,6 +87,17 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 20
 text = "DEBUG"
 
+[node name="OverwriteDialog" type="ConfirmationDialog" parent="."]
+oversampling_override = 1.0
+title = ""
+initial_position = 2
+size = Vector2i(437, 100)
+ok_button_text = "Sim"
+dialog_text = "Esse slot já possui um jogo salvo. Deseja sobrescrever?"
+cancel_button_text = "Não"
+
 [connection signal="pressed" from="TextureRect/MarginContainer/VBoxContainer/Slot1" to="." method="_on_slot_1_pressed"]
 [connection signal="pressed" from="TextureRect/MarginContainer/VBoxContainer/Slot2" to="." method="_on_slot_2_pressed"]
 [connection signal="pressed" from="TextureRect/MarginContainer/VBoxContainer/Slot3" to="." method="_on_slot_3_pressed"]
+[connection signal="pressed" from="TextureRect/MarginContainer/Return" to="." method="_on_return_pressed"]
+[connection signal="confirmed" from="OverwriteDialog" to="." method="_on_overwrite_dialog_confirmed"]
