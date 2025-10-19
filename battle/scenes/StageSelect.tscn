@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dflsxker1ppx5"]
+[gd_scene load_steps=5 format=3 uid="uid://dflsxker1ppx5"]
 
 [ext_resource type="Script" uid="uid://3s3fssnkts4e" path="res://scripts/StageSelect.gd" id="1_tne6o"]
+[ext_resource type="Script" uid="uid://ciq8wgcis8kju" path="res://scenes/RadarChart.gd" id="2_eeirb"]
+[ext_resource type="Script" uid="uid://0hbkpn15jkgf" path="res://scenes/Web.gd" id="2_k456m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38erg"]
 bg_color = Color(0.20871, 0.20871, 0.20871, 1)
@@ -332,6 +334,17 @@ offset_top = 249.0
 offset_right = 815.0
 offset_bottom = 272.0
 text = "Coordenação:"
+
+[node name="RadarChart" type="Node2D" parent="."]
+position = Vector2(770, 407)
+script = ExtResource("2_eeirb")
+
+[node name="Web" type="Node2D" parent="RadarChart"]
+script = ExtResource("2_k456m")
+
+[node name="Polygon2D" type="Polygon2D" parent="RadarChart"]
+
+[node name="Line2D" type="Line2D" parent="RadarChart"]
 
 [connection signal="pressed" from="M1" to="." method="_on_m_1_pressed"]
 [connection signal="pressed" from="M2" to="." method="_on_m_2_pressed"]

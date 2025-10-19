@@ -7,7 +7,6 @@ func _ready():
 	update_stages()
 	show_stats()
 
-
 func _on_m_1_pressed() -> void:
 	State.stage = "m1"
 	State.game = "bomb"
