@@ -297,82 +297,92 @@ text = "Voltar para o Menu Inicial"
 
 [node name="LabelMemory" type="Label" parent="."]
 layout_mode = 0
-offset_left = 840.0
-offset_top = 122.0
-offset_right = 855.0
-offset_bottom = 145.0
-text = "M"
+offset_left = 839.0
+offset_top = 124.0
+offset_right = 867.0
+offset_bottom = 147.0
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LabelAgility" type="Label" parent="."]
 layout_mode = 0
-offset_left = 959.0
-offset_top = 205.0
-offset_right = 970.0
-offset_bottom = 228.0
-text = "A"
+offset_left = 955.0
+offset_top = 201.0
+offset_right = 983.0
+offset_bottom = 224.0
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LabelFocus" type="Label" parent="."]
 layout_mode = 0
-offset_left = 933.0
-offset_top = 334.0
-offset_right = 942.0
-offset_bottom = 357.0
-text = "F"
+offset_left = 905.0
+offset_top = 338.0
+offset_right = 933.0
+offset_bottom = 361.0
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LabelReasoning" type="Label" parent="."]
 layout_mode = 0
-offset_left = 737.0
+offset_left = 723.0
 offset_top = 200.0
-offset_right = 748.0
+offset_right = 751.0
 offset_bottom = 223.0
-text = "R"
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LabelCoordination" type="Label" parent="."]
 layout_mode = 0
-offset_left = 760.0
-offset_top = 330.0
-offset_right = 771.0
-offset_bottom = 353.0
-text = "C"
+offset_left = 772.0
+offset_top = 335.0
+offset_right = 783.0
+offset_bottom = 358.0
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LabelMemoryText" type="Label" parent="."]
 layout_mode = 0
-offset_left = 815.0
-offset_top = 95.0
-offset_right = 890.0
-offset_bottom = 118.0
+offset_left = 816.0
+offset_top = 99.0
+offset_right = 891.0
+offset_bottom = 122.0
 text = "Memória"
 
 [node name="LabelAgilityText" type="Label" parent="."]
 layout_mode = 0
-offset_left = 945.0
+offset_left = 932.0
 offset_top = 176.0
-offset_right = 1021.0
+offset_right = 1008.0
 offset_bottom = 199.0
 text = "Agilidade"
 
 [node name="LabelFocusText" type="Label" parent="."]
 layout_mode = 0
-offset_left = 920.0
-offset_top = 365.0
-offset_right = 956.0
-offset_bottom = 388.0
+offset_left = 903.0
+offset_top = 363.0
+offset_right = 939.0
+offset_bottom = 386.0
 text = "Foco"
 
 [node name="LabelReasoningText" type="Label" parent="."]
 layout_mode = 0
-offset_left = 685.0
-offset_top = 174.0
-offset_right = 768.0
-offset_bottom = 197.0
+offset_left = 697.0
+offset_top = 175.0
+offset_right = 780.0
+offset_bottom = 198.0
 text = "Reciocínio"
 
 [node name="LabelCoordinationText" type="Label" parent="."]
 layout_mode = 0
-offset_left = 713.0
-offset_top = 361.0
-offset_right = 820.0
-offset_bottom = 384.0
+offset_left = 734.0
+offset_top = 363.0
+offset_right = 841.0
+offset_bottom = 386.0
 text = "Coordenação"
 
 [node name="RadarChart" type="Node2D" parent="."]

@@ -1,8 +1,12 @@
+@tool
 extends Node2D
 
-var layers = 4
-var radius = 100.0
-var points = 5
+@export var layers := 4
+@export var radius := 100.0
+@export var points := 5
+
+func _ready():
+	queue_redraw()
 
 func _draw():
 	for layer in range(1, layers + 1):
@@ -11,7 +15,8 @@ func _draw():
 		for i in range(points):
 			var angle = deg_to_rad(360.0 / points * i - 90.0)
 			polygon.append(Vector2(cos(angle) * r, sin(angle) * r))
-		draw_polyline(polygon + [polygon[0]], Color(0.7, 0.7, 0.7))
+		if polygon.size() > 0:
+			draw_polyline(polygon + [polygon[0]], Color(0.7, 0.7, 0.7))
 
 	for i in range(points):
 		var angle = deg_to_rad(360.0 / points * i - 90.0)
