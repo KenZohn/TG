@@ -297,86 +297,86 @@ text = "Voltar para o Menu Inicial"
 
 [node name="LabelMemory" type="Label" parent="."]
 layout_mode = 0
-offset_left = 765.0
-offset_top = 315.0
-offset_right = 780.0
-offset_bottom = 338.0
+offset_left = 840.0
+offset_top = 122.0
+offset_right = 855.0
+offset_bottom = 145.0
 text = "M"
 
 [node name="LabelAgility" type="Label" parent="."]
 layout_mode = 0
-offset_left = 841.0
-offset_top = 362.0
-offset_right = 852.0
-offset_bottom = 385.0
+offset_left = 959.0
+offset_top = 205.0
+offset_right = 970.0
+offset_bottom = 228.0
 text = "A"
 
 [node name="LabelFocus" type="Label" parent="."]
 layout_mode = 0
-offset_left = 832.0
-offset_top = 468.0
-offset_right = 841.0
-offset_bottom = 491.0
+offset_left = 933.0
+offset_top = 334.0
+offset_right = 942.0
+offset_bottom = 357.0
 text = "F"
 
 [node name="LabelReasoning" type="Label" parent="."]
 layout_mode = 0
-offset_left = 684.0
-offset_top = 363.0
-offset_right = 695.0
-offset_bottom = 386.0
+offset_left = 737.0
+offset_top = 200.0
+offset_right = 748.0
+offset_bottom = 223.0
 text = "R"
 
 [node name="LabelCoordination" type="Label" parent="."]
 layout_mode = 0
-offset_left = 691.0
-offset_top = 472.0
-offset_right = 702.0
-offset_bottom = 495.0
+offset_left = 760.0
+offset_top = 330.0
+offset_right = 771.0
+offset_bottom = 353.0
 text = "C"
 
 [node name="LabelMemoryText" type="Label" parent="."]
 layout_mode = 0
-offset_left = 862.0
+offset_left = 815.0
 offset_top = 95.0
-offset_right = 937.0
+offset_right = 890.0
 offset_bottom = 118.0
 text = "Memória"
 
 [node name="LabelAgilityText" type="Label" parent="."]
 layout_mode = 0
-offset_left = 864.0
-offset_top = 137.0
-offset_right = 940.0
-offset_bottom = 160.0
+offset_left = 945.0
+offset_top = 176.0
+offset_right = 1021.0
+offset_bottom = 199.0
 text = "Agilidade"
 
 [node name="LabelFocusText" type="Label" parent="."]
 layout_mode = 0
-offset_left = 865.0
-offset_top = 178.0
-offset_right = 940.0
-offset_bottom = 201.0
+offset_left = 920.0
+offset_top = 365.0
+offset_right = 956.0
+offset_bottom = 388.0
 text = "Foco"
 
 [node name="LabelReasoningText" type="Label" parent="."]
 layout_mode = 0
-offset_left = 866.0
-offset_top = 218.0
-offset_right = 949.0
-offset_bottom = 241.0
+offset_left = 685.0
+offset_top = 174.0
+offset_right = 768.0
+offset_bottom = 197.0
 text = "Reciocínio"
 
 [node name="LabelCoordinationText" type="Label" parent="."]
 layout_mode = 0
-offset_left = 865.0
-offset_top = 256.0
-offset_right = 972.0
-offset_bottom = 279.0
+offset_left = 713.0
+offset_top = 361.0
+offset_right = 820.0
+offset_bottom = 384.0
 text = "Coordenação"
 
 [node name="RadarChart" type="Node2D" parent="."]
-position = Vector2(770, 407)
+position = Vector2(852, 252)
 script = ExtResource("2_eeirb")
 
 [node name="Web" type="Node2D" parent="RadarChart"]
