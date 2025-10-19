@@ -32,12 +32,8 @@ var rules = {
 
 var enemy_paths = {
 	"slime": "res://resources/slime.tres",
-	"zombie": "res://resources/zombie.tres"
-}
-
-var enemy_sprites = {
-	"slime": "res://assets/sprites/fantasy_game_character_slime.png",
-	"zombie": "res://assets/sprites/fantasy_zombie_man.png"
+	"zombie": "res://resources/zombie.tres",
+	"goblin": "res://resources/goblin.tres"
 }
 
 func _ready():
@@ -45,7 +41,6 @@ func _ready():
 	set_hp($EnemyPanel/ProgressBar, enemy.health, enemy.health)
 	set_hp($PlayerPanel/ProgressBar, State.current_hp, State.max_hp)
 	$EnemyPanel/Enemy.texture = enemy.texture
-	#$EnemyPanel/Enemy.texture = load(enemy_sprites.get(State.enemy))
 	
 	$RulesPanel/RulesLabel.text = rules.get(State.game, "Descrição não disponível.")
 	$RulesPanel/TitleLabel.text = titles.get(State.game, "Título não disponível.")

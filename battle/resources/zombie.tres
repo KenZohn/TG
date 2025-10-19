@@ -7,4 +7,5 @@
 script = ExtResource("1_pot77")
 name = "Zumbi"
 texture = ExtResource("2_otncy")
-health = 50
+health = 45
+damage = 17

@@ -7,3 +7,5 @@
 script = ExtResource("1_ia0fk")
 name = "Slime"
 texture = ExtResource("2_hjcbr")
+health = 40
+damage = 15

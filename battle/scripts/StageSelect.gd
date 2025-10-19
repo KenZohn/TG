@@ -16,6 +16,22 @@ func _on_m_1_pressed() -> void:
 	State.memory = 3
 	get_tree().change_scene_to_file("res://scenes/Battle.tscn")
 
+func _on_m_2_pressed() -> void:
+	State.stage = "m2"
+	State.game = "bomb"
+	State.enemy = "zombie"
+	
+	State.memory = 4
+	get_tree().change_scene_to_file("res://scenes/Battle.tscn")
+
+func _on_m_3_pressed() -> void:
+	State.stage = "m3"
+	State.game = "bomb"
+	State.enemy = "goblin"
+	
+	State.memory = 5
+	get_tree().change_scene_to_file("res://scenes/Battle.tscn")
+
 func _on_a_1_pressed() -> void:
 	State.stage = "a1"
 	State.game = "color"
@@ -35,7 +51,7 @@ func _on_a_2_pressed() -> void:
 func _on_a_3_pressed() -> void:
 	State.stage = "a3"
 	State.game = "color"
-	State.enemy = "zombie"
+	State.enemy = "goblin"
 	
 	State.agility = 5
 	get_tree().change_scene_to_file("res://scenes/Battle.tscn")
@@ -59,7 +75,7 @@ func _on_f_2_pressed() -> void:
 func _on_f_3_pressed() -> void:
 	State.stage = "f3"
 	State.game = "react"
-	State.enemy = "zombie"
+	State.enemy = "goblin"
 	
 	State.focus = 5
 	get_tree().change_scene_to_file("res://scenes/Battle.tscn")
@@ -67,28 +83,21 @@ func _on_f_3_pressed() -> void:
 func _on_tittle_screen_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/TitleScreen.tscn")
 
-
 func update_stages():
-	if "m1" in State.save_data and State.save_data["m1"]:
-		$M1.modulate = Color(0, 1, 0) # verde
-	
-	if "a1" in State.save_data and State.save_data["a1"]:
-		$A1.modulate = Color(0, 1, 0) # verde
-	
-	if "a2" in State.save_data and State.save_data["a2"]:
-		$A2.modulate = Color(0, 1, 0) # verde
-	
-	if "a3" in State.save_data and State.save_data["a3"]:
-		$A3.modulate = Color(0, 1, 0) # verde
-	
-	if "f1" in State.save_data and State.save_data["f1"]:
-		$F1.modulate = Color(0, 1, 0) # verde
-	
-	if "f2" in State.save_data and State.save_data["f2"]:
-		$F2.modulate = Color(0, 1, 0) # verde
-	
-	if "f3" in State.save_data and State.save_data["f3"]:
-		$F3.modulate = Color(0, 1, 0) # verde
+	var stage_map = {
+		"m1": $M1,
+		"m2": $M2,
+		"m3": $M3,
+		"a1": $A1,
+		"a2": $A2,
+		"a3": $A3,
+		"f1": $F1,
+		"f2": $F2,
+		"f3": $F3
+	}
+	for key in stage_map.keys():
+		if key in State.save_data and State.save_data[key]:
+			stage_map[key].modulate = Color(0, 1, 0) # verde
 
 func show_stats():
 	$LabelMemory.text = "Memória: " + str(int(State.save_data["memory"]))

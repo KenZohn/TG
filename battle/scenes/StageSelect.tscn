@@ -39,7 +39,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "M-1"
 
 [node name="M2" type="Button" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -56,7 +55,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "M-2"
 
 [node name="M3" type="Button" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -336,6 +334,8 @@ offset_bottom = 272.0
 text = "Coordenação:"
 
 [connection signal="pressed" from="M1" to="." method="_on_m_1_pressed"]
+[connection signal="pressed" from="M2" to="." method="_on_m_2_pressed"]
+[connection signal="pressed" from="M3" to="." method="_on_m_3_pressed"]
 [connection signal="pressed" from="A1" to="." method="_on_a_1_pressed"]
 [connection signal="pressed" from="A2" to="." method="_on_a_2_pressed"]
 [connection signal="pressed" from="A3" to="." method="_on_a_3_pressed"]
