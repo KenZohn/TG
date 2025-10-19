@@ -22,4 +22,4 @@ GameState="*res://scripts/State.gd"
 
 [display]
 
-window/stretch/aspect="expand"
+window/stretch/mode="viewport"

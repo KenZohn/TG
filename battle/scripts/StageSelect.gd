@@ -99,11 +99,11 @@ func update_stages():
 			stage_map[key].modulate = Color(0, 1, 0) # verde
 
 func show_stats():
-	$LabelMemory.text = "Memória: " + str(int(State.save_data["memory"]))
-	$LabelAgility.text = "Agilidade: " + str(int(State.save_data["agility"]))
-	$LabelFocus.text = "Foco: " + str(int(State.save_data["focus"]))
-	$LabelReasoning.text = "Raciocínio: " + str(int(State.save_data["reasoning"]))
-	$LabelCoordination.text = "Coordenação: " + str(int(State.save_data["coordination"]))
+	$LabelMemory.text = str(int(State.save_data["memory"]))
+	$LabelAgility.text = str(int(State.save_data["agility"]))
+	$LabelFocus.text = str(int(State.save_data["focus"]))
+	$LabelReasoning.text = str(int(State.save_data["reasoning"]))
+	$LabelCoordination.text = str(int(State.save_data["coordination"]))
 
 func save_game():
 	var file = FileAccess.open(State.save_path, FileAccess.WRITE)

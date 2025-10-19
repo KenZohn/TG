@@ -168,57 +168,6 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "F-3"
 
-[node name="R1" type="Button" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -506.0
-offset_top = 86.0
-offset_right = -436.0
-offset_bottom = 156.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
-text = "R-1"
-
-[node name="R2" type="Button" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -366.0
-offset_top = 86.0
-offset_right = -296.0
-offset_bottom = 156.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
-text = "R-2"
-
-[node name="R3" type="Button" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -226.0
-offset_top = 86.0
-offset_right = -156.0
-offset_bottom = 156.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
-text = "R-3"
-
 [node name="C1" type="Button" parent="."]
 visible = false
 layout_mode = 1
@@ -270,6 +219,57 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "C-3"
 
+[node name="R1" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -506.0
+offset_top = 86.0
+offset_right = -436.0
+offset_bottom = 156.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
+text = "R-1"
+
+[node name="R2" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -366.0
+offset_top = 86.0
+offset_right = -296.0
+offset_bottom = 156.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
+text = "R-2"
+
+[node name="R3" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -226.0
+offset_top = 86.0
+offset_right = -156.0
+offset_bottom = 156.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
+text = "R-3"
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 offset_left = 85.0
@@ -297,43 +297,83 @@ text = "Voltar para o Menu Inicial"
 
 [node name="LabelMemory" type="Label" parent="."]
 layout_mode = 0
-offset_left = 705.0
-offset_top = 88.0
+offset_left = 765.0
+offset_top = 315.0
 offset_right = 780.0
-offset_bottom = 111.0
-text = "Memória:"
+offset_bottom = 338.0
+text = "M"
 
 [node name="LabelAgility" type="Label" parent="."]
 layout_mode = 0
-offset_left = 707.0
-offset_top = 130.0
-offset_right = 783.0
-offset_bottom = 153.0
-text = "Agilidade:"
+offset_left = 841.0
+offset_top = 362.0
+offset_right = 852.0
+offset_bottom = 385.0
+text = "A"
 
 [node name="LabelFocus" type="Label" parent="."]
 layout_mode = 0
-offset_left = 708.0
-offset_top = 171.0
-offset_right = 783.0
-offset_bottom = 194.0
-text = "Foco:"
+offset_left = 832.0
+offset_top = 468.0
+offset_right = 841.0
+offset_bottom = 491.0
+text = "F"
 
 [node name="LabelReasoning" type="Label" parent="."]
 layout_mode = 0
-offset_left = 709.0
-offset_top = 211.0
-offset_right = 792.0
-offset_bottom = 234.0
-text = "Reciocínio:"
+offset_left = 684.0
+offset_top = 363.0
+offset_right = 695.0
+offset_bottom = 386.0
+text = "R"
 
 [node name="LabelCoordination" type="Label" parent="."]
 layout_mode = 0
-offset_left = 708.0
-offset_top = 249.0
-offset_right = 815.0
-offset_bottom = 272.0
-text = "Coordenação:"
+offset_left = 691.0
+offset_top = 472.0
+offset_right = 702.0
+offset_bottom = 495.0
+text = "C"
+
+[node name="LabelMemoryText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 862.0
+offset_top = 95.0
+offset_right = 937.0
+offset_bottom = 118.0
+text = "Memória"
+
+[node name="LabelAgilityText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 864.0
+offset_top = 137.0
+offset_right = 940.0
+offset_bottom = 160.0
+text = "Agilidade"
+
+[node name="LabelFocusText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 865.0
+offset_top = 178.0
+offset_right = 940.0
+offset_bottom = 201.0
+text = "Foco"
+
+[node name="LabelReasoningText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 866.0
+offset_top = 218.0
+offset_right = 949.0
+offset_bottom = 241.0
+text = "Reciocínio"
+
+[node name="LabelCoordinationText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 865.0
+offset_top = 256.0
+offset_right = 972.0
+offset_bottom = 279.0
+text = "Coordenação"
 
 [node name="RadarChart" type="Node2D" parent="."]
 position = Vector2(770, 407)
@@ -343,8 +383,6 @@ script = ExtResource("2_eeirb")
 script = ExtResource("2_k456m")
 
 [node name="Polygon2D" type="Polygon2D" parent="RadarChart"]
-
-[node name="Line2D" type="Line2D" parent="RadarChart"]
 
 [connection signal="pressed" from="M1" to="." method="_on_m_1_pressed"]
 [connection signal="pressed" from="M2" to="." method="_on_m_2_pressed"]

@@ -27,13 +27,3 @@ func get_radar_points() -> Array:
 		var r = radius * clamp(values[i], 0, 1)
 		result.append(Vector2(cos(angle) * r, sin(angle) * r))
 	return result
-
-'''func _draw():
-	var font = get_theme_default_font() # ou use uma fonte padrão
-	var total = attributes.size()
-	for i in range(total):
-		var angle = deg_to_rad(360.0 / total * i - 90.0)
-		var pos = Vector2(cos(angle), sin(angle)) * (radius + 20) # desloca um pouco além da ponta
-		var label = "%s: %.1f" % [attributes[i]["name"], attributes[i]["value"]]
-		draw_string(font, pos, label, Color.WHITE)
-'''
