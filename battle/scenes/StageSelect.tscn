@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dflsxker1ppx5"]
 
 [ext_resource type="Script" uid="uid://3s3fssnkts4e" path="res://scripts/StageSelect.gd" id="1_tne6o"]
-[ext_resource type="Script" uid="uid://ciq8wgcis8kju" path="res://scenes/RadarChart.gd" id="2_eeirb"]
-[ext_resource type="Script" uid="uid://0hbkpn15jkgf" path="res://scenes/Web.gd" id="2_k456m"]
+[ext_resource type="Script" uid="uid://ciq8wgcis8kju" path="res://scripts/RadarChart.gd" id="2_eeirb"]
+[ext_resource type="Script" uid="uid://0hbkpn15jkgf" path="res://scripts/Web.gd" id="2_k456m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38erg"]
 bg_color = Color(0.20871, 0.20871, 0.20871, 1)
@@ -363,9 +363,9 @@ text = "Agilidade"
 
 [node name="LabelFocusText" type="Label" parent="."]
 layout_mode = 0
-offset_left = 903.0
+offset_left = 901.0
 offset_top = 363.0
-offset_right = 939.0
+offset_right = 937.0
 offset_bottom = 386.0
 text = "Foco"
 
@@ -379,9 +379,9 @@ text = "Reciocínio"
 
 [node name="LabelCoordinationText" type="Label" parent="."]
 layout_mode = 0
-offset_left = 734.0
+offset_left = 724.0
 offset_top = 363.0
-offset_right = 841.0
+offset_right = 831.0
 offset_bottom = 386.0
 text = "Coordenação"
 

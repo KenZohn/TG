@@ -30,7 +30,8 @@ func handle_slot(path):
 	
 	State.save_path = path  
 	#print("Dados carregados:", State.save_data)
-	get_tree().change_scene_to_file("res://scenes/StageSelect.tscn")
+	FadeLayer.fade_to_scene("res://scenes/StageSelect.tscn")
+	#get_tree().change_scene_to_file("res://scenes/StageSelect.tscn")
 	
 func _on_return_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/TitleScreen.tscn")
@@ -38,4 +39,5 @@ func _on_return_pressed() -> void:
 func _on_overwrite_dialog_confirmed() -> void:
 	save_manager.new_game(pending_path)
 	State.save_path = pending_path
-	get_tree().change_scene_to_file("res://scenes/StageSelect.tscn")
+	FadeLayer.fade_to_scene("res://scenes/StageSelect.tscn")
+	#get_tree().change_scene_to_file("res://scenes/StageSelect.tscn")

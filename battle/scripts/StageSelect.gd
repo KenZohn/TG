@@ -13,7 +13,7 @@ func _on_m_1_pressed() -> void:
 	State.enemy = "slime"
 	
 	State.memory = 3
-	get_tree().change_scene_to_file("res://scenes/Battle.tscn")
+	change_scene_battle()
 
 func _on_m_2_pressed() -> void:
 	State.stage = "m2"
@@ -21,7 +21,7 @@ func _on_m_2_pressed() -> void:
 	State.enemy = "zombie"
 	
 	State.memory = 4
-	get_tree().change_scene_to_file("res://scenes/Battle.tscn")
+	change_scene_battle()
 
 func _on_m_3_pressed() -> void:
 	State.stage = "m3"
@@ -29,7 +29,7 @@ func _on_m_3_pressed() -> void:
 	State.enemy = "goblin"
 	
 	State.memory = 5
-	get_tree().change_scene_to_file("res://scenes/Battle.tscn")
+	change_scene_battle()
 
 func _on_a_1_pressed() -> void:
 	State.stage = "a1"
@@ -37,7 +37,7 @@ func _on_a_1_pressed() -> void:
 	State.enemy = "slime"
 	
 	State.agility = 3
-	get_tree().change_scene_to_file("res://scenes/Battle.tscn")
+	change_scene_battle()
 
 func _on_a_2_pressed() -> void:
 	State.stage = "a2"
@@ -45,7 +45,7 @@ func _on_a_2_pressed() -> void:
 	State.enemy = "zombie"
 	
 	State.agility = 4
-	get_tree().change_scene_to_file("res://scenes/Battle.tscn")
+	change_scene_battle()
 
 func _on_a_3_pressed() -> void:
 	State.stage = "a3"
@@ -53,7 +53,7 @@ func _on_a_3_pressed() -> void:
 	State.enemy = "goblin"
 	
 	State.agility = 5
-	get_tree().change_scene_to_file("res://scenes/Battle.tscn")
+	change_scene_battle()
 
 func _on_f_1_pressed() -> void:
 	State.stage = "f1"
@@ -61,7 +61,7 @@ func _on_f_1_pressed() -> void:
 	State.enemy = "slime"
 	
 	State.focus = 3
-	get_tree().change_scene_to_file("res://scenes/Battle.tscn")
+	change_scene_battle()
 
 func _on_f_2_pressed() -> void:
 	State.stage = "f2"
@@ -69,7 +69,7 @@ func _on_f_2_pressed() -> void:
 	State.enemy = "zombie"
 	
 	State.focus = 4
-	get_tree().change_scene_to_file("res://scenes/Battle.tscn")
+	change_scene_battle()
 
 func _on_f_3_pressed() -> void:
 	State.stage = "f3"
@@ -77,10 +77,10 @@ func _on_f_3_pressed() -> void:
 	State.enemy = "goblin"
 	
 	State.focus = 5
-	get_tree().change_scene_to_file("res://scenes/Battle.tscn")
+	change_scene_battle()
 
 func _on_tittle_screen_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/TitleScreen.tscn")
+	FadeLayer.fade_to_scene("res://scenes/TitleScreen.tscn")
 
 func update_stages():
 	var stage_map = {
@@ -110,3 +110,6 @@ func save_game():
 	var json_string = JSON.stringify(State.save_data)
 	file.store_string(json_string)
 	file.close()
+
+func change_scene_battle():
+	FadeLayer.fade_to_scene("res://scenes/Battle.tscn")

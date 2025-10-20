@@ -19,7 +19,12 @@ config/icon="res://icon.svg"
 
 State="*res://scripts/State.gd"
 GameState="*res://scripts/State.gd"
+FadeLayer="*res://scenes/FadeLayer.tscn"
 
 [display]
 
 window/stretch/mode="viewport"
+
+[editor]
+
+version_control/plugin_name="FadeLayer"
