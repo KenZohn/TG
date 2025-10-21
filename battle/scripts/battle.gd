@@ -10,8 +10,6 @@ var current_player_hp = 0
 var current_enemy_hp = 0
 var game_scene: Node = null
 
-# No emit_signal dos jogos, enviar: dano, se foi o finalizado e a animação desejada.s
-
 var games = {
 	"react": "res://scenes/GameReact.tscn",
 	"color": "res://scenes/GameColor.tscn",
@@ -47,6 +45,8 @@ func _ready():
 	
 	current_player_hp = State.current_hp
 	current_enemy_hp = enemy.health
+	
+	$BattleBGM.stream = load(enemy.bgm)
 	
 	$TextBox.hide()
 	$RulesPanel.hide()

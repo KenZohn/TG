@@ -8,3 +8,4 @@ script = ExtResource("1_dq7ub")
 name = "Goblin"
 texture = ExtResource("2_dq7ub")
 health = 50
+bgm = "res://assets/bgm/(Battle2)maou_bgm_neorock73.mp3"

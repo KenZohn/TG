@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dwmbkqq8v4vu8" path="res://assets/sprites/battleback10.png" id="3_ob7dw"]
 [ext_resource type="Texture2D" uid="uid://b5lesekpnmdum" path="res://assets/sprites/fantasy_game_character_slime.png" id="4_8umis"]
 [ext_resource type="AudioStream" uid="uid://ciybav3gxs2aq" path="res://assets/se/maou_se_battle03.ogg" id="5_ora22"]
-[ext_resource type="AudioStream" uid="uid://co8sbedig2hjk" path="res://assets/bgm/maou_bgm_fantasy15.ogg" id="6_dpg7a"]
+[ext_resource type="AudioStream" uid="uid://co8sbedig2hjk" path="res://assets/bgm/(Battle1)maou_bgm_fantasy15.ogg" id="6_dpg7a"]
 [ext_resource type="AudioStream" uid="uid://bvlmnj0qrihu6" path="res://assets/se/maou_se_battle12.ogg" id="7_8h0x3"]
 [ext_resource type="AudioStream" uid="uid://bjjmb8yom0xod" path="res://assets/se/maou_se_battle_explosion03.ogg" id="8_l0ske"]
 

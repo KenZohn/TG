@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bg5f4xak7sftv"]
+[gd_scene load_steps=5 format=3 uid="uid://bg5f4xak7sftv"]
 
 [ext_resource type="Script" uid="uid://cnqhuw8f5m46m" path="res://scripts/TitleScreen.gd" id="1_ak2if"]
 [ext_resource type="Texture2D" uid="uid://dwmbkqq8v4vu8" path="res://assets/sprites/battleback10.png" id="1_v6p8y"]
+[ext_resource type="AudioStream" uid="uid://t3cs5w73t4t4" path="res://assets/bgm/(StageSelect)maou_bgm_acoustic36.mp3" id="3_dfj8j"]
 
 [sub_resource type="Theme" id="Theme_v6p8y"]
 Button/colors/font_color = Color(1, 1, 1, 1)
@@ -89,6 +90,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "QUIT"
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dfj8j")
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/New" to="." method="_on_new_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Load" to="." method="_on_load_pressed"]

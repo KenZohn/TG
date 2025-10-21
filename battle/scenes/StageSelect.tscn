@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dflsxker1ppx5"]
+[gd_scene load_steps=6 format=3 uid="uid://dflsxker1ppx5"]
 
 [ext_resource type="Script" uid="uid://3s3fssnkts4e" path="res://scripts/StageSelect.gd" id="1_tne6o"]
 [ext_resource type="Script" uid="uid://ciq8wgcis8kju" path="res://scripts/RadarChart.gd" id="2_eeirb"]
 [ext_resource type="Script" uid="uid://0hbkpn15jkgf" path="res://scripts/Web.gd" id="2_k456m"]
+[ext_resource type="AudioStream" uid="uid://t3cs5w73t4t4" path="res://assets/bgm/(StageSelect)maou_bgm_acoustic36.mp3" id="4_1tbhu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38erg"]
 bg_color = Color(0.20871, 0.20871, 0.20871, 1)
@@ -393,6 +394,11 @@ script = ExtResource("2_eeirb")
 script = ExtResource("2_k456m")
 
 [node name="Polygon2D" type="Polygon2D" parent="RadarChart"]
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_1tbhu")
+volume_db = -3.0
+autoplay = true
 
 [connection signal="pressed" from="M1" to="." method="_on_m_1_pressed"]
 [connection signal="pressed" from="M2" to="." method="_on_m_2_pressed"]
