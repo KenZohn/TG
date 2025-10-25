@@ -1,0 +1,152 @@
+[gd_scene load_steps=9 format=3 uid="uid://bc4c3cm6vmakw"]
+
+[ext_resource type="Script" uid="uid://blf37o24aytoh" path="res://scripts/GameSort.gd" id="1_wwklq"]
+[ext_resource type="Texture2D" uid="uid://w48mh0kkiuyy" path="res://assets/figures/circle.png" id="2_bfs6g"]
+[ext_resource type="Texture2D" uid="uid://bw3xny3h53d21" path="res://assets/figures/cross.png" id="3_pybrv"]
+[ext_resource type="Texture2D" uid="uid://6j3jdfdapy0b" path="res://assets/figures/square.png" id="4_3474e"]
+[ext_resource type="Texture2D" uid="uid://d3rpprfux40ic" path="res://assets/figures/triangle.png" id="5_80ibc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bfs6g"]
+bg_color = Color(0, 0, 0, 0.78431374)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pybrv"]
+bg_color = Color(0.24115604, 0.24115607, 0.24115595, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3474e"]
+bg_color = Color(0.23921569, 0.23921569, 0.23921569, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="Sort" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wwklq")
+
+[node name="ContainerCard" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -204.0
+offset_top = -317.0
+offset_right = 204.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bfs6g")
+
+[node name="FigureLeft1" type="TextureRect" parent="ContainerCard"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 7.0
+offset_right = 69.0
+offset_bottom = 67.0
+texture = ExtResource("2_bfs6g")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="FigureLeft2" type="TextureRect" parent="ContainerCard"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 78.0
+offset_right = 69.0
+offset_bottom = 138.0
+texture = ExtResource("3_pybrv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="FigureRight1" type="TextureRect" parent="ContainerCard"]
+layout_mode = 0
+offset_left = 333.0
+offset_top = 11.0
+offset_right = 393.0
+offset_bottom = 71.0
+texture = ExtResource("4_3474e")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="FigureRight2" type="TextureRect" parent="ContainerCard"]
+layout_mode = 0
+offset_left = 332.0
+offset_top = 89.0
+offset_right = 392.0
+offset_bottom = 149.0
+texture = ExtResource("5_80ibc")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="FigureMiddle" type="TextureRect" parent="ContainerCard"]
+layout_mode = 0
+offset_left = 157.0
+offset_top = 14.0
+offset_right = 257.0
+offset_bottom = 114.0
+texture = ExtResource("2_bfs6g")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ButtonLeft" type="Button" parent="ContainerCard"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 0
+offset_left = 136.5
+offset_top = 216.0
+offset_right = 186.5
+offset_bottom = 287.0
+size_flags_horizontal = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_pybrv")
+
+[node name="ButtonRight" type="Button" parent="ContainerCard"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 0
+offset_left = 221.5
+offset_top = 216.0
+offset_right = 271.5
+offset_bottom = 287.0
+size_flags_horizontal = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_3474e")
+
+[node name="Label" type="Label" parent="ContainerCard"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = -132.0
+offset_right = 22.0
+offset_bottom = -109.0
+grow_horizontal = 2
+grow_vertical = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimerGame" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true

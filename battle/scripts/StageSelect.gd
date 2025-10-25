@@ -70,6 +70,20 @@ func _on_f_3_pressed() -> void:
 	State.focus = 5
 	change_scene_battle()
 
+func _on_f_4_pressed() -> void:
+	State.stage = "f4"
+	State.game = "sort"
+	State.enemy = "slime"
+	State.focus = 3
+	change_scene_battle()
+
+func _on_f_5_pressed() -> void:
+	State.stage = "f5"
+	State.game = "sort"
+	State.enemy = "zombie"
+	State.focus = 4
+	change_scene_battle()
+
 func _on_c_1_pressed() -> void:
 	State.stage = "c1"
 	State.game = "reflex"
@@ -105,6 +119,8 @@ func update_stages():
 		"f1": $F1,
 		"f2": $F2,
 		"f3": $F3,
+		"f4": $F4,
+		"f5": $F5,
 		"c1": $C1,
 		"c2": $C2,
 		"c3": $C3
