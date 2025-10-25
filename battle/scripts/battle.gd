@@ -13,19 +13,22 @@ var game_scene: Node = null
 var games = {
 	"react": "res://scenes/GameReact.tscn",
 	"color": "res://scenes/GameColor.tscn",
-	"bomb": "res://scenes/GameBomb.tscn"
+	"bomb": "res://scenes/GameBomb.tscn",
+	"reflex": "res://scenes/GameReflex.tscn"
 }
 
 var titles = {
 	"react": "Reação",
 	"color": "Cor Correta",
-	"bomb": "Caminho"
+	"bomb": "Caminho",
+	"reflex": "Reflexo"
 }
 
 var rules = {
 	"react": "Clique no botão o mais rápido possível quando o sinal aparecer.",
 	"color": "Verifique se o SIGNIFICADO da palavra de CIMA coincide com a COR da palavra de BAIXO.",
-	"bomb": "Una os dois pontos azuis sem encostar nas bombas."
+	"bomb": "Una os dois pontos azuis sem encostar nas bombas.",
+	"reflex": "Clique no botão o mais rápido possível."
 }
 
 var enemy_paths = {
