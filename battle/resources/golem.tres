@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://oe0ixqcf2pqj"]
 
-[ext_resource type="Script" uid="uid://ddvcnnm3b56d0" path="res://scripts/BaseEnemy.gd" id="1_6pa3v"]
+[ext_resource type="Script" uid="uid://ddvcnnm3b56d0" path="res://scripts/baseEnemy.gd" id="1_6pa3v"]
 [ext_resource type="Texture2D" uid="uid://b86l8clvtc7x" path="res://assets/sprites/fantasy_golem.png" id="2_6pa3v"]
 
 [resource]
@@ -9,3 +9,4 @@ name = "Golem"
 texture = ExtResource("2_6pa3v")
 health = 70
 damage = 25
+xp = 30

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://b1u0hvkrajc1h"]
 
-[ext_resource type="Script" uid="uid://ddvcnnm3b56d0" path="res://scripts/BaseEnemy.gd" id="1_dq7ub"]
+[ext_resource type="Script" uid="uid://ddvcnnm3b56d0" path="res://scripts/baseEnemy.gd" id="1_dq7ub"]
 [ext_resource type="Texture2D" uid="uid://cs12qjukyc33r" path="res://assets/sprites/fantasy_goblin.png" id="2_dq7ub"]
 
 [resource]
@@ -9,3 +9,4 @@ name = "Goblin"
 texture = ExtResource("2_dq7ub")
 health = 50
 bgm = "res://assets/bgm/(Battle2)maou_bgm_neorock73.mp3"
+xp = 20

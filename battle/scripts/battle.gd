@@ -122,7 +122,9 @@ func _on_game_finished(_resultado: bool):
 			
 			save_manager.save_game(State.save_path)
 		
-		display_text("O %s foi derrotado!" % enemy.name)
+		State.save_data["experience"] += enemy.xp
+		save_manager.save_game(State.save_path)
+		display_text("O inimigo foi derrotado! \nVocê sente-se mais sábio... %d XP" % enemy.xp)
 		await self.textbox_closed
 		
 		$AnimationPlayer.play("enemy_died")

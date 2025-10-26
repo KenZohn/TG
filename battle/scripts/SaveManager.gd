@@ -6,7 +6,8 @@ func new_game(path):
 		"agility": 0,
 		"focus": 0,
 		"reasoning": 0,
-		"coordination": 0
+		"coordination": 0,
+		"experience": 0
 	}
 	
 	for prefix in ["m", "a", "f", "r", "c"]:
