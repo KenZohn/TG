@@ -104,6 +104,15 @@ func _on_c_3_pressed() -> void:
 	State.enemy = "goblin"
 	State.coordination = 5
 	change_scene_battle()
+	
+
+func _on_r_1_pressed() -> void:
+	State.stage = "r1"
+	State.game = "pop"
+	State.enemy = "slime"
+	State.reasoning = 3
+	change_scene_battle()
+	
 
 func _on_tittle_screen_button_pressed() -> void:
 	FadeLayer.fade_to_scene("res://scenes/TitleScreen.tscn")

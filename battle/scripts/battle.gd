@@ -15,7 +15,8 @@ var games = {
 	"color": "res://scenes/GameColor.tscn",
 	"bomb": "res://scenes/GameBomb.tscn",
 	"reflex": "res://scenes/GameReflex.tscn",
-	"sort": "res://scenes/GameSort.tscn"
+	"sort": "res://scenes/GameSort.tscn",
+	"pop": "res://scenes/GamePop.tscn"
 }
 
 var titles = {
@@ -23,7 +24,8 @@ var titles = {
 	"color": "Cor Correta",
 	"bomb": "Caminho",
 	"reflex": "Reflexo",
-	"sort": "Classificação"
+	"sort": "Classificação",
+	"pop": "Menor ao Maior"
 }
 
 var rules = {
@@ -31,7 +33,8 @@ var rules = {
 	"color": "Verifique se o SIGNIFICADO da palavra de CIMA coincide com a COR da palavra de BAIXO.",
 	"bomb": "Una os dois pontos azuis sem encostar nas bombas.",
 	"reflex": "Clique no botão o mais rápido possível.",
-	"sort": "Clique no botão para o lado que a figura do meio se encontra."
+	"sort": "Clique no botão para o lado que a figura do meio se encontra.",
+	"pop": "Clique nos botões na ordem do MENOR valor ao MAIOR."
 }
 
 var enemy_paths = {
