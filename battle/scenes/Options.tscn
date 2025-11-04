@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dyvywwxa4u4af"]
+[gd_scene load_steps=9 format=3 uid="uid://dyvywwxa4u4af"]
 
 [ext_resource type="Script" uid="uid://reh64sax3356" path="res://scripts/Options.gd" id="1_yjkok"]
 [ext_resource type="Texture2D" uid="uid://c67xpnj35t4a2" path="res://assets/sprites/background-escurecido.png" id="2_ckjey"]
 [ext_resource type="Theme" uid="uid://c6u12sw5jxmbr" path="res://themes/OptionsScreen.theme" id="3_nmn1p"]
 [ext_resource type="FontFile" uid="uid://svybmpvynbsh" path="res://themes/Roboto-VariableFont_wdth,wght.ttf" id="3_pxqj8"]
+[ext_resource type="Script" uid="uid://c51w6abbk0yqj" path="res://scripts/AnimatedButton.gd" id="5_w238l"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pxqj8"]
 
@@ -57,51 +58,51 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="OptionsContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Options" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="Options" type="Label" parent="CenterContainer/OptionsContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.98039216, 0.8, 0.08235294, 1)
 theme_override_colors/font_shadow_color = Color(0.98039216, 0.8, 0.08235294, 0.5019608)
 theme_override_fonts/font = ExtResource("3_pxqj8")
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 32
 text = "OPÇÕES"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSeparator2" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+[node name="Spacing" type="HSeparator" parent="CenterContainer/OptionsContainer"]
 layout_mode = 2
 theme_override_constants/separation = 5
 theme_override_styles/separator = SubResource("StyleBoxEmpty_pxqj8")
 
-[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/OptionsContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w238l")
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/OptionsContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 20
 
-[node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer/PanelContainer/MarginContainer"]
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/OptionsContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 10
 
-[node name="Music" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer"]
+[node name="Music" type="Label" parent="CenterContainer/OptionsContainer/PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_pxqj8")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 18
 text = "Música"
 vertical_alignment = 1
 
-[node name="MusicControl" type="HSlider" parent="CenterContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer"]
+[node name="MusicControl" type="HSlider" parent="CenterContainer/OptionsContainer/PanelContainer/MarginContainer/GridContainer"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -110,14 +111,14 @@ theme = ExtResource("3_nmn1p")
 min_value = -30.0
 max_value = 0.0
 
-[node name="SFX" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer"]
+[node name="SFX" type="Label" parent="CenterContainer/OptionsContainer/PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_pxqj8")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 18
 text = "Efeitos Sonoros"
 vertical_alignment = 1
 
-[node name="SFXControl" type="HSlider" parent="CenterContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer"]
+[node name="SFXControl" type="HSlider" parent="CenterContainer/OptionsContainer/PanelContainer/MarginContainer/GridContainer"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -125,20 +126,21 @@ size_flags_vertical = 4
 min_value = -30.0
 max_value = 0.0
 
-[node name="HSeparator2" type="HSeparator" parent="CenterContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer"]
+[node name="ButtonSpacing" type="HSeparator" parent="CenterContainer/OptionsContainer/PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
 theme_override_constants/separation = 15
 theme_override_styles/separator = SubResource("StyleBoxLine_w238l")
 
-[node name="Return" type="Button" parent="CenterContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer"]
+[node name="Return" type="Button" parent="CenterContainer/OptionsContainer/PanelContainer/MarginContainer/GridContainer"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("3_nmn1p")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 18
 text = "Voltar"
+script = ExtResource("5_w238l")
 
-[connection signal="value_changed" from="CenterContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer/MusicControl" to="." method="_on_sound_control_value_changed"]
-[connection signal="value_changed" from="CenterContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer/SFXControl" to="." method="_on_sfx_control_value_changed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer/Return" to="." method="_on_return_pressed"]
+[connection signal="value_changed" from="CenterContainer/OptionsContainer/PanelContainer/MarginContainer/GridContainer/MusicControl" to="." method="_on_sound_control_value_changed"]
+[connection signal="value_changed" from="CenterContainer/OptionsContainer/PanelContainer/MarginContainer/GridContainer/SFXControl" to="." method="_on_sfx_control_value_changed"]
+[connection signal="pressed" from="CenterContainer/OptionsContainer/PanelContainer/MarginContainer/GridContainer/Return" to="." method="_on_return_pressed"]

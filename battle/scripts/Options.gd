@@ -1,7 +1,7 @@
 extends Control
 
-@onready var music_slider = $CenterContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer/MusicControl
-@onready var sfx_slider = $CenterContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer/SFXControl
+@onready var music_slider = $CenterContainer/OptionsContainer/PanelContainer/MarginContainer/GridContainer/MusicControl
+@onready var sfx_slider = $CenterContainer/OptionsContainer/PanelContainer/MarginContainer/GridContainer/SFXControl
 
 var music_bus = AudioServer.get_bus_index("Music")
 var sfx_bus = AudioServer.get_bus_index("SFX")

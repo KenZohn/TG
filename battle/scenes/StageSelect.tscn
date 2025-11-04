@@ -427,6 +427,7 @@ script = ExtResource("2_k456m")
 stream = ExtResource("4_1tbhu")
 volume_db = -3.0
 autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="M1" to="." method="_on_m_1_pressed"]
 [connection signal="pressed" from="M2" to="." method="_on_m_2_pressed"]
