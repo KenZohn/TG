@@ -3,6 +3,23 @@ extends Control
 var save_manager = preload("res://scripts/SaveManager.gd").new()
 var pending_path
 
+func _ready():
+	var paths = [
+		"res://saves/save1.save"
+		#,"res://saves/save2.save"
+	]
+	
+	var card_container = $TextureRect/CenterContainer/MarginContainer/VBoxContainerPrincipal/CardContainer
+	
+	for path in paths:
+		var data = get_save_preview(path)
+		var card = preload("res://scenes/SaveCard.tscn").instantiate()
+		card.set_save_data(data)
+		card.get_node("Button").pressed.connect(handle_slot.bind(path))
+		card_container.add_child(card)
+
+
+
 func _on_slot_1_pressed():
 	handle_slot("res://saves/save1.save")
 	
@@ -41,3 +58,31 @@ func _on_overwrite_dialog_confirmed() -> void:
 	State.save_path = pending_path
 	FadeLayer.fade_to_scene("res://scenes/StageSelect.tscn")
 	#get_tree().change_scene_to_file("res://scenes/StageSelect.tscn")
+
+func get_save_preview(path: String) -> Dictionary:
+	if not FileAccess.file_exists(path):
+		return {"empty": true}
+	
+	var file = FileAccess.open(path, FileAccess.READ)
+	if file == null:
+		return {"empty": true}
+	
+	var json_string = file.get_as_text()
+	file.close()
+	
+	var json = JSON.new()
+	var result = json.parse(json_string)
+	if result != OK or typeof(json.data) != TYPE_DICTIONARY:
+		return {"empty": true}
+		
+	var data = json.data
+	
+	return {
+		"empty": false,
+		"slot_name": path.get_file().get_basename().to_upper(),
+		"character": "Herói",
+		"level": 1,
+		"location": "Local desconhecido",
+		"playtime": "0h 00min",
+		"last_played": "--/--/---- - --:--"
+	}
