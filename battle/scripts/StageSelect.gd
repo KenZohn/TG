@@ -1,7 +1,5 @@
 extends Control
 
-#var save_data = {}
-
 func _ready():
 	State.reset_state()
 	update_stages()
@@ -144,12 +142,6 @@ func show_stats():
 	$LabelFocus.text = str(int(State.save_data["focus"]))
 	$LabelReasoning.text = str(int(State.save_data["reasoning"]))
 	$LabelCoordination.text = str(int(State.save_data["coordination"]))
-
-func save_game():
-	var file = FileAccess.open(State.save_path, FileAccess.WRITE)
-	var json_string = JSON.stringify(State.save_data)
-	file.store_string(json_string)
-	file.close()
 
 func change_scene_battle():
 	FadeLayer.fade_to_scene("res://scenes/Battle.tscn")

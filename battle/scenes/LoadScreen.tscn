@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dvjxi7iw3ivl4"]
 
-[ext_resource type="Script" uid="uid://bqyki1qv1e0nx" path="res://scripts/LoadScreen.gd" id="1_ocbus"]
+[ext_resource type="Script" uid="uid://bqyki1qv1e0nx" path="res://assets/LoadScreen.gd" id="1_ocbus"]
 [ext_resource type="Texture2D" uid="uid://c67xpnj35t4a2" path="res://assets/sprites/background-escurecido.png" id="2_ff1ah"]
 [ext_resource type="FontFile" uid="uid://svybmpvynbsh" path="res://themes/Roboto-VariableFont_wdth,wght.ttf" id="3_ff1ah"]
 

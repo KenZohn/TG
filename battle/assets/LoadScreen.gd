@@ -47,8 +47,8 @@ func handle_slot(path):
 	
 	State.save_path = path  
 	#print("Dados carregados:", State.save_data)
-	FadeLayer.fade_to_scene("res://scenes/StageSelect.tscn")
-	#get_tree().change_scene_to_file("res://scenes/StageSelect.tscn")
+	#FadeLayer.fade_to_scene("res://scenes/StageSelect.tscn")
+	FadeLayer.fade_to_scene("res://scenes/mapa.tscn")
 	
 func _on_return_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/TitleScreen.tscn")
@@ -56,8 +56,8 @@ func _on_return_pressed() -> void:
 func _on_overwrite_dialog_confirmed() -> void:
 	save_manager.new_game(pending_path)
 	State.save_path = pending_path
-	FadeLayer.fade_to_scene("res://scenes/StageSelect.tscn")
-	#get_tree().change_scene_to_file("res://scenes/StageSelect.tscn")
+	#FadeLayer.fade_to_scene("res://scenes/StageSelect.tscn")
+	FadeLayer.fade_to_scene("res://scenes/mapa.tscn")
 
 func get_save_preview(path: String) -> Dictionary:
 	if not FileAccess.file_exists(path):

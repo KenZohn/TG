@@ -136,9 +136,10 @@ func _on_game_finished(_resultado: bool):
 		
 		await get_tree().create_timer(0.5).timeout
 		if is_inside_tree():
-			get_tree().change_scene_to_file("res://scenes/StageSelect.tscn")
-	
-	enemy_turn()
+			#get_tree().change_scene_to_file("res://scenes/StageSelect.tscn")
+			FadeLayer.fade_to_scene("res://scenes/mapa.tscn")
+	else:
+		enemy_turn()
 
 func continue_attack():
 	current_enemy_hp = max(0, current_enemy_hp - State.damage)
@@ -174,7 +175,8 @@ func enemy_turn():
 		await self.textbox_closed
 		
 		await get_tree().create_timer(0.25).timeout
-		get_tree().change_scene_to_file("res://scenes/StageSelect.tscn")
+		#get_tree().change_scene_to_file("res://scenes/StageSelect.tscn")
+		FadeLayer.fade_to_scene("res://scenes/mapa.tscn")
 	
 	$RulesPanel.show()
 
