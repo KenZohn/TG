@@ -16,7 +16,7 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 shadow_color = Color(0, 0, 0, 0.40784314)
-shadow_size = 15
+shadow_size = 10
 shadow_offset = Vector2(0, 10)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q84u1"]
@@ -30,8 +30,8 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-shadow_color = Color(0, 0, 0, 0.072000004)
-shadow_size = 12
+shadow_color = Color(0, 0, 0, 0.40784314)
+shadow_size = 10
 shadow_offset = Vector2(0, 8)
 
 [node name="SaveCard" type="Button"]
@@ -52,6 +52,7 @@ size_flags_vertical = 4
 theme = SubResource("Theme_j4xeb")
 theme_override_fonts/font = ExtResource("1_ssw85")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ssw85")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_q84u1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_q84u1")
 script = ExtResource("1_q84u1")
 

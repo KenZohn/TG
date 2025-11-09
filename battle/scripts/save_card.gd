@@ -1,4 +1,4 @@
-extends Button
+extends "res://scripts/AnimatedButton.gd"
 
 @onready var margin_container = $MarginContainer
 
@@ -9,6 +9,8 @@ extends Button
 
 @onready var empty_save_container = $CenterContainer
 
+func _ready():
+	super._ready()
 
 func set_save_data(data):
 	if data.get("empty", true):
