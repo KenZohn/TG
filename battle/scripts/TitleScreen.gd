@@ -34,6 +34,9 @@ func _on_load_pressed() -> void:
 func _on_options_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/Options.tscn")
 
+func _on_credits_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/CreditsScreen.tscn")
+
 func _on_quit_pressed() -> void:
 	get_tree().quit()
 	

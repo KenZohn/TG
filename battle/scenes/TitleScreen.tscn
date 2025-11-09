@@ -99,6 +99,12 @@ theme = ExtResource("3_4l16e")
 text = "Opções"
 script = ExtResource("3_8k5og")
 
+[node name="Credits" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_4l16e")
+text = "Créditos"
+script = ExtResource("3_8k5og")
+
 [node name="Quit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
@@ -132,4 +138,5 @@ horizontal_alignment = 1
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/New" to="." method="_on_new_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
