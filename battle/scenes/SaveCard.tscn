@@ -1,6 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://rwk3f1ophxis"]
+[gd_scene load_steps=6 format=3 uid="uid://rwk3f1ophxis"]
 
 [ext_resource type="Script" uid="uid://cbtoyq12h6fmy" path="res://scripts/save_card.gd" id="1_q84u1"]
+[ext_resource type="FontFile" uid="uid://svybmpvynbsh" path="res://themes/Roboto-VariableFont_wdth,wght.ttf" id="1_ssw85"]
+
+[sub_resource type="Theme" id="Theme_j4xeb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ssw85"]
+bg_color = Color(0.03529412, 0.03529412, 0.043137256, 0.64705884)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 0.40784314)
+shadow_size = 15
+shadow_offset = Vector2(0, 10)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q84u1"]
+bg_color = Color(0.09411765, 0.09411765, 0.105882354, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.98039216, 0.8, 0.08235294, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 0.072000004)
+shadow_size = 12
+shadow_offset = Vector2(0, 8)
 
 [node name="SaveCard" type="Button"]
 custom_minimum_size = Vector2(580, 90)
@@ -17,6 +49,10 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+theme = SubResource("Theme_j4xeb")
+theme_override_fonts/font = ExtResource("1_ssw85")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ssw85")
+theme_override_styles/hover = SubResource("StyleBoxFlat_q84u1")
 script = ExtResource("1_q84u1")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -40,19 +76,27 @@ size_flags_horizontal = 3
 
 [node name="SaveNumberLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainerLeft"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.99215686, 0.8784314, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("1_ssw85")
+theme_override_font_sizes/font_size = 18
 text = "Save X"
 
 [node name="HeroNameLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainerLeft"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ssw85")
+theme_override_font_sizes/font_size = 17
 text = "Hero Name"
 
 [node name="ExperienceLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainerLeft"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.99607843, 0.9411765, 0.5411765, 1)
+theme_override_fonts/font = ExtResource("1_ssw85")
 text = "Experience: 999"
 
 [node name="LastSaveLabel" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_ssw85")
 text = "Last Saved: "
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -66,4 +110,6 @@ grow_vertical = 2
 
 [node name="EmptySaveLabel" type="Label" parent="CenterContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ssw85")
+theme_override_font_sizes/font_size = 20
 text = "SLOT VAZIO"
