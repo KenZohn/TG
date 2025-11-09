@@ -7,7 +7,7 @@ func _ready():
 	var paths = [
 		"res://saves/save1.save"
 		,"res://saves/save2.save"
-		,"res://saves/save3q.save"
+		,"res://saves/save3.save"
 	]
 	
 	var card_container = $CenterContainer/MarginContainer/VBoxContainerPrincipal/CardContainer
@@ -68,12 +68,18 @@ func get_save_preview(path: String) -> Dictionary:
 		
 	var data = json.data
 	
+	var timestamp = FileAccess.get_modified_time(path)
+	var datetime = Time.get_datetime_dict_from_unix_time(timestamp)
+	var formatted_date = "%02d/%02d/%04d - %02d:%02d" % [
+		datetime.day, datetime.month, datetime.year, datetime.hour, datetime.minute
+	]
+	
 	return {
 		"empty": false,
 		"slot_name": path.get_file().get_basename().to_upper(),
 		"character": "Herói",
-		"level": 1,
+		"experience": data.get("experience", 0),
 		"location": "Local desconhecido",
 		"playtime": "0h 00min",
-		"last_played": "--/--/---- - --:--"
+		"last_played": formatted_date
 	}

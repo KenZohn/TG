@@ -21,5 +21,5 @@ func set_save_data(data):
 	else:
 		save_number_label.text = data.get("slot_name", "SAVE ")
 		hero_name_label.text = "Herói: %s " % [data.get("character", "N/A")]
-		experience_label.text = "Experiência: %s" % data.get("xp", "???") 
+		experience_label.text = "Experiência: %s" % int(data.get("experience", "???"))
 		last_save_label.text = data.get("last_played", "--:--")
