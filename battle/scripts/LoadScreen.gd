@@ -6,28 +6,19 @@ var pending_path
 func _ready():
 	var paths = [
 		"res://saves/save1.save"
-		#,"res://saves/save2.save"
+		,"res://saves/save2.save"
+		,"res://saves/save3q.save"
 	]
 	
-	var card_container = $TextureRect/CenterContainer/MarginContainer/VBoxContainerPrincipal/CardContainer
+	var card_container = $CenterContainer/MarginContainer/VBoxContainerPrincipal/CardContainer
 	
 	for path in paths:
 		var data = get_save_preview(path)
 		var card = preload("res://scenes/SaveCard.tscn").instantiate()
-		card.set_save_data(data)
-		card.get_node("Button").pressed.connect(handle_slot.bind(path))
 		card_container.add_child(card)
-
-
-
-func _on_slot_1_pressed():
-	handle_slot("res://saves/save1.save")
-	
-func _on_slot_2_pressed():
-	handle_slot("res://saves/save2.save")
-	
-func _on_slot_3_pressed():
-	handle_slot("res://saves/save3.save")
+		card.set_save_data(data)
+		card.pressed.connect(handle_slot.bind(path))
+		
 	
 func handle_slot(path):
 	if State.is_new_game:

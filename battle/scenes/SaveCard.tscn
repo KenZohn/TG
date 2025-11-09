@@ -1,43 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://rwk3f1ophxis"]
+[gd_scene load_steps=2 format=3 uid="uid://rwk3f1ophxis"]
 
-[ext_resource type="Theme" uid="uid://c6u12sw5jxmbr" path="res://themes/OptionsScreen.theme" id="1_oj7xp"]
 [ext_resource type="Script" uid="uid://cbtoyq12h6fmy" path="res://scripts/save_card.gd" id="1_q84u1"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q84u1"]
-bg_color = Color(0.097899996, 0.097899996, 0.11, 0.5019608)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.98039216, 0.8, 0.08235294, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[node name="SaveCard" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="SaveCard" type="Button"]
+custom_minimum_size = Vector2(580, 90)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.0
+offset_top = -45.0
+offset_right = 290.0
+offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 4
 script = ExtResource("1_q84u1")
-metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_oj7xp")
-theme_override_styles/normal = SubResource("StyleBoxFlat_q84u1")
-
-[node name="MarginContainer" type="MarginContainer" parent="Button"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -49,38 +31,39 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Button/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 32
 
-[node name="Left" type="VBoxContainer" parent="Button/MarginContainer/HBoxContainer"]
+[node name="VBoxContainerLeft" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Save" type="Label" parent="Button/MarginContainer/HBoxContainer/Left"]
+[node name="SaveNumberLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainerLeft"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
 text = "Save X"
 
-[node name="Name" type="Label" parent="Button/MarginContainer/HBoxContainer/Left"]
+[node name="HeroNameLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainerLeft"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 6
-text = "Hero"
+text = "Hero Name"
 
-[node name="Right" type="VBoxContainer" parent="Button/MarginContainer/HBoxContainer"]
+[node name="ExperienceLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainerLeft"]
 layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="LastSaveDate" type="Label" parent="Button/MarginContainer/HBoxContainer/Right"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 10
-text = "Last Played: "
-
-[node name="XP" type="Label" parent="Button/MarginContainer/HBoxContainer/Right"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 2
 text = "Experience: 999"
+
+[node name="LastSaveLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Last Saved: "
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EmptySaveLabel" type="Label" parent="CenterContainer"]
+layout_mode = 2
+text = "SLOT VAZIO"
