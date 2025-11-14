@@ -4,10 +4,11 @@ func _ready():
 	var cards = [
 		$OptionsContainer/PanelContainer/MarginContainer/VBoxContainer/JoaoContainer,
 		$OptionsContainer/PanelContainer/MarginContainer/VBoxContainer/JohnnyContainer,
-		$OptionsContainer/PanelContainer/MarginContainer/VBoxContainer/ThaisContainer
+		$OptionsContainer/PanelContainer/MarginContainer/VBoxContainer/ThaisContainer,
+		$OptionsContainer/PanelContainer/MarginContainer/VBoxContainer/MaouContainer
 	]
 	
-	var delays = [0.1, 0.2, 0.3] 
+	var delays = [0.1, 0.2, 0.3, 0.4] 
 	
 	for i in cards.size():
 		var card = cards[i]
