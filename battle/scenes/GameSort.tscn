@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bc4c3cm6vmakw"]
+[gd_scene load_steps=11 format=3 uid="uid://bc4c3cm6vmakw"]
 
 [ext_resource type="Script" uid="uid://blf37o24aytoh" path="res://scripts/GameSort.gd" id="1_wwklq"]
 [ext_resource type="Texture2D" uid="uid://w48mh0kkiuyy" path="res://assets/figures/circle.png" id="2_bfs6g"]
@@ -8,34 +8,45 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bfs6g"]
 bg_color = Color(0, 0, 0, 0.78431374)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.9019608)
+shadow_size = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pybrv"]
-bg_color = Color(0.24115604, 0.24115607, 0.24115595, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(1, 1, 1, 1)
+bg_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3474e"]
-bg_color = Color(0.23921569, 0.23921569, 0.23921569, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(1, 1, 1, 1)
+bg_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80ibc"]
+bg_color = Color(0.188235, 0.188235, 0.188235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8lkf0"]
+bg_color = Color(0.827451, 0.54901963, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.188235, 0.188235, 0.188235, 1)
 
 [node name="Sort" type="Control"]
 layout_mode = 3
@@ -53,83 +64,96 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -204.0
-offset_top = -317.0
-offset_right = 204.0
-offset_bottom = -15.0
+offset_left = -190.0
+offset_top = -355.0
+offset_right = 190.0
+offset_bottom = -35.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_bfs6g")
 
 [node name="FigureLeft1" type="TextureRect" parent="ContainerCard"]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 7.0
-offset_right = 69.0
-offset_bottom = 67.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -140.0
+offset_right = -110.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_bfs6g")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="FigureLeft2" type="TextureRect" parent="ContainerCard"]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 78.0
-offset_right = 69.0
-offset_bottom = 138.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -60.0
+offset_right = -110.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("3_pybrv")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="FigureRight1" type="TextureRect" parent="ContainerCard"]
-layout_mode = 0
-offset_left = 333.0
-offset_top = 11.0
-offset_right = 393.0
-offset_bottom = 71.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 110.0
+offset_top = -140.0
+offset_right = 170.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("4_3474e")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="FigureRight2" type="TextureRect" parent="ContainerCard"]
-layout_mode = 0
-offset_left = 332.0
-offset_top = 89.0
-offset_right = 392.0
-offset_bottom = 149.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 110.0
+offset_top = -60.0
+offset_right = 170.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("5_80ibc")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="FigureMiddle" type="TextureRect" parent="ContainerCard"]
-layout_mode = 0
-offset_left = 157.0
-offset_top = 14.0
-offset_right = 257.0
-offset_bottom = 114.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -70.0
+offset_right = 50.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_bfs6g")
 expand_mode = 1
 stretch_mode = 4
-
-[node name="ButtonLeft" type="Button" parent="ContainerCard"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 0
-offset_left = 136.5
-offset_top = 216.0
-offset_right = 186.5
-offset_bottom = 287.0
-size_flags_horizontal = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_pybrv")
-
-[node name="ButtonRight" type="Button" parent="ContainerCard"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 0
-offset_left = 221.5
-offset_top = 216.0
-offset_right = 271.5
-offset_bottom = 287.0
-size_flags_horizontal = 10
-theme_override_styles/normal = SubResource("StyleBoxFlat_3474e")
 
 [node name="Label" type="Label" parent="ContainerCard"]
 layout_mode = 1
@@ -139,14 +163,109 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -22.0
-offset_top = -132.0
+offset_top = -112.0
 offset_right = 22.0
-offset_bottom = -109.0
+offset_bottom = -89.0
 grow_horizontal = 2
 grow_vertical = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ButtonLeft" type="Button" parent="ContainerCard"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -75.0
+offset_right = -10.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_pybrv")
+text = "ESQUERDA"
+
+[node name="ButtonRight" type="Button" parent="ContainerCard"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -75.0
+offset_right = 160.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_3474e")
+text = "DIREITA"
+
 [node name="TimerGame" type="Timer" parent="."]
 wait_time = 15.0
 one_shot = true
+
+[node name="ProgressBarTimer" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -536.0
+offset_top = 246.0
+offset_right = -236.0
+offset_bottom = 271.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_80ibc")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8lkf0")
+value = 100.0
+show_percentage = false
+
+[node name="LabelTimer" type="Label" parent="ProgressBarTimer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.0
+offset_top = -42.5
+offset_right = -72.0
+offset_bottom = -11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.827, 0.548, 0, 1)
+theme_override_colors/font_outline_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 22
+text = "Tempo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="ProgressBarTimer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 95.0
+offset_top = -2.5
+offset_right = 139.0
+offset_bottom = 28.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.827451, 0.54901963, 0, 1)
+theme_override_colors/font_outline_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 22
+text = "00.0"
+horizontal_alignment = 2
+vertical_alignment = 1
