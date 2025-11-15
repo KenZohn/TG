@@ -22,7 +22,8 @@ func _ready():
 
 func _update_timer_display():
 	var remaining = $TimerGame.time_left
-	$LabelTimer.text = "%.1f" % remaining
+	$ProgressBarTimer/Label.text = "%.1f" % remaining
+	$ProgressBarTimer.value = remaining
 
 func setup_timers():
 	$TimerGame.wait_time = 15.0 + State.save_data["agility"] * 0.05
@@ -38,8 +39,9 @@ func setup_timers():
 	$TimerDisplay.start()
 
 func start_game():
-	awaiting_response = false
 	$TimerGame.start()
+	$ProgressBarTimer.max_value = $TimerGame.wait_time
+	$ProgressBarTimer.value = $TimerGame.wait_time
 	generate_challenge()
 
 func generate_challenge():
