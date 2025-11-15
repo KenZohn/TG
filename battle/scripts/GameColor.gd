@@ -14,7 +14,11 @@ var correct_answer: bool = false
 var score: int = 0
 var awaiting_response: bool = false
 
+var totalTime = 15.0 + State.save_data["agility"] * 0.05
+
 func _ready():
+	$ProgressBarTimer/Label.text = "%.1f" % totalTime
+	
 	connect_buttons()
 	setup_timers()
 	start_game()
@@ -26,7 +30,7 @@ func _update_timer_display():
 	$ProgressBarTimer.value = remaining
 
 func setup_timers():
-	$TimerGame.wait_time = 15.0 + State.save_data["agility"] * 0.05
+	$TimerGame.wait_time = totalTime
 	$TimerGame.one_shot = true
 	$TimerGame.timeout.connect(_on_game_timeout)
 	

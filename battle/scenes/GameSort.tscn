@@ -204,8 +204,10 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_3474e")
 text = "DIREITA"
 
 [node name="TimerGame" type="Timer" parent="."]
-wait_time = 15.0
-one_shot = true
+
+[node name="TimerDisplay" type="Timer" parent="."]
+
+[node name="TimerInterval" type="Timer" parent="."]
 
 [node name="ProgressBarTimer" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(0, 20)

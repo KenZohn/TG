@@ -66,6 +66,9 @@ func _ready():
 	await self.textbox_closed
 	$PlayerPanel.show()
 	$RulesPanel.show()
+	
+	var totaltime = 15.0 + State.save_data["agility"] * 0.05
+	$PlayerPanel/ProgressBarTimer/Label.text = "%.1f" % totaltime
 
 func set_hp(progress_bar, hp, max_hp):
 	progress_bar.value = hp
@@ -84,6 +87,7 @@ func display_text(text):
 
 func _on_start_button_pressed() -> void:
 	$RulesPanel.hide()
+	$PlayerPanel/ProgressBarTimer.hide()
 	
 	if games.has(State.game):
 		var game_path = games[State.game]
@@ -159,6 +163,8 @@ func continue_attack():
 	await get_tree().create_timer(0.25).timeout
 
 func enemy_turn():
+	$PlayerPanel/ProgressBarTimer.show()
+	
 	current_player_hp = max(0, current_player_hp - enemy.damage)
 	set_hp($PlayerPanel/ProgressBar, current_player_hp, State.max_hp)
 	
