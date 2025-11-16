@@ -16,8 +16,11 @@ var colors = [
 var numbers = []
 var buttons = []
 
+var totalTime = 15.0 + State.save_data["agility"] * 0.05
+
 func _ready():
 	#style.set_corner_radius_all(25)
+	setup_timers()
 	start_game()
 	
 func start_game():
@@ -60,6 +63,10 @@ func start_game():
 		
 		buttons.append(button)
 		
+	$TimerGame.start()
+	$ProgressBarTimer.max_value = $TimerGame.wait_time
+	$ProgressBarTimer.value = $TimerGame.wait_time
+
 func _on_button_pressed(clicked_num):
 	var expected = numbers[0]
 	
@@ -102,3 +109,21 @@ func get_valid_position():
 		tries += 1
 		
 	return pos
+
+func setup_timers():
+	$TimerGame.wait_time = totalTime
+	$TimerGame.one_shot = true
+	$TimerGame.timeout.connect(_on_game_timeout)
+
+	$TimerDisplay.wait_time = 0.1
+	$TimerDisplay.one_shot = false
+	$TimerDisplay.timeout.connect(_update_timer_display)
+	$TimerDisplay.start()
+
+func _update_timer_display():
+	var remaining = $TimerGame.time_left
+	$ProgressBarTimer/Label.text = "%.1f" % remaining
+	$ProgressBarTimer.value = remaining
+
+func _on_game_timeout():
+	emit_signal("game_finished", false)
