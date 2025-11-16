@@ -4,6 +4,7 @@ signal correct_answer_hit(damage)
 signal game_finished(score)
 
 @onready var game_area = $Area
+var game_over = false
 
 var colors = [
 	Color(0.8, 0.2, 0.2, 0.7),
@@ -68,6 +69,9 @@ func start_game():
 	$ProgressBarTimer.value = $TimerGame.wait_time
 
 func _on_button_pressed(clicked_num):
+	if game_over:
+		return
+	
 	var expected = numbers[0]
 	
 	if clicked_num == expected:
@@ -84,6 +88,7 @@ func _on_button_pressed(clicked_num):
 			emit_signal("game_finished", false) 
 			
 	else:
+		game_over = true
 		print("Você perdeu!")
 		emit_signal("game_finished", false) 
 		
