@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://rwk3f1ophxis"]
+[gd_scene load_steps=7 format=3 uid="uid://rwk3f1ophxis"]
 
 [ext_resource type="Script" uid="uid://cbtoyq12h6fmy" path="res://scripts/save_card.gd" id="1_q84u1"]
 [ext_resource type="FontFile" uid="uid://svybmpvynbsh" path="res://themes/Roboto-VariableFont_wdth,wght.ttf" id="1_ssw85"]
+[ext_resource type="FontFile" uid="uid://c8l7xewo111n3" path="res://themes/Tinos-Regular.ttf" id="3_ssw85"]
 
 [sub_resource type="Theme" id="Theme_j4xeb"]
 
@@ -78,7 +79,7 @@ size_flags_horizontal = 3
 [node name="SaveNumberLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainerLeft"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.99215686, 0.8784314, 0.2784314, 1)
-theme_override_fonts/font = ExtResource("1_ssw85")
+theme_override_fonts/font = ExtResource("3_ssw85")
 theme_override_font_sizes/font_size = 18
 text = "Save X"
 
@@ -97,7 +98,7 @@ text = "Experience: 999"
 [node name="LastSaveLabel" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("1_ssw85")
+theme_override_fonts/font = ExtResource("3_ssw85")
 text = "Last Saved: "
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -111,6 +112,6 @@ grow_vertical = 2
 
 [node name="EmptySaveLabel" type="Label" parent="CenterContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_ssw85")
+theme_override_fonts/font = ExtResource("3_ssw85")
 theme_override_font_sizes/font_size = 20
 text = "SLOT VAZIO"

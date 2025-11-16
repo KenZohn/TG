@@ -40,6 +40,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_ff1ah")
 theme_override_font_sizes/font_size = 20
 text = "DEBUG"
 
@@ -47,7 +48,8 @@ text = "DEBUG"
 oversampling_override = 1.0
 title = ""
 initial_position = 2
-size = Vector2i(437, 100)
+size = Vector2i(462, 100)
+theme = ExtResource("4_yk5qj")
 ok_button_text = "Sim"
 dialog_text = "Esse slot já possui um jogo salvo. Deseja sobrescrever?"
 cancel_button_text = "Não"
