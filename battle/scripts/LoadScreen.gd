@@ -12,11 +12,12 @@ func _ready():
 	
 	var card_container = $CenterContainer/MarginContainer/VBoxContainerPrincipal/CardContainer
 	
-	for path in paths:
-		var data = get_save_preview(path)
+	for i in range(paths.size()):
+		var path = paths[i]
+		var data = get_save_preview(path, i+1)
 		var card = preload("res://scenes/SaveCard.tscn").instantiate()
 		card_container.add_child(card)
-		card.set_save_data(data)
+		card.set_save_data(data, i+1)
 		card.pressed.connect(handle_slot.bind(path))
 		
 	
@@ -50,13 +51,13 @@ func _on_overwrite_dialog_confirmed() -> void:
 	#FadeLayer.fade_to_scene("res://scenes/StageSelect.tscn")
 	FadeLayer.fade_to_scene("res://scenes/mapa.tscn")
 
-func get_save_preview(path: String) -> Dictionary:
+func get_save_preview(path: String, slot_index: int) -> Dictionary:
 	if not FileAccess.file_exists(path):
-		return {"empty": true}
+		return {"empty": true, "slot_name": "Save %d" % slot_index}
 	
 	var file = FileAccess.open(path, FileAccess.READ)
 	if file == null:
-		return {"empty": true}
+		return {"empty": true, "slot_name": "Save %d" % slot_index}
 	
 	var json_string = file.get_as_text()
 	file.close()
@@ -64,7 +65,7 @@ func get_save_preview(path: String) -> Dictionary:
 	var json = JSON.new()
 	var result = json.parse(json_string)
 	if result != OK or typeof(json.data) != TYPE_DICTIONARY:
-		return {"empty": true}
+		return {"empty": true, "slot_name": "Save %d" % slot_index}
 		
 	var data = json.data
 	
@@ -76,7 +77,7 @@ func get_save_preview(path: String) -> Dictionary:
 	
 	return {
 		"empty": false,
-		"slot_name": path.get_file().get_basename().to_upper(),
+		"slot_name": "Save %d" % slot_index,
 		"character": "Herói",
 		"experience": data.get("experience", 0),
 		"location": "Local desconhecido",

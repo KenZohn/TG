@@ -110,8 +110,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="EmptySaveLabel" type="Label" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
+
+[node name="EmptySaveNumberLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 0.4)
 theme_override_fonts/font = ExtResource("3_ssw85")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 22
+text = "SAVE X"
+
+[node name="EmptySaveLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(1, 1, 1, 0.4)
+theme_override_fonts/font = ExtResource("1_ssw85")
+theme_override_font_sizes/font_size = 16
 text = "SLOT VAZIO"
+horizontal_alignment = 1
+vertical_alignment = 1
