@@ -3,27 +3,26 @@ extends Control
 signal correct_answer_hit(damage)
 signal game_finished(score)
 
-@onready var spawn_timer = $CanvasLayer/TimerSpawn
-@onready var score_label = $CanvasLayer/LabelScore
+@onready var spawn_timer = $TimerSpawn
 @onready var spawn_area = $SpawnArea
-@onready var game_timer = $CanvasLayer/TimerGame
-@onready var timer_display = $CanvasLayer/TimerDisplay
-@onready var label_timer = $CanvasLayer/LabelTimer
 
 var score = 0
 var current_button: Node = null
 
+var totalTime = 15.0 + State.save_data["agility"] * 0.05
+
 func _ready():
-	game_timer.wait_time = 15.0
-	game_timer.one_shot = true
-	game_timer.timeout.connect(_on_game_timeout)
-	
-	timer_display.timeout.connect(_update_timer_display)
-	timer_display.start()
-	
-	game_timer.start()
+	$ProgressBarTimer/Label.text = "%.1f" % totalTime
 	
 	spawn_timer.start()
+	setup_timers()
+	start_game()
+	$TimerDisplay.timeout.connect(_update_timer_display)
+
+func start_game():
+	$TimerGame.start()
+	$ProgressBarTimer.max_value = $TimerGame.wait_time
+	$ProgressBarTimer.value = $TimerGame.wait_time
 
 func _on_spawn_timer_timeout() -> void:
 	if current_button and current_button.is_inside_tree():
@@ -48,19 +47,34 @@ func _on_spawn_timer_timeout() -> void:
 
 func _on_button_pressed(_reaction_time):
 	score += 1
-	score_label.text = "Score: %d" % score
 	emit_signal("correct_answer_hit", int(2 + 2 * State.save_data["focus"] * 0.05))
 
+func setup_timers():
+	$TimerGame.wait_time = totalTime
+	$TimerGame.one_shot = true
+	$TimerGame.timeout.connect(_on_game_timeout)
+	
+	$TimerInterval.wait_time = 0.1
+	$TimerInterval.one_shot = true
+	$TimerInterval.timeout.connect(_on_interval_timeout)
+	
+	$TimerDisplay.wait_time = 0.1
+	$TimerDisplay.one_shot = false
+	$TimerDisplay.start()
+
 func _update_timer_display():
-	var remaining = game_timer.time_left
-	label_timer.text = "%.1f" % remaining
+	var remaining = $TimerGame.time_left
+	$ProgressBarTimer/Label.text = "%.1f" % remaining
+	$ProgressBarTimer.value = remaining
+
+func _on_interval_timeout():
+	if $TimerGame.is_stopped():
+		return
 
 func _on_game_timeout():
 	spawn_timer.stop()
-	timer_display.stop()
 	
 	if current_button and current_button.is_inside_tree():
 		current_button.queue_free()
 	
-	score_label.text = "Tempo esgotado! Pontuação: %d" % score
 	emit_signal("game_finished", false)

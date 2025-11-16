@@ -115,6 +115,7 @@ func _on_game_finished(_resultado: bool):
 		game_scene = null
 		
 	if current_enemy_hp == 0:
+		$PlayerPanel/ProgressBarTimer.show()
 		# Primeira vez completando o estágio
 		if State.save_data[State.stage] == false:
 			# Atribuir atributos

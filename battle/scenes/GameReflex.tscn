@@ -1,6 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://73afp7wgs56o"]
+[gd_scene load_steps=5 format=3 uid="uid://73afp7wgs56o"]
 
 [ext_resource type="Script" uid="uid://clr5jo0tvwkqc" path="res://scripts/GameReflex.gd" id="1_67g68"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i204b"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.9019608)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_67g68"]
+bg_color = Color(0.188235, 0.188235, 0.188235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfkjm"]
+bg_color = Color(0.827451, 0.54901963, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.188235, 0.188235, 0.188235, 1)
 
 [node name="Reflex" type="Control"]
 layout_mode = 3
@@ -11,17 +31,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_67g68")
 
-[node name="SpawnArea" type="Control" parent="."]
+[node name="SpawnArea" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = 131.0
-offset_bottom = 131.0
+anchor_bottom = 1.0
+offset_left = -190.0
+offset_top = -355.0
+offset_right = 190.0
+offset_bottom = -35.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i204b")
 
 [node name="ColorRect" type="ColorRect" parent="SpawnArea"]
 layout_mode = 1
@@ -30,35 +53,83 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -167.5
-offset_right = 200.0
-offset_bottom = 167.5
+offset_left = -185.0
+offset_top = -155.0
+offset_right = 185.0
+offset_bottom = 155.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.78431374)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="TimerGame" type="Timer" parent="."]
 
-[node name="TimerSpawn" type="Timer" parent="CanvasLayer"]
+[node name="TimerDisplay" type="Timer" parent="."]
 
-[node name="LabelScore" type="Label" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
-metadata/_edit_use_anchors_ = true
+[node name="TimerInterval" type="Timer" parent="."]
 
-[node name="TimerGame" type="Timer" parent="CanvasLayer"]
-wait_time = 15.0
-one_shot = true
+[node name="TimerSpawn" type="Timer" parent="."]
 
-[node name="LabelTimer" type="Label" parent="CanvasLayer"]
-offset_left = 858.0
-offset_top = 445.0
-offset_right = 898.0
-offset_bottom = 468.0
+[node name="ProgressBarTimer" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -536.0
+offset_top = 246.0
+offset_right = -236.0
+offset_bottom = 271.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_67g68")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hfkjm")
+value = 100.0
+show_percentage = false
 
-[node name="TimerDisplay" type="Timer" parent="CanvasLayer"]
-wait_time = 0.1
-autostart = true
+[node name="LabelTimer" type="Label" parent="ProgressBarTimer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.0
+offset_top = -42.5
+offset_right = -72.0
+offset_bottom = -11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.827, 0.548, 0, 1)
+theme_override_colors/font_outline_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 22
+text = "Tempo"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[connection signal="timeout" from="CanvasLayer/TimerSpawn" to="." method="_on_spawn_timer_timeout"]
+[node name="Label" type="Label" parent="ProgressBarTimer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 95.0
+offset_top = -2.5
+offset_right = 139.0
+offset_bottom = 28.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.827451, 0.54901963, 0, 1)
+theme_override_colors/font_outline_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 22
+text = "00.0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[connection signal="timeout" from="TimerSpawn" to="." method="_on_spawn_timer_timeout"]
