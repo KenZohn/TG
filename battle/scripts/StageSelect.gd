@@ -1,6 +1,7 @@
 extends Control
 
 func _ready():
+	BGMManager.stop_bgm()
 	State.reset_state()
 	update_stages()
 	show_stats()

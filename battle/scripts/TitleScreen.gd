@@ -6,8 +6,9 @@ var save_data = {}
 
 @onready var press_start = $Start
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	BGMManager.play_bgm(load("res://assets/bgm/(TitleMenu)maou_bgm_acoustic48.mp3"))
+	
 	var title_tween = create_tween()
 	var subtitle_tween = create_tween()
 	

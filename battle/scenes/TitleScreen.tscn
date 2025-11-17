@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bg5f4xak7sftv"]
+[gd_scene load_steps=7 format=3 uid="uid://bg5f4xak7sftv"]
 
 [ext_resource type="Script" uid="uid://cnqhuw8f5m46m" path="res://scripts/TitleScreen.gd" id="1_ak2if"]
 [ext_resource type="Texture2D" uid="uid://c67xpnj35t4a2" path="res://assets/sprites/background-escurecido.png" id="2_4l16e"]
 [ext_resource type="Theme" uid="uid://dctpcbq0vp6lp" path="res://themes/TitleScreen.theme" id="3_4l16e"]
 [ext_resource type="Script" uid="uid://c51w6abbk0yqj" path="res://scripts/AnimatedButton.gd" id="3_8k5og"]
-[ext_resource type="AudioStream" uid="uid://t3cs5w73t4t4" path="res://assets/bgm/(StageSelect)maou_bgm_acoustic36.mp3" id="3_dfj8j"]
 [ext_resource type="FontFile" uid="uid://c8l7xewo111n3" path="res://themes/Tinos-Regular.ttf" id="4_85feu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4l16e"]
@@ -112,10 +111,6 @@ size_flags_vertical = 4
 theme = ExtResource("3_4l16e")
 text = "Sair"
 script = ExtResource("3_8k5og")
-
-[node name="BGM" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_dfj8j")
-bus = &"Music"
 
 [node name="Start" type="Label" parent="."]
 layout_mode = 1
