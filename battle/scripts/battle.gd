@@ -190,3 +190,7 @@ func enemy_turn():
 func _on_correct_answer_hit(dano: int):
 	State.damage = dano
 	await continue_attack()
+
+
+func _on_pause_button_pressed() -> void:
+	get_tree().paused = not get_tree().paused

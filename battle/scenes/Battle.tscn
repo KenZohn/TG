@@ -634,4 +634,17 @@ theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_v7i3o")
 text = "Iniciar"
 
+[node name="PauseLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseButton" type="Button" parent="PauseLayer"]
+process_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -59.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "PAUSE"
+
 [connection signal="pressed" from="RulesPanel/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="PauseLayer/PauseButton" to="." method="_on_pause_button_pressed"]
