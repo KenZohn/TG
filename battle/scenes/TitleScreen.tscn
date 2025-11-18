@@ -72,7 +72,7 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_4l16e")
 
-[node name="New" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="New" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" groups=["menu_buttons"]]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 size_flags_vertical = 4
@@ -81,7 +81,7 @@ text = "Novo Jogo"
 icon_alignment = 1
 script = ExtResource("3_8k5og")
 
-[node name="Load" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Load" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" groups=["menu_buttons"]]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 size_flags_vertical = 4
@@ -90,7 +90,7 @@ text = "Carregar Jogo"
 icon_alignment = 1
 script = ExtResource("3_8k5og")
 
-[node name="Options" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" groups=["menu_buttons"]]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 size_flags_vertical = 4
@@ -98,13 +98,13 @@ theme = ExtResource("3_4l16e")
 text = "Opções"
 script = ExtResource("3_8k5og")
 
-[node name="Credits" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Credits" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" groups=["menu_buttons"]]
 layout_mode = 2
 theme = ExtResource("3_4l16e")
 text = "Créditos"
 script = ExtResource("3_8k5og")
 
-[node name="Quit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" groups=["menu_buttons"]]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 size_flags_vertical = 4

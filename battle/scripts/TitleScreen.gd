@@ -21,14 +21,17 @@ func _ready() -> void:
 	subtitle_tween.tween_interval(0.5) 
 	subtitle_tween.tween_property(subtitulo, "modulate:a", 1.0, 1.0)
 	
-	animate_press_start ()
+	animate_press_start()
+	
+	for b in get_tree().get_nodes_in_group("menu_buttons"):
+		b.connect("pressed", Callable(self, "_on_any_button_pressed"))
 
 func _on_new_pressed() -> void:
 	State.is_new_game = true
 	get_tree().change_scene_to_file("res://scenes/LoadScreen.tscn")
 	
 func _on_load_pressed() -> void:
-	# Supposed to open the world map (we don't have one yet :c) 
+	# Supposed to open the world map (we don't have one yet :c)
 	State.is_new_game = false
 	get_tree().change_scene_to_file("res://scenes/LoadScreen.tscn")
 
@@ -48,3 +51,6 @@ func animate_press_start():
 	tween.tween_property(press_start, "modulate:a", 0.1, 0.5)
 	tween.tween_property(press_start, "modulate:a", 0.9, 1.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(press_start, "modulate:a", 0.1, 1.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+func _on_any_button_pressed():
+	SESelect.play()

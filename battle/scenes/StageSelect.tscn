@@ -25,7 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tne6o")
 
-[node name="M1" type="Button" parent="."]
+[node name="M1" type="Button" parent="." groups=["menu_buttons"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -41,7 +41,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "M-1"
 
-[node name="M2" type="Button" parent="."]
+[node name="M2" type="Button" parent="." groups=["menu_buttons"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -57,7 +57,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "M-2"
 
-[node name="M3" type="Button" parent="."]
+[node name="M3" type="Button" parent="." groups=["menu_buttons"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -73,7 +73,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "M-3"
 
-[node name="A1" type="Button" parent="."]
+[node name="A1" type="Button" parent="." groups=["menu_buttons"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -89,7 +89,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "A-1"
 
-[node name="A2" type="Button" parent="."]
+[node name="A2" type="Button" parent="." groups=["menu_buttons"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -105,7 +105,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "A-2"
 
-[node name="A3" type="Button" parent="."]
+[node name="A3" type="Button" parent="." groups=["menu_buttons"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -121,7 +121,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "A-3"
 
-[node name="F1" type="Button" parent="."]
+[node name="F1" type="Button" parent="." groups=["menu_buttons"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -137,7 +137,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "F-1"
 
-[node name="F2" type="Button" parent="."]
+[node name="F2" type="Button" parent="." groups=["menu_buttons"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -153,7 +153,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "F-2"
 
-[node name="F3" type="Button" parent="."]
+[node name="F3" type="Button" parent="." groups=["menu_buttons"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -169,7 +169,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "F-3"
 
-[node name="F4" type="Button" parent="."]
+[node name="F4" type="Button" parent="." groups=["menu_buttons"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -185,7 +185,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "F-4"
 
-[node name="F5" type="Button" parent="."]
+[node name="F5" type="Button" parent="." groups=["menu_buttons"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -201,7 +201,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "F-5"
 
-[node name="C1" type="Button" parent="."]
+[node name="C1" type="Button" parent="." groups=["menu_buttons"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -217,7 +217,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "C-1"
 
-[node name="C2" type="Button" parent="."]
+[node name="C2" type="Button" parent="." groups=["menu_buttons"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -233,7 +233,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "C-2"
 
-[node name="C3" type="Button" parent="."]
+[node name="C3" type="Button" parent="." groups=["menu_buttons"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -249,7 +249,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "C-3"
 
-[node name="R1" type="Button" parent="."]
+[node name="R1" type="Button" parent="." groups=["menu_buttons"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -265,7 +265,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "R-1"
 
-[node name="R2" type="Button" parent="."]
+[node name="R2" type="Button" parent="." groups=["menu_buttons"]]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -282,7 +282,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "R-2"
 
-[node name="R3" type="Button" parent="."]
+[node name="R3" type="Button" parent="." groups=["menu_buttons"]]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -299,16 +299,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "R-3"
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-offset_left = 85.0
-offset_top = 37.0
-offset_right = 200.0
-offset_bottom = 60.0
-theme_override_font_sizes/font_size = 25
-text = "Menu de Fases"
-
-[node name="TittleScreenButton" type="Button" parent="."]
+[node name="TittleScreenButton" type="Button" parent="." groups=["menu_buttons"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -323,6 +314,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "Voltar para o Menu Inicial"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+offset_left = 85.0
+offset_top = 37.0
+offset_right = 200.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 25
+text = "Menu de Fases"
 
 [node name="LabelMemory" type="Label" parent="."]
 layout_mode = 0

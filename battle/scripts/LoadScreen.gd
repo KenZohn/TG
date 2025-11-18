@@ -39,16 +39,19 @@ func handle_slot(path):
 	
 	State.save_path = path  
 	#print("Dados carregados:", State.save_data)
+	SESelect.play()
 	FadeLayer.fade_to_scene("res://scenes/StageSelect.tscn")
 	#FadeLayer.fade_to_scene("res://scenes/mapa.tscn")
 	
 func _on_return_pressed() -> void:
+	SESelect.play()
 	get_tree().change_scene_to_file("res://scenes/TitleScreen.tscn")
 
 func _on_overwrite_dialog_confirmed() -> void:
 	save_manager.new_game(pending_path)
 	State.save_path = pending_path
 	#FadeLayer.fade_to_scene("res://scenes/StageSelect.tscn")
+	SESelect.play()
 	FadeLayer.fade_to_scene("res://scenes/mapa.tscn")
 
 func get_save_preview(path: String, slot_index: int) -> Dictionary:

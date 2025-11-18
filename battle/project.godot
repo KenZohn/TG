@@ -21,6 +21,7 @@ State="*res://scripts/State.gd"
 GameState="*res://scripts/State.gd"
 FadeLayer="*res://scenes/FadeLayer.tscn"
 BGMManager="*res://scripts/BGMManager.gd"
+SESelect="*res://scripts/SESelect.gd"
 
 [display]
 
