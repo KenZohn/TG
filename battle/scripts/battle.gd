@@ -194,3 +194,4 @@ func _on_correct_answer_hit(dano: int):
 
 func _on_pause_button_pressed() -> void:
 	get_tree().paused = not get_tree().paused
+	$PauseLayer/PauseScreen.visible = not $PauseLayer/PauseScreen.visible

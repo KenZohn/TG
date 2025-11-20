@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b1jg0kxl8nmsf"]
+[gd_scene load_steps=26 format=3 uid="uid://b1jg0kxl8nmsf"]
 
 [ext_resource type="Script" uid="uid://b4qmf3jjfoct4" path="res://scripts/battle.gd" id="1_2cxp4"]
 [ext_resource type="Resource" uid="uid://c4vqalnrxhtqu" path="res://resources/slime.tres" id="2_7xoqm"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://co8sbedig2hjk" path="res://assets/bgm/(Battle1)maou_bgm_fantasy15.ogg" id="6_dpg7a"]
 [ext_resource type="AudioStream" uid="uid://bvlmnj0qrihu6" path="res://assets/se/maou_se_battle12.ogg" id="7_8h0x3"]
 [ext_resource type="AudioStream" uid="uid://bjjmb8yom0xod" path="res://assets/se/maou_se_battle_explosion03.ogg" id="8_l0ske"]
+[ext_resource type="PackedScene" uid="uid://c6rg4s4ymckxo" path="res://scenes/PauseScreen.tscn" id="9_7xoqm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f4pi3"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -645,6 +646,9 @@ offset_left = -59.0
 offset_bottom = 31.0
 grow_horizontal = 0
 text = "PAUSE"
+
+[node name="PauseScreen" parent="PauseLayer" instance=ExtResource("9_7xoqm")]
+visible = false
 
 [connection signal="pressed" from="RulesPanel/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="PauseLayer/PauseButton" to="." method="_on_pause_button_pressed"]
