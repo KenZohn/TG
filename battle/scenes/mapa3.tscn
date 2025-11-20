@@ -1,13 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://cncgvude64bav"]
+[gd_scene load_steps=4 format=4 uid="uid://cncgvude64bav"]
 
 [ext_resource type="TileSet" uid="uid://c28u2cw45s5is" path="res://tile_set.tres" id="1_wuqpi"]
-[ext_resource type="Script" uid="uid://cw7j2nc5bbycx" path="res://scripts/PontoInterativo.gd" id="2_qvsx8"]
-[ext_resource type="Texture2D" uid="uid://b5lesekpnmdum" path="res://assets/sprites/fantasy_game_character_slime.png" id="3_hpj1t"]
 [ext_resource type="PackedScene" uid="uid://dgajq8exectl1" path="res://scenes/character_body_2d.tscn" id="4_wr1ec"]
 [ext_resource type="Script" uid="uid://nk45gc008pdl" path="res://scripts/camera_2d_2.gd" id="5_8ultl"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qqli0"]
-size = Vector2(54, 49.5)
 
 [node name="Node2D" type="Node2D"]
 
@@ -43,29 +38,11 @@ tile_set = ExtResource("1_wuqpi")
 tile_map_data = PackedByteArray("AAAEAAcABQAGAAIAAAAEAAgABQAGAAMAAAAFAAcABQAHAAIAAAAFAAgABQAHAAMAAABUAOv/BgAGAAMAAABUAOz/BgAGAAQAAABVAOv/BgAHAAMAAABVAOz/BgAHAAQAAAAYAM3/BwAGAAIAAAAYAM7/BwAGAAMAAAAZAM3/BwAHAAIAAAAZAM7/BwAHAAMAAAA=")
 tile_set = ExtResource("1_wuqpi")
 
-[node name="PontoInterativo" type="Node2D" parent="."]
-position = Vector2(308, 146)
-script = ExtResource("2_qvsx8")
-
-[node name="Area2D" type="Area2D" parent="PontoInterativo"]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PontoInterativo/Area2D"]
-position = Vector2(3, 2)
-shape = SubResource("RectangleShape2D_qqli0")
-
-[node name="Sprite2D" type="Sprite2D" parent="PontoInterativo/Area2D"]
-position = Vector2(1.9999876, 0)
-scale = Vector2(0.034931473, 0.03630137)
-texture = ExtResource("3_hpj1t")
-
 [node name="CharacterBody2D" parent="." instance=ExtResource("4_wr1ec")]
+visible = false
 position = Vector2(181, 130)
 
 [node name="Camera2D2" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(18, -16)
 zoom = Vector2(3, 3)
 script = ExtResource("5_8ultl")
-
-[connection signal="body_entered" from="PontoInterativo/Area2D" to="PontoInterativo" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="PontoInterativo/Area2D" to="PontoInterativo" method="_on_area_2d_body_exited"]
