@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
-const SPEED = 150.0
+const SPEED = 300.0
 const JUMP_VELOCITY = -300.0
 
 func _ready():

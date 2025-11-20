@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=17 format=3 uid="uid://c28u2cw45s5is"]
+[gd_resource type="TileSet" load_steps=19 format=3 uid="uid://c28u2cw45s5is"]
 
 [ext_resource type="Texture2D" uid="uid://vvwwfdjgbmx5" path="res://sprites/Tiny Wonder Forest 1.0/tilemaps/summer tilemap.png" id="1_qumku"]
 [ext_resource type="Texture2D" uid="uid://3wmurs4lortu" path="res://sprites/Tiny Wonder Forest 1.0/tilemaps/spring tilemap.png" id="2_5pofp"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bahig8582atpc" path="res://sprites/Tiny Wonder Forest 1.0/items&objects/autumn items.png" id="6_4q4jd"]
 [ext_resource type="Texture2D" uid="uid://cabknglto7cty" path="res://sprites/Tiny Wonder Forest 1.0/items&objects/winter items.png" id="7_yriep"]
 [ext_resource type="Texture2D" uid="uid://dsjjwgurrjfmi" path="res://sprites/Tiny Wonder Forest 1.0/tilemaps/bridges.png" id="8_5pofp"]
+[ext_resource type="Texture2D" uid="uid://cgynn5yb0nlkh" path="res://sprites/Tiny Wonder Forest 1.0/items&objects/furniture.png" id="9_dcmha"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_caffn"]
 texture = ExtResource("1_qumku")
@@ -978,6 +979,71 @@ texture = ExtResource("8_5pofp")
 10:15/0 = 0
 11:15/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ycv0v"]
+texture = ExtResource("9_dcmha")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+
 [resource]
 sources/1 = SubResource("TileSetAtlasSource_caffn")
 sources/2 = SubResource("TileSetAtlasSource_qahux")
@@ -987,3 +1053,4 @@ sources/5 = SubResource("TileSetAtlasSource_2t2ji")
 sources/6 = SubResource("TileSetAtlasSource_l2okl")
 sources/7 = SubResource("TileSetAtlasSource_drs5b")
 sources/8 = SubResource("TileSetAtlasSource_dcmha")
+sources/9 = SubResource("TileSetAtlasSource_ycv0v")
