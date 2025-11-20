@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://bmk24q6vqkih8"]
 
 [ext_resource type="TileSet" uid="uid://c28u2cw45s5is" path="res://tile_set.tres" id="1_ryvhv"]
-[ext_resource type="Script" uid="uid://cw7j2nc5bbycx" path="res://scripts/PontoInterativo.gd" id="50_ly3t4"]
+[ext_resource type="Script" uid="uid://cw7j2nc5bbycx" path="res://scripts/PontoInterativo2.gd" id="50_ly3t4"]
 [ext_resource type="Texture2D" uid="uid://b5lesekpnmdum" path="res://assets/sprites/fantasy_game_character_slime.png" id="51_1ahpc"]
 [ext_resource type="PackedScene" uid="uid://dgajq8exectl1" path="res://scenes/character_body_2d.tscn" id="52_i1ixr"]
 [ext_resource type="Script" uid="uid://nk45gc008pdl" path="res://scripts/camera_2d_2.gd" id="53_kabrp"]

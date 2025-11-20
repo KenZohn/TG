@@ -51,7 +51,7 @@
 [ext_resource type="Texture2D" uid="uid://crkv58ajjt86f" path="res://sprites/submission_daneeklu/tilesets/fence_alt.png" id="48_cvsdw"]
 [ext_resource type="PackedScene" uid="uid://dgajq8exectl1" path="res://scenes/character_body_2d.tscn" id="49_7teor"]
 [ext_resource type="Script" uid="uid://nk45gc008pdl" path="res://scripts/camera_2d_2.gd" id="50_b2e1q"]
-[ext_resource type="Script" uid="uid://cw7j2nc5bbycx" path="res://scripts/PontoInterativo.gd" id="51_8ukg1"]
+[ext_resource type="Script" uid="uid://cw7j2nc5bbycx" path="res://scripts/PontoInterativo2.gd" id="51_8ukg1"]
 [ext_resource type="Texture2D" uid="uid://b5lesekpnmdum" path="res://assets/sprites/fantasy_game_character_slime.png" id="52_qqli0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tq3f3"]
