@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6rg4s4ymckxo"]
+[gd_scene load_steps=7 format=3 uid="uid://c6rg4s4ymckxo"]
 
 [ext_resource type="Theme" uid="uid://c6u12sw5jxmbr" path="res://themes/OptionsScreen.theme" id="1_d83i7"]
 [ext_resource type="Script" uid="uid://dcfq2hn8qv4k" path="res://scenes/pause_screen.gd" id="1_jop2b"]
 [ext_resource type="Theme" uid="uid://dctpcbq0vp6lp" path="res://themes/TitleScreen.theme" id="1_k5a5s"]
+[ext_resource type="Shader" uid="uid://bb3ormchtf5f1" path="res://scenes/Blur.gdshader" id="2_hdbvb"]
 [ext_resource type="FontFile" uid="uid://c8l7xewo111n3" path="res://themes/Tinos-Regular.ttf" id="3_oe56i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x5es7"]
+shader = ExtResource("2_hdbvb")
+shader_parameter/lod = 2.0
 
 [node name="PauseScreen" type="Control"]
 process_mode = 2
@@ -16,6 +21,7 @@ grow_vertical = 2
 script = ExtResource("1_jop2b")
 
 [node name="Overlay" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_x5es7")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
