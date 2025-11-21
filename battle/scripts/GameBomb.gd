@@ -10,11 +10,15 @@ var trail = []
 var dragging = false
 var start_dot = null
 
+var totalTime = 20.0 + State.save_data["agility"] * 0.05
+
 func _ready():
+	setup_timers()
 	generate_cells()
 	generate_points()
 	await generate_bombs()
 	show_dots()
+	start_timer()
 
 func generate_cells():
 	var grid = $Panel/Grid
@@ -207,3 +211,27 @@ func _on_cell_gui_input(event, index):
 					print("Arrasto interrompido.")
 					emit_signal("game_finished", false) 
 					reset_trail()
+
+# Timers
+func start_timer():
+	$TimerGame.start()
+	$ProgressBarTimer.max_value = $TimerGame.wait_time
+	$ProgressBarTimer.value = $TimerGame.wait_time
+	
+func setup_timers():
+	$TimerGame.wait_time = totalTime
+	$TimerGame.one_shot = true
+	$TimerGame.timeout.connect(_on_game_timeout)
+	
+	$TimerDisplay.wait_time = 0.1
+	$TimerDisplay.one_shot = false
+	$TimerDisplay.timeout.connect(_update_timer_display)
+	$TimerDisplay.start()
+
+func _update_timer_display():
+	var remaining = $TimerGame.time_left
+	$ProgressBarTimer/Label.text = "%.1f" % remaining
+	$ProgressBarTimer.value = remaining
+
+func _on_game_timeout():
+	emit_signal("game_finished", false)
