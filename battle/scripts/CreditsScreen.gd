@@ -22,6 +22,9 @@ func _ready():
 		tween.tween_property(card, "modulate:a", 1.0, 0.5).set_delay(delays[i])\
 			.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
-
 func _on_return_pressed():
+	SESelect.play()
 	get_tree().change_scene_to_file("res://scenes/TitleScreen.tscn")
+
+func _on_return_mouse_entered() -> void:
+	SEMouseEntered.play()

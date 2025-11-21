@@ -25,6 +25,7 @@ func _ready() -> void:
 	
 	for b in get_tree().get_nodes_in_group("menu_buttons"):
 		b.connect("pressed", Callable(self, "_on_any_button_pressed"))
+		b.connect("mouse_entered", Callable(self, "_on_any_button_entered"))
 
 func _on_new_pressed() -> void:
 	State.is_new_game = true
@@ -54,3 +55,6 @@ func animate_press_start():
 
 func _on_any_button_pressed():
 	SESelect.play()
+
+func _on_any_button_entered():
+	SEMouseEntered.play()
