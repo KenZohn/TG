@@ -46,13 +46,13 @@ var enemy_paths = {
 func _ready():
 	enemy = load(enemy_paths.get(State.enemy))
 	set_hp($EnemyPanel/ProgressBar, enemy.health, enemy.health)
-	set_hp($PlayerPanel/ProgressBar, State.current_hp, State.max_hp)
+	set_hp($PlayerPanel/ProgressBar, State.max_hp, State.max_hp)
 	$EnemyPanel/Enemy.texture = enemy.texture
 	
 	$RulesPanel/RulesLabel.text = rules.get(State.game, "Descrição não disponível.")
 	$RulesPanel/TitleLabel.text = titles.get(State.game, "Título não disponível.")
 	
-	current_player_hp = State.current_hp
+	current_player_hp = State.max_hp
 	current_enemy_hp = enemy.health
 	
 	$BattleBGM.stream = load(enemy.bgm)
@@ -67,8 +67,13 @@ func _ready():
 	$PlayerPanel.show()
 	$RulesPanel.show()
 	
-	var totaltime = 15.0 + State.save_data["agility"] * 0.05
-	$PlayerPanel/ProgressBarTimer/Label.text = "%.1f" % totaltime
+	$PlayerPanel/ProgressBarTimer/Label.text = "%.1f" % State.time
+	
+	if $EnemyPanel/DamageLabel.label_settings == null:
+		$EnemyPanel/DamageLabel.label_settings = LabelSettings.new()
+		$EnemyPanel/DamageLabel.label_settings.font_size = 25
+		$EnemyPanel/DamageLabel.label_settings.outline_size = 15
+		$EnemyPanel/DamageLabel.label_settings.outline_color = Color.html("#303030")
 
 func set_hp(progress_bar, hp, max_hp):
 	progress_bar.value = hp
@@ -141,13 +146,22 @@ func _on_game_finished(_resultado: bool):
 		
 		await get_tree().create_timer(0.5).timeout
 		if is_inside_tree():
-			#get_tree().change_scene_to_file("res://scenes/StageSelect.tscn")
-			FadeLayer.fade_to_scene("res://scenes/mapa.tscn")
+			FadeLayer.fade_to_scene("res://scenes/StageSelect.tscn")
+			#FadeLayer.fade_to_scene("res://scenes/mapa.tscn")
 	else:
 		enemy_turn()
 
 func continue_attack():
-	current_enemy_hp = max(0, current_enemy_hp - State.damage)
+	var damage = int(ceil(State.damage * State.damage_multiplier))
+
+	# Crítico
+	if randi() % 100 < State.critical:
+		damage = int(floor(damage * 1.25))
+		$EnemyPanel/DamageLabel.label_settings.font_color = Color.RED
+	else:
+		$EnemyPanel/DamageLabel.label_settings.font_color = Color.WHITE
+	
+	current_enemy_hp = max(0, current_enemy_hp - damage)
 	set_hp($EnemyPanel/ProgressBar, current_enemy_hp, enemy.health)
 	
 	if $AnimationPlayer.is_playing():
@@ -156,7 +170,7 @@ func continue_attack():
 		$AttackSE.stop()
 	
 	$EnemyPanel/DamageLabel.show()
-	$EnemyPanel/DamageLabel.text = str(State.damage)
+	$EnemyPanel/DamageLabel.text = str(damage)
 	$AnimationPlayer.play("enemy_damaged")
 	$AttackSE.play()
 	await $AnimationPlayer.animation_finished
@@ -164,9 +178,11 @@ func continue_attack():
 	await get_tree().create_timer(0.25).timeout
 
 func enemy_turn():
+	var enemy_damage = enemy.damage - State.defense
+	
 	$PlayerPanel/ProgressBarTimer.show()
 	
-	current_player_hp = max(0, current_player_hp - enemy.damage)
+	current_player_hp = max(0, current_player_hp - enemy_damage)
 	set_hp($PlayerPanel/ProgressBar, current_player_hp, State.max_hp)
 	
 	$AnimationPlayer.play("shake")
@@ -174,7 +190,7 @@ func enemy_turn():
 		$GetHitSE.play()
 	await $AnimationPlayer.animation_finished
 	
-	display_text("O %s causou %d de dano!" % [enemy.name, enemy.damage])
+	display_text("O %s causou %d de dano!" % [enemy.name, enemy_damage])
 	await self.textbox_closed
 		
 	if current_player_hp == 0:
@@ -182,15 +198,14 @@ func enemy_turn():
 		await self.textbox_closed
 		
 		await get_tree().create_timer(0.25).timeout
-		#get_tree().change_scene_to_file("res://scenes/StageSelect.tscn")
-		FadeLayer.fade_to_scene("res://scenes/mapa.tscn")
+		FadeLayer.fade_to_scene("res://scenes/StageSelect.tscn")
+		#FadeLayer.fade_to_scene("res://scenes/mapa.tscn")
 	
 	$RulesPanel.show()
 
 func _on_correct_answer_hit(dano: int):
 	State.damage = dano
 	await continue_attack()
-
 
 func _on_pause_button_pressed() -> void:
 	get_tree().paused = not get_tree().paused

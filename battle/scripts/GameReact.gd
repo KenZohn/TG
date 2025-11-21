@@ -6,11 +6,10 @@ signal game_finished(result)
 var start_time: float = 0.0
 var reaction_time: float = 0.0
 var ready_to_react: bool = false
-
-var totalTime = 15.0 + State.save_data["agility"] * 0.05
+var damage = 30
 
 func _ready():
-	$ProgressBarTimer/Label.text = "%.1f" % totalTime
+	$ProgressBarTimer/Label.text = "%.1f" % State.time
 	$Panel/LabelMensage.text = ""
 	$WaitTimer.wait_time = randf_range(2.0, 6.0) # Intervalo de tempo aleatório
 	$WaitTimer.timeout.connect(_on_WaitTimer_timeout)
@@ -28,7 +27,7 @@ func _on_react_button_pressed():
 		reaction_time = (Time.get_ticks_msec() / 1000.0) - start_time
 		$Panel/LabelMensage.text = "%.3f segundos" % reaction_time
 		ready_to_react = false
-		emit_signal("correct_answer_hit", int(30 + 30 * State.save_data["focus"] * 0.05)) # Cada acerto causa 30 de dano
+		emit_signal("correct_answer_hit", damage) # Cada acerto causa 30 de dano
 		emit_signal("game_finished", true) # Resultado retornado
 	else:
 		$Panel/ReactButton.disabled = true

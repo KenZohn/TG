@@ -1,6 +1,6 @@
 extends Control
 
-signal correct_answer_hit(damage)
+signal correct_answer_hit(damages)
 signal game_finished(score)
 
 var color_map = {
@@ -11,13 +11,11 @@ var color_map = {
 }
 
 var correct_answer: bool = false
-var score: int = 0
 var awaiting_response: bool = false
-
-var totalTime = 15.0 + State.save_data["agility"] * 0.05
+var damage = 2
 
 func _ready():
-	$ProgressBarTimer/Label.text = "%.1f" % totalTime
+	$ProgressBarTimer/Label.text = "%.1f" % State.time
 	
 	connect_buttons()
 	setup_timers()
@@ -30,7 +28,7 @@ func _update_timer_display():
 	$ProgressBarTimer.value = remaining
 
 func setup_timers():
-	$TimerGame.wait_time = totalTime
+	$TimerGame.wait_time = State.time
 	$TimerGame.one_shot = true
 	$TimerGame.timeout.connect(_on_game_timeout)
 	
@@ -77,11 +75,8 @@ func _on_user_response(response: bool):
 	$Panel/ButtonNo.disabled = true
 	
 	if response == correct_answer:
-		score += 1
-		print("✅ Correct!")
-		emit_signal("correct_answer_hit", int(2 + 2 * State.save_data["focus"] * 0.05))
+		emit_signal("correct_answer_hit", damage)
 	else:
-		print("❌ Wrong!")
 		_apply_time_penalty()
 	
 	$TimerInterval.start()
@@ -104,7 +99,5 @@ func _on_game_timeout():
 	
 	$Panel/ButtonYes.disabled = true
 	$Panel/ButtonNo.disabled = true
-	$Panel/LabelMeaning.text = "Time's up!"
-	$Panel/LabelColor.text = "Score: %d" % score
 	
 	emit_signal("game_finished", false)

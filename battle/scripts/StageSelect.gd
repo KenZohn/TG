@@ -4,6 +4,7 @@ func _ready():
 	BGMManager.stop_bgm()
 	State.reset_state()
 	update_stages()
+	set_state()
 	show_stats()
 	
 	for b in get_tree().get_nodes_in_group("menu_buttons"):
@@ -106,7 +107,6 @@ func _on_c_3_pressed() -> void:
 	State.enemy = "goblin"
 	State.coordination = 5
 	battle_scene()
-	
 
 func _on_r_1_pressed() -> void:
 	State.stage = "r1"
@@ -114,7 +114,6 @@ func _on_r_1_pressed() -> void:
 	State.enemy = "slime"
 	State.reasoning = 3
 	battle_scene()
-	
 
 func _on_tittle_screen_button_pressed() -> void:
 	FadeLayer.fade_to_scene("res://scenes/TitleScreen.tscn")
@@ -134,7 +133,8 @@ func update_stages():
 		"f5": $F5,
 		"c1": $C1,
 		"c2": $C2,
-		"c3": $C3
+		"c3": $C3,
+		"r1": $R1
 	}
 	for key in stage_map.keys():
 		if key in State.save_data and State.save_data[key]:
@@ -146,6 +146,13 @@ func show_stats():
 	$LabelFocus.text = str(int(State.save_data["focus"]))
 	$LabelReasoning.text = str(int(State.save_data["reasoning"]))
 	$LabelCoordination.text = str(int(State.save_data["coordination"]))
+
+func set_state():
+	State.max_hp = 50 + 100 * State.save_data["memory"] * 0.01
+	State.time = 15 + 5 * State.save_data["agility"] * 0.01
+	State.damage_multiplier = 1 + 2 * State.save_data["focus"] * 0.01
+	State.critical = 10 * State.save_data["coordination"] * 0.01
+	State.defense = 10 * State.save_data["reasoning"] * 0.01
 
 func battle_scene():
 	FadeLayer.fade_to_scene("res://scenes/Battle.tscn")

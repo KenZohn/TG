@@ -16,8 +16,7 @@ var colors = [
 
 var numbers = []
 var buttons = []
-
-var totalTime = 15.0 + State.save_data["agility"] * 0.05
+var damage = 20
 
 func _ready():
 	#style.set_corner_radius_all(25)
@@ -84,7 +83,7 @@ func _on_button_pressed(clicked_num):
 		
 		if numbers.is_empty():
 			print("Você venceu!")
-			emit_signal("correct_answer_hit", int(20 + 20 * State.save_data["reasoning"] * 0.05)) 
+			emit_signal("correct_answer_hit", damage) 
 			emit_signal("game_finished", false) 
 			
 	else:
@@ -116,7 +115,7 @@ func get_valid_position():
 	return pos
 
 func setup_timers():
-	$TimerGame.wait_time = totalTime
+	$TimerGame.wait_time = State.time
 	$TimerGame.one_shot = true
 	$TimerGame.timeout.connect(_on_game_timeout)
 

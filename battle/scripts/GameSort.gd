@@ -8,9 +8,9 @@ var imagens_esquerda = []
 var imagens_direita = []
 var fila_imagens = []
 var imagem_atual_index = 0
+var damage = 2
 
 var awaiting_response: bool = false
-var totalTime = 15.0 + State.save_data["agility"] * 0.05
 
 @onready var figure_left_1 = $ContainerCard/FigureLeft1
 @onready var figure_left_2 = $ContainerCard/FigureLeft2
@@ -23,7 +23,7 @@ var totalTime = 15.0 + State.save_data["agility"] * 0.05
 @onready var timer_jogo = $TimerGame
 
 func _ready():
-	$ProgressBarTimer/Label.text = "%.1f" % totalTime
+	$ProgressBarTimer/Label.text = "%.1f" % State.time
 	
 	randomize()
 
@@ -62,17 +62,16 @@ func verificar_resposta(lado_escolhido):
 	var lado_correto = "esquerda" if imagens_esquerda.has(nome) else "direita"
 	
 	if lado_escolhido == lado_correto:
-		label_feedback.text = "✅ Correto!"
-		emit_signal("correct_answer_hit", int(2 + 2 * State.save_data["focus"] * 0.05))
+		label_feedback.text = "Correto!"
+		emit_signal("correct_answer_hit", damage)
 	else:
-		label_feedback.text = "❌ Errado!"
+		label_feedback.text = "Errado!"
 		_apply_time_penalty()
 	
 	imagem_atual_index += 1
 	if imagem_atual_index < fila_imagens.size():
 		mostrar_imagem_atual()
 	else:
-		label_feedback.text += "\nFim do jogo!"
 		botao_esquerda.disabled = true
 		botao_direita.disabled = true
 		emit_signal("game_finished", false)
@@ -89,7 +88,7 @@ func _update_timer_display():
 	$ProgressBarTimer.value = remaining
 
 func setup_timers():
-	$TimerGame.wait_time = totalTime
+	$TimerGame.wait_time = State.time
 	$TimerGame.one_shot = true
 	$TimerGame.timeout.connect(_on_game_timeout)
 	

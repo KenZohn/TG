@@ -6,13 +6,11 @@ signal game_finished(score)
 @onready var spawn_timer = $TimerSpawn
 @onready var spawn_area = $SpawnArea
 
-var score = 0
 var current_button: Node = null
-
-var totalTime = 15.0 + State.save_data["agility"] * 0.05
+var damage = 2
 
 func _ready():
-	$ProgressBarTimer/Label.text = "%.1f" % totalTime
+	$ProgressBarTimer/Label.text = "%.1f" % State.time
 	
 	spawn_timer.start()
 	setup_timers()
@@ -33,24 +31,23 @@ func _on_spawn_timer_timeout() -> void:
 	
 	# Referência ao ColorRect
 	var area_rect = spawn_area.get_node("ColorRect")
-	area_rect.add_child(button_instance)  # ✅ Adiciona ao ColorRect
+	area_rect.add_child(button_instance)  # Adiciona ao ColorRect
 	
 	# Calcula posição local dentro do ColorRect
 	var area_size = area_rect.size
-	var margin = 50.0  # margem interna para evitar corte nas bordas
+	var margin = 50.0
 	var x = randf_range(margin, area_size.x - margin)
 	var y = randf_range(margin, area_size.y - margin)
-	button_instance.position = Vector2(x, y)  # ✅ Posição local
+	button_instance.position = Vector2(x, y)
 	
 	button_instance.connect("target_pressed", _on_button_pressed)
 	current_button = button_instance
 
 func _on_button_pressed(_reaction_time):
-	score += 1
-	emit_signal("correct_answer_hit", int(2 + 2 * State.save_data["focus"] * 0.05))
+	emit_signal("correct_answer_hit", damage)
 
 func setup_timers():
-	$TimerGame.wait_time = totalTime
+	$TimerGame.wait_time = State.time
 	$TimerGame.one_shot = true
 	$TimerGame.timeout.connect(_on_game_timeout)
 	
