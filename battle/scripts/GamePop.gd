@@ -19,6 +19,7 @@ var buttons = []
 var damage = 20
 
 func _ready():
+	$ProgressBarTimer/Label.text = "%.1f" % State.time
 	#style.set_corner_radius_all(25)
 	setup_timers()
 	start_game()

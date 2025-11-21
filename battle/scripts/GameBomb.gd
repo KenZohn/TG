@@ -9,8 +9,7 @@ var bombs = []
 var trail = []
 var dragging = false
 var start_dot = null
-
-var totalTime = 20.0 + State.save_data["agility"] * 0.05
+var damage = 20
 
 func _ready():
 	setup_timers()
@@ -193,7 +192,7 @@ func _on_cell_mouse_entered(index):
 				else:
 					print("Pontos conectados com sucesso!")
 					await get_tree().create_timer(1.0).timeout
-					emit_signal("correct_answer_hit", int(20 + 20 * State.save_data["memory"] * 0.05)) 
+					emit_signal("correct_answer_hit", damage) 
 					emit_signal("game_finished", false) 
 				reset_trail()
 
@@ -219,7 +218,7 @@ func start_timer():
 	$ProgressBarTimer.value = $TimerGame.wait_time
 	
 func setup_timers():
-	$TimerGame.wait_time = totalTime
+	$TimerGame.wait_time = State.time
 	$TimerGame.one_shot = true
 	$TimerGame.timeout.connect(_on_game_timeout)
 	
