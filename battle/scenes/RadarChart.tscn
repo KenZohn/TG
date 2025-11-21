@@ -1,0 +1,104 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2lkfnq3ewo5a"]
+
+[ext_resource type="Script" uid="uid://ciq8wgcis8kju" path="res://scripts/RadarChart.gd" id="1_ynw4b"]
+[ext_resource type="Script" uid="uid://0hbkpn15jkgf" path="res://scripts/Web.gd" id="2_bygat"]
+
+[node name="RadarChart" type="Node2D"]
+script = ExtResource("1_ynw4b")
+
+[node name="RadarChart" type="Node2D" parent="."]
+
+[node name="Web" type="Node2D" parent="RadarChart"]
+script = ExtResource("2_bygat")
+
+[node name="Polygon2D" type="Polygon2D" parent="RadarChart"]
+
+[node name="LabelMemory" type="Label" parent="."]
+offset_left = -13.0
+offset_top = -128.0
+offset_right = 15.0
+offset_bottom = -105.0
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelAgility" type="Label" parent="."]
+offset_left = 103.0
+offset_top = -51.0
+offset_right = 131.0
+offset_bottom = -28.0
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelFocus" type="Label" parent="."]
+offset_left = 53.0
+offset_top = 86.0
+offset_right = 81.0
+offset_bottom = 109.0
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelReasoning" type="Label" parent="."]
+offset_left = -129.0
+offset_top = -52.0
+offset_right = -101.0
+offset_bottom = -29.0
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelCoordination" type="Label" parent="."]
+offset_left = -80.0
+offset_top = 83.0
+offset_right = -52.0
+offset_bottom = 106.0
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelMemoryText" type="Label" parent="."]
+offset_left = -36.0
+offset_top = -153.0
+offset_right = 39.0
+offset_bottom = -130.0
+text = "Memória"
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelAgilityText" type="Label" parent="."]
+offset_left = 80.0
+offset_top = -76.0
+offset_right = 156.0
+offset_bottom = -53.0
+text = "Agilidade"
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelFocusText" type="Label" parent="."]
+offset_left = 49.0
+offset_top = 111.0
+offset_right = 85.0
+offset_bottom = 134.0
+text = "Foco"
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelReasoningText" type="Label" parent="."]
+offset_left = -155.0
+offset_top = -77.0
+offset_right = -72.0
+offset_bottom = -54.0
+text = "Reciocínio"
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelCoordinationText" type="Label" parent="."]
+offset_left = -128.0
+offset_top = 111.0
+offset_right = -21.0
+offset_bottom = 134.0
+text = "Coordenação"
+metadata/_edit_use_anchors_ = true

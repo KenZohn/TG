@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dflsxker1ppx5"]
+[gd_scene load_steps=5 format=3 uid="uid://dflsxker1ppx5"]
 
 [ext_resource type="Script" uid="uid://3s3fssnkts4e" path="res://scripts/StageSelect.gd" id="1_tne6o"]
-[ext_resource type="Script" uid="uid://ciq8wgcis8kju" path="res://scripts/RadarChart.gd" id="2_eeirb"]
-[ext_resource type="Script" uid="uid://0hbkpn15jkgf" path="res://scripts/Web.gd" id="2_k456m"]
+[ext_resource type="PackedScene" uid="uid://d2lkfnq3ewo5a" path="res://scenes/RadarChart.tscn" id="3_eeirb"]
 [ext_resource type="AudioStream" uid="uid://t3cs5w73t4t4" path="res://assets/bgm/(StageSelect)maou_bgm_acoustic36.mp3" id="4_1tbhu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38erg"]
@@ -324,110 +323,14 @@ offset_bottom = 60.0
 theme_override_font_sizes/font_size = 25
 text = "Menu de Fases"
 
-[node name="LabelMemory" type="Label" parent="."]
-layout_mode = 0
-offset_left = 839.0
-offset_top = 124.0
-offset_right = 867.0
-offset_bottom = 147.0
-text = "100"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LabelAgility" type="Label" parent="."]
-layout_mode = 0
-offset_left = 955.0
-offset_top = 201.0
-offset_right = 983.0
-offset_bottom = 224.0
-text = "100"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LabelFocus" type="Label" parent="."]
-layout_mode = 0
-offset_left = 905.0
-offset_top = 338.0
-offset_right = 933.0
-offset_bottom = 361.0
-text = "100"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LabelReasoning" type="Label" parent="."]
-layout_mode = 0
-offset_left = 723.0
-offset_top = 200.0
-offset_right = 751.0
-offset_bottom = 223.0
-text = "100"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LabelCoordination" type="Label" parent="."]
-layout_mode = 0
-offset_left = 772.0
-offset_top = 335.0
-offset_right = 783.0
-offset_bottom = 358.0
-text = "100"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LabelMemoryText" type="Label" parent="."]
-layout_mode = 0
-offset_left = 816.0
-offset_top = 99.0
-offset_right = 891.0
-offset_bottom = 122.0
-text = "Memória"
-
-[node name="LabelAgilityText" type="Label" parent="."]
-layout_mode = 0
-offset_left = 932.0
-offset_top = 176.0
-offset_right = 1008.0
-offset_bottom = 199.0
-text = "Agilidade"
-
-[node name="LabelFocusText" type="Label" parent="."]
-layout_mode = 0
-offset_left = 901.0
-offset_top = 363.0
-offset_right = 937.0
-offset_bottom = 386.0
-text = "Foco"
-
-[node name="LabelReasoningText" type="Label" parent="."]
-layout_mode = 0
-offset_left = 697.0
-offset_top = 175.0
-offset_right = 780.0
-offset_bottom = 198.0
-text = "Reciocínio"
-
-[node name="LabelCoordinationText" type="Label" parent="."]
-layout_mode = 0
-offset_left = 724.0
-offset_top = 363.0
-offset_right = 831.0
-offset_bottom = 386.0
-text = "Coordenação"
-
-[node name="RadarChart" type="Node2D" parent="."]
-position = Vector2(852, 252)
-script = ExtResource("2_eeirb")
-
-[node name="Web" type="Node2D" parent="RadarChart"]
-script = ExtResource("2_k456m")
-
-[node name="Polygon2D" type="Polygon2D" parent="RadarChart"]
-
 [node name="BGM" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_1tbhu")
 volume_db = -3.0
 autoplay = true
 bus = &"Music"
+
+[node name="RadarChart" parent="." instance=ExtResource("3_eeirb")]
+position = Vector2(984, 170)
 
 [connection signal="pressed" from="M1" to="." method="_on_m_1_pressed"]
 [connection signal="pressed" from="M2" to="." method="_on_m_2_pressed"]

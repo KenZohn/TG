@@ -5,7 +5,6 @@ func _ready():
 	State.reset_state()
 	update_stages()
 	set_state()
-	show_stats()
 	
 	for b in get_tree().get_nodes_in_group("menu_buttons"):
 		b.connect("pressed", Callable(self, "_on_any_button_pressed"))
@@ -139,13 +138,6 @@ func update_stages():
 	for key in stage_map.keys():
 		if key in State.save_data and State.save_data[key]:
 			stage_map[key].modulate = Color(0, 1, 0) # verde
-
-func show_stats():
-	$LabelMemory.text = str(int(State.save_data["memory"]))
-	$LabelAgility.text = str(int(State.save_data["agility"]))
-	$LabelFocus.text = str(int(State.save_data["focus"]))
-	$LabelReasoning.text = str(int(State.save_data["reasoning"]))
-	$LabelCoordination.text = str(int(State.save_data["coordination"]))
 
 func set_state():
 	State.max_hp = 50 + 100 * State.save_data["memory"] * 0.01
