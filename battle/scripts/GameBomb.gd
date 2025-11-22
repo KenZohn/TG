@@ -187,6 +187,7 @@ func _on_cell_mouse_entered(index):
 				
 				if has_bomb:
 					print("Você perdeu! A trilha passou por uma bomba.")
+					$AudioBomb.play()
 					await reveal_bombs()
 					emit_signal("game_finished", false) 
 				else:
