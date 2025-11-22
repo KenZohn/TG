@@ -23,8 +23,4 @@ func _ready():
 			.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
 func _on_return_pressed():
-	SESelect.play()
 	get_tree().change_scene_to_file("res://scenes/TitleScreen.tscn")
-
-func _on_return_mouse_entered() -> void:
-	SEMouseEntered.play()

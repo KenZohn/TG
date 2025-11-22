@@ -22,10 +22,6 @@ func _ready() -> void:
 	subtitle_tween.tween_property(subtitulo, "modulate:a", 1.0, 1.0)
 	
 	animate_press_start()
-	
-	for b in get_tree().get_nodes_in_group("menu_buttons"):
-		b.connect("pressed", Callable(self, "_on_any_button_pressed"))
-		b.connect("mouse_entered", Callable(self, "_on_any_button_entered"))
 
 func _on_new_pressed() -> void:
 	State.is_new_game = true
@@ -52,9 +48,3 @@ func animate_press_start():
 	tween.tween_property(press_start, "modulate:a", 0.1, 0.5)
 	tween.tween_property(press_start, "modulate:a", 0.9, 1.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(press_start, "modulate:a", 0.1, 1.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-
-func _on_any_button_pressed():
-	SESelect.play()
-
-func _on_any_button_entered():
-	SEMouseEntered.play()

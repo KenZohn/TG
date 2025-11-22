@@ -141,5 +141,4 @@ script = ExtResource("5_w238l")
 
 [connection signal="value_changed" from="CenterContainer/OptionsContainer/PanelContainer/MarginContainer/GridContainer/MusicControl" to="." method="_on_sound_control_value_changed"]
 [connection signal="value_changed" from="CenterContainer/OptionsContainer/PanelContainer/MarginContainer/GridContainer/SFXControl" to="." method="_on_sfx_control_value_changed"]
-[connection signal="mouse_entered" from="CenterContainer/OptionsContainer/PanelContainer/MarginContainer/GridContainer/Return" to="." method="_on_return_mouse_entered"]
 [connection signal="pressed" from="CenterContainer/OptionsContainer/PanelContainer/MarginContainer/GridContainer/Return" to="." method="_on_return_pressed"]

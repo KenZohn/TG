@@ -31,6 +31,7 @@ func _on_mouse_entered() -> void:
 	tween = create_tween()
 	tween.tween_property(self, "scale", SCALE_HOVER, ANIMATION_DURATION).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "modulate:a", OPACITY_HOVER, ANIMATION_DURATION).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	SEMouseEntered.play()
 
 func _on_mouse_exited() -> void:
 	if tween != null and tween.is_running():
@@ -54,5 +55,6 @@ func _on_button_up() -> void:
 			
 		tween = create_tween()
 		tween.tween_property(self, "scale", SCALE_HOVER, 0.1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		SESelect.play()
 	else:
 		_on_mouse_exited() 
