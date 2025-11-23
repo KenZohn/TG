@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dflsxker1ppx5"]
+[gd_scene load_steps=10 format=3 uid="uid://dflsxker1ppx5"]
 
 [ext_resource type="Script" uid="uid://3s3fssnkts4e" path="res://scripts/StageSelect.gd" id="1_tne6o"]
 [ext_resource type="PackedScene" uid="uid://d2lkfnq3ewo5a" path="res://scenes/RadarChart.tscn" id="3_eeirb"]
@@ -14,6 +14,31 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eeirb"]
+bg_color = Color(0.188235, 0.188235, 0.188235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1tbhu"]
+bg_color = Color(0.251042, 0.725299, 0.276599, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.188235, 0.188235, 0.188235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_svcss"]
+bg_color = Color(0.188235, 0.188235, 0.188235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ndrh2"]
+bg_color = Color(0.827451, 0.54901963, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.188235, 0.188235, 0.188235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u3u5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Stage Select" type="Control"]
 layout_mode = 3
@@ -265,7 +290,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "R-1"
 
 [node name="R2" type="Button" parent="." groups=["menu_buttons"]]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -282,7 +306,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_38erg")
 text = "R-2"
 
 [node name="R3" type="Button" parent="." groups=["menu_buttons"]]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -330,7 +353,196 @@ autoplay = true
 bus = &"Music"
 
 [node name="RadarChart" parent="." instance=ExtResource("3_eeirb")]
-position = Vector2(984, 170)
+position = Vector2(975, 179)
+
+[node name="CharacterStats" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 600.0
+offset_top = 67.0
+offset_right = 801.0
+offset_bottom = 280.0
+
+[node name="LifeBar" type="ProgressBar" parent="CharacterStats"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -71.5
+offset_right = 75.0
+offset_bottom = -46.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_eeirb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1tbhu")
+step = 1.0
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="CharacterStats/LifeBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -2.5
+offset_right = 69.0
+offset_bottom = 28.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.25098, 0.72549, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 22
+text = "100/100"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CharacterStats/LifeBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -32.5
+offset_right = -40.0
+offset_bottom = -1.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.25098, 0.72549, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 22
+text = "HP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeBar" type="ProgressBar" parent="CharacterStats"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -2.5
+offset_right = 75.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_svcss")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ndrh2")
+value = 100.0
+show_percentage = false
+
+[node name="LabelTimer" type="Label" parent="CharacterStats/TimeBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -32.5
+offset_right = 3.0
+offset_bottom = -1.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.827, 0.548, 0, 1)
+theme_override_colors/font_outline_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 22
+text = "Tempo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="CharacterStats/TimeBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = -2.5
+offset_right = 69.0
+offset_bottom = 28.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.827451, 0.54901963, 0, 1)
+theme_override_colors/font_outline_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 22
+text = "00.0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PanelExp" type="Panel" parent="CharacterStats"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = 58.5
+offset_right = 75.0
+offset_bottom = 83.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u3u5")
+
+[node name="LabelExp" type="Label" parent="CharacterStats/PanelExp"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -15.5
+offset_right = -30.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.36067188, 0.6448221, 0.85031146, 1)
+theme_override_colors/font_outline_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 22
+text = "EXP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelExpValue" type="Label" parent="CharacterStats/PanelExp"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -15.5
+offset_right = -7.0
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.36067188, 0.6448221, 0.85031146, 1)
+theme_override_colors/font_outline_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 22
+text = "10000"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [connection signal="pressed" from="M1" to="." method="_on_m_1_pressed"]
 [connection signal="pressed" from="M2" to="." method="_on_m_2_pressed"]

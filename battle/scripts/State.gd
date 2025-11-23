@@ -36,5 +36,5 @@ func reset_state():
 	State.memory = 0
 	State.agility = 0
 	State.focus = 0
-	State.reasoning = 0
 	State.coordination = 0
+	State.reasoning = 0

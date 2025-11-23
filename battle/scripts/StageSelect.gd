@@ -6,8 +6,13 @@ func _ready():
 	update_stages()
 	set_state()
 	
+	$CharacterStats/LifeBar/Label.text = "%d/%d" % [State.max_hp, State.max_hp]
+	$CharacterStats/TimeBar/Label.text = "%.1f" % State.time
+	$CharacterStats/PanelExp/LabelExpValue.text = "%d" % State.save_data["experience"]
+	
 	for b in get_tree().get_nodes_in_group("menu_buttons"):
 		b.connect("pressed", Callable(self, "_on_any_button_pressed"))
+		b.connect("mouse_entered", Callable(self, "_on_any_button_entered"))
 
 func _on_m_1_pressed() -> void:
 	State.stage = "m1"
@@ -137,7 +142,7 @@ func update_stages():
 	}
 	for key in stage_map.keys():
 		if key in State.save_data and State.save_data[key]:
-			stage_map[key].modulate = Color(0, 1, 0) # verde
+			stage_map[key].modulate = Color(0.596, 0.927, 0.521, 1.0) # verde
 
 func set_state():
 	State.max_hp = 50 + 100 * State.save_data["memory"] * 0.01
@@ -151,3 +156,6 @@ func battle_scene():
 
 func _on_any_button_pressed():
 	SESelect.play()
+
+func _on_any_button_entered():
+	SEMouseEntered.play()
