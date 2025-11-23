@@ -1,5 +1,7 @@
 extends Control
 
+@onready var stage_panel = $Panel
+
 func _ready():
 	BGMManager.stop_bgm()
 	State.reset_state()
@@ -119,30 +121,27 @@ func _on_r_1_pressed() -> void:
 	State.reasoning = 3
 	battle_scene()
 
+func _on_r_2_pressed() -> void:
+	State.stage = "r2"
+	State.game = "pop"
+	State.enemy = "zombie"
+	State.reasoning = 4
+	battle_scene()
+
+func _on_r_3_pressed() -> void:
+	State.stage = "r3"
+	State.game = "pop"
+	State.enemy = "goblin"
+	State.reasoning = 5
+	battle_scene()
+
 func _on_tittle_screen_button_pressed() -> void:
 	FadeLayer.fade_to_scene("res://scenes/TitleScreen.tscn")
 
 func update_stages():
-	var stage_map = {
-		"m1": $M1,
-		"m2": $M2,
-		"m3": $M3,
-		"a1": $A1,
-		"a2": $A2,
-		"a3": $A3,
-		"f1": $F1,
-		"f2": $F2,
-		"f3": $F3,
-		"f4": $F4,
-		"f5": $F5,
-		"c1": $C1,
-		"c2": $C2,
-		"c3": $C3,
-		"r1": $R1
-	}
-	for key in stage_map.keys():
-		if key in State.save_data and State.save_data[key]:
-			stage_map[key].modulate = Color(0.596, 0.927, 0.521, 1.0) # verde
+	for child in stage_panel.get_children():
+		if child.name.to_lower() in State.save_data and State.save_data[child.name.to_lower()]:
+			child.modulate = Color(0.596, 0.927, 0.521, 1.0)
 
 func set_state():
 	State.max_hp = 50 + 100 * State.save_data["memory"] * 0.01
