@@ -74,6 +74,10 @@ func _ready():
 		$EnemyPanel/DamageLabel.label_settings.font_size = 25
 		$EnemyPanel/DamageLabel.label_settings.outline_size = 15
 		$EnemyPanel/DamageLabel.label_settings.outline_color = Color.html("#303030")
+	
+	for b in get_tree().get_nodes_in_group("se_buttons"):
+		b.connect("pressed", Callable(self, "_on_any_button_pressed"))
+		b.connect("mouse_entered", Callable(self, "_on_any_button_entered"))
 
 func set_hp(progress_bar, hp, max_hp):
 	progress_bar.value = hp

@@ -11,6 +11,8 @@ var dragging = false
 var start_dot = null
 var damage = 20
 
+var bomb_sprite = preload("res://assets/sprites/bomba.png")
+
 func _ready():
 	setup_timers()
 	generate_cells()
@@ -28,6 +30,14 @@ func generate_cells():
 		cell.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		cell.size_flags_vertical = Control.SIZE_EXPAND_FILL
 		grid.add_child(cell)
+		
+		var icon = TextureRect.new()
+		icon.name = "Icon"
+		icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		icon.set_anchors_preset(Control.PRESET_FULL_RECT)
+		cell.add_child(icon)
+		
 		cell.mouse_entered.connect(_on_cell_mouse_entered.bind(i))
 		cell.gui_input.connect(func(event): _on_cell_gui_input(event, i))
 
@@ -62,13 +72,17 @@ func show_dots():
 func reveal_bombs():
 	for bomb in bombs:
 		var cell = $Panel/Grid.get_node("Celula_%d" % bomb)
-		cell.modulate = Color(1, 0, 0)
+		#cell.modulate = Color(1, 0, 0)
+		var icon = cell.get_node("Icon") as TextureRect
+		icon.texture = bomb_sprite
 	
 	await get_tree().create_timer(1.5).timeout
 
 	for bomb in bombs:
 		var cell = $Panel/Grid.get_node("Celula_%d" % bomb)
-		cell.modulate = Color(1, 1, 1)
+		#cell.modulate = Color(1, 1, 1)
+		var icon = cell.get_node("Icon") as TextureRect
+		icon.texture = null
 
 func generate_bombs():
 	var indices = []
@@ -187,6 +201,7 @@ func _on_cell_mouse_entered(index):
 				
 				if has_bomb:
 					print("Você perdeu! A trilha passou por uma bomba.")
+					$AudioBomb.play()
 					await reveal_bombs()
 					emit_signal("game_finished", false) 
 				else:
