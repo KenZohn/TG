@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b1jg0kxl8nmsf"]
+[gd_scene load_steps=28 format=3 uid="uid://b1jg0kxl8nmsf"]
 
 [ext_resource type="Script" uid="uid://b4qmf3jjfoct4" path="res://scripts/battle.gd" id="1_2cxp4"]
 [ext_resource type="Resource" uid="uid://c4vqalnrxhtqu" path="res://resources/slime.tres" id="2_7xoqm"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://bvlmnj0qrihu6" path="res://assets/se/maou_se_battle12.ogg" id="7_8h0x3"]
 [ext_resource type="AudioStream" uid="uid://bjjmb8yom0xod" path="res://assets/se/maou_se_battle_explosion03.ogg" id="8_l0ske"]
 [ext_resource type="PackedScene" uid="uid://c6rg4s4ymckxo" path="res://scenes/PauseScreen.tscn" id="9_7xoqm"]
+[ext_resource type="Texture2D" uid="uid://b14k1qgmloolv" path="res://assets/figures/pause2.png" id="9_ob7dw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f4pi3"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -239,6 +240,17 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8umis"]
+bg_color = Color(0, 0, 0, 0.78431374)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="Battle" type="Control"]
 layout_mode = 3
@@ -642,10 +654,15 @@ process_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -59.0
-offset_bottom = 31.0
+offset_left = -62.0
+offset_top = 10.0
+offset_right = 38.0
+offset_bottom = 110.0
 grow_horizontal = 0
-text = "PAUSE"
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxFlat_8umis")
+icon = ExtResource("9_ob7dw")
+icon_alignment = 1
 
 [node name="PauseScreen" parent="PauseLayer" instance=ExtResource("9_7xoqm")]
 visible = false
