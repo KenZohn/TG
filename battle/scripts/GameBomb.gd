@@ -34,7 +34,8 @@ func generate_cells():
 		var icon = TextureRect.new()
 		icon.name = "Icon"
 		icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		icon.set_anchors_preset(Control.PRESET_FULL_RECT)
 		cell.add_child(icon)
 		
 		cell.mouse_entered.connect(_on_cell_mouse_entered.bind(i))
