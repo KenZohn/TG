@@ -173,9 +173,8 @@ script = ExtResource("1_ghijl")
 position = Vector2(5, 4)
 scale = Vector2(1.41667, 1.33333)
 sprite_frames = SubResource("SpriteFrames_qnedo")
-animation = &"parado"
+animation = &"andando_tras"
 autoplay = "parado"
-frame_progress = 0.913354
 script = ExtResource("3_44cfe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
