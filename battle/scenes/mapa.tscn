@@ -26227,6 +26227,106 @@ shape = SubResource("RectangleShape2D_uy4u1")
 position = Vector2(248.125, 745)
 shape = SubResource("RectangleShape2D_uy4u1")
 
+[node name="PontoInterativo6" type="Node2D" parent="."]
+position = Vector2(658, 251)
+script = ExtResource("51_8ukg1")
+
+[node name="Area2D" type="Area2D" parent="PontoInterativo6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PontoInterativo6/Area2D"]
+position = Vector2(3, 2)
+shape = SubResource("RectangleShape2D_qqli0")
+
+[node name="PontoInterativo7" type="Node2D" parent="."]
+position = Vector2(1100, 480)
+script = ExtResource("51_8ukg1")
+
+[node name="Area2D" type="Area2D" parent="PontoInterativo7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PontoInterativo7/Area2D"]
+position = Vector2(3, 2)
+shape = SubResource("RectangleShape2D_qqli0")
+
+[node name="PontoInterativo8" type="Node2D" parent="."]
+position = Vector2(1404, 276)
+script = ExtResource("51_8ukg1")
+
+[node name="Area2D" type="Area2D" parent="PontoInterativo8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PontoInterativo8/Area2D"]
+position = Vector2(3, 2)
+shape = SubResource("RectangleShape2D_qqli0")
+
+[node name="PontoInterativo9" type="Node2D" parent="."]
+position = Vector2(43, 374)
+script = ExtResource("51_8ukg1")
+
+[node name="Area2D" type="Area2D" parent="PontoInterativo9"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PontoInterativo9/Area2D"]
+position = Vector2(3, 2)
+shape = SubResource("RectangleShape2D_qqli0")
+
+[node name="PontoInterativo10" type="Node2D" parent="."]
+position = Vector2(1465, 558)
+script = ExtResource("51_8ukg1")
+
+[node name="Area2D" type="Area2D" parent="PontoInterativo10"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PontoInterativo10/Area2D"]
+position = Vector2(3, 2)
+shape = SubResource("RectangleShape2D_qqli0")
+
+[node name="PontoInterativo11" type="Node2D" parent="."]
+position = Vector2(1939, 172)
+script = ExtResource("51_8ukg1")
+
+[node name="Area2D" type="Area2D" parent="PontoInterativo11"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PontoInterativo11/Area2D"]
+position = Vector2(3, 2)
+shape = SubResource("RectangleShape2D_qqli0")
+
+[node name="PontoInterativo12" type="Node2D" parent="."]
+position = Vector2(1216, 134)
+script = ExtResource("51_8ukg1")
+
+[node name="Area2D" type="Area2D" parent="PontoInterativo12"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PontoInterativo12/Area2D"]
+position = Vector2(3, 2)
+shape = SubResource("RectangleShape2D_qqli0")
+
+[node name="PontoInterativo13" type="Node2D" parent="."]
+position = Vector2(770, 650)
+script = ExtResource("51_8ukg1")
+
+[node name="Area2D" type="Area2D" parent="PontoInterativo13"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PontoInterativo13/Area2D"]
+position = Vector2(3, 2)
+shape = SubResource("RectangleShape2D_qqli0")
+
+[node name="PontoInterativo14" type="Node2D" parent="."]
+position = Vector2(1229, -47)
+script = ExtResource("51_8ukg1")
+
+[node name="Area2D" type="Area2D" parent="PontoInterativo14"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PontoInterativo14/Area2D"]
+position = Vector2(3, 2)
+shape = SubResource("RectangleShape2D_qqli0")
+
+[node name="PontoInterativo15" type="Node2D" parent="."]
+position = Vector2(783, 384)
+script = ExtResource("51_8ukg1")
+
+[node name="Area2D" type="Area2D" parent="PontoInterativo15"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PontoInterativo15/Area2D"]
+position = Vector2(3, 2)
+shape = SubResource("RectangleShape2D_qqli0")
+
 [connection signal="body_entered" from="PontoInterativo/Area2D" to="PontoInterativo" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PontoInterativo/Area2D" to="PontoInterativo" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="PontoInterativo2/Area2D" to="PontoInterativo2" method="_on_area_2d_body_entered"]
@@ -26237,3 +26337,23 @@ shape = SubResource("RectangleShape2D_uy4u1")
 [connection signal="body_exited" from="PontoInterativo4/Area2D" to="PontoInterativo4" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="PontoInterativo5/Area2D" to="PontoInterativo5" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PontoInterativo5/Area2D" to="PontoInterativo5" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="PontoInterativo6/Area2D" to="PontoInterativo6" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PontoInterativo6/Area2D" to="PontoInterativo6" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="PontoInterativo7/Area2D" to="PontoInterativo7" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PontoInterativo7/Area2D" to="PontoInterativo7" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="PontoInterativo8/Area2D" to="PontoInterativo8" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PontoInterativo8/Area2D" to="PontoInterativo8" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="PontoInterativo9/Area2D" to="PontoInterativo9" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PontoInterativo9/Area2D" to="PontoInterativo9" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="PontoInterativo10/Area2D" to="PontoInterativo10" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PontoInterativo10/Area2D" to="PontoInterativo10" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="PontoInterativo11/Area2D" to="PontoInterativo11" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PontoInterativo11/Area2D" to="PontoInterativo11" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="PontoInterativo12/Area2D" to="PontoInterativo12" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PontoInterativo12/Area2D" to="PontoInterativo12" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="PontoInterativo13/Area2D" to="PontoInterativo13" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PontoInterativo13/Area2D" to="PontoInterativo13" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="PontoInterativo14/Area2D" to="PontoInterativo14" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PontoInterativo14/Area2D" to="PontoInterativo14" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="PontoInterativo15/Area2D" to="PontoInterativo15" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PontoInterativo15/Area2D" to="PontoInterativo15" method="_on_area_2d_body_exited"]
