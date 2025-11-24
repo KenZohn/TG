@@ -42,8 +42,8 @@ func _physics_process(_delta: float) -> void:
 		elif direction_x < 0:
 			anim.flip_h = true
 			anim.play("walk")
-		else:
-			anim.play('idle')
+		#else:
+			#anim.play('idle')
 	#else:
 		#anim.play('jump')
 	
