@@ -1,1 +1,29 @@
-extends TileMap
+extends Node2D
+
+@onready var stage_panel = $Stages
+
+func _ready():
+	BGMManager.stop_bgm()
+	State.reset_state()
+	update_stages()
+	set_state()
+	
+	$CanvasLayer/CharacterStats/LifeBar/Label.text = "%d/%d" % [State.max_hp, State.max_hp]
+	$CanvasLayer/CharacterStats/TimeBar/Label.text = "%.1f" % State.time
+	$CanvasLayer/CharacterStats/PanelExp/LabelExpValue.text = "%d" % State.save_data["experience"]
+
+func update_stages():
+	for child in stage_panel.get_children():
+		if child.name.to_lower() in State.save_data and State.save_data[child.name.to_lower()]:
+			var color_rect = child.get_node("ColorRect")
+			color_rect.color = Color(0.596, 0.927, 0.521, 1.0)
+
+func set_state():
+	State.max_hp = 50 + 100 * State.save_data["memory"] * 0.01
+	State.time = 15 + 5 * State.save_data["agility"] * 0.01
+	State.damage_multiplier = 1 + 2 * State.save_data["focus"] * 0.01
+	State.critical = 10 * State.save_data["coordination"] * 0.01
+	State.defense = 10 * State.save_data["reasoning"] * 0.01
+
+func _on_tittle_screen_button_pressed() -> void:
+	FadeLayer.fade_to_scene("res://scenes/TitleScreen.tscn")

@@ -150,8 +150,8 @@ func _on_game_finished(_resultado: bool):
 		
 		await get_tree().create_timer(0.5).timeout
 		if is_inside_tree():
-			FadeLayer.fade_to_scene("res://scenes/StageSelect.tscn")
-			#FadeLayer.fade_to_scene("res://scenes/mapa.tscn")
+			#FadeLayer.fade_to_scene("res://scenes/StageSelect.tscn")
+			FadeLayer.fade_to_scene("res://scenes/mapa.tscn")
 	else:
 		enemy_turn()
 
@@ -202,8 +202,8 @@ func enemy_turn():
 		await self.textbox_closed
 		
 		await get_tree().create_timer(0.25).timeout
-		FadeLayer.fade_to_scene("res://scenes/StageSelect.tscn")
-		#FadeLayer.fade_to_scene("res://scenes/mapa.tscn")
+		#FadeLayer.fade_to_scene("res://scenes/StageSelect.tscn")
+		FadeLayer.fade_to_scene("res://scenes/mapa.tscn")
 	
 	$RulesPanel.show()
 

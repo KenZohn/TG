@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 
 var jogador_na_area = false
 
@@ -7,17 +7,17 @@ func _ready():
 
 func _process(_delta):
 	if jogador_na_area and Input.is_action_just_pressed("ui_accept"):
-		print("Entrou!")
-		State.stage = "m1"
-		State.game = "bomb"
-		State.enemy = "slime"
-		State.memory = 3
+		SESelect.play()
+		State.stage = "c3"
+		State.game = "reflex"
+		State.enemy = "goblin"
+		State.coordination = 5
 		FadeLayer.fade_to_scene("res://scenes/Battle.tscn")
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("jogador"):
 		jogador_na_area = true
 
-func _on_area_2d_body_exited(body: Node2D) -> void:
+func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("jogador"):
 		jogador_na_area = false

@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://b5kdl07qtwmnb" path="res://sprites/Tiny Wonder Forest 1.0/characters/main character old/walk and idle.png" id="1_f50pn"]
 [ext_resource type="Script" uid="uid://c211r7rfsj4r2" path="res://scripts/character_body_2d.gd" id="1_ghijl"]
-[ext_resource type="Script" path="res://scripts/animated_sprite_2d.gd" id="3_44cfe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ghijl"]
 atlas = ExtResource("1_f50pn")
@@ -162,6 +161,10 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="GDScript" id="GDScript_g2brh"]
+script/source = "extends AnimatedSprite2D
+"
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f50pn"]
 radius = 4.23529
 height = 19.5
@@ -170,20 +173,17 @@ height = 19.5
 script = ExtResource("1_ghijl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(5, 4)
 scale = Vector2(1.41667, 1.33333)
 sprite_frames = SubResource("SpriteFrames_qnedo")
 animation = &"andando_tras"
 autoplay = "parado"
-script = ExtResource("3_44cfe")
+script = SubResource("GDScript_g2brh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 texture_filter = 1
 texture_repeat = 1
-position = Vector2(6, 6)
 scale = Vector2(1.41667, 1.33333)
 shape = SubResource("CapsuleShape2D_f50pn")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(104, 75)
-zoom = Vector2(3, 3)
+zoom = Vector2(1.8, 1.8)

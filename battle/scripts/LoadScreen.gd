@@ -38,8 +38,8 @@ func handle_slot(path):
 	
 	State.save_path = path  
 	#print("Dados carregados:", State.save_data)
-	FadeLayer.fade_to_scene("res://scenes/StageSelect.tscn")
-	#FadeLayer.fade_to_scene("res://scenes/mapa.tscn")
+	#FadeLayer.fade_to_scene("res://scenes/StageSelect.tscn")
+	FadeLayer.fade_to_scene("res://scenes/mapa.tscn")
 
 func _on_return_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/TitleScreen.tscn")

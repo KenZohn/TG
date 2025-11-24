@@ -11,7 +11,8 @@ func _on_continue_pressed():
 
 func _on_map_pressed():
 	get_tree().paused = false
-	FadeLayer.fade_to_scene("res://scenes/StageSelect.tscn")
+	#FadeLayer.fade_to_scene("res://scenes/StageSelect.tscn")
+	FadeLayer.fade_to_scene("res://scenes/mapa.tscn")
 
 func _on_exit_pressed():
 	get_tree().paused = false
