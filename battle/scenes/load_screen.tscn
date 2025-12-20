@@ -1,0 +1,111 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvjxi7iw3ivl4"]
+
+[ext_resource type="Script" uid="uid://bqyki1qv1e0nx" path="res://scripts/load_screen.gd" id="1_ocbus"]
+[ext_resource type="Texture2D" uid="uid://c67xpnj35t4a2" path="res://assets/sprites/background-escurecido.png" id="2_ff1ah"]
+[ext_resource type="Theme" uid="uid://dctpcbq0vp6lp" path="res://themes/TitleScreen.theme" id="3_8bpee"]
+[ext_resource type="FontFile" uid="uid://svybmpvynbsh" path="res://themes/Roboto-VariableFont_wdth,wght.ttf" id="3_ff1ah"]
+[ext_resource type="Theme" uid="uid://c6u12sw5jxmbr" path="res://themes/OptionsScreen.theme" id="4_yk5qj"]
+[ext_resource type="Script" uid="uid://c51w6abbk0yqj" path="res://scripts/animated_button.gd" id="6_srf86"]
+
+[node name="LoadScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ocbus")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ff1ah")
+expand_mode = 1
+
+[node name="ErrorLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_ff1ah")
+theme_override_font_sizes/font_size = 20
+text = "DEBUG"
+
+[node name="OverwriteDialog" type="ConfirmationDialog" parent="."]
+oversampling_override = 1.0
+title = ""
+initial_position = 2
+size = Vector2i(462, 100)
+theme = ExtResource("4_yk5qj")
+ok_button_text = "Sim"
+dialog_text = "Esse slot já possui um jogo salvo. Deseja sobrescrever?"
+cancel_button_text = "Não"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_right = 24
+
+[node name="VBoxContainerPrincipal" type="VBoxContainer" parent="CenterContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="LoadingLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainerPrincipal"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("3_8bpee")
+text = "CARREGAR JOGO"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="CardContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainerPrincipal"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/separation = 15
+
+[node name="SelectLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainerPrincipal"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.49803922)
+theme_override_fonts/font = ExtResource("3_ff1ah")
+theme_override_font_sizes/font_size = 14
+text = "Selecione um save para continuar sua aventura"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Return" type="Button" parent="CenterContainer/MarginContainer/VBoxContainerPrincipal"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("4_yk5qj")
+text = "Voltar"
+script = ExtResource("6_srf86")
+
+[connection signal="confirmed" from="OverwriteDialog" to="." method="_on_overwrite_dialog_confirmed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainerPrincipal/Return" to="." method="_on_return_pressed"]

@@ -17,12 +17,12 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-State="*res://scripts/State.gd"
-GameState="*res://scripts/State.gd"
-FadeLayer="*res://scenes/FadeLayer.tscn"
-BGMManager="*res://scripts/BGMManager.gd"
-SESelect="*res://scripts/SESelect.gd"
-SEMouseEntered="*res://scripts/SEMouseEntered.gd"
+State="*res://scripts/state.gd"
+GameState="*res://scripts/state.gd"
+FadeLayer="*res://scenes/fade_layer.tscn"
+BGMManager="*res://scripts/bgm_manager.gd"
+SESelect="*res://scripts/se_select.gd"
+SEMouseEntered="*res://scripts/se_mouse_entered.gd"
 
 [display]
 

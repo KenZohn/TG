@@ -3,7 +3,7 @@ extends Node2D
 @onready var stage_panel = $Stages
 
 func _ready():
-	BGMManager.stop_bgm()
+	BGMManager.play_bgm(BGMManager.bgm_stage_select)
 	State.reset_state()
 	update_stages()
 	set_state()
@@ -26,4 +26,4 @@ func set_state():
 	State.defense = 10 * State.save_data["reasoning"] * 0.01
 
 func _on_tittle_screen_button_pressed() -> void:
-	FadeLayer.fade_to_scene("res://scenes/TitleScreen.tscn")
+	FadeLayer.fade_to_scene("res://scenes/title_screen.tscn")

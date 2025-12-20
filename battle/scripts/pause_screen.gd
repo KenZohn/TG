@@ -11,12 +11,12 @@ func _on_continue_pressed():
 
 func _on_map_pressed():
 	get_tree().paused = false
-	#FadeLayer.fade_to_scene("res://scenes/StageSelect.tscn")
+	#FadeLayer.fade_to_scene("res://scenes/stage_select.tscn")
 	FadeLayer.fade_to_scene("res://scenes/mapa.tscn")
 
 func _on_exit_pressed():
 	get_tree().paused = false
-	FadeLayer.fade_to_scene("res://scenes/TitleScreen.tscn")
+	FadeLayer.fade_to_scene("res://scenes/title_screen.tscn")
 
 func _on_any_button_pressed():
 	SESelect.play()

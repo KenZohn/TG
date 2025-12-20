@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://dyvywwxa4u4af"]
 
-[ext_resource type="Script" uid="uid://reh64sax3356" path="res://scripts/Options.gd" id="1_yjkok"]
+[ext_resource type="Script" uid="uid://reh64sax3356" path="res://scripts/options.gd" id="1_yjkok"]
 [ext_resource type="Texture2D" uid="uid://c67xpnj35t4a2" path="res://assets/sprites/background-escurecido.png" id="2_ckjey"]
 [ext_resource type="Theme" uid="uid://c6u12sw5jxmbr" path="res://themes/OptionsScreen.theme" id="3_nmn1p"]
 [ext_resource type="FontFile" uid="uid://svybmpvynbsh" path="res://themes/Roboto-VariableFont_wdth,wght.ttf" id="3_pxqj8"]
 [ext_resource type="Theme" uid="uid://dctpcbq0vp6lp" path="res://themes/TitleScreen.theme" id="3_s26ps"]
-[ext_resource type="Script" uid="uid://c51w6abbk0yqj" path="res://scripts/AnimatedButton.gd" id="5_w238l"]
+[ext_resource type="Script" uid="uid://c51w6abbk0yqj" path="res://scripts/animated_button.gd" id="5_w238l"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pxqj8"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=200 format=4 uid="uid://ddrr6dc4gsi00"]
+[gd_scene load_steps=199 format=4 uid="uid://ddrr6dc4gsi00"]
 
 [ext_resource type="Texture2D" uid="uid://vvwwfdjgbmx5" path="res://sprites/Tiny Wonder Forest 1.0/tilemaps/summer tilemap.png" id="1_n7x4w"]
 [ext_resource type="Texture2D" uid="uid://3wmurs4lortu" path="res://sprites/Tiny Wonder Forest 1.0/tilemaps/spring tilemap.png" id="2_8ukg1"]
@@ -51,23 +51,22 @@
 [ext_resource type="Texture2D" uid="uid://crkv58ajjt86f" path="res://sprites/submission_daneeklu/tilesets/fence_alt.png" id="48_cvsdw"]
 [ext_resource type="PackedScene" uid="uid://dgajq8exectl1" path="res://scenes/character_body_2d.tscn" id="49_7teor"]
 [ext_resource type="Script" uid="uid://nk45gc008pdl" path="res://scripts/camera_2d_2.gd" id="50_b2e1q"]
-[ext_resource type="Script" uid="uid://b8ck1csbgmvqg" path="res://scenes/M2.gd" id="52_d21tt"]
-[ext_resource type="Script" uid="uid://bpimp8yt5fock" path="res://scenes/M3.gd" id="53_d21tt"]
-[ext_resource type="Script" uid="uid://8uelilbresk2" path="res://scenes/M1.gd" id="53_w8man"]
-[ext_resource type="Script" uid="uid://bllemhcxv1xlh" path="res://scenes/A1.gd" id="54_1e5sf"]
-[ext_resource type="Script" uid="uid://igbmk12tqq2v" path="res://scenes/A2.gd" id="55_web36"]
-[ext_resource type="Script" uid="uid://be3kre3fj0t3b" path="res://scenes/F1.gd" id="56_tvglv"]
-[ext_resource type="Script" uid="uid://c52jiddvo7acj" path="res://scenes/A3.gd" id="56_wfh2w"]
-[ext_resource type="Script" uid="uid://iuy1tvta4crt" path="res://scenes/F2.gd" id="57_uy4u1"]
-[ext_resource type="Script" uid="uid://dtrqlgin0edsl" path="res://scenes/F3.gd" id="58_trhn6"]
-[ext_resource type="Script" uid="uid://bt5kda0dofmod" path="res://scenes/C1.gd" id="59_r4cvx"]
-[ext_resource type="PackedScene" uid="uid://d2lkfnq3ewo5a" path="res://scenes/RadarChart.tscn" id="59_web36"]
-[ext_resource type="Script" uid="uid://du70n6cxer425" path="res://scenes/C2.gd" id="60_30hcf"]
-[ext_resource type="Script" uid="uid://0ks86ba1uasg" path="res://scenes/C3.gd" id="61_l8bn1"]
-[ext_resource type="Script" uid="uid://cdsdsrj5pam7k" path="res://scenes/R1.gd" id="62_7dsj1"]
-[ext_resource type="Script" uid="uid://b0kychjymbg37" path="res://scenes/R2.gd" id="63_jg6go"]
-[ext_resource type="Script" uid="uid://dkdkk52xxg63h" path="res://scenes/R3.gd" id="64_3bp8b"]
-[ext_resource type="AudioStream" uid="uid://t3cs5w73t4t4" path="res://assets/bgm/(StageSelect)maou_bgm_acoustic36.mp3" id="68_30hcf"]
+[ext_resource type="Script" uid="uid://b8ck1csbgmvqg" path="res://scripts/m_2.gd" id="52_d21tt"]
+[ext_resource type="Script" uid="uid://bpimp8yt5fock" path="res://scripts/m_3.gd" id="53_d21tt"]
+[ext_resource type="Script" uid="uid://8uelilbresk2" path="res://scripts/m_1.gd" id="53_w8man"]
+[ext_resource type="Script" uid="uid://bllemhcxv1xlh" path="res://scripts/a_1.gd" id="54_1e5sf"]
+[ext_resource type="Script" uid="uid://igbmk12tqq2v" path="res://scripts/a_2.gd" id="55_web36"]
+[ext_resource type="Script" uid="uid://be3kre3fj0t3b" path="res://scripts/f_1.gd" id="56_tvglv"]
+[ext_resource type="Script" uid="uid://c52jiddvo7acj" path="res://scripts/a_3.gd" id="56_wfh2w"]
+[ext_resource type="Script" uid="uid://iuy1tvta4crt" path="res://scripts/f_2.gd" id="57_uy4u1"]
+[ext_resource type="Script" uid="uid://dtrqlgin0edsl" path="res://scripts/f_3.gd" id="58_trhn6"]
+[ext_resource type="Script" uid="uid://bt5kda0dofmod" path="res://scripts/c_1.gd" id="59_r4cvx"]
+[ext_resource type="PackedScene" uid="uid://d2lkfnq3ewo5a" path="res://scenes/radar_chart.tscn" id="59_web36"]
+[ext_resource type="Script" uid="uid://du70n6cxer425" path="res://scripts/c_2.gd" id="60_30hcf"]
+[ext_resource type="Script" uid="uid://0ks86ba1uasg" path="res://scripts/c_3.gd" id="61_l8bn1"]
+[ext_resource type="Script" uid="uid://cdsdsrj5pam7k" path="res://scripts/r_1.gd" id="62_7dsj1"]
+[ext_resource type="Script" uid="uid://b0kychjymbg37" path="res://scripts/r_2.gd" id="63_jg6go"]
+[ext_resource type="Script" uid="uid://dkdkk52xxg63h" path="res://scripts/r_3.gd" id="64_3bp8b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tq3f3"]
 texture = ExtResource("1_n7x4w")
@@ -27113,12 +27112,6 @@ position = Vector2(181, 130)
 [node name="Camera2D2" type="Camera2D" parent="CharacterBody2D"]
 zoom = Vector2(1.8, 1.8)
 script = ExtResource("50_b2e1q")
-
-[node name="BGM" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("68_30hcf")
-volume_db = -3.0
-autoplay = true
-bus = &"Music"
 
 [connection signal="body_entered" from="Stages/M1" to="Stages/M1" method="_on_body_entered"]
 [connection signal="body_exited" from="Stages/M1" to="Stages/M1" method="_on_body_exited"]

@@ -1,0 +1,188 @@
+[gd_scene load_steps=8 format=3 uid="uid://bpsodtfd5xin0"]
+
+[ext_resource type="Script" uid="uid://cjk5lm7rjhj56" path="res://scripts/credits_screen.gd" id="1_2exbt"]
+[ext_resource type="Texture2D" uid="uid://c67xpnj35t4a2" path="res://assets/sprites/background-escurecido.png" id="2_r4ows"]
+[ext_resource type="Theme" uid="uid://dctpcbq0vp6lp" path="res://themes/TitleScreen.theme" id="3_uvb84"]
+[ext_resource type="Theme" uid="uid://c6u12sw5jxmbr" path="res://themes/OptionsScreen.theme" id="4_86cog"]
+[ext_resource type="Script" uid="uid://c51w6abbk0yqj" path="res://scripts/animated_button.gd" id="5_7fp6e"]
+[ext_resource type="FontFile" uid="uid://svybmpvynbsh" path="res://themes/Roboto-VariableFont_wdth,wght.ttf" id="5_r4ows"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5mvlr"]
+bg_color = Color(0.03529412, 0.03529412, 0.043137256, 0.64705884)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0.8, 0.8, 0.5019608)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="CreditsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_2exbt")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_r4ows")
+expand_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OptionsContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -286.0
+offset_top = -189.0
+offset_right = 286.0
+offset_bottom = 189.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Credits" type="Label" parent="OptionsContainer"]
+layout_mode = 2
+theme = ExtResource("3_uvb84")
+text = "CRÉDITOS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="OptionsContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5mvlr")
+
+[node name="MarginContainer" type="MarginContainer" parent="OptionsContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="JoaoContainer" type="PanelContainer" parent="OptionsContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(324, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("4_86cog")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsContainer/PanelContainer/MarginContainer/VBoxContainer/JoaoContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="OptionsContainer/PanelContainer/MarginContainer/VBoxContainer/JoaoContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.99607843, 0.9411765, 0.5411765, 1)
+text = "João Guilherme Faria"
+
+[node name="Role" type="Label" parent="OptionsContainer/PanelContainer/MarginContainer/VBoxContainer/JoaoContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1.2360035, 1.2360035, 1.2360035, 0.70000005)
+theme_override_font_sizes/font_size = 16
+text = "Desenvolvedor"
+
+[node name="JohnnyContainer" type="PanelContainer" parent="OptionsContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("4_86cog")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsContainer/PanelContainer/MarginContainer/VBoxContainer/JohnnyContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="OptionsContainer/PanelContainer/MarginContainer/VBoxContainer/JohnnyContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.99607843, 0.9411765, 0.5411765, 1)
+text = "Johnny Mukai"
+
+[node name="Role" type="Label" parent="OptionsContainer/PanelContainer/MarginContainer/VBoxContainer/JohnnyContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.7019608)
+theme_override_font_sizes/font_size = 16
+text = "Desenvolvedor"
+
+[node name="ThaisContainer" type="PanelContainer" parent="OptionsContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("4_86cog")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsContainer/PanelContainer/MarginContainer/VBoxContainer/ThaisContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="OptionsContainer/PanelContainer/MarginContainer/VBoxContainer/ThaisContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.99607843, 0.9411765, 0.5411765, 1)
+text = "Thais Capucho"
+
+[node name="Role" type="Label" parent="OptionsContainer/PanelContainer/MarginContainer/VBoxContainer/ThaisContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.7019608)
+theme_override_font_sizes/font_size = 16
+text = "Desenvolvedora"
+
+[node name="MaouContainer" type="PanelContainer" parent="OptionsContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("4_86cog")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsContainer/PanelContainer/MarginContainer/VBoxContainer/MaouContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="OptionsContainer/PanelContainer/MarginContainer/VBoxContainer/MaouContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.99607843, 0.9411765, 0.5411765, 1)
+text = "MaouDamashii"
+
+[node name="Role" type="Label" parent="OptionsContainer/PanelContainer/MarginContainer/VBoxContainer/MaouContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.7019608)
+theme_override_font_sizes/font_size = 16
+text = "BGM & Efeito Sonoro"
+
+[node name="HSeparator" type="HSeparator" parent="OptionsContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ThankYouLabel" type="Label" parent="OptionsContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.49803922)
+theme_override_fonts/font = ExtResource("5_r4ows")
+theme_override_font_sizes/font_size = 18
+text = "Obrigado por jogar!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Return" type="Button" parent="OptionsContainer"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("4_86cog")
+theme_override_font_sizes/font_size = 18
+text = "Voltar"
+script = ExtResource("5_7fp6e")
+
+[connection signal="pressed" from="OptionsContainer/Return" to="." method="_on_return_pressed"]

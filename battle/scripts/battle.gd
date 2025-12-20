@@ -1,6 +1,6 @@
 extends Control
 
-var save_manager = preload("res://scripts/SaveManager.gd").new()
+var save_manager = preload("res://scripts/save_manager.gd").new()
 
 signal textbox_closed
 
@@ -11,12 +11,12 @@ var current_enemy_hp = 0
 var game_scene: Node = null
 
 var games = {
-	"react": "res://scenes/GameReact.tscn",
-	"color": "res://scenes/GameColor.tscn",
-	"bomb": "res://scenes/GameBomb.tscn",
-	"reflex": "res://scenes/GameReflex.tscn",
-	"sort": "res://scenes/GameSort.tscn",
-	"pop": "res://scenes/GamePop.tscn"
+	"react": "res://scenes/game_react.tscn",
+	"color": "res://scenes/game_color.tscn",
+	"bomb": "res://scenes/game_bomb.tscn",
+	"reflex": "res://scenes/game_reflex.tscn",
+	"sort": "res://scenes/game_sort.tscn",
+	"pop": "res://scenes/game_pop.tscn"
 }
 
 var titles = {
@@ -55,12 +55,11 @@ func _ready():
 	current_player_hp = State.max_hp
 	current_enemy_hp = enemy.health
 	
-	$BattleBGM.stream = load(enemy.bgm)
+	BGMManager.play_bgm(load(enemy.bgm))
 	
 	$TextBox.hide()
 	$RulesPanel.hide()
 	$PlayerPanel.hide()
-	$BattleBGM.play()
 	
 	display_text("Um %s selvagem apareceu!" % enemy.name.to_upper())
 	await self.textbox_closed
@@ -150,7 +149,7 @@ func _on_game_finished(_resultado: bool):
 		
 		await get_tree().create_timer(0.5).timeout
 		if is_inside_tree():
-			#FadeLayer.fade_to_scene("res://scenes/StageSelect.tscn")
+			#FadeLayer.fade_to_scene("res://scenes/stage_select.tscn")
 			FadeLayer.fade_to_scene("res://scenes/mapa.tscn")
 	else:
 		enemy_turn()
@@ -202,7 +201,7 @@ func enemy_turn():
 		await self.textbox_closed
 		
 		await get_tree().create_timer(0.25).timeout
-		#FadeLayer.fade_to_scene("res://scenes/StageSelect.tscn")
+		#FadeLayer.fade_to_scene("res://scenes/stage_select.tscn")
 		FadeLayer.fade_to_scene("res://scenes/mapa.tscn")
 	
 	$RulesPanel.show()

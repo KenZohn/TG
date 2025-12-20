@@ -1,4 +1,4 @@
-extends "res://scripts/AnimatedButton.gd"
+extends "res://scripts/animated_button.gd"
 
 @onready var margin_container = $MarginContainer
 
