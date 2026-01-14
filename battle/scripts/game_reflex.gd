@@ -1,7 +1,7 @@
 extends Control
 
 signal correct_answer_hit(damage)
-signal game_finished(score)
+signal game_finished()
 
 @onready var spawn_timer = $TimerSpawn
 @onready var spawn_area = $SpawnArea
@@ -74,4 +74,4 @@ func _on_game_timeout():
 	if current_button and current_button.is_inside_tree():
 		current_button.queue_free()
 	
-	emit_signal("game_finished", false)
+	emit_signal("game_finished")

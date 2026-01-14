@@ -1,7 +1,8 @@
 extends Control
 
 signal correct_answer_hit(damage)
-signal game_finished(score)
+signal wrong_answer()
+signal game_finished()
 
 var todas_imagens = ["circle", "square", "triangle", "cross"]
 var imagens_esquerda = []
@@ -67,6 +68,7 @@ func verificar_resposta(lado_escolhido):
 	else:
 		label_feedback.text = "Errado!"
 		_apply_time_penalty()
+		emit_signal("wrong_answer")
 	
 	imagem_atual_index += 1
 	if imagem_atual_index < fila_imagens.size():
@@ -74,7 +76,7 @@ func verificar_resposta(lado_escolhido):
 	else:
 		botao_esquerda.disabled = true
 		botao_direita.disabled = true
-		emit_signal("game_finished", false)
+		emit_signal("game_finished")
 
 func iniciar_temporizador():
 	timer_jogo.start()
@@ -111,7 +113,7 @@ func _on_game_timeout():
 	botao_esquerda.disabled = true
 	botao_direita.disabled = true
 	
-	emit_signal("game_finished", false)
+	emit_signal("game_finished")
 
 func _apply_time_penalty():
 	var remaining = $TimerGame.time_left

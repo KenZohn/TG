@@ -1,7 +1,8 @@
 extends Control
 
 signal correct_answer_hit(damage)
-signal game_finished(score)
+signal wrong_answer()
+signal game_finished()
 
 @onready var game_area = $Area
 var game_over = false
@@ -85,12 +86,13 @@ func _on_button_pressed(clicked_num):
 		if numbers.is_empty():
 			print("Você venceu!")
 			emit_signal("correct_answer_hit", damage) 
-			emit_signal("game_finished", false) 
+			emit_signal("game_finished")
 			
 	else:
 		game_over = true
 		print("Você perdeu!")
-		emit_signal("game_finished", false) 
+		emit_signal("wrong_answer")
+		emit_signal("game_finished")
 		
 		
 func get_valid_position():
@@ -131,4 +133,4 @@ func _update_timer_display():
 	$ProgressBarTimer.value = remaining
 
 func _on_game_timeout():
-	emit_signal("game_finished", false)
+	emit_signal("game_finished")

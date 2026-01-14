@@ -105,13 +105,14 @@ func _on_start_button_pressed() -> void:
 			game_scene = game_resource.instantiate()
 			add_child(game_scene)
 			game_scene.connect("correct_answer_hit", Callable(self, "_on_correct_answer_hit"))
+			game_scene.connect("wrong_answer", Callable(self, "_on_wrong_answer"))
 			game_scene.connect("game_finished", Callable(self, "_on_game_finished"))
 		else:
 			print("Erro ao carregar cena:", game_path)
 	else:
 		print("Jogo não encontrado:", State.game)
 
-func _on_game_finished(_resultado: bool):
+func _on_game_finished():
 	await get_tree().create_timer(0.5).timeout
 	if $AnimationPlayer.is_playing():
 		$EnemyPanel/DamageLabel.hide()
@@ -135,11 +136,10 @@ func _on_game_finished(_resultado: bool):
 			
 			# Salvar jogo
 			State.save_data[State.stage] = true
-			
-			save_manager.save_game(State.save_path)
 		
 		State.save_data["experience"] += enemy.xp
 		save_manager.save_game(State.save_path)
+		
 		display_text("O inimigo foi derrotado! \nVocê sente-se mais sábio... %d XP" % enemy.xp)
 		await self.textbox_closed
 		
@@ -153,32 +153,6 @@ func _on_game_finished(_resultado: bool):
 			FadeLayer.fade_to_scene("res://scenes/mapa.tscn")
 	else:
 		enemy_turn()
-
-func continue_attack():
-	var damage = int(ceil(State.damage * State.damage_multiplier))
-
-	# Crítico
-	if randi() % 100 < State.critical:
-		damage = int(floor(damage * 1.25))
-		$EnemyPanel/DamageLabel.label_settings.font_color = Color.RED
-	else:
-		$EnemyPanel/DamageLabel.label_settings.font_color = Color.WHITE
-	
-	current_enemy_hp = max(0, current_enemy_hp - damage)
-	set_hp($EnemyPanel/ProgressBar, current_enemy_hp, enemy.health)
-	
-	if $AnimationPlayer.is_playing():
-		$EnemyPanel/DamageLabel.hide()
-		$AnimationPlayer.stop()
-		$AttackSE.stop()
-	
-	$EnemyPanel/DamageLabel.show()
-	$EnemyPanel/DamageLabel.text = str(damage)
-	$AnimationPlayer.play("enemy_damaged")
-	$AttackSE.play()
-	await $AnimationPlayer.animation_finished
-	$EnemyPanel/DamageLabel.hide()
-	await get_tree().create_timer(0.25).timeout
 
 func enemy_turn():
 	var enemy_damage = enemy.damage - State.defense
@@ -208,7 +182,44 @@ func enemy_turn():
 
 func _on_correct_answer_hit(dano: int):
 	State.damage = dano
-	await continue_attack()
+	var damage = int(ceil(State.damage * State.damage_multiplier))
+
+	# Crítico
+	if randi() % 100 < State.critical:
+		damage = int(floor(damage * 1.25))
+		$EnemyPanel/DamageLabel.label_settings.font_color = Color.RED
+	else:
+		$EnemyPanel/DamageLabel.label_settings.font_color = Color.WHITE
+	
+	current_enemy_hp = max(0, current_enemy_hp - damage)
+	set_hp($EnemyPanel/ProgressBar, current_enemy_hp, enemy.health)
+	
+	if $AnimationPlayer.is_playing():
+		$EnemyPanel/DamageLabel.hide()
+		$AnimationPlayer.stop()
+		$AttackSE.stop()
+	
+	$EnemyPanel/DamageLabel.show()
+	$EnemyPanel/DamageLabel.text = str(damage)
+	$AnimationPlayer.play("enemy_damaged")
+	$AttackSE.play()
+	await $AnimationPlayer.animation_finished
+	$EnemyPanel/DamageLabel.hide()
+	await get_tree().create_timer(0.25).timeout
+
+func _on_wrong_answer():
+	if $AnimationPlayer.is_playing():
+		$EnemyPanel/DamageLabel.hide()
+		$AnimationPlayer.stop()
+		$AttackSE.stop()
+	
+	$EnemyPanel/DamageLabel.show()
+	$EnemyPanel/DamageLabel.text = "MISS"
+	$AnimationPlayer.play("miss")
+	$MissSE.play()
+	await $AnimationPlayer.animation_finished
+	$EnemyPanel/DamageLabel.hide()
+	await get_tree().create_timer(0.25).timeout
 
 func _on_pause_button_pressed() -> void:
 	get_tree().paused = not get_tree().paused

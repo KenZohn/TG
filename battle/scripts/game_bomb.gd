@@ -1,7 +1,8 @@
 extends Control
 
 signal correct_answer_hit(damage)
-signal game_finished(score)
+signal wrong_answer()
+signal game_finished()
 
 const TOTAL_CELLS = 25
 var dots = []
@@ -201,14 +202,15 @@ func _on_cell_mouse_entered(index):
 				
 				if has_bomb:
 					print("Você perdeu! A trilha passou por uma bomba.")
+					emit_signal("wrong_answer")
 					$AudioBomb.play()
 					await reveal_bombs()
-					emit_signal("game_finished", false) 
+					emit_signal("game_finished")
 				else:
 					print("Pontos conectados com sucesso!")
 					await get_tree().create_timer(1.0).timeout
 					emit_signal("correct_answer_hit", damage) 
-					emit_signal("game_finished", false) 
+					emit_signal("game_finished")
 				reset_trail()
 
 func _on_cell_gui_input(event, index):
@@ -223,7 +225,8 @@ func _on_cell_gui_input(event, index):
 			else:
 				if dragging:
 					print("Arrasto interrompido.")
-					emit_signal("game_finished", false) 
+					emit_signal("wrong_answer")
+					emit_signal("game_finished")
 					reset_trail()
 
 # Timers
@@ -248,4 +251,4 @@ func _update_timer_display():
 	$ProgressBarTimer.value = remaining
 
 func _on_game_timeout():
-	emit_signal("game_finished", false)
+	emit_signal("game_finished")

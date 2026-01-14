@@ -1,7 +1,8 @@
 extends Control
 
 signal correct_answer_hit(damages)
-signal game_finished(score)
+signal wrong_answer()
+signal game_finished()
 
 var color_map = {
 	"Vermelho": Color.RED,
@@ -77,6 +78,7 @@ func _on_user_response(response: bool):
 	if response == correct_answer:
 		emit_signal("correct_answer_hit", damage)
 	else:
+		emit_signal("wrong_answer")
 		_apply_time_penalty()
 	
 	$TimerInterval.start()
@@ -100,4 +102,4 @@ func _on_game_timeout():
 	$Panel/ButtonYes.disabled = true
 	$Panel/ButtonNo.disabled = true
 	
-	emit_signal("game_finished", false)
+	emit_signal("game_finished")

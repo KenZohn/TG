@@ -1,7 +1,8 @@
 extends Control
 
 signal correct_answer_hit(damage)
-signal game_finished(result)
+signal wrong_answer()
+signal game_finished()
 
 var start_time: float = 0.0
 var reaction_time: float = 0.0
@@ -27,9 +28,10 @@ func _on_react_button_pressed():
 		reaction_time = (Time.get_ticks_msec() / 1000.0) - start_time
 		$Panel/LabelMensage.text = "%.3f segundos" % reaction_time
 		ready_to_react = false
-		emit_signal("correct_answer_hit", damage) # Cada acerto causa 30 de dano
-		emit_signal("game_finished", true) # Resultado retornado
+		emit_signal("correct_answer_hit", damage)
+		emit_signal("game_finished")
 	else:
 		$Panel/ReactButton.disabled = true
 		$Panel/LabelMensage.text = "Adiantado"
-		emit_signal("game_finished", false) # Resultado retornado
+		emit_signal("wrong_answer")
+		emit_signal("game_finished")
