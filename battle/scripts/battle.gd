@@ -95,12 +95,13 @@ func display_text(text):
 
 func _on_start_button_pressed() -> void:
 	$RulesPanel.hide()
-	$PlayerPanel/ProgressBarTimer.hide()
 	
 	$Count.show()
 	$AnimationPlayer.play("count")
 	await $AnimationPlayer.animation_finished
 	$Count.hide()
+	
+	$PlayerPanel/ProgressBarTimer.hide()
 	
 	if games.has(State.game):
 		var game_path = games[State.game]
