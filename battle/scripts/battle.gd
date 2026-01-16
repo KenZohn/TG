@@ -67,6 +67,8 @@ func _ready():
 	$RulesPanel.show()
 	
 	$PlayerPanel/ProgressBarTimer/Label.text = "%.1f" % State.time
+	$PlayerPanel/ProgressBarTimer.max_value = State.time
+	$PlayerPanel/ProgressBarTimer.value = State.time
 	
 	if $EnemyPanel/DamageLabel.label_settings == null:
 		$EnemyPanel/DamageLabel.label_settings = LabelSettings.new()
@@ -101,8 +103,6 @@ func _on_start_button_pressed() -> void:
 	await $AnimationPlayer.animation_finished
 	$Count.hide()
 	
-	$PlayerPanel/ProgressBarTimer.hide()
-	
 	if games.has(State.game):
 		var game_path = games[State.game]
 		var game_resource = ResourceLoader.load(game_path)
@@ -113,6 +113,7 @@ func _on_start_button_pressed() -> void:
 			game_scene.connect("correct_answer_hit", Callable(self, "_on_correct_answer_hit"))
 			game_scene.connect("wrong_answer", Callable(self, "_on_wrong_answer"))
 			game_scene.connect("game_finished", Callable(self, "_on_game_finished"))
+			game_scene.connect("timer_update", Callable(self, "_on_timer_update"))
 		else:
 			print("Erro ao carregar cena:", game_path)
 	else:
@@ -130,7 +131,6 @@ func _on_game_finished():
 		game_scene = null
 		
 	if current_enemy_hp == 0:
-		$PlayerPanel/ProgressBarTimer.show()
 		# Primeira vez completando o estágio
 		if State.save_data[State.stage] == false:
 			# Atribuir atributos
@@ -159,11 +159,11 @@ func _on_game_finished():
 			FadeLayer.fade_to_scene("res://scenes/mapa.tscn")
 	else:
 		enemy_turn()
+		$PlayerPanel/ProgressBarTimer/Label.text = "%.1f" % State.time
+		$PlayerPanel/ProgressBarTimer.value = State.time
 
 func enemy_turn():
 	var enemy_damage = enemy.damage - State.defense
-	
-	$PlayerPanel/ProgressBarTimer.show()
 	
 	current_player_hp = max(0, current_player_hp - enemy_damage)
 	set_hp($PlayerPanel/ProgressBar, current_player_hp, State.max_hp)
@@ -230,3 +230,7 @@ func _on_wrong_answer():
 func _on_pause_button_pressed() -> void:
 	get_tree().paused = not get_tree().paused
 	$PauseLayer/PauseScreen.visible = not $PauseLayer/PauseScreen.visible
+
+func _on_timer_update(time):
+	$PlayerPanel/ProgressBarTimer/Label.text = "%.1f" % time
+	$PlayerPanel/ProgressBarTimer.value = time

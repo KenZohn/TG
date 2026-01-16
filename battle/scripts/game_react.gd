@@ -3,6 +3,7 @@ extends Control
 signal correct_answer_hit(damage)
 signal wrong_answer()
 signal game_finished()
+signal timer_update(time)
 
 var start_time: float = 0.0
 var reaction_time: float = 0.0
@@ -10,7 +11,6 @@ var ready_to_react: bool = false
 var damage = 30
 
 func _ready():
-	$ProgressBarTimer/Label.text = "%.1f" % State.time
 	$Panel/LabelMensage.text = ""
 	$WaitTimer.wait_time = randf_range(2.0, 6.0) # Intervalo de tempo aleatório
 	$WaitTimer.timeout.connect(_on_WaitTimer_timeout)

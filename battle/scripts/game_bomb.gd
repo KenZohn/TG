@@ -3,6 +3,7 @@ extends Control
 signal correct_answer_hit(damage)
 signal wrong_answer()
 signal game_finished()
+signal timer_update(time)
 
 const TOTAL_CELLS = 25
 var dots = []
@@ -232,8 +233,6 @@ func _on_cell_gui_input(event, index):
 # Timers
 func start_timer():
 	$TimerGame.start()
-	$ProgressBarTimer.max_value = $TimerGame.wait_time
-	$ProgressBarTimer.value = $TimerGame.wait_time
 	
 func setup_timers():
 	$TimerGame.wait_time = State.time
@@ -247,8 +246,7 @@ func setup_timers():
 
 func _update_timer_display():
 	var remaining = $TimerGame.time_left
-	$ProgressBarTimer/Label.text = "%.1f" % remaining
-	$ProgressBarTimer.value = remaining
+	emit_signal("timer_update", remaining)
 
 func _on_game_timeout():
 	emit_signal("game_finished")

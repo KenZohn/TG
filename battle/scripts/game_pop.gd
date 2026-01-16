@@ -3,6 +3,7 @@ extends Control
 signal correct_answer_hit(damage)
 signal wrong_answer()
 signal game_finished()
+signal timer_update(time)
 
 @onready var game_area = $Area
 var game_over = false
@@ -20,7 +21,6 @@ var buttons = []
 var damage = 20
 
 func _ready():
-	$ProgressBarTimer/Label.text = "%.1f" % State.time
 	#style.set_corner_radius_all(25)
 	setup_timers()
 	start_game()
@@ -66,8 +66,6 @@ func start_game():
 		buttons.append(button)
 		
 	$TimerGame.start()
-	$ProgressBarTimer.max_value = $TimerGame.wait_time
-	$ProgressBarTimer.value = $TimerGame.wait_time
 
 func _on_button_pressed(clicked_num):
 	if game_over:
@@ -129,8 +127,7 @@ func setup_timers():
 
 func _update_timer_display():
 	var remaining = $TimerGame.time_left
-	$ProgressBarTimer/Label.text = "%.1f" % remaining
-	$ProgressBarTimer.value = remaining
+	emit_signal("timer_update", remaining)
 
 func _on_game_timeout():
 	emit_signal("game_finished")

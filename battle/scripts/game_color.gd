@@ -3,6 +3,7 @@ extends Control
 signal correct_answer_hit(damages)
 signal wrong_answer()
 signal game_finished()
+signal timer_update(time)
 
 var color_map = {
 	"Vermelho": Color.RED,
@@ -16,8 +17,6 @@ var awaiting_response: bool = false
 var damage = 2
 
 func _ready():
-	$ProgressBarTimer/Label.text = "%.1f" % State.time
-	
 	connect_buttons()
 	setup_timers()
 	start_game()
@@ -25,8 +24,7 @@ func _ready():
 
 func _update_timer_display():
 	var remaining = $TimerGame.time_left
-	$ProgressBarTimer/Label.text = "%.1f" % remaining
-	$ProgressBarTimer.value = remaining
+	emit_signal("timer_update", remaining)
 
 func setup_timers():
 	$TimerGame.wait_time = State.time
@@ -43,8 +41,6 @@ func setup_timers():
 
 func start_game():
 	$TimerGame.start()
-	$ProgressBarTimer.max_value = $TimerGame.wait_time
-	$ProgressBarTimer.value = $TimerGame.wait_time
 	generate_challenge()
 
 func generate_challenge():

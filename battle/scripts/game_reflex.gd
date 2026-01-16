@@ -2,6 +2,7 @@ extends Control
 
 signal correct_answer_hit(damage)
 signal game_finished()
+signal timer_update(time)
 
 @onready var spawn_timer = $TimerSpawn
 @onready var spawn_area = $SpawnArea
@@ -10,8 +11,6 @@ var current_button: Node = null
 var damage = 2
 
 func _ready():
-	$ProgressBarTimer/Label.text = "%.1f" % State.time
-	
 	spawn_timer.start()
 	setup_timers()
 	start_game()
@@ -19,8 +18,6 @@ func _ready():
 
 func start_game():
 	$TimerGame.start()
-	$ProgressBarTimer.max_value = $TimerGame.wait_time
-	$ProgressBarTimer.value = $TimerGame.wait_time
 
 func _on_spawn_timer_timeout() -> void:
 	if current_button and current_button.is_inside_tree():
@@ -61,8 +58,7 @@ func setup_timers():
 
 func _update_timer_display():
 	var remaining = $TimerGame.time_left
-	$ProgressBarTimer/Label.text = "%.1f" % remaining
-	$ProgressBarTimer.value = remaining
+	emit_signal("timer_update", remaining)
 
 func _on_interval_timeout():
 	if $TimerGame.is_stopped():

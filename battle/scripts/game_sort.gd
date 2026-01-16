@@ -3,6 +3,7 @@ extends Control
 signal correct_answer_hit(damage)
 signal wrong_answer()
 signal game_finished()
+signal timer_update(time)
 
 var todas_imagens = ["circle", "square", "triangle", "cross"]
 var imagens_esquerda = []
@@ -24,8 +25,6 @@ var awaiting_response: bool = false
 @onready var timer_jogo = $TimerGame
 
 func _ready():
-	$ProgressBarTimer/Label.text = "%.1f" % State.time
-	
 	randomize()
 
 	var imagens_embaralhadas = todas_imagens.duplicate()
@@ -80,14 +79,11 @@ func verificar_resposta(lado_escolhido):
 
 func iniciar_temporizador():
 	timer_jogo.start()
-	$ProgressBarTimer.max_value = $TimerGame.wait_time
-	$ProgressBarTimer.value = $TimerGame.wait_time
 	timer_jogo.timeout.connect(_on_game_timeout)
 
 func _update_timer_display():
 	var remaining = $TimerGame.time_left
-	$ProgressBarTimer/Label.text = "%.1f" % remaining
-	$ProgressBarTimer.value = remaining
+	emit_signal("timer_update", remaining)
 
 func setup_timers():
 	$TimerGame.wait_time = State.time
