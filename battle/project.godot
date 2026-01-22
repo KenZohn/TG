@@ -23,6 +23,7 @@ FadeLayer="*res://scenes/fade_layer.tscn"
 BGMManager="*res://scripts/bgm_manager.gd"
 SESelect="*res://scripts/se_select.gd"
 SEMouseEntered="*res://scripts/se_mouse_entered.gd"
+SettingsManager="*res://scripts/settings_manager.gd"
 
 [display]
 

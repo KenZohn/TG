@@ -7,8 +7,9 @@ var save_data = {}
 @onready var press_start = $Start
 
 func _ready() -> void:
+	SettingsManager.load_settings()
 	BGMManager.play_bgm(BGMManager.bgm_title)
-	
+
 	var title_tween = create_tween()
 	var subtitle_tween = create_tween()
 	

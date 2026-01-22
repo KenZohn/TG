@@ -30,4 +30,5 @@ func _on_sfx_control_value_changed(value: float) -> void:
 		AudioServer.set_bus_mute(sfx_bus, false)
 
 func _on_return_pressed() -> void:
+	SettingsManager.save_settings(music_slider.value, sfx_slider.value)
 	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
