@@ -16,11 +16,11 @@ var damage = 20
 var bomb_sprite = preload("res://assets/sprites/bomba.png")
 
 func _ready():
-	setup_timers()
 	generate_cells()
 	generate_points()
 	await generate_bombs()
 	show_dots()
+	setup_timers()
 	start_timer()
 
 func generate_cells():
