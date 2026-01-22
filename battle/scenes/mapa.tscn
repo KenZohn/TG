@@ -1,4 +1,4 @@
-[gd_scene load_steps=199 format=4 uid="uid://ddrr6dc4gsi00"]
+[gd_scene load_steps=185 format=4 uid="uid://ddrr6dc4gsi00"]
 
 [ext_resource type="Texture2D" uid="uid://vvwwfdjgbmx5" path="res://sprites/Tiny Wonder Forest 1.0/tilemaps/summer tilemap.png" id="1_n7x4w"]
 [ext_resource type="Texture2D" uid="uid://3wmurs4lortu" path="res://sprites/Tiny Wonder Forest 1.0/tilemaps/spring tilemap.png" id="2_8ukg1"]
@@ -51,22 +51,8 @@
 [ext_resource type="Texture2D" uid="uid://crkv58ajjt86f" path="res://sprites/submission_daneeklu/tilesets/fence_alt.png" id="48_cvsdw"]
 [ext_resource type="PackedScene" uid="uid://dgajq8exectl1" path="res://scenes/character_body_2d.tscn" id="49_7teor"]
 [ext_resource type="Script" uid="uid://nk45gc008pdl" path="res://scripts/camera_2d_2.gd" id="50_b2e1q"]
-[ext_resource type="Script" uid="uid://b8ck1csbgmvqg" path="res://scripts/m_2.gd" id="52_d21tt"]
-[ext_resource type="Script" uid="uid://bpimp8yt5fock" path="res://scripts/m_3.gd" id="53_d21tt"]
-[ext_resource type="Script" uid="uid://8uelilbresk2" path="res://scripts/m_1.gd" id="53_w8man"]
-[ext_resource type="Script" uid="uid://bllemhcxv1xlh" path="res://scripts/a_1.gd" id="54_1e5sf"]
-[ext_resource type="Script" uid="uid://igbmk12tqq2v" path="res://scripts/a_2.gd" id="55_web36"]
-[ext_resource type="Script" uid="uid://be3kre3fj0t3b" path="res://scripts/f_1.gd" id="56_tvglv"]
-[ext_resource type="Script" uid="uid://c52jiddvo7acj" path="res://scripts/a_3.gd" id="56_wfh2w"]
-[ext_resource type="Script" uid="uid://iuy1tvta4crt" path="res://scripts/f_2.gd" id="57_uy4u1"]
-[ext_resource type="Script" uid="uid://dtrqlgin0edsl" path="res://scripts/f_3.gd" id="58_trhn6"]
-[ext_resource type="Script" uid="uid://bt5kda0dofmod" path="res://scripts/c_1.gd" id="59_r4cvx"]
+[ext_resource type="Script" uid="uid://bmp250dkiorea" path="res://scripts/phase_area.gd" id="50_r4cvx"]
 [ext_resource type="PackedScene" uid="uid://d2lkfnq3ewo5a" path="res://scenes/radar_chart.tscn" id="59_web36"]
-[ext_resource type="Script" uid="uid://du70n6cxer425" path="res://scripts/c_2.gd" id="60_30hcf"]
-[ext_resource type="Script" uid="uid://0ks86ba1uasg" path="res://scripts/c_3.gd" id="61_l8bn1"]
-[ext_resource type="Script" uid="uid://cdsdsrj5pam7k" path="res://scripts/r_1.gd" id="62_7dsj1"]
-[ext_resource type="Script" uid="uid://b0kychjymbg37" path="res://scripts/r_2.gd" id="63_jg6go"]
-[ext_resource type="Script" uid="uid://dkdkk52xxg63h" path="res://scripts/r_3.gd" id="64_3bp8b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tq3f3"]
 texture = ExtResource("1_n7x4w")
@@ -26077,7 +26063,12 @@ tile_set = SubResource("TileSet_kbtph")
 
 [node name="M1" type="Area2D" parent="Stages"]
 position = Vector2(163, 240)
-script = ExtResource("53_w8man")
+script = ExtResource("50_r4cvx")
+phase_name = "M1"
+stage = "m1"
+game = "bomb"
+enemy = "slime"
+memory = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/M1"]
 shape = SubResource("RectangleShape2D_qqli0")
@@ -26118,7 +26109,12 @@ vertical_alignment = 1
 
 [node name="M2" type="Area2D" parent="Stages"]
 position = Vector2(343, 327)
-script = ExtResource("52_d21tt")
+script = ExtResource("50_r4cvx")
+phase_name = "M2"
+stage = "m2"
+game = "bomb"
+enemy = "zombie"
+memory = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/M2"]
 shape = SubResource("RectangleShape2D_qqli0")
@@ -26161,7 +26157,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="M3" type="Area2D" parent="Stages"]
 position = Vector2(527, 346)
-script = ExtResource("53_d21tt")
+script = ExtResource("50_r4cvx")
+phase_name = "M3"
+stage = "m3"
+game = "bomb"
+enemy = "goblin"
+memory = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/M3"]
 shape = SubResource("RectangleShape2D_qqli0")
@@ -26204,7 +26205,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="A1" type="Area2D" parent="Stages"]
 position = Vector2(647, 475)
-script = ExtResource("54_1e5sf")
+script = ExtResource("50_r4cvx")
+phase_name = "A1"
+stage = "a1"
+game = "color"
+enemy = "slime"
+agility = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/A1"]
 shape = SubResource("RectangleShape2D_qqli0")
@@ -26247,7 +26253,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="A2" type="Area2D" parent="Stages"]
 position = Vector2(229, 810)
-script = ExtResource("55_web36")
+script = ExtResource("50_r4cvx")
+phase_name = "A2"
+stage = "a2"
+game = "color"
+enemy = "zombie"
+agility = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/A2"]
 shape = SubResource("RectangleShape2D_qqli0")
@@ -26290,7 +26301,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="A3" type="Area2D" parent="Stages"]
 position = Vector2(-107, 508)
-script = ExtResource("56_wfh2w")
+script = ExtResource("50_r4cvx")
+phase_name = "A3"
+stage = "a3"
+game = "color"
+enemy = "goblin"
+agility = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/A3"]
 shape = SubResource("RectangleShape2D_qqli0")
@@ -26333,7 +26349,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="F1" type="Area2D" parent="Stages"]
 position = Vector2(629, 741)
-script = ExtResource("56_tvglv")
+script = ExtResource("50_r4cvx")
+phase_name = "F1"
+stage = "f1"
+game = "sort"
+enemy = "slime"
+focus = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/F1"]
 shape = SubResource("RectangleShape2D_qqli0")
@@ -26376,7 +26397,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="F2" type="Area2D" parent="Stages"]
 position = Vector2(955, 574)
-script = ExtResource("57_uy4u1")
+script = ExtResource("50_r4cvx")
+phase_name = "F2"
+stage = "f2"
+game = "sort"
+enemy = "zombie"
+focus = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/F2"]
 shape = SubResource("RectangleShape2D_qqli0")
@@ -26419,7 +26445,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="F3" type="Area2D" parent="Stages"]
 position = Vector2(1320, 654)
-script = ExtResource("58_trhn6")
+script = ExtResource("50_r4cvx")
+phase_name = "F3"
+stage = "f3"
+game = "sort"
+enemy = "goblin"
+focus = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/F3"]
 shape = SubResource("RectangleShape2D_qqli0")
@@ -26462,7 +26493,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="C1" type="Area2D" parent="Stages"]
 position = Vector2(1557, 819)
-script = ExtResource("59_r4cvx")
+script = ExtResource("50_r4cvx")
+phase_name = "C1"
+stage = "c1"
+game = "reflex"
+enemy = "slime"
+coordination = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/C1"]
 shape = SubResource("RectangleShape2D_qqli0")
@@ -26505,7 +26541,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="C2" type="Area2D" parent="Stages"]
 position = Vector2(1264, 415)
-script = ExtResource("60_30hcf")
+script = ExtResource("50_r4cvx")
+phase_name = "C2"
+stage = "c2"
+game = "reflex"
+enemy = "zombie"
+coordination = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/C2"]
 shape = SubResource("RectangleShape2D_qqli0")
@@ -26548,7 +26589,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="C3" type="Area2D" parent="Stages"]
 position = Vector2(1079, 234)
-script = ExtResource("61_l8bn1")
+script = ExtResource("50_r4cvx")
+phase_name = "C3"
+stage = "c3"
+game = "reflex"
+enemy = "goblin"
+coordination = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/C3"]
 shape = SubResource("RectangleShape2D_qqli0")
@@ -26591,7 +26637,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="R1" type="Area2D" parent="Stages"]
 position = Vector2(1077, 53)
-script = ExtResource("62_7dsj1")
+script = ExtResource("50_r4cvx")
+phase_name = "R1"
+stage = "r1"
+game = "pop"
+enemy = "slime"
+reasoning = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/R1"]
 shape = SubResource("RectangleShape2D_qqli0")
@@ -26634,7 +26685,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="R2" type="Area2D" parent="Stages"]
 position = Vector2(1542, 125)
-script = ExtResource("63_jg6go")
+script = ExtResource("50_r4cvx")
+phase_name = "R2"
+stage = "r2"
+game = "pop"
+enemy = "zombie"
+reasoning = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/R2"]
 shape = SubResource("RectangleShape2D_qqli0")
@@ -26677,7 +26733,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="R3" type="Area2D" parent="Stages"]
 position = Vector2(1791, 271)
-script = ExtResource("64_3bp8b")
+script = ExtResource("50_r4cvx")
+phase_name = "R3"
+stage = "r3"
+game = "pop"
+enemy = "goblin"
+reasoning = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/R3"]
 shape = SubResource("RectangleShape2D_qqli0")

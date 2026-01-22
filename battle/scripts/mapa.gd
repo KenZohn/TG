@@ -1,3 +1,4 @@
+@tool
 extends Node2D
 
 @onready var stage_panel = $Stages
