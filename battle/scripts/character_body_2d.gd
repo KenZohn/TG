@@ -50,4 +50,3 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	
 	 # colocar o codigo para pular (jump) botao espaço fisico
-	

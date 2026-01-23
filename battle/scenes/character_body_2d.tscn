@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b5kdl07qtwmnb" path="res://sprites/Tiny Wonder Forest 1.0/characters/main character old/walk and idle.png" id="1_f50pn"]
 [ext_resource type="Script" uid="uid://c211r7rfsj4r2" path="res://scripts/character_body_2d.gd" id="1_ghijl"]
+[ext_resource type="Script" uid="uid://dxgx02q8nvj11" path="res://scripts/camera_2d.gd" id="3_dn4c7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ghijl"]
 atlas = ExtResource("1_f50pn")
@@ -161,10 +162,6 @@ animations = [{
 "speed": 2.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_g2brh"]
-script/source = "extends AnimatedSprite2D
-"
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f50pn"]
 radius = 4.23529
 height = 19.5
@@ -177,7 +174,6 @@ scale = Vector2(1.41667, 1.33333)
 sprite_frames = SubResource("SpriteFrames_qnedo")
 animation = &"andando_tras"
 autoplay = "parado"
-script = SubResource("GDScript_g2brh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 texture_filter = 1
@@ -187,3 +183,4 @@ shape = SubResource("CapsuleShape2D_f50pn")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.8, 1.8)
+script = ExtResource("3_dn4c7")

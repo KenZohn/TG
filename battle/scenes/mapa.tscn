@@ -1,4 +1,4 @@
-[gd_scene load_steps=185 format=4 uid="uid://ddrr6dc4gsi00"]
+[gd_scene load_steps=184 format=4 uid="uid://ddrr6dc4gsi00"]
 
 [ext_resource type="Texture2D" uid="uid://vvwwfdjgbmx5" path="res://sprites/Tiny Wonder Forest 1.0/tilemaps/summer tilemap.png" id="1_n7x4w"]
 [ext_resource type="Texture2D" uid="uid://3wmurs4lortu" path="res://sprites/Tiny Wonder Forest 1.0/tilemaps/spring tilemap.png" id="2_8ukg1"]
@@ -50,7 +50,6 @@
 [ext_resource type="Texture2D" uid="uid://btqwsgtyk02je" path="res://sprites/submission_daneeklu/tilesets/plants.png" id="47_qkvvp"]
 [ext_resource type="Texture2D" uid="uid://crkv58ajjt86f" path="res://sprites/submission_daneeklu/tilesets/fence_alt.png" id="48_cvsdw"]
 [ext_resource type="PackedScene" uid="uid://dgajq8exectl1" path="res://scenes/character_body_2d.tscn" id="49_7teor"]
-[ext_resource type="Script" uid="uid://nk45gc008pdl" path="res://scripts/camera_2d_2.gd" id="50_b2e1q"]
 [ext_resource type="Script" uid="uid://bmp250dkiorea" path="res://scripts/phase_area.gd" id="50_r4cvx"]
 [ext_resource type="PackedScene" uid="uid://d2lkfnq3ewo5a" path="res://scenes/radar_chart.tscn" id="59_web36"]
 
@@ -27169,10 +27168,6 @@ text = "Voltar para o Menu Inicial"
 [node name="CharacterBody2D" parent="." instance=ExtResource("49_7teor")]
 z_index = 1
 position = Vector2(181, 130)
-
-[node name="Camera2D2" type="Camera2D" parent="CharacterBody2D"]
-zoom = Vector2(1.8, 1.8)
-script = ExtResource("50_b2e1q")
 
 [connection signal="body_entered" from="Stages/M1" to="Stages/M1" method="_on_body_entered"]
 [connection signal="body_exited" from="Stages/M1" to="Stages/M1" method="_on_body_exited"]
