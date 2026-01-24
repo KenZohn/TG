@@ -1,5 +1,7 @@
 extends Area2D
 
+signal zoom_in_transition
+
 @export var phase_name: String
 @export var stage: String
 @export var game: String
@@ -34,6 +36,7 @@ func enter_stage():
 	State.focus = focus
 	State.coordination = coordination
 	State.reasoning = reasoning
+	emit_signal("zoom_in_transition")
 	FadeLayer.fade_to_scene("res://scenes/battle.tscn")
 
 func _on_body_entered(body: Node2D) -> void:

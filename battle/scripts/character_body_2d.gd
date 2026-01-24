@@ -1,11 +1,20 @@
 extends CharacterBody2D
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+@onready var camera = $Camera2D
+
 const SPEED = 150.0
 const JUMP_VELOCITY = -150.0
 
 func _ready():
 	add_to_group("jogador")
+
+	var mapa = get_parent()  # porque o CharacterBody2D está dentro do Map
+	var stages = mapa.get_node("Stages")
+
+	for stage in stages.get_children():
+		if stage.has_signal("zoom_in_transition"):
+			stage.connect("zoom_in_transition", Callable(self, "_on_zoom_in_transition"))
 
 func _physics_process(_delta: float) -> void:
 	# Handle jump.
@@ -50,3 +59,9 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	
 	 # colocar o codigo para pular (jump) botao espaço fisico
+
+func _on_zoom_in_transition():
+	var tween = create_tween()
+	camera.zoom = Vector2(3,3)
+	tween.tween_property(camera, "zoom", Vector2(1,1), 1.5)
+	tween.connect("finished", Callable(self, "_start_fase"))

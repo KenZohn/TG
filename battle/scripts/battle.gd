@@ -156,7 +156,7 @@ func _on_game_finished():
 		await get_tree().create_timer(0.5).timeout
 		if is_inside_tree():
 			#FadeLayer.fade_to_scene("res://scenes/stage_select.tscn")
-			FadeLayer.fade_to_scene("res://scenes/mapa.tscn")
+			FadeLayer.fade_to_scene("res://scenes/map.tscn")
 	else:
 		enemy_turn()
 		$PlayerPanel/ProgressBarTimer/Label.text = "%.1f" % State.time
@@ -182,7 +182,7 @@ func enemy_turn():
 		
 		await get_tree().create_timer(0.25).timeout
 		#FadeLayer.fade_to_scene("res://scenes/stage_select.tscn")
-		FadeLayer.fade_to_scene("res://scenes/mapa.tscn")
+		FadeLayer.fade_to_scene("res://scenes/map.tscn")
 	
 	$RulesPanel.show()
 

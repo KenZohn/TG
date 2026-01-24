@@ -39,7 +39,7 @@ func handle_slot(path):
 	State.save_path = path  
 	#print("Dados carregados:", State.save_data)
 	#FadeLayer.fade_to_scene("res://scenes/stage_select.tscn")
-	FadeLayer.fade_to_scene("res://scenes/mapa.tscn")
+	FadeLayer.fade_to_scene("res://scenes/map.tscn")
 
 func _on_return_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
@@ -49,7 +49,7 @@ func _on_overwrite_dialog_confirmed() -> void:
 	State.save_path = pending_path
 	SESelect.play()
 	#FadeLayer.fade_to_scene("res://scenes/stage_select.tscn")
-	FadeLayer.fade_to_scene("res://scenes/mapa.tscn")
+	FadeLayer.fade_to_scene("res://scenes/map.tscn")
 
 func get_save_preview(path: String, slot_index: int) -> Dictionary:
 	if not FileAccess.file_exists(path):
