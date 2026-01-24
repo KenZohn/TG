@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal zoom_finished
+
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var camera = $Camera2D
 
@@ -9,7 +11,7 @@ const JUMP_VELOCITY = -150.0
 func _ready():
 	add_to_group("jogador")
 
-	var mapa = get_parent()  # porque o CharacterBody2D está dentro do Map
+	var mapa = get_parent()
 	var stages = mapa.get_node("Stages")
 
 	for stage in stages.get_children():
@@ -62,6 +64,8 @@ func _physics_process(_delta: float) -> void:
 
 func _on_zoom_in_transition():
 	var tween = create_tween()
-	camera.zoom = Vector2(3,3)
-	tween.tween_property(camera, "zoom", Vector2(1,1), 1.5)
-	tween.connect("finished", Callable(self, "_start_fase"))
+	camera.zoom = Vector2(1.8,1.8)
+	tween.tween_property(camera, "zoom", Vector2(5,5), 0.5)
+
+	await tween.finished
+	emit_signal("zoom_finished")

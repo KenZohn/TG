@@ -26067,7 +26067,11 @@ phase_name = "M1"
 stage = "m1"
 game = "bomb"
 enemy = "slime"
+agility = null
 memory = 3
+focus = null
+coordination = null
+reasoning = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/M1"]
 shape = SubResource("RectangleShape2D_qqli0")
@@ -26113,7 +26117,11 @@ phase_name = "M2"
 stage = "m2"
 game = "bomb"
 enemy = "zombie"
+agility = null
 memory = 4
+focus = null
+coordination = null
+reasoning = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/M2"]
 shape = SubResource("RectangleShape2D_qqli0")
@@ -26161,7 +26169,11 @@ phase_name = "M3"
 stage = "m3"
 game = "bomb"
 enemy = "goblin"
+agility = null
 memory = 5
+focus = null
+coordination = null
+reasoning = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/M3"]
 shape = SubResource("RectangleShape2D_qqli0")
@@ -26210,6 +26222,10 @@ stage = "a1"
 game = "color"
 enemy = "slime"
 agility = 3
+memory = null
+focus = null
+coordination = null
+reasoning = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/A1"]
 shape = SubResource("RectangleShape2D_qqli0")
@@ -26258,6 +26274,10 @@ stage = "a2"
 game = "color"
 enemy = "zombie"
 agility = 4
+memory = null
+focus = null
+coordination = null
+reasoning = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/A2"]
 shape = SubResource("RectangleShape2D_qqli0")
@@ -26306,6 +26326,10 @@ stage = "a3"
 game = "color"
 enemy = "goblin"
 agility = 5
+memory = null
+focus = null
+coordination = null
+reasoning = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/A3"]
 shape = SubResource("RectangleShape2D_qqli0")
@@ -26353,7 +26377,11 @@ phase_name = "F1"
 stage = "f1"
 game = "sort"
 enemy = "slime"
+agility = null
+memory = null
 focus = 3
+coordination = null
+reasoning = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/F1"]
 shape = SubResource("RectangleShape2D_qqli0")
@@ -26401,7 +26429,11 @@ phase_name = "F2"
 stage = "f2"
 game = "sort"
 enemy = "zombie"
+agility = null
+memory = null
 focus = 4
+coordination = null
+reasoning = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/F2"]
 shape = SubResource("RectangleShape2D_qqli0")
@@ -26449,7 +26481,11 @@ phase_name = "F3"
 stage = "f3"
 game = "sort"
 enemy = "goblin"
+agility = null
+memory = null
 focus = 5
+coordination = null
+reasoning = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/F3"]
 shape = SubResource("RectangleShape2D_qqli0")
@@ -26497,7 +26533,11 @@ phase_name = "C1"
 stage = "c1"
 game = "reflex"
 enemy = "slime"
+agility = null
+memory = null
+focus = null
 coordination = 3
+reasoning = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/C1"]
 shape = SubResource("RectangleShape2D_qqli0")
@@ -26545,7 +26585,11 @@ phase_name = "C2"
 stage = "c2"
 game = "reflex"
 enemy = "zombie"
+agility = null
+memory = null
+focus = null
 coordination = 4
+reasoning = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/C2"]
 shape = SubResource("RectangleShape2D_qqli0")
@@ -26593,7 +26637,11 @@ phase_name = "C3"
 stage = "c3"
 game = "reflex"
 enemy = "goblin"
+agility = null
+memory = null
+focus = null
 coordination = 5
+reasoning = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/C3"]
 shape = SubResource("RectangleShape2D_qqli0")
@@ -26641,6 +26689,10 @@ phase_name = "R1"
 stage = "r1"
 game = "pop"
 enemy = "slime"
+agility = null
+memory = null
+focus = null
+coordination = null
 reasoning = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/R1"]
@@ -26689,6 +26741,10 @@ phase_name = "R2"
 stage = "r2"
 game = "pop"
 enemy = "zombie"
+agility = null
+memory = null
+focus = null
+coordination = null
 reasoning = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/R2"]
@@ -26737,6 +26793,10 @@ phase_name = "R3"
 stage = "r3"
 game = "pop"
 enemy = "goblin"
+agility = null
+memory = null
+focus = null
+coordination = null
 reasoning = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/R3"]

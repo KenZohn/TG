@@ -6,7 +6,7 @@ func play():
 	var player = AudioStreamPlayer.new()
 	player.stream = hover_sound
 	player.bus= "SFX"
-	player.volume_db = -15   # diminui o volume em 10 dB
+	player.volume_db = -15
 	add_child(player)
 	player.play()
 	player.connect("finished", Callable(player, "queue_free"))
