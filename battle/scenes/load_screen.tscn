@@ -44,6 +44,48 @@ theme_override_fonts/font = ExtResource("3_ff1ah")
 theme_override_font_sizes/font_size = 20
 text = "DEBUG"
 
+[node name="NameDialog" type="ConfirmationDialog" parent="."]
+oversampling_override = 1.0
+title = ""
+initial_position = 2
+size = Vector2i(400, 150)
+theme = ExtResource("4_yk5qj")
+ok_button_text = "Confirmar"
+cancel_button_text = "Cancelar"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NameDialog"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 392.0
+offset_bottom = 89.0
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="NameDialog/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ff1ah")
+theme_override_font_sizes/font_size = 16
+text = "Digite o nome do seu personagem:"
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="NameDialog/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ff1ah")
+theme_override_font_sizes/font_size = 18
+placeholder_text = "Ex: Aventureiro"
+alignment = 1
+max_length = 20
+caret_blink = true
+
+[node name="ErrorLabel" type="Label" parent="NameDialog/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+theme_override_fonts/font = ExtResource("3_ff1ah")
+theme_override_font_sizes/font_size = 12
+text = "Por favor, insira um nome!"
+horizontal_alignment = 1
+
 [node name="OverwriteDialog" type="ConfirmationDialog" parent="."]
 oversampling_override = 1.0
 title = ""
@@ -107,5 +149,6 @@ theme = ExtResource("4_yk5qj")
 text = "Voltar"
 script = ExtResource("6_srf86")
 
+[connection signal="confirmed" from="NameDialog" to="." method="_on_name_dialog_confirmed"]
 [connection signal="confirmed" from="OverwriteDialog" to="." method="_on_overwrite_dialog_confirmed"]
 [connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainerPrincipal/Return" to="." method="_on_return_pressed"]

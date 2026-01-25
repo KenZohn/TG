@@ -2,6 +2,7 @@ extends Node
 
 func new_game(path):
 	var save_data = {
+		"player_name": '',
 		"memory": 0,
 		"agility": 0,
 		"focus": 0,

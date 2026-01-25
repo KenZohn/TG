@@ -32,7 +32,11 @@ func handle_slot(path):
 			$OverwriteDialog.popup_centered()
 			return
 		else:
-			save_manager.new_game(path)
+			pending_path = path
+			$NameDialog.popup_centered()
+			$NameDialog/VBoxContainer/LineEdit.grab_focus()
+			$NameDialog/VBoxContainer/LineEdit.text = ""
+			return
 	else:
 		if not save_manager.load_game(path):
 			$ErrorLabel.visible = true
@@ -42,18 +46,31 @@ func handle_slot(path):
 			return
 	
 	State.save_path = path  
-	#print("Dados carregados:", State.save_data)
-	#FadeLayer.fade_to_scene("res://scenes/stage_select.tscn")
 	FadeLayer.fade_to_scene("res://scenes/map.tscn")
 
 func _on_return_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
 
 func _on_overwrite_dialog_confirmed() -> void:
+	$NameDialog.popup_centered()
+	$NameDialog/VBoxContainer/LineEdit.grab_focus()
+	$NameDialog/VBoxContainer/LineEdit.text = ""
+
+func _on_name_dialog_confirmed() -> void:
+	var name_input = $NameDialog/VBoxContainer/LineEdit.text.strip_edges()
+	
+	if name_input.is_empty():
+		$NameDialog/VBoxContainer/ErrorLabel.visible = true
+		$NameDialog/VBoxContainer/ErrorLabel.text = "Por favor, insira um nome!"
+		return
+	
+	# Creates the save and updates the character's name
 	save_manager.new_game(pending_path)
+	State.save_data["player_name"] = name_input
+	save_manager.save_game(pending_path)  # Save the character with their name
+	
 	State.save_path = pending_path
 	SESelect.play()
-	#FadeLayer.fade_to_scene("res://scenes/stage_select.tscn")
 	FadeLayer.fade_to_scene("res://scenes/map.tscn")
 
 func get_save_preview(path: String, slot_index: int) -> Dictionary:
@@ -83,7 +100,7 @@ func get_save_preview(path: String, slot_index: int) -> Dictionary:
 	return {
 		"empty": false,
 		"slot_name": "Save %d" % slot_index,
-		"character": "Herói",
+		"character": data.get("player_name", "Herói"),
 		"experience": data.get("experience", 0),
 		"location": "Local desconhecido",
 		"playtime": "0h 00min",
