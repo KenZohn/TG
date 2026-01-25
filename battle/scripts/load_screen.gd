@@ -14,6 +14,11 @@ func _ready():
 	
 	for i in range(paths.size()):
 		var path = paths[i]
+		
+		# If it's "Load Game" and the save file doesn't exist, skip this slot
+		if not State.is_new_game and not FileAccess.file_exists(path):
+			continue
+			
 		var data = get_save_preview(path, i+1)
 		var card = preload("res://scenes/save_card.tscn").instantiate()
 		card_container.add_child(card)
