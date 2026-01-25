@@ -32,10 +32,10 @@ func _physics_process(_delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 	if Input.is_action_just_pressed("left"):
-		$AnimatedSprite2D.play("andando_tras")
+		anim.play("andando_tras")
 		
 	if Input.is_action_just_pressed("right"):
-		$AnimatedSprite2D.play("andando_frente")
+		anim.play("andando_frente")
 	
 	# Vertical movement (up/down) - CORRIGIDO
 	var direction_y := Input.get_axis("up", "down")
@@ -52,7 +52,7 @@ func _physics_process(_delta: float) -> void:
 			anim.play("andando_tras")
 		elif direction_x < 0:
 			anim.flip_h = true
-			anim.play("walk")
+			anim.play("andando_frente")
 		#else:
 			#anim.play('idle')
 	#else:

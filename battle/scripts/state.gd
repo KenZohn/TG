@@ -29,6 +29,9 @@ var focus = 0
 var coordination = 0
 var reasoning = 0
 
+# Mapa
+var player_position : Vector2 = Vector2.ZERO
+
 # Save
 var save_data = {}
 

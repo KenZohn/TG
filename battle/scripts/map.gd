@@ -2,6 +2,9 @@
 extends Node2D
 
 @onready var stage_panel = $Stages
+@onready var hp_bar_label = $CanvasLayer/CharacterStats/LifeBar/Label
+@onready var timer_bar_label = $CanvasLayer/CharacterStats/TimeBar/Label
+@onready var exp_value_label = $CanvasLayer/CharacterStats/PanelExp/LabelExpValue
 
 func _ready():
 	BGMManager.play_bgm(BGMManager.bgm_stage_select)
@@ -9,9 +12,9 @@ func _ready():
 	update_stages()
 	set_state()
 	
-	$CanvasLayer/CharacterStats/LifeBar/Label.text = "%d/%d" % [State.max_hp, State.max_hp]
-	$CanvasLayer/CharacterStats/TimeBar/Label.text = "%.1f" % State.time
-	$CanvasLayer/CharacterStats/PanelExp/LabelExpValue.text = "%d" % State.save_data["experience"]
+	hp_bar_label.text = "%d/%d" % [State.max_hp, State.max_hp]
+	timer_bar_label.text = "%.1f" % State.time
+	exp_value_label.text = "%d" % State.save_data["experience"]
 
 func update_stages():
 	for child in stage_panel.get_children():
