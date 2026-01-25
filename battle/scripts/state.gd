@@ -41,3 +41,6 @@ func reset_state():
 	State.focus = 0
 	State.coordination = 0
 	State.reasoning = 0
+
+func reset_position():
+	State.player_position = Vector2.ZERO

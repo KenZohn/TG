@@ -10,6 +10,7 @@ const JUMP_VELOCITY = -150.0
 
 func _ready():
 	add_to_group("jogador")
+	set_player_position()
 
 	var mapa = get_parent()
 	var stages = mapa.get_node("Stages")
@@ -69,3 +70,11 @@ func _on_zoom_in_transition():
 
 	await tween.finished
 	emit_signal("zoom_finished")
+
+func set_player_position():
+	if State.save_data.has("player_position"):
+		var pos = State.save_data["player_position"]
+		State.player_position = Vector2(pos[0], pos[1])
+	
+	if State.player_position != Vector2.ZERO:
+		get_tree().current_scene.get_node("CharacterBody2D").global_position = State.player_position

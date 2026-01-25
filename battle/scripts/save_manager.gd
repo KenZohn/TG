@@ -24,6 +24,7 @@ func new_game(path):
 	# Atualiza o estado global
 	State.save_data = save_data
 	State.reset_state()
+	State.reset_position()
 	
 func load_game(path):
 	if FileAccess.file_exists(path):
