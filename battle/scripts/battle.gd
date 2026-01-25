@@ -4,11 +4,34 @@ var save_manager = preload("res://scripts/save_manager.gd").new()
 
 signal textbox_closed
 
+@onready var player_panel = $PlayerPanel
+@onready var player_hp_bar = $PlayerPanel/ProgressBar
+@onready var timer_bar = $PlayerPanel/ProgressBarTimer
+@onready var timer_bar_label = $PlayerPanel/ProgressBarTimer/Label
+@onready var enemy_texture = $EnemyPanel/Enemy
+@onready var enemy_hp_bar = $EnemyPanel/HPBar
+@onready var enemy_damage_label = $EnemyPanel/DamageLabel
+@onready var pause_screen = $PauseLayer/PauseScreen
+@onready var rules_panel = $RulesPanel
+@onready var game_title = $RulesPanel/TitleLabel
+@onready var rules_label = $RulesPanel/RulesLabel
+@onready var dialog_box = $DialogBox
+@onready var dialog_box_text = $DialogBox/Text
+@onready var count_label = $Count
+@onready var animation = $AnimationPlayer
+@onready var attack_se = $AttackSE
+@onready var miss_se = $MissSE
+@onready var defeat_se = $DefeatSE
+@onready var get_hit_se = $GetHitSE
+
 @export var enemy: Resource = null
 
 var current_player_hp = 0
 var current_enemy_hp = 0
 var game_scene: Node = null
+
+var map = "res://scenes/map.tscn"
+#var map = "res://scenes/stage_select.tscn"
 
 var games = {
 	"react": "res://scenes/game_react.tscn",
@@ -45,36 +68,36 @@ var enemy_paths = {
 
 func _ready():
 	enemy = load(enemy_paths.get(State.enemy))
-	set_hp($EnemyPanel/ProgressBar, enemy.health, enemy.health)
-	set_hp($PlayerPanel/ProgressBar, State.max_hp, State.max_hp)
-	$EnemyPanel/Enemy.texture = enemy.texture
+	set_hp(enemy_hp_bar, enemy.health, enemy.health)
+	set_hp(player_hp_bar, State.max_hp, State.max_hp)
+	enemy_texture.texture = enemy.texture
 	
-	$RulesPanel/RulesLabel.text = rules.get(State.game, "Descrição não disponível.")
-	$RulesPanel/TitleLabel.text = titles.get(State.game, "Título não disponível.")
+	rules_label.text = rules.get(State.game, "Descrição não disponível.")
+	game_title.text = titles.get(State.game, "Título não disponível.")
 	
 	current_player_hp = State.max_hp
 	current_enemy_hp = enemy.health
 	
 	BGMManager.play_bgm(load(enemy.bgm))
 	
-	$TextBox.hide()
-	$RulesPanel.hide()
-	$PlayerPanel.hide()
+	dialog_box.hide()
+	rules_panel.hide()
+	player_panel.hide()
 	
 	display_text("Um %s selvagem apareceu!" % enemy.name.to_upper())
 	await self.textbox_closed
-	$PlayerPanel.show()
-	$RulesPanel.show()
+	player_panel.show()
+	rules_panel.show()
 	
-	$PlayerPanel/ProgressBarTimer/Label.text = "%.1f" % State.time
-	$PlayerPanel/ProgressBarTimer.max_value = State.time
-	$PlayerPanel/ProgressBarTimer.value = State.time
+	timer_bar_label.text = "%.1f" % State.time
+	timer_bar.max_value = State.time
+	timer_bar.value = State.time
 	
-	if $EnemyPanel/DamageLabel.label_settings == null:
-		$EnemyPanel/DamageLabel.label_settings = LabelSettings.new()
-		$EnemyPanel/DamageLabel.label_settings.font_size = 25
-		$EnemyPanel/DamageLabel.label_settings.outline_size = 15
-		$EnemyPanel/DamageLabel.label_settings.outline_color = Color.html("#303030")
+	if enemy_damage_label.label_settings == null:
+		enemy_damage_label.label_settings = LabelSettings.new()
+		enemy_damage_label.label_settings.font_size = 25
+		enemy_damage_label.label_settings.outline_size = 15
+		enemy_damage_label.label_settings.outline_color = Color.html("#303030")
 	
 	for b in get_tree().get_nodes_in_group("se_buttons"):
 		b.connect("pressed", Callable(self, "_on_any_button_pressed"))
@@ -83,25 +106,25 @@ func _ready():
 func set_hp(progress_bar, hp, max_hp):
 	progress_bar.value = hp
 	progress_bar.max_value = max_hp
-	progress_bar.get_node("Label").text = "%d/%d" % [hp, max_hp]
+	progress_bar.get_node("HPLabel").text = "%d/%d" % [hp, max_hp]
 
 func _input(_event):
-	if (Input.is_action_just_pressed("ui_accept") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)) and $TextBox.visible:
-		$TextBox.hide()
+	if (Input.is_action_just_pressed("ui_accept") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)) and dialog_box.visible:
+		dialog_box.hide()
 		emit_signal("textbox_closed")
 
 func display_text(text):
-	$RulesPanel.hide()
-	$TextBox.show()
-	$TextBox/Label.text = text
+	rules_panel.hide()
+	dialog_box.show()
+	dialog_box_text.text = text
 
 func _on_start_button_pressed() -> void:
-	$RulesPanel.hide()
+	rules_panel.hide()
 	
-	$Count.show()
-	$AnimationPlayer.play("count")
-	await $AnimationPlayer.animation_finished
-	$Count.hide()
+	count_label.show()
+	animation.play("count")
+	await animation.animation_finished
+	count_label.hide()
 	
 	if games.has(State.game):
 		var game_path = games[State.game]
@@ -121,10 +144,10 @@ func _on_start_button_pressed() -> void:
 
 func _on_game_finished():
 	await get_tree().create_timer(0.5).timeout
-	if $AnimationPlayer.is_playing():
-		$EnemyPanel/DamageLabel.hide()
-		$AnimationPlayer.stop()
-		$AttackSE.stop()
+	if animation.is_playing():
+		enemy_damage_label.hide()
+		animation.stop()
+		attack_se.stop()
 	
 	if game_scene:
 		game_scene.queue_free()
@@ -149,29 +172,28 @@ func _on_game_finished():
 		display_text("O inimigo foi derrotado! \nVocê sente-se mais sábio... %d XP" % enemy.xp)
 		await self.textbox_closed
 		
-		$AnimationPlayer.play("enemy_died")
-		$DefeatSE.play()
-		await $AnimationPlayer.animation_finished
+		animation.play("enemy_died")
+		defeat_se.play()
+		await animation.animation_finished
 		
 		await get_tree().create_timer(0.5).timeout
 		if is_inside_tree():
-			#FadeLayer.fade_to_scene("res://scenes/stage_select.tscn")
-			FadeLayer.fade_to_scene("res://scenes/map.tscn")
+			FadeLayer.fade_to_scene(map)
 	else:
 		enemy_turn()
-		$PlayerPanel/ProgressBarTimer/Label.text = "%.1f" % State.time
-		$PlayerPanel/ProgressBarTimer.value = State.time
+		timer_bar_label.text = "%.1f" % State.time
+		timer_bar.value = State.time
 
 func enemy_turn():
 	var enemy_damage = enemy.damage - State.defense
 	
 	current_player_hp = max(0, current_player_hp - enemy_damage)
-	set_hp($PlayerPanel/ProgressBar, current_player_hp, State.max_hp)
+	set_hp(player_hp_bar, current_player_hp, State.max_hp)
 	
-	$AnimationPlayer.play("shake")
-	if $GetHitSE.is_inside_tree():
-		$GetHitSE.play()
-	await $AnimationPlayer.animation_finished
+	animation.play("shake")
+	if get_hit_se.is_inside_tree():
+		get_hit_se.play()
+	await animation.animation_finished
 	
 	display_text("O %s causou %d de dano!" % [enemy.name, enemy_damage])
 	await self.textbox_closed
@@ -181,10 +203,9 @@ func enemy_turn():
 		await self.textbox_closed
 		
 		await get_tree().create_timer(0.25).timeout
-		#FadeLayer.fade_to_scene("res://scenes/stage_select.tscn")
-		FadeLayer.fade_to_scene("res://scenes/map.tscn")
+		FadeLayer.fade_to_scene(map)
 	
-	$RulesPanel.show()
+	rules_panel.show()
 
 func _on_correct_answer_hit(dano: int):
 	State.damage = dano
@@ -193,44 +214,44 @@ func _on_correct_answer_hit(dano: int):
 	# Crítico
 	if randi() % 100 < State.critical:
 		damage = int(floor(damage * 1.25))
-		$EnemyPanel/DamageLabel.label_settings.font_color = Color.RED
+		enemy_damage_label.label_settings.font_color = Color.RED
 	else:
-		$EnemyPanel/DamageLabel.label_settings.font_color = Color.WHITE
+		enemy_damage_label.label_settings.font_color = Color.WHITE
 	
 	current_enemy_hp = max(0, current_enemy_hp - damage)
-	set_hp($EnemyPanel/ProgressBar, current_enemy_hp, enemy.health)
+	set_hp(enemy_hp_bar, current_enemy_hp, enemy.health)
 	
-	if $AnimationPlayer.is_playing():
-		$EnemyPanel/DamageLabel.hide()
-		$AnimationPlayer.stop()
-		$AttackSE.stop()
+	if animation.is_playing():
+		enemy_damage_label.hide()
+		animation.stop()
+		attack_se.stop()
 	
-	$EnemyPanel/DamageLabel.show()
-	$EnemyPanel/DamageLabel.text = str(damage)
-	$AnimationPlayer.play("enemy_damaged")
-	$AttackSE.play()
-	await $AnimationPlayer.animation_finished
-	$EnemyPanel/DamageLabel.hide()
+	enemy_damage_label.show()
+	enemy_damage_label.text = str(damage)
+	animation.play("enemy_damaged")
+	attack_se.play()
+	await animation.animation_finished
+	enemy_damage_label.hide()
 	await get_tree().create_timer(0.25).timeout
 
 func _on_wrong_answer():
-	if $AnimationPlayer.is_playing():
-		$EnemyPanel/DamageLabel.hide()
-		$AnimationPlayer.stop()
-		$AttackSE.stop()
+	if animation.is_playing():
+		enemy_damage_label.hide()
+		animation.stop()
+		attack_se.stop()
 	
-	$EnemyPanel/DamageLabel.show()
-	$EnemyPanel/DamageLabel.text = "MISS"
-	$AnimationPlayer.play("miss")
-	$MissSE.play()
-	await $AnimationPlayer.animation_finished
-	$EnemyPanel/DamageLabel.hide()
+	enemy_damage_label.show()
+	enemy_damage_label.text = "MISS"
+	animation.play("miss")
+	miss_se.play()
+	await animation.animation_finished
+	enemy_damage_label.hide()
 	await get_tree().create_timer(0.25).timeout
 
 func _on_pause_button_pressed() -> void:
 	get_tree().paused = not get_tree().paused
-	$PauseLayer/PauseScreen.visible = not $PauseLayer/PauseScreen.visible
+	pause_screen.visible = not pause_screen.visible
 
 func _on_timer_update(time):
-	$PlayerPanel/ProgressBarTimer/Label.text = "%.1f" % time
-	$PlayerPanel/ProgressBarTimer.value = time
+	timer_bar_label.text = "%.1f" % time
+	timer_bar.value = time

@@ -134,6 +134,22 @@ tracks/5/keys = {
 "values": ["3"]
 }
 
+[sub_resource type="Animation" id="Animation_66ngm"]
+resource_name = "count"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Count:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": ["3", "2", "1"]
+}
+
 [sub_resource type="Animation" id="Animation_rr1fq"]
 resource_name = "enemy_damaged"
 length = 1.5
@@ -250,22 +266,6 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(16, 17), Vector2(16, -19), Vector2(-6, 22), Vector2(-11, -7), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_66ngm"]
-resource_name = "count"
-length = 1.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Count:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": ["3", "2", "1"]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h4qsw"]
 _data = {
 &"RESET": SubResource("Animation_sb4ph"),
@@ -349,7 +349,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_f4pi3")
 
-[node name="ProgressBar" type="ProgressBar" parent="EnemyPanel"]
+[node name="HPBar" type="ProgressBar" parent="EnemyPanel"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 1
 anchors_preset = 8
@@ -369,7 +369,7 @@ step = 1.0
 value = 100.0
 show_percentage = false
 
-[node name="Label" type="Label" parent="EnemyPanel/ProgressBar"]
+[node name="HPLabel" type="Label" parent="EnemyPanel/HPBar"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -462,7 +462,7 @@ step = 1.0
 value = 100.0
 show_percentage = false
 
-[node name="Label" type="Label" parent="PlayerPanel/ProgressBar"]
+[node name="HPLabel" type="Label" parent="PlayerPanel/ProgressBar"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -483,7 +483,7 @@ text = "100/100"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="PlayerPanel/ProgressBar"]
+[node name="HPText" type="Label" parent="PlayerPanel/ProgressBar"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -567,7 +567,7 @@ text = "00.0"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="TextBox" type="Panel" parent="."]
+[node name="DialogBox" type="Panel" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 10
@@ -579,7 +579,7 @@ offset_bottom = 693.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0npn6")
 
-[node name="Label" type="Label" parent="TextBox"]
+[node name="Text" type="Label" parent="DialogBox"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -593,7 +593,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 32
 text = "Texto"
 
-[node name="Ticker" type="Label" parent="TextBox"]
+[node name="Ticker" type="Label" parent="DialogBox"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
