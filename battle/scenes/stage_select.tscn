@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dflsxker1ppx5"]
 
 [ext_resource type="Script" uid="uid://3s3fssnkts4e" path="res://scripts/stage_select.gd" id="1_tne6o"]
-[ext_resource type="Texture2D" uid="uid://d23ladjq03ms3" path="res://sprites/seasons_of_forest_free_v1/map_pergament.png" id="2_1tbhu"]
+[ext_resource type="Texture2D" uid="uid://d23ladjq03ms3" path="res://assets/sprites/seasons_of_forest_free_v1/map_pergament.png" id="2_1tbhu"]
 [ext_resource type="PackedScene" uid="uid://d2lkfnq3ewo5a" path="res://scenes/radar_chart.tscn" id="3_eeirb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_plpqp"]

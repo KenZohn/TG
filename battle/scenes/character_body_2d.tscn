@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://dgajq8exectl1"]
 
-[ext_resource type="Texture2D" uid="uid://b5kdl07qtwmnb" path="res://sprites/Tiny Wonder Forest 1.0/characters/main character old/walk and idle.png" id="1_f50pn"]
+[ext_resource type="Texture2D" uid="uid://b5kdl07qtwmnb" path="res://assets/sprites/Tiny Wonder Forest 1.0/characters/main character old/walk and idle.png" id="1_f50pn"]
 [ext_resource type="Script" uid="uid://c211r7rfsj4r2" path="res://scripts/character_body_2d.gd" id="1_ghijl"]
 [ext_resource type="Script" uid="uid://nk45gc008pdl" path="res://scripts/camera_2d.gd" id="3_dn4c7"]
 
