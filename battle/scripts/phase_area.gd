@@ -21,9 +21,6 @@ func _ready():
 	var mapa = get_parent().get_parent()
 	var character = mapa.get_node("CharacterBody2D")
 	character.connect("zoom_finished", Callable(self, "_on_zoom_finished"))
-	
-	if State.player_position != Vector2.ZERO:
-		character.global_position = State.player_position
 
 func _process(_delta):
 	if jogador_na_area and Input.is_action_just_pressed("ui_accept"):
@@ -34,7 +31,6 @@ func _on_input_event(_viewport, event, _shape_idx):
 		enter_stage()
 
 func enter_stage():
-	#SESelect.play()
 	State.stage = stage
 	State.game = game
 	State.enemy = enemy
@@ -68,4 +64,5 @@ func _on_zoom_finished():
 	var mapa = get_parent().get_parent()
 	var character = mapa.get_node("CharacterBody2D")
 	State.player_position = character.global_position
+	
 	FadeLayer.fade_to_scene("res://scenes/battle.tscn")

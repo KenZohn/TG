@@ -23,6 +23,7 @@ func _ready() -> void:
 	subtitle_tween.tween_property(subtitulo, "modulate:a", 1.0, 1.0)
 	
 	animate_press_start()
+	State.reset_position()
 
 func _on_new_pressed() -> void:
 	State.is_new_game = true

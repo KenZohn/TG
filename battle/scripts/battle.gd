@@ -167,7 +167,6 @@ func _on_game_finished():
 			State.save_data[State.stage] = true
 		
 		State.save_data["experience"] += enemy.xp
-		#State.save_data["player_position"] = State.player_position
 		State.save_data["player_position"] = [State.player_position.x, State.player_position.y]
 		save_manager.save_game(State.save_path)
 		
@@ -203,11 +202,14 @@ func enemy_turn():
 	if current_player_hp == 0:
 		display_text("Você perdeu!")
 		await self.textbox_closed
-		
 		await get_tree().create_timer(0.25).timeout
+		
+		State.save_data["player_position"] = [State.player_position.x, State.player_position.y]
+		save_manager.save_game(State.save_path)
+		
 		FadeLayer.fade_to_scene(map)
-	
-	rules_panel.show()
+	else:
+		rules_panel.show()
 
 func _on_correct_answer_hit(dano: int):
 	State.damage = dano
