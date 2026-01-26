@@ -23,6 +23,7 @@ signal textbox_closed
 @onready var miss_se = $MissSE
 @onready var defeat_se = $DefeatSE
 @onready var get_hit_se = $GetHitSE
+@onready var player_damage_label = $PlayerPanel/PlayerDamageLabel
 
 @export var enemy: Resource = null
 
@@ -98,6 +99,13 @@ func _ready():
 		enemy_damage_label.label_settings.font_size = 25
 		enemy_damage_label.label_settings.outline_size = 15
 		enemy_damage_label.label_settings.outline_color = Color.html("#303030")
+	
+	if player_damage_label.label_settings == null:
+		player_damage_label.label_settings = LabelSettings.new()
+		player_damage_label.label_settings.font_size = 25
+		player_damage_label.label_settings.outline_size = 15
+		player_damage_label.label_settings.outline_color = Color.html("#303030")
+		player_damage_label.label_settings.font_color = Color.ORANGE_RED
 	
 	for b in get_tree().get_nodes_in_group("se_buttons"):
 		b.connect("pressed", Callable(self, "_on_any_button_pressed"))
@@ -191,10 +199,17 @@ func enemy_turn():
 	current_player_hp = max(0, current_player_hp - enemy_damage)
 	set_hp(player_hp_bar, current_player_hp, State.max_hp)
 	
+	if animation.is_playing():
+		player_damage_label.hide()
+		animation.stop()
+	
+	player_damage_label.show()
+	player_damage_label.text = "-%d" % enemy_damage
 	animation.play("shake")
 	if get_hit_se.is_inside_tree():
 		get_hit_se.play()
 	await animation.animation_finished
+	player_damage_label.hide()
 	
 	display_text("O %s causou %d de dano!" % [enemy.name, enemy_damage])
 	await self.textbox_closed
