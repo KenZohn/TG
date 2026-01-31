@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://c4v8ewrr1fjce"]
+
+[ext_resource type="Script" uid="uid://wjo6ma1qy8rm" path="res://scripts/game_coordination.gd" id="1_dm0ut"]
+[ext_resource type="Script" uid="uid://buyffdpaumlia" path="res://scripts/game_coordination_player.gd" id="1_l3yyw"]
+[ext_resource type="PackedScene" uid="uid://bnyi5avnv7e5j" path="res://scenes/game_coordination_item.tscn" id="2_dm0ut"]
+[ext_resource type="Texture2D" uid="uid://cpaak2loaffat" path="res://assets/sprites/Sprite Pack 6/Sprite Pack 6/1 - Penguin/Jump (16 x 16).png" id="2_tb6md"]
+[ext_resource type="PackedScene" uid="uid://xsl8nh6qj315" path="res://scenes/game_coordination_obstacle.tscn" id="3_1ux7o"]
+[ext_resource type="Script" uid="uid://4ilsdvclmd6e" path="res://scripts/game_coordination_camera.gd" id="6_tb6md"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y0jpq"]
+
+[node name="CoordinationGame" type="Node2D"]
+script = ExtResource("1_dm0ut")
+item_scene = ExtResource("2_dm0ut")
+spawn_area = null
+obstacle_scene = ExtResource("3_1ux7o")
+obstacle_count = null
+game_area = null
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("6_tb6md")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(71, 20)
+script = ExtResource("1_l3yyw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("2_tb6md")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_y0jpq")

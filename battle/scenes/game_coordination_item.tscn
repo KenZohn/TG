@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnyi5avnv7e5j"]
+
+[ext_resource type="Script" uid="uid://cnm3aaqg7okxq" path="res://scripts/game_coordination_item.gd" id="1_lh5sj"]
+[ext_resource type="Texture2D" uid="uid://bbrgb517oy7c8" path="res://assets/sprites/Sprite Pack 6/Sprite Pack 6/4 - Orange/Standing (32 x 32).png" id="2_3567i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1os41"]
+
+[node name="CoordinationItem" type="Area2D"]
+script = ExtResource("1_lh5sj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("2_3567i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1os41")
