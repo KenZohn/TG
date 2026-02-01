@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://xsl8nh6qj315"]
 
-[ext_resource type="Script" uid="uid://d2w3svtj6suqc" path="res://scripts/game_coordination_obstacle.gd" id="1_7i38q"]
+[ext_resource type="Script" uid="uid://d2w3svtj6suqc" path="res://scripts/game_collect_obstacle.gd" id="1_7i38q"]
 [ext_resource type="Texture2D" uid="uid://b4855q6r8yylt" path="res://assets/sprites/Sprite Pack 4/Sprite Pack 4/10 - Blankey_Hurt (32 x 32).png" id="2_obobv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_18wfv"]
 
-[node name="CoordinationObstacle" type="Node2D"]
+[node name="CollectObstacle" type="Area2D"]
 script = ExtResource("1_7i38q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

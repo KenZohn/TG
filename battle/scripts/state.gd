@@ -14,8 +14,8 @@ var defense = 0
 var damage = 10
 
 # Estágio
-var stage = "a2"
-var game = "color"
+var stage = "c4"
+var game = "collect"
 
 # Inimigo
 var enemy = "slime"

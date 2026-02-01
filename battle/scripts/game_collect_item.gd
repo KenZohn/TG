@@ -1,4 +1,5 @@
 extends Area2D
+
 signal item_collected
 
 func _ready():

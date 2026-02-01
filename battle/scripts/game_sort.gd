@@ -22,7 +22,7 @@ var awaiting_response: bool = false
 @onready var botao_esquerda = $ContainerCard/ButtonLeft
 @onready var botao_direita = $ContainerCard/ButtonRight
 @onready var label_feedback = $ContainerCard/Label
-@onready var timer_jogo = $TimerGame
+@onready var game_timer = $TimerGame
 
 func _ready():
 	randomize()
@@ -47,7 +47,7 @@ func _ready():
 	# Inicia o jogo
 	mostrar_imagem_atual()
 	setup_timers()
-	iniciar_temporizador()
+	start_timer()
 	$TimerDisplay.timeout.connect(_update_timer_display)
 	
 	botao_esquerda.pressed.connect(func(): verificar_resposta("esquerda"))
@@ -77,9 +77,9 @@ func verificar_resposta(lado_escolhido):
 		botao_direita.disabled = true
 		emit_signal("game_finished")
 
-func iniciar_temporizador():
-	timer_jogo.start()
-	timer_jogo.timeout.connect(_on_game_timeout)
+func start_timer():
+	game_timer.start()
+	game_timer.timeout.connect(_on_game_timeout)
 
 func _update_timer_display():
 	var remaining = $TimerGame.time_left

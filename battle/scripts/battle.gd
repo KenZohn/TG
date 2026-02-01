@@ -40,7 +40,8 @@ var games = {
 	"bomb": "res://scenes/game_bomb.tscn",
 	"reflex": "res://scenes/game_reflex.tscn",
 	"sort": "res://scenes/game_sort.tscn",
-	"pop": "res://scenes/game_pop.tscn"
+	"pop": "res://scenes/game_pop.tscn",
+	"collect": "res://scenes/game_collect.tscn"
 }
 
 var titles = {
@@ -49,7 +50,8 @@ var titles = {
 	"bomb": "Caminho",
 	"reflex": "Reflexo",
 	"sort": "Classificação",
-	"pop": "Menor ao Maior"
+	"pop": "Menor ao Maior",
+	"collect": "Colete e Desvie"
 }
 
 var rules = {
@@ -58,7 +60,8 @@ var rules = {
 	"bomb": "Una os dois pontos azuis sem encostar nas bombas.",
 	"reflex": "Clique no botão o mais rápido possível.",
 	"sort": "Clique no botão para o lado que a figura do meio se encontra.",
-	"pop": "Clique nos botões na ordem do MENOR valor ao MAIOR."
+	"pop": "Clique nos botões na ordem do MENOR valor ao MAIOR.",
+	"collect": "Controle o personagem com o mouse e colete os itens enquanto evita os obstáculos."
 }
 
 var enemy_paths = {
