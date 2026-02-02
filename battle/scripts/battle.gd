@@ -2,6 +2,9 @@ extends Control
 
 var save_manager = preload("res://scripts/save_manager.gd").new()
 
+var stats = Stats.new()
+var battle_start_time: float = 0.0
+
 signal textbox_closed
 
 @onready var player_panel = $PlayerPanel
@@ -87,6 +90,9 @@ func _ready():
 	
 	BGMManager.play_bgm(load(enemy.bgm))
 	
+	stats.reset()
+	battle_start_time = Time.get_ticks_msec() / 1000.0
+	
 	dialog_box.hide()
 	rules_panel.hide()
 	player_panel.hide()
@@ -168,6 +174,12 @@ func _on_game_finished():
 		game_scene = null
 		
 	if current_enemy_hp == 0:
+		var battle_end_time = Time.get_ticks_msec() / 1000.0
+		var total_battle_time = battle_end_time - battle_start_time
+		stats.time_taken = total_battle_time
+		# Debugs
+		stats.print_summary()  
+
 		# Primeira vez completando o estágio
 		if State.save_data[State.stage] == false:
 			# Atribuir atributos
@@ -242,6 +254,8 @@ func _on_correct_answer_hit(dano: int):
 		enemy_damage_label.label_settings.font_color = Color.RED
 	else:
 		enemy_damage_label.label_settings.font_color = Color.WHITE
+		
+	stats.register_hit(damage)
 	
 	current_enemy_hp = max(0, current_enemy_hp - damage)
 	set_hp(enemy_hp_bar, current_enemy_hp, enemy.health)
@@ -260,6 +274,8 @@ func _on_correct_answer_hit(dano: int):
 	await get_tree().create_timer(0.25).timeout
 
 func _on_wrong_answer():
+	stats.register_miss()
+	
 	if animation.is_playing():
 		enemy_damage_label.hide()
 		animation.stop()
