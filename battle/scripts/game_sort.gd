@@ -22,6 +22,7 @@ var awaiting_response: bool = false
 @onready var botao_esquerda = $ContainerCard/ButtonLeft
 @onready var botao_direita = $ContainerCard/ButtonRight
 @onready var label_feedback = $ContainerCard/Label
+
 @onready var game_timer = $TimerGame
 
 func _ready():

@@ -41,7 +41,8 @@ var games = {
 	"reflex": "res://scenes/game_reflex.tscn",
 	"sort": "res://scenes/game_sort.tscn",
 	"pop": "res://scenes/game_pop.tscn",
-	"collect": "res://scenes/game_collect.tscn"
+	"collect": "res://scenes/game_collect.tscn",
+	"unique": "res://scenes/game_unique.tscn"
 }
 
 var titles = {
@@ -51,7 +52,8 @@ var titles = {
 	"reflex": "Reflexo",
 	"sort": "Classificação",
 	"pop": "Menor ao Maior",
-	"collect": "Colete e Desvie"
+	"collect": "Colete e Desvie",
+	"unique": "Único"
 }
 
 var rules = {
@@ -61,7 +63,8 @@ var rules = {
 	"reflex": "Clique no botão o mais rápido possível.",
 	"sort": "Clique no botão para o lado que a figura do meio se encontra.",
 	"pop": "Clique nos botões na ordem do MENOR valor ao MAIOR.",
-	"collect": "Controle o personagem com o mouse e colete os itens enquanto evita os obstáculos."
+	"collect": "Controle o personagem com o mouse e colete os itens enquanto evita os obstáculos.",
+	"unique": "Clique na caixa que se difere das outras na cor, número ou forma."
 }
 
 var enemy_paths = {

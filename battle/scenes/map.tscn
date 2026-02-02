@@ -26638,7 +26638,7 @@ grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0.13319641, 0.13319641, 0.13319638, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 14
-text = "C4"
+text = "C-4"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -26783,6 +26783,54 @@ theme_override_colors/font_outline_color = Color(0.13319641, 0.13319641, 0.13319
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 14
 text = "R-3"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="R4" type="Area2D" parent="Stages"]
+position = Vector2(428, -1)
+script = ExtResource("50_v5efx")
+phase_name = "R4"
+stage = "r4"
+game = "unique"
+enemy = "slime"
+reasoning = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/R4"]
+shape = SubResource("RectangleShape2D_qqli0")
+
+[node name="ColorRect" type="ColorRect" parent="Stages/R4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.24115604, 0.24115604, 0.24115604, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Stages/R4/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.13319641, 0.13319641, 0.13319638, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 14
+text = "R-4"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -27210,4 +27258,6 @@ position = Vector2(181, 130)
 [connection signal="body_exited" from="Stages/R2" to="Stages/R2" method="_on_body_exited"]
 [connection signal="body_entered" from="Stages/R3" to="Stages/R3" method="_on_body_entered"]
 [connection signal="body_exited" from="Stages/R3" to="Stages/R3" method="_on_body_exited"]
+[connection signal="body_entered" from="Stages/R4" to="Stages/R4" method="_on_body_entered"]
+[connection signal="body_exited" from="Stages/R4" to="Stages/R4" method="_on_body_exited"]
 [connection signal="pressed" from="CanvasLayer/TittleScreenButton" to="." method="_on_tittle_screen_button_pressed"]
