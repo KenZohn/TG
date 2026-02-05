@@ -1,6 +1,7 @@
 extends Control
 
 var save_manager = preload("res://scripts/save_manager.gd").new()
+var battle_summary_scene = preload("res://scenes/battle_summary.tscn")
 
 var stats = Stats.new()
 var battle_start_time: float = 0.0
@@ -177,9 +178,7 @@ func _on_game_finished():
 		var battle_end_time = Time.get_ticks_msec() / 1000.0
 		var total_battle_time = battle_end_time - battle_start_time
 		stats.time_taken = total_battle_time
-		# Debugs
-		stats.print_summary()  
-
+		
 		# Primeira vez completando o estágio
 		if State.save_data[State.stage] == false:
 			# Atribuir atributos
@@ -204,8 +203,10 @@ func _on_game_finished():
 		await animation.animation_finished
 		
 		await get_tree().create_timer(0.5).timeout
-		if is_inside_tree():
-			FadeLayer.fade_to_scene(map)
+		#if is_inside_tree():
+			#FadeLayer.fade_to_scene(map)
+
+		show_battle_summary(true, enemy.xp)
 	else:
 		enemy_turn()
 		timer_bar_label.text = "%.1f" % State.time
@@ -240,7 +241,11 @@ func enemy_turn():
 		State.save_data["player_position"] = [State.player_position.x, State.player_position.y]
 		save_manager.save_game(State.save_path)
 		
-		FadeLayer.fade_to_scene(map)
+		# Transformar em função depois, trecho repetindo
+		var battle_end_time = Time.get_ticks_msec() / 1000.0
+		var total_battle_time = battle_end_time - battle_start_time
+		stats.time_taken = total_battle_time
+		show_battle_summary(false, 0)
 	else:
 		rules_panel.show()
 
@@ -296,3 +301,17 @@ func _on_pause_button_pressed() -> void:
 func _on_timer_update(time):
 	timer_bar_label.text = "%.1f" % time
 	timer_bar.value = time
+
+func show_battle_summary(victory, xp):
+	var summary = battle_summary_scene.instantiate()
+	add_child(summary)
+	$PauseLayer/PauseButton.visible = false
+	
+	var battle_stats = stats.get_summary()
+	summary.show_summary(battle_stats, victory, xp)
+	
+	await summary.tree_exited
+	
+	await get_tree().create_timer(0.25).timeout
+	if is_inside_tree():
+		FadeLayer.fade_to_scene(map)

@@ -1,0 +1,274 @@
+[gd_scene load_steps=9 format=3 uid="uid://summary123"]
+
+[ext_resource type="Script" uid="uid://mqbycfily5r1" path="res://scripts/battle_summary.gd" id="1_summary"]
+[ext_resource type="Shader" uid="uid://bb3ormchtf5f1" path="res://scenes/Blur.gdshader" id="2_blur"]
+[ext_resource type="Theme" uid="uid://dctpcbq0vp6lp" path="res://themes/TitleScreen.theme" id="3_title"]
+[ext_resource type="FontFile" uid="uid://svybmpvynbsh" path="res://themes/Roboto-VariableFont_wdth,wght.ttf" id="4_om6pb"]
+[ext_resource type="Theme" uid="uid://c6u12sw5jxmbr" path="res://themes/OptionsScreen.theme" id="4_options"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_blur"]
+shader = ExtResource("2_blur")
+shader_parameter/lod = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.03529412, 0.03529412, 0.043137256, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0.3)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stat"]
+bg_color = Color(0.188235, 0.188235, 0.188235, 0.5)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.5, 0.5, 0.5, 0.3)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="BattleSummary" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_summary")
+
+[node name="Overlay" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_blur")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="CenterContainer" type="CenterContainer" parent="Overlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Overlay/CenterContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="MarginContainer" type="MarginContainer" parent="Overlay/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_title")
+theme_override_colors/font_color = Color(1, 0.84, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "VITÓRIA!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="StatsContainer" type="VBoxContainer" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HitsPanel" type="PanelContainer" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StatsContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_stat")
+
+[node name="MarginContainer" type="MarginContainer" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StatsContainer/HitsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StatsContainer/HitsPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StatsContainer/HitsPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.5, 1, 0.5, 1)
+theme_override_fonts/font = ExtResource("4_om6pb")
+theme_override_font_sizes/font_size = 22
+text = "Acertos"
+
+[node name="Value" type="Label" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StatsContainer/HitsPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 1, 0.5, 1)
+theme_override_fonts/font = ExtResource("4_om6pb")
+theme_override_font_sizes/font_size = 26
+text = "0"
+horizontal_alignment = 2
+
+[node name="MissesPanel" type="PanelContainer" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StatsContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_stat")
+
+[node name="MarginContainer" type="MarginContainer" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StatsContainer/MissesPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StatsContainer/MissesPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StatsContainer/MissesPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.5, 0.5, 1)
+theme_override_fonts/font = ExtResource("4_om6pb")
+theme_override_font_sizes/font_size = 22
+text = "Erros"
+
+[node name="Value" type="Label" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StatsContainer/MissesPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.5, 0.5, 1)
+theme_override_fonts/font = ExtResource("4_om6pb")
+theme_override_font_sizes/font_size = 26
+text = "0"
+horizontal_alignment = 2
+
+[node name="DamagePanel" type="PanelContainer" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StatsContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_stat")
+
+[node name="MarginContainer" type="MarginContainer" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StatsContainer/DamagePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StatsContainer/DamagePanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StatsContainer/DamagePanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.65, 0, 1)
+theme_override_fonts/font = ExtResource("4_om6pb")
+theme_override_font_sizes/font_size = 22
+text = "Dano Total"
+
+[node name="Value" type="Label" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StatsContainer/DamagePanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.65, 0, 1)
+theme_override_fonts/font = ExtResource("4_om6pb")
+theme_override_font_sizes/font_size = 26
+text = "0"
+horizontal_alignment = 2
+
+[node name="TimePanel" type="PanelContainer" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StatsContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_stat")
+
+[node name="MarginContainer" type="MarginContainer" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StatsContainer/TimePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StatsContainer/TimePanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StatsContainer/TimePanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.5, 0.8, 1, 1)
+theme_override_fonts/font = ExtResource("4_om6pb")
+theme_override_font_sizes/font_size = 22
+text = "Tempo Total"
+
+[node name="Value" type="Label" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StatsContainer/TimePanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.8, 1, 1)
+theme_override_fonts/font = ExtResource("4_om6pb")
+theme_override_font_sizes/font_size = 26
+text = "0.0s"
+horizontal_alignment = 2
+
+[node name="AccuracyPanel" type="PanelContainer" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StatsContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_stat")
+
+[node name="MarginContainer" type="MarginContainer" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StatsContainer/AccuracyPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StatsContainer/AccuracyPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StatsContainer/AccuracyPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.8, 0.5, 1, 1)
+theme_override_fonts/font = ExtResource("4_om6pb")
+theme_override_font_sizes/font_size = 22
+text = "Precisão"
+
+[node name="Value" type="Label" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StatsContainer/AccuracyPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.5, 1, 1)
+theme_override_fonts/font = ExtResource("4_om6pb")
+theme_override_font_sizes/font_size = 26
+text = "0%"
+horizontal_alignment = 2
+
+[node name="HSeparator2" type="HSeparator" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="RewardsLabel" type="Label" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_om6pb")
+theme_override_font_sizes/font_size = 20
+text = "Recompensas"
+horizontal_alignment = 1
+
+[node name="XPLabel" type="Label" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.84, 0, 1)
+theme_override_fonts/font = ExtResource("4_om6pb")
+theme_override_font_sizes/font_size = 24
+text = "+0 XP"
+horizontal_alignment = 1
+
+[node name="ContinueButton" type="Button" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" groups=["se_buttons"]]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme = ExtResource("4_options")
+theme_override_font_sizes/font_size = 22
+text = "Continuar"
+
+[connection signal="pressed" from="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_pressed"]
