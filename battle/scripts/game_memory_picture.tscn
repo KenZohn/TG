@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmdsj161jxj12"]
+
+[ext_resource type="Script" uid="uid://b61i3xo4r8d6v" path="res://game_memory_picture.gd" id="1_f5tx4"]
+
+[node name="MemoryPicture" type="Node2D"]
+script = ExtResource("1_f5tx4")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

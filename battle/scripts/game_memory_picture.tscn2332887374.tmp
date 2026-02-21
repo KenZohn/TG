@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmdsj161jxj12"]
+
+[ext_resource type="Script" uid="uid://b61i3xo4r8d6v" path="res://game_memory_picture.gd" id="1_f5tx4"]
+
+[node name="MemoryPicture" type="Node2D"]
+script = ExtResource("1_f5tx4")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 3
+
+[node name="TextureRect1" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect5" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AlvoContainer" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="AlvoContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="AlvoContainer"]
+layout_mode = 2
+
+[connection signal="gui_input" from="GridContainer/TextureRect1" to="." method="_on_texture_rect_gui_input"]
+[connection signal="gui_input" from="GridContainer/TextureRect2" to="." method="_on_texture_rect_gui_input"]
+[connection signal="gui_input" from="GridContainer/TextureRect3" to="." method="_on_texture_rect_gui_input"]
+[connection signal="gui_input" from="GridContainer/TextureRect4" to="." method="_on_texture_rect_gui_input"]
+[connection signal="gui_input" from="GridContainer/TextureRect5" to="." method="_on_texture_rect_gui_input"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
