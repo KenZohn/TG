@@ -44,3 +44,9 @@ func reset_state():
 
 func reset_position():
 	State.player_position = Vector2.ZERO
+
+# Mochila
+var inventory = Inventory.new()
+
+func _ready():
+	add_child(inventory)

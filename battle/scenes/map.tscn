@@ -27222,6 +27222,14 @@ offset_bottom = 700.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_1e5sf")
 text = "Voltar para o Menu Inicial"
 
+[node name="BackpackButton" type="Button" parent="CanvasLayer" groups=["menu_buttons"]]
+offset_left = 1152.0
+offset_top = 610.0
+offset_right = 1250.0
+offset_bottom = 644.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1e5sf")
+text = "Mochila"
+
 [node name="CharacterBody2D" parent="." instance=ExtResource("52_4tr4v")]
 z_index = 1
 position = Vector2(181, 130)
@@ -27261,3 +27269,4 @@ position = Vector2(181, 130)
 [connection signal="body_entered" from="Stages/R4" to="Stages/R4" method="_on_body_entered"]
 [connection signal="body_exited" from="Stages/R4" to="Stages/R4" method="_on_body_exited"]
 [connection signal="pressed" from="CanvasLayer/TittleScreenButton" to="." method="_on_tittle_screen_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/BackpackButton" to="." method="_on_backpack_button_pressed"]

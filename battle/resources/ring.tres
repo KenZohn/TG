@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://d1ck6ytyp380t"]
+
+[ext_resource type="Texture2D" uid="uid://debmpcxogqkc5" path="res://assets/sprites/bomba.png" id="1_o3baj"]
+[ext_resource type="Script" uid="uid://cgov0ln02f3i" path="res://scripts/item.gd" id="2_qgc7x"]
+
+[resource]
+script = ExtResource("2_qgc7x")
+id = "1"
+name = "Ring of Ringing"
+description = "A Ring that rings"
+icon = ExtResource("1_o3baj")
+memory_bonus = 20
+agility_bonus = 23
+focus_bonus = 23
+reasoning_bonus = 23
+coordination_bonus = 23
