@@ -28,6 +28,7 @@ signal textbox_closed
 @onready var defeat_se = $DefeatSE
 @onready var get_hit_se = $GetHitSE
 @onready var player_damage_label = $PlayerPanel/PlayerDamageLabel
+@onready var background = $Background
 
 @export var enemy: Resource = null
 
@@ -77,11 +78,22 @@ var enemy_paths = {
 	"goblin": "res://resources/goblin.tres"
 }
 
+var background_paths = {
+	"green_field": "res://assets/sprites/battleback1.png",
+	"autumn_forest": "res://assets/sprites/battleback7.png",
+	"desert": "res://assets/sprites/battleback3.png",
+	"winter": "res://assets/sprites/battleback2.png",
+	"forest": "res://assets/sprites/battleback10.png"
+}
+
 func _ready():
 	enemy = load(enemy_paths.get(State.enemy))
 	set_hp(enemy_hp_bar, enemy.health, enemy.health)
 	set_hp(player_hp_bar, State.max_hp, State.max_hp)
 	enemy_texture.texture = enemy.texture
+	
+	#background = load(background_paths.get(State.background))
+	background.texture = load(background_paths.get(State.background))
 	
 	rules_label.text = rules.get(State.game, "Descrição não disponível.")
 	game_title.text = titles.get(State.game, "Título não disponível.")
