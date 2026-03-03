@@ -5,6 +5,7 @@ signal zoom_in_transition
 @export var phase_name: String
 @export var stage: String
 @export var game: String
+@export var background: String
 @export var enemy: String
 @export var agility: int
 @export var memory: int
@@ -33,6 +34,7 @@ func _on_input_event(_viewport, event, _shape_idx):
 func enter_stage():
 	State.stage = stage
 	State.game = game
+	State.background = background
 	State.enemy = enemy
 	State.agility = agility
 	State.memory = memory

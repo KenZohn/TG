@@ -16,6 +16,7 @@ var damage = 10
 # Estágio
 var stage = "r4"
 var game = "unique"
+var background = "res://assets/sprites/battleback1.png"
 
 # Inimigo
 var enemy = "slime"
