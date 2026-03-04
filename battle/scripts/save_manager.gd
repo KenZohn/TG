@@ -8,7 +8,8 @@ func new_game(path):
 		"focus": 0,
 		"reasoning": 0,
 		"coordination": 0,
-		"experience": 0
+		"experience": 0,
+		"inventory": {"items": [], "equipped": ""},
 	}
 	
 	for prefix in ["m", "a", "f", "r", "c"]:
@@ -31,10 +32,12 @@ func load_game(path):
 		var file = FileAccess.open(path, FileAccess.READ)
 		State.save_data = JSON.parse_string(file.get_as_text())
 		file.close()
+		State.inventory.deserialize(State.save_data.get("inventory", {}))
 		return true
 	return false
 	
 func save_game(path):
+	State.save_data["inventory"] = State.inventory.serialize() 
 	var file = FileAccess.open(path, FileAccess.WRITE)
 	file.store_string(JSON.stringify(State.save_data))
 	file.close()

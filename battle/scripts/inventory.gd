@@ -39,3 +39,24 @@ func apply_bonus():
 		State.focus += equipped_item.focus_bonus
 		State.reasoning += equipped_item.reasoning_bonus
 		State.coordination += equipped_item.coordination_bonus
+
+func serialize():
+	return {
+		"items": items.map(func(i): return i.id),
+		"equipped": equipped_item.id if equipped_item else ""
+	}
+
+func deserialize(data):
+	items.clear()
+	equipped_item = null
+
+	for id in data.get("items", []):
+		var item = ItemRegistry.get_item(id)
+		if item:
+			items.append(item)
+
+	var eq_id = data.get("equipped", "")
+	if eq_id != "":
+		equipped_item = ItemRegistry.get_item(eq_id)
+
+	apply_bonus()
