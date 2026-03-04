@@ -79,11 +79,11 @@ var enemy_paths = {
 }
 
 var background_paths = {
-	"green_field": "res://assets/sprites/battleback1.png",
+	"green_field": "res://assets/sprites/battleback10.png",
 	"autumn_forest": "res://assets/sprites/battleback7.png",
 	"desert": "res://assets/sprites/battleback3.png",
 	"winter": "res://assets/sprites/battleback2.png",
-	"forest": "res://assets/sprites/battleback10.png"
+	"forest": "res://assets/sprites/battleback1.png"
 }
 
 func _ready():

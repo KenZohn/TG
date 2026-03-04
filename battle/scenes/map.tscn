@@ -26456,6 +26456,55 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="F4" type="Area2D" parent="Stages"]
+position = Vector2(483, -1)
+script = ExtResource("50_v5efx")
+phase_name = "F4"
+stage = "f4"
+game = "react"
+background = "desert"
+enemy = "goblin"
+focus = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/F4"]
+shape = SubResource("RectangleShape2D_qqli0")
+
+[node name="ColorRect" type="ColorRect" parent="Stages/F4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.24115604, 0.24115604, 0.24115604, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Stages/F4/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.13319641, 0.13319641, 0.13319638, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 14
+text = "F-4"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="C1" type="Area2D" parent="Stages"]
 position = Vector2(1625, 714)
 script = ExtResource("50_v5efx")
@@ -27271,6 +27320,8 @@ position = Vector2(181, 130)
 [connection signal="body_exited" from="Stages/F2" to="Stages/F2" method="_on_body_exited"]
 [connection signal="body_entered" from="Stages/F3" to="Stages/F3" method="_on_body_entered"]
 [connection signal="body_exited" from="Stages/F3" to="Stages/F3" method="_on_body_exited"]
+[connection signal="body_entered" from="Stages/F4" to="Stages/F4" method="_on_body_entered"]
+[connection signal="body_exited" from="Stages/F4" to="Stages/F4" method="_on_body_exited"]
 [connection signal="body_entered" from="Stages/C1" to="Stages/C1" method="_on_body_entered"]
 [connection signal="body_exited" from="Stages/C1" to="Stages/C1" method="_on_body_exited"]
 [connection signal="body_entered" from="Stages/C2" to="Stages/C2" method="_on_body_entered"]
