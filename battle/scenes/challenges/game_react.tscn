@@ -1,0 +1,87 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccw7w52qemm3q"]
+
+[ext_resource type="Script" uid="uid://brbdf76ki0yfy" path="res://scripts/challenges/game_react.gd" id="1_qhx4h"]
+[ext_resource type="AudioStream" uid="uid://l3dsfx4k8wyq" path="res://assets/audio/se/maou_se_voice_human03.mp3" id="2_nstwc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06b7g"]
+bg_color = Color(0, 0, 0, 0.78431374)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.9019608)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rq06"]
+bg_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="FlashReact" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qhx4h")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -190.0
+offset_top = -355.0
+offset_right = 190.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_06b7g")
+
+[node name="ReactButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_right = 50.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_1rq06")
+text = "Reagir"
+
+[node name="LabelMensage" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -67.5
+offset_top = 50.0
+offset_right = 67.5
+offset_bottom = 119.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 45
+text = "Texto"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WaitTimer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_nstwc")
+bus = &"SFX"
+
+[connection signal="pressed" from="Panel/ReactButton" to="." method="_on_react_button_pressed"]

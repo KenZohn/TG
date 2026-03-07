@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b0t0x32uxcqp4"]
 
-[ext_resource type="Script" uid="uid://cdbbg4706tew5" path="res://scripts/fade_layer.gd" id="1_3sxdu"]
+[ext_resource type="Script" uid="uid://cdbbg4706tew5" path="res://scripts/autoloads/fade_layer.gd" id="1_3sxdu"]
 
 [sub_resource type="Animation" id="Animation_56vtb"]
 length = 0.001

@@ -17,14 +17,14 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-State="*res://scripts/state.gd"
-GameState="*res://scripts/state.gd"
+State="*res://scripts/autoloads/state.gd"
+GameState="*res://scripts/autoloads/state.gd"
 FadeLayer="*res://scenes/fade_layer.tscn"
-BGMManager="*res://scripts/bgm_manager.gd"
-SESelect="*res://scripts/se_select.gd"
-SEMouseEntered="*res://scripts/se_mouse_entered.gd"
-SettingsManager="*res://scripts/settings_manager.gd"
-ItemRegistry="*res://scripts/item_registry.gd"
+BGMManager="*res://scripts/managers/bgm_manager.gd"
+SESelect="*res://scripts/autoloads/se_select.gd"
+SEMouseEntered="*res://scripts/managers/se_mouse_entered.gd"
+SettingsManager="*res://scripts/managers/settings_manager.gd"
+ItemRegistry="*res://scripts/autoloads/item_registry.gd"
 
 [display]
 

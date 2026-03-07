@@ -53,7 +53,7 @@ func _on_body_exited(body: Node2D) -> void:
 		jogador_na_area = false
 
 func play_enter_stage_se():
-	var enter_stage_se : AudioStream = preload("res://assets/se/maou_se_battle02.ogg")
+	var enter_stage_se : AudioStream = preload("res://assets/audio/se/maou_se_battle02.ogg")
 	var player = AudioStreamPlayer.new()
 	player.stream = enter_stage_se
 	player.bus= "SFX"
@@ -67,4 +67,4 @@ func _on_zoom_finished():
 	var character = mapa.get_node("CharacterBody2D")
 	State.player_position = character.global_position
 	
-	FadeLayer.fade_to_scene("res://scenes/battle.tscn")
+	FadeLayer.fade_to_scene("res://scenes/game/battle.tscn")
