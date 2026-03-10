@@ -18,8 +18,16 @@ func _ready():
 	exp_value_label.text = "%d" % State.save_data["experience"]
 
 func update_stages():
+	# Apagar depois que alterar para fases mescladas
 	for child in stage_panel.get_children():
 		if child.name.to_lower() in State.save_data and State.save_data[child.name.to_lower()]:
+			var color_rect = child.get_node("ColorRect")
+			color_rect.color = Color(0.596, 0.927, 0.521, 1.0)
+	
+	for child in stage_panel.get_children():
+		var stage_key = "stage_" + child.name
+		
+		if State.save_data.get(stage_key, false):
 			var color_rect = child.get_node("ColorRect")
 			color_rect.color = Color(0.596, 0.927, 0.521, 1.0)
 

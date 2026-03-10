@@ -14,9 +14,10 @@ var defense = 0
 var damage = 10
 
 # Estágio
-var stage = "r4"
-var game = "unique"
+var stage = "stage_1"
+var game = "m1"
 var background = "res://assets/sprites/battleback1.png"
+var bgm = ""
 
 # Inimigo
 var enemy = "slime"
@@ -24,11 +25,14 @@ var enemy_hp = 45
 var enemy_damage = 15
 
 # Recompensas
+# Vai ser substituído
 var memory = 0
 var agility = 0
 var focus = 0
 var coordination = 0
 var reasoning = 0
+# Por esse
+var skill_point = 0
 
 # Mapa
 var player_position : Vector2 = Vector2.ZERO

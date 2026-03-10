@@ -2,16 +2,23 @@ extends Area2D
 
 signal zoom_in_transition
 
-@export var phase_name: String
 @export var stage: String
 @export var game: String
 @export var background: String
+@export var bgm: String
 @export var enemy: String
+@export var enemy_hp: int
+@export var enemy_damage: int
+
+# Vai deixar de existir
 @export var agility: int
 @export var memory: int
 @export var focus: int
 @export var coordination: int
 @export var reasoning: int
+
+# Vai ser substituido por esse
+@export var skill_point: int
 
 var jogador_na_area = false
 
@@ -35,12 +42,21 @@ func enter_stage():
 	State.stage = stage
 	State.game = game
 	State.background = background
+	State.bgm = bgm
 	State.enemy = enemy
+	State.enemy_hp = enemy_hp
+	State.enemy_damage = enemy_damage
+	
+	# Vai deixar de existir
 	State.agility = agility
 	State.memory = memory
 	State.focus = focus
 	State.coordination = coordination
 	State.reasoning = reasoning
+	
+	# Será substituído por esse
+	State.skill_point = skill_point
+	
 	play_enter_stage_se()
 	emit_signal("zoom_in_transition")
 

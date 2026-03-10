@@ -3,18 +3,25 @@ extends Node
 func new_game(path):
 	var save_data = {
 		"player_name": '',
+		"experience": 0,
+		"skill_points": 0,
+		"inventory": {"items": [], "equipped": ""},
+		
+		# Apagar depois que não for usar mais.
 		"memory": 0,
 		"agility": 0,
 		"focus": 0,
 		"reasoning": 0,
 		"coordination": 0,
-		"experience": 0,
-		"inventory": {"items": [], "equipped": ""},
 	}
 	
+	# Apagar depois que alterar para as fases mescladas
 	for prefix in ["m", "a", "f", "r", "c"]:
 		for i in range(1, 13):
 			save_data["%s%d" % [prefix, i]] = false
+	
+	for i in range(1, 61):
+		save_data["stage_%d" % i] = false
 	
 	# Salva os dados zerados
 	var file = FileAccess.open(path, FileAccess.WRITE)

@@ -35,41 +35,64 @@ signal textbox_closed
 var current_player_hp = 0
 var current_enemy_hp = 0
 var game_scene: Node = null
+var game_cycle: Array = []
+var game_index: int = 0
+var current_game: String
 
 var map = "res://scenes/game/map.tscn"
 #var map = "res://scenes/stage_select.tscn"
 
 var games = {
-	"react": "res://scenes/challenges/game_react.tscn",
-	"color": "res://scenes/challenges/game_color.tscn",
-	"bomb": "res://scenes/challenges/game_bomb.tscn",
-	"reflex": "res://scenes/challenges/game_reflex.tscn",
-	"sort": "res://scenes/challenges/game_sort.tscn",
-	"pop": "res://scenes/challenges/game_pop.tscn",
-	"collect": "res://scenes/challenges/game_collect.tscn",
-	"unique": "res://scenes/challenges/game_unique.tscn"
-}
-
-var titles = {
-	"react": "Reação",
-	"color": "Cor Correta",
-	"bomb": "Caminho",
-	"reflex": "Reflexo",
-	"sort": "Classificação",
-	"pop": "Menor ao Maior",
-	"collect": "Colete e Desvie",
-	"unique": "Único"
-}
-
-var rules = {
-	"react": "Clique no botão o mais rápido possível quando o sinal aparecer.",
-	"color": "Verifique se o SIGNIFICADO da palavra de CIMA coincide com a COR da palavra de BAIXO.",
-	"bomb": "Una os dois pontos azuis sem encostar nas bombas.",
-	"reflex": "Clique no botão o mais rápido possível.",
-	"sort": "Clique no botão para o lado que a figura do meio se encontra.",
-	"pop": "Clique nos botões na ordem do MENOR valor ao MAIOR.",
-	"collect": "Controle o personagem com o mouse e colete os itens enquanto evita os obstáculos.",
-	"unique": "Clique na caixa que se difere das outras na cor, número ou forma."
+	"m1": {
+		"scene": "res://scenes/challenges/game_bomb.tscn",
+		"title": "Caminho",
+		"rule": "Una os dois pontos azuis sem encostar nas bombas."
+	},
+	"a1": {
+		"scene": "res://scenes/challenges/game_color.tscn",
+		"title": "Cor Correta",
+		"rule": "Verifique se o SIGNIFICADO da palavra de CIMA coincide com a COR da palavra de BAIXO."
+	},
+	"f1": {
+		"scene": "res://scenes/challenges/game_react.tscn",
+		"title": "Reação",
+		"rule": "Clique no botão o mais rápido possível quando o sinal aparecer."
+	},
+	"c1": {
+		"scene": "res://scenes/challenges/game_reflex.tscn",
+		"title": "Reflexo",
+		"rule": "Clique no botão o mais rápido possível."
+	},
+	"r1": {
+		"scene": "res://scenes/challenges/game_pop.tscn",
+		"title": "Menor ao Maior",
+		"rule": "Clique nos botões na ordem do MENOR valor ao MAIOR."
+	},
+	"m2": {
+		"scene": "",
+		"title": "",
+		"rule": ""
+	},
+	"a2": {
+		"scene": "",
+		"title": "",
+		"rule": ""
+	},
+	"f2": {
+		"scene": "res://scenes/challenges/game_sort.tscn",
+		"title": "Classificação",
+		"rule": "Clique no botão para o lado que a figura do meio se encontra."
+	},
+	"c2": {
+		"scene": "res://scenes/challenges/game_collect.tscn",
+		"title": "Colete e Desvie",
+		"rule": "Controle o personagem com o mouse e colete os itens enquanto evita os obstáculos."
+	},
+	"r2": {
+		"scene": "res://scenes/challenges/game_unique.tscn",
+		"title": "Único",
+		"rule": "Clique na caixa que se difere das outras na cor, número ou forma."
+	}
 }
 
 var enemy_paths = {
@@ -95,8 +118,11 @@ func _ready():
 	#background = load(background_paths.get(State.background))
 	background.texture = load(background_paths.get(State.background))
 	
-	rules_label.text = rules.get(State.game, "Descrição não disponível.")
-	game_title.text = titles.get(State.game, "Título não disponível.")
+	current_game = setup_game_cycle()
+	var game_data = games[current_game]
+	
+	rules_label.text = game_data.rule
+	game_title.text = game_data.title
 	
 	current_player_hp = State.max_hp
 	current_enemy_hp = enemy.health
@@ -159,9 +185,10 @@ func _on_start_button_pressed() -> void:
 	await animation.animation_finished
 	count_label.hide()
 	
-	if games.has(State.game):
-		var game_path = games[State.game]
-		var game_resource = ResourceLoader.load(game_path)
+	if games.has(current_game):
+		var game_data = games[current_game]
+		var game_path = game_data.scene
+		var game_resource = load(game_path)
 		
 		if game_resource:
 			game_scene = game_resource.instantiate()
@@ -220,6 +247,12 @@ func _on_game_finished():
 
 		show_battle_summary(true, enemy.xp)
 	else:
+		current_game = get_next_game()
+		var game_data = games[current_game]
+	
+		rules_label.text = game_data.rule
+		game_title.text = game_data.title
+		
 		enemy_turn()
 		timer_bar_label.text = "%.1f" % State.time
 		timer_bar.value = State.time
@@ -327,3 +360,25 @@ func show_battle_summary(victory, xp):
 	await get_tree().create_timer(0.25).timeout
 	if is_inside_tree():
 		FadeLayer.fade_to_scene(map)
+
+func setup_game_cycle():
+	game_cycle = State.game.split(",")
+	
+	for i in range(game_cycle.size()):
+		game_cycle[i] = game_cycle[i].strip_edges()
+	
+	game_cycle.shuffle()
+	game_index = 0
+	
+	return game_cycle[0]
+
+func get_next_game():
+	game_index += 1
+	
+	if game_index >= game_cycle.size():
+		#game_cycle.shuffle()
+		game_index = 0
+	
+	var game_key = game_cycle[game_index]
+	
+	return game_key
