@@ -32,7 +32,13 @@ var focus = 0
 var coordination = 0
 var reasoning = 0
 # Por esse
-var skill_point = 0
+var total_skill_point = 0
+var current_skill_point = 0
+var player_health = 0
+var player_time = 0
+var player_damage = 0
+var player_crit_chance = 0
+var player_defense = 0
 
 # Mapa
 var player_position : Vector2 = Vector2.ZERO
