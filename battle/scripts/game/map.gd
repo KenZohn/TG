@@ -33,15 +33,29 @@ func update_stages():
 
 func set_state():
 	# Testando pegar os dados diretamente, ao invés de pegar do save data
-	State.max_hp = 50 + 100 * State.memory * 0.01
-	State.time = 15 + 5 * State.agility * 0.01
-	State.damage_multiplier = 1 + 2 * State.focus * 0.01
-	State.critical = 10 * State.coordination * 0.01
-	State.defense = 10 * State.reasoning * 0.01
+	#State.max_hp = 50 + 100 * State.memory * 0.01
+	#State.time = 15 + 5 * State.agility * 0.01
+	#State.damage_multiplier = 1 + 2 * State.focus * 0.01
+	#State.critical = 10 * State.coordination * 0.01
+	#State.defense = 10 * State.reasoning * 0.01
+	
+	State.max_hp = 50 + State.player_health * 5
+	State.time = 15 + State.player_time * 0.25
+	State.damage_multiplier = 1 + State.player_damage * 0.1
+	State.critical = State.player_crit_chance * 0.5
+	State.defense = State.player_defense * 0.5
+	
+	print("Vida: ", State.player_health)
+	print("Tempo: ", State.player_time)
+	print("Dano: ", State.player_damage)
+	print("Crit: ", State.player_crit_chance)
+	print("Defesa: ", State.player_defense)
 
 func _on_tittle_screen_button_pressed() -> void:
 	FadeLayer.fade_to_scene("res://scenes/ui/title_screen.tscn")
 
-
 func _on_backpack_button_pressed() -> void:
 	FadeLayer.fade_to_scene("res://scenes/ui/backpack.tscn")
+
+func _on_skill_tree_button_pressed() -> void:
+	FadeLayer.fade_to_scene("res://scenes/ui/skill_tree.tscn")

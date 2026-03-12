@@ -33,7 +33,7 @@ var connections = [
 var highlighted_path = []
 
 func _ready() -> void:
-	pass
+	load_skills()
 
 func _process(_delta):
 	queue_redraw()
@@ -42,18 +42,29 @@ func _draw():
 	for c in connections:
 		var a = skills.get_node_or_null(c[0])
 		var b = skills.get_node_or_null(c[1])
-
+		
 		if a == null or b == null:
 			continue
-
+		
 		var pos_a = (a.global_position + a.size / 2) - global_position
 		var pos_b = (b.global_position + b.size / 2) - global_position
-
+		
 		var color = Color.GRAY
 		var width = 2
-
+		
 		if c in highlighted_path:
 			color = Color.GOLD
 			width = 5
-
+		
 		draw_line(pos_a, pos_b, color, width)
+
+func load_skills():
+	print("Carregando skills")
+	print(State.skills)
+	for skill_name in State.skills:
+		if State.skills[skill_name]:
+			var skill = skills.get_node_or_null(skill_name)
+			
+			if skill:
+				skill.unlocked = true
+				skill.modulate = Color(1,1,1)

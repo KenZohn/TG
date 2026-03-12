@@ -39,6 +39,9 @@ var player_time = 0
 var player_damage = 0
 var player_crit_chance = 0
 var player_defense = 0
+var skills = {
+	"Start": true
+}
 
 # Mapa
 var player_position : Vector2 = Vector2.ZERO
