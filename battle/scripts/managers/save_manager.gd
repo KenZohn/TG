@@ -45,6 +45,8 @@ func load_game(path):
 		State.player_damage = State.save_data["player_damage"]
 		State.player_crit_chance = State.save_data["player_crit_chance"]
 		State.player_defense = State.save_data["player_defense"]
+		State.current_skill_point = State.save_data["current_skill_point"]
+		#State.total_skill_point = State.save_data["total_skill_point"]
 		
 		for key in State.save_data:
 			if key.begins_with("Skill_"):

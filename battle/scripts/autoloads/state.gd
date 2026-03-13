@@ -24,24 +24,34 @@ var enemy = "slime"
 var enemy_hp = 45
 var enemy_damage = 15
 
-# Recompensas
-# Vai ser substituído
+# Habilidades cognitivas
 var memory = 0
 var agility = 0
 var focus = 0
 var coordination = 0
 var reasoning = 0
-# Por esse
-var total_skill_point = 0
-var current_skill_point = 0
+
+# Atributos
 var player_health = 0
 var player_time = 0
 var player_damage = 0
 var player_crit_chance = 0
 var player_defense = 0
+
+# Árvore de talentos
+signal skill_points_changed
+
+var stage_skill_point = 0
+var total_skill_point = 0
+var current_skill_point = 0
+
 var skills = {
 	"Start": true
 }
+
+func spend_skill_point():
+	current_skill_point -= 1
+	skill_points_changed.emit()
 
 # Mapa
 var player_position : Vector2 = Vector2.ZERO

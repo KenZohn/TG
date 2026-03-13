@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bdngd81e07g1t"]
+[gd_scene load_steps=17 format=3 uid="uid://bdngd81e07g1t"]
 
 [ext_resource type="Script" uid="uid://bhaxh448kqa02" path="res://scripts/ui/skill_tree.gd" id="1_6rj6t"]
 [ext_resource type="Texture2D" uid="uid://gyqh6uh8qfmm" path="res://assets/skill_tree.png" id="2_nsdrr"]
@@ -16,6 +16,17 @@
 [ext_resource type="Texture2D" uid="uid://45pow25fgkly" path="res://assets/icons/special_critical.png" id="14_0litb"]
 [ext_resource type="Texture2D" uid="uid://d2iqrbjgk0268" path="res://assets/icons/special_defense.png" id="15_m1npe"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qabtx"]
+bg_color = Color(0.20871, 0.20871, 0.20871, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [node name="SkillTree" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -26,6 +37,7 @@ grow_vertical = 2
 script = ExtResource("1_6rj6t")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.3372549)
 layout_mode = 1
 anchors_preset = 8
@@ -42,6 +54,16 @@ grow_vertical = 2
 texture = ExtResource("2_nsdrr")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="TextureRect2" type="ColorRect" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14406255, 0.14406255, 0.14406255, 1)
 
 [node name="Skills" type="Node" parent="."]
 
@@ -79,6 +101,7 @@ texture_normal = ExtResource("5_7lr3a")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
 health = 1
 
 [node name="Skill_2" type="TextureButton" parent="Skills"]
@@ -97,6 +120,7 @@ texture_normal = ExtResource("6_xv45t")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
 time = 1
 
 [node name="Skill_3" type="TextureButton" parent="Skills"]
@@ -115,6 +139,7 @@ texture_normal = ExtResource("7_oo0et")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
 damage = 1
 
 [node name="Skill_4" type="TextureButton" parent="Skills"]
@@ -133,6 +158,7 @@ texture_normal = ExtResource("8_ptwwp")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
 crit_chance = 1
 
 [node name="Skill_5" type="TextureButton" parent="Skills"]
@@ -151,6 +177,7 @@ texture_normal = ExtResource("6_k3ia8")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
 defense = 1
 
 [node name="Skill_6" type="TextureButton" parent="Skills"]
@@ -169,6 +196,7 @@ texture_normal = ExtResource("5_7lr3a")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
 health = 1
 
 [node name="Skill_7" type="TextureButton" parent="Skills"]
@@ -187,6 +215,7 @@ texture_normal = ExtResource("8_ptwwp")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
 crit_chance = 1
 
 [node name="Skill_8" type="TextureButton" parent="Skills"]
@@ -205,6 +234,7 @@ texture_normal = ExtResource("6_xv45t")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
 time = 1
 
 [node name="Skill_9" type="TextureButton" parent="Skills"]
@@ -223,6 +253,7 @@ texture_normal = ExtResource("6_k3ia8")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
 defense = 1
 
 [node name="Skill_10" type="TextureButton" parent="Skills"]
@@ -241,6 +272,7 @@ texture_normal = ExtResource("7_oo0et")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
 damage = 1
 
 [node name="Skill_11" type="TextureButton" parent="Skills"]
@@ -259,6 +291,7 @@ texture_normal = ExtResource("5_7lr3a")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
 health = 1
 
 [node name="Skill_12" type="TextureButton" parent="Skills"]
@@ -277,6 +310,7 @@ texture_normal = ExtResource("8_ptwwp")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
 crit_chance = 1
 
 [node name="Skill_13" type="TextureButton" parent="Skills"]
@@ -295,6 +329,7 @@ texture_normal = ExtResource("6_xv45t")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
 time = 1
 
 [node name="Skill_14" type="TextureButton" parent="Skills"]
@@ -313,6 +348,7 @@ texture_normal = ExtResource("6_k3ia8")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
 defense = 1
 
 [node name="Skill_15" type="TextureButton" parent="Skills"]
@@ -331,6 +367,7 @@ texture_normal = ExtResource("7_oo0et")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
 damage = 1
 
 [node name="Skill_16" type="TextureButton" parent="Skills"]
@@ -349,6 +386,8 @@ texture_normal = ExtResource("5_7lr3a")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+health = 1
 
 [node name="Skill_17" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -366,6 +405,8 @@ texture_normal = ExtResource("5_7lr3a")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+health = 1
 
 [node name="Skill_18" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -383,6 +424,12 @@ texture_normal = ExtResource("10_l5rv0")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 3
+health = 1
+time = 1
+damage = 1
+crit_chance = 1
+defense = 1
 
 [node name="Skill_19" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -400,6 +447,8 @@ texture_normal = ExtResource("8_ptwwp")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+crit_chance = 1
 
 [node name="Skill_20" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -417,6 +466,8 @@ texture_normal = ExtResource("7_oo0et")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+damage = 1
 
 [node name="Skill_21" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -434,6 +485,8 @@ texture_normal = ExtResource("6_xv45t")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+time = 1
 
 [node name="Skill_22" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -451,6 +504,8 @@ texture_normal = ExtResource("6_xv45t")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+time = 1
 
 [node name="Skill_23" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -468,6 +523,12 @@ texture_normal = ExtResource("10_l5rv0")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 3
+health = 1
+time = 1
+damage = 1
+crit_chance = 1
+defense = 1
 
 [node name="Skill_24" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -485,6 +546,8 @@ texture_normal = ExtResource("6_k3ia8")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+defense = 1
 
 [node name="Skill_25" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -502,6 +565,8 @@ texture_normal = ExtResource("8_ptwwp")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+crit_chance = 1
 
 [node name="Skill_26" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -519,6 +584,8 @@ texture_normal = ExtResource("7_oo0et")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+damage = 1
 
 [node name="Skill_27" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -536,6 +603,8 @@ texture_normal = ExtResource("7_oo0et")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+damage = 1
 
 [node name="Skill_28" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -553,6 +622,12 @@ texture_normal = ExtResource("10_l5rv0")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 3
+health = 1
+time = 1
+damage = 1
+crit_chance = 1
+defense = 1
 
 [node name="Skill_29" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -570,6 +645,8 @@ texture_normal = ExtResource("5_7lr3a")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+health = 1
 
 [node name="Skill_30" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -587,6 +664,8 @@ texture_normal = ExtResource("6_k3ia8")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+defense = 1
 
 [node name="Skill_31" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -604,6 +683,8 @@ texture_normal = ExtResource("8_ptwwp")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+crit_chance = 1
 
 [node name="Skill_32" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -621,6 +702,8 @@ texture_normal = ExtResource("8_ptwwp")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+crit_chance = 1
 
 [node name="Skill_33" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -638,6 +721,12 @@ texture_normal = ExtResource("10_l5rv0")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 3
+health = 1
+time = 1
+damage = 1
+crit_chance = 1
+defense = 1
 
 [node name="Skill_34" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -655,6 +744,8 @@ texture_normal = ExtResource("6_xv45t")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+time = 1
 
 [node name="Skill_35" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -672,6 +763,8 @@ texture_normal = ExtResource("5_7lr3a")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+health = 1
 
 [node name="Skill_36" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -689,6 +782,8 @@ texture_normal = ExtResource("6_k3ia8")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+defense = 1
 
 [node name="Skill_37" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -706,6 +801,8 @@ texture_normal = ExtResource("6_k3ia8")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+defense = 1
 
 [node name="Skill_38" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -723,6 +820,12 @@ texture_normal = ExtResource("10_l5rv0")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 3
+health = 1
+time = 1
+damage = 1
+crit_chance = 1
+defense = 1
 
 [node name="Skill_39" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -740,6 +843,8 @@ texture_normal = ExtResource("7_oo0et")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+damage = 1
 
 [node name="Skill_40" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -757,6 +862,8 @@ texture_normal = ExtResource("6_xv45t")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+time = 1
 
 [node name="Skill_41" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -774,6 +881,8 @@ texture_normal = ExtResource("6_k3ia8")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+defense = 1
 
 [node name="Skill_42" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -791,6 +900,8 @@ texture_normal = ExtResource("5_7lr3a")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+health = 1
 
 [node name="Skill_43" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -808,6 +919,12 @@ texture_normal = ExtResource("10_l5rv0")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 3
+health = 1
+time = 1
+damage = 1
+crit_chance = 1
+defense = 1
 
 [node name="Skill_44" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -825,6 +942,8 @@ texture_normal = ExtResource("11_rdlo8")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 5
+health = 1
 
 [node name="Skill_45" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -842,6 +961,8 @@ texture_normal = ExtResource("5_7lr3a")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+health = 1
 
 [node name="Skill_46" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -859,6 +980,8 @@ texture_normal = ExtResource("6_xv45t")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+time = 1
 
 [node name="Skill_47" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -876,6 +999,12 @@ texture_normal = ExtResource("10_l5rv0")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 3
+health = 1
+time = 1
+damage = 1
+crit_chance = 1
+defense = 1
 
 [node name="Skill_48" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -893,6 +1022,8 @@ texture_normal = ExtResource("12_sr3md")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 5
+time = 1
 
 [node name="Skill_49" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -910,6 +1041,8 @@ texture_normal = ExtResource("6_xv45t")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+time = 1
 
 [node name="Skill_50" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -927,6 +1060,8 @@ texture_normal = ExtResource("7_oo0et")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+damage = 1
 
 [node name="Skill_51" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -944,6 +1079,12 @@ texture_normal = ExtResource("10_l5rv0")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 3
+health = 1
+time = 1
+damage = 1
+crit_chance = 1
+defense = 1
 
 [node name="Skill_52" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -961,6 +1102,8 @@ texture_normal = ExtResource("13_c5x22")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 5
+damage = 1
 
 [node name="Skill_53" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -978,6 +1121,8 @@ texture_normal = ExtResource("7_oo0et")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+damage = 1
 
 [node name="Skill_54" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -995,6 +1140,8 @@ texture_normal = ExtResource("8_ptwwp")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+crit_chance = 1
 
 [node name="Skill_55" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -1012,6 +1159,12 @@ texture_normal = ExtResource("10_l5rv0")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 3
+health = 1
+time = 1
+damage = 1
+crit_chance = 1
+defense = 1
 
 [node name="Skill_56" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -1029,6 +1182,8 @@ texture_normal = ExtResource("14_0litb")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 5
+crit_chance = 1
 
 [node name="Skill_57" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -1046,6 +1201,8 @@ texture_normal = ExtResource("8_ptwwp")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+crit_chance = 1
 
 [node name="Skill_58" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -1063,6 +1220,8 @@ texture_normal = ExtResource("6_k3ia8")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 1
+defense = 1
 
 [node name="Skill_59" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -1080,6 +1239,12 @@ texture_normal = ExtResource("10_l5rv0")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 3
+health = 1
+time = 1
+damage = 1
+crit_chance = 1
+defense = 1
 
 [node name="Skill_60" type="TextureButton" parent="Skills"]
 anchors_preset = 8
@@ -1097,3 +1262,32 @@ texture_normal = ExtResource("15_m1npe")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+cost = 5
+defense = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 966.0
+offset_top = 56.0
+offset_right = 1141.0
+offset_bottom = 79.0
+text = "Pontos de habilidades:"
+
+[node name="LabelSkillPointValue" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1157.0
+offset_top = 58.0
+offset_right = 1332.0
+offset_bottom = 81.0
+text = "0"
+
+[node name="BackButton" type="Button" parent="." groups=["menu_buttons"]]
+layout_mode = 0
+offset_left = 1011.0
+offset_top = 642.0
+offset_right = 1261.0
+offset_bottom = 692.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_qabtx")
+text = "Voltar"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

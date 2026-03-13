@@ -10,14 +10,12 @@ signal zoom_in_transition
 @export var enemy_hp: int
 @export var enemy_damage: int
 
-# Vai deixar de existir
-@export var agility: int
 @export var memory: int
+@export var agility: int
 @export var focus: int
 @export var coordination: int
 @export var reasoning: int
 
-# Vai ser substituido por esse
 @export var skill_point: int
 
 var jogador_na_area = false
@@ -55,7 +53,7 @@ func enter_stage():
 	State.reasoning = reasoning
 	
 	# Será substituído por esse
-	State.skill_point = skill_point
+	State.stage_skill_point = skill_point
 	
 	play_enter_stage_se()
 	emit_signal("zoom_in_transition")

@@ -26892,6 +26892,7 @@ bgm = "green_field_normal"
 enemy = "slime"
 enemy_hp = 60
 enemy_damage = 5
+memory = 1
 skill_point = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/1"]
@@ -26943,6 +26944,7 @@ bgm = "green_field_normal"
 enemy = "slime"
 enemy_hp = 60
 enemy_damage = 5
+agility = 1
 skill_point = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/2"]
@@ -26994,6 +26996,7 @@ bgm = "green_field_normal"
 enemy = "slime"
 enemy_hp = 60
 enemy_damage = 5
+focus = 1
 skill_point = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/3"]
@@ -27045,6 +27048,7 @@ bgm = "green_field_normal"
 enemy = "slime"
 enemy_hp = 60
 enemy_damage = 5
+coordination = 1
 skill_point = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/4"]
@@ -27096,6 +27100,7 @@ bgm = "green_field_normal"
 enemy = "slime"
 enemy_hp = 60
 enemy_damage = 5
+reasoning = 1
 skill_point = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/5"]
@@ -27147,6 +27152,8 @@ bgm = "green_field_normal"
 enemy = "slime"
 enemy_hp = 70
 enemy_damage = 7
+agility = 1
+coordination = 1
 skill_point = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/6"]
@@ -27198,6 +27205,8 @@ bgm = "green_field_normal"
 enemy = "slime"
 enemy_hp = 70
 enemy_damage = 7
+agility = 1
+reasoning = 1
 skill_point = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/7"]
@@ -27249,6 +27258,8 @@ bgm = "green_field_normal"
 enemy = "slime"
 enemy_hp = 70
 enemy_damage = 7
+memory = 1
+agility = 1
 skill_point = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/8"]
@@ -27300,6 +27311,8 @@ bgm = "green_field_normal"
 enemy = "slime"
 enemy_hp = 70
 enemy_damage = 7
+focus = 1
+coordination = 1
 skill_point = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/9"]
@@ -27351,6 +27364,8 @@ bgm = "green_field_normal"
 enemy = "slime"
 enemy_hp = 70
 enemy_damage = 7
+focus = 1
+reasoning = 1
 skill_point = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/10"]
@@ -27402,6 +27417,8 @@ bgm = "green_field_normal"
 enemy = "slime"
 enemy_hp = 70
 enemy_damage = 7
+agility = 1
+focus = 1
 skill_point = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/11"]
@@ -27453,6 +27470,8 @@ bgm = "green_field_normal"
 enemy = "slime"
 enemy_hp = 70
 enemy_damage = 7
+memory = 1
+focus = 1
 skill_point = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/12"]
@@ -27504,6 +27523,8 @@ bgm = "green_field_normal"
 enemy = "slime"
 enemy_hp = 70
 enemy_damage = 7
+memory = 1
+coordination = 1
 skill_point = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/13"]
@@ -27555,6 +27576,8 @@ bgm = "green_field_normal"
 enemy = "slime"
 enemy_hp = 70
 enemy_damage = 7
+memory = 1
+reasoning = 1
 skill_point = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/14"]

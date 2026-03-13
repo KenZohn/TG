@@ -115,7 +115,6 @@ func _ready():
 	set_hp(player_hp_bar, State.max_hp, State.max_hp)
 	enemy_texture.texture = enemy.texture
 	
-	#background = load(background_paths.get(State.background))
 	background.texture = load(background_paths.get(State.background))
 	
 	current_game = setup_game_cycle()
@@ -229,6 +228,9 @@ func _on_game_finished():
 			
 			# Salvar jogo
 			State.save_data[State.stage] = true
+			
+			State.save_data["current_skill_point"] += State.stage_skill_point
+			State.current_skill_point += 1
 		
 		State.save_data["experience"] += enemy.xp
 		State.save_data["player_position"] = [State.player_position.x, State.player_position.y]
