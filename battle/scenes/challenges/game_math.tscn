@@ -1,0 +1,119 @@
+[gd_scene load_steps=4 format=3 uid="uid://j1gcpijul3oy"]
+
+[ext_resource type="Script" uid="uid://dygmpi0u2cieh" path="res://scripts/challenges/game_math.gd" id="1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0, 0, 0, 0.78431374)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.9019608)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button"]
+bg_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="Math" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="ContainerCard" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -190.0
+offset_top = -355.0
+offset_right = 190.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="Equation" type="Label" parent="ContainerCard"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -80.0
+offset_right = 150.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "X ? Y = Z"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="ContainerCard"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -170.0
+offset_top = -75.0
+offset_right = 170.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="ButtonPlus" type="Button" parent="ContainerCard/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "+"
+
+[node name="ButtonMinus" type="Button" parent="ContainerCard/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "-"
+
+[node name="ButtonMultiply" type="Button" parent="ContainerCard/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "×"
+
+[node name="ButtonDivide" type="Button" parent="ContainerCard/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "÷"
+
+[node name="TimerGame" type="Timer" parent="."]
+
+[node name="TimerDisplay" type="Timer" parent="."]
+
+[node name="TimerInterval" type="Timer" parent="."]
+
+[connection signal="pressed" from="ContainerCard/ButtonsContainer/ButtonPlus" to="." method="_on_button_pressed" binds= [0]]
+[connection signal="pressed" from="ContainerCard/ButtonsContainer/ButtonMinus" to="." method="_on_button_pressed" binds= [1]]
+[connection signal="pressed" from="ContainerCard/ButtonsContainer/ButtonMultiply" to="." method="_on_button_pressed" binds= [2]]
+[connection signal="pressed" from="ContainerCard/ButtonsContainer/ButtonDivide" to="." method="_on_button_pressed" binds= [3]]

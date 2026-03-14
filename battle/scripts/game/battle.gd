@@ -74,9 +74,9 @@ var games = {
 		"rule": ""
 	},
 	"a2": {
-		"scene": "",
-		"title": "",
-		"rule": ""
+		"scene": "res://scenes/challenges/game_math.tscn",
+		"title": "Cálculo Rápido",
+		"rule": "Descubra qual operação (+, -, ×, ÷) completa a equação corretamente."
 	},
 	"f2": {
 		"scene": "res://scenes/challenges/game_sort.tscn",
