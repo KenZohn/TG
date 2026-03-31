@@ -27670,6 +27670,57 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="16" type="Area2D" parent="Stages"]
+position = Vector2(58, -531)
+script = ExtResource("50_v5efx")
+stage = "stage_16"
+game = "m2"
+background = "green_field"
+bgm = "green_field_normal"
+enemy = "slime"
+enemy_hp = 70
+enemy_damage = 7
+skill_point = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stages/16"]
+shape = SubResource("RectangleShape2D_w81il")
+
+[node name="ColorRect" type="ColorRect" parent="Stages/16"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.24115604, 0.24115604, 0.24115604, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Stages/16/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.13319641, 0.13319641, 0.13319638, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 14
+text = "16"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(2, -116)
 
@@ -28149,6 +28200,8 @@ position = Vector2(181, 130)
 [connection signal="body_exited" from="Stages/14" to="Stages/14" method="_on_body_exited"]
 [connection signal="body_entered" from="Stages/15" to="Stages/15" method="_on_body_entered"]
 [connection signal="body_exited" from="Stages/15" to="Stages/15" method="_on_body_exited"]
+[connection signal="body_entered" from="Stages/16" to="Stages/16" method="_on_body_entered"]
+[connection signal="body_exited" from="Stages/16" to="Stages/16" method="_on_body_exited"]
 [connection signal="pressed" from="CanvasLayer/TittleScreenButton" to="." method="_on_tittle_screen_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/BackpackButton" to="." method="_on_backpack_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/SkillTreeButton" to="." method="_on_skill_tree_button_pressed"]

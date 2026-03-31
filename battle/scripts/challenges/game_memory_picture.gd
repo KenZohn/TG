@@ -1,4 +1,9 @@
-extends Node2D
+extends Control
+
+signal correct_answer_hit(damage)
+signal wrong_answer()
+signal game_finished()
+signal timer_update(time)
 
 var figuras = []
 var posicoes = []
@@ -7,19 +12,35 @@ var pontuacao = 0
 
 var quantidade_cartas = 4
 var cartas = []
-var reveladas = []  # lista paralela a 'cartas'
+var reveladas = []
+var damage = 4
 
-@onready var alvo_container = $AlvoContainer
+@onready var grid = $ColorRect/CenterContainer/VBoxContainer/MarginContainer/GridContainer
+@onready var alvo_container = $ColorRect/CenterContainer/VBoxContainer/HBoxContainer
+
 @onready var timer = $Timer
+@onready var timer_game = $TimerGame
+@onready var timer_display = $TimerDisplay
+@onready var timer_interval = $TimerInterval
 
 func _ready():
 	randomize()
+	setup_timers()
+	
 	carregar_figuras()
 	criar_cartas(quantidade_cartas)
 	distribuir_figuras()
-	timer.one_shot = true   # dispara apenas uma vez
+
+	timer.one_shot = true
+	timer.timeout.connect(_on_timer_timeout)
 	timer.start(3.0)
 
+	timer_game.start()
+	timer_display.timeout.connect(_update_timer_display)
+
+# =========================
+# FIGURAS
+# =========================
 func carregar_figuras():
 	figuras = [
 		preload("res://assets/figures/circle.png"),
@@ -29,130 +50,165 @@ func carregar_figuras():
 		preload("res://assets/figures/pause.png")
 	]
 
+# =========================
+# CARTAS
+# =========================
 func criar_cartas(qtd: int):
+	cartas.clear()
 	reveladas.clear()
+
+	grid.columns = 2  # automático
+
 	for i in range(qtd):
 		var carta = Button.new()
-		carta.text = ""
-		carta.custom_minimum_size = Vector2(64, 64)
-		carta.icon = null   # carta virada para baixo, sem figura
+		carta.custom_minimum_size = Vector2(80, 80)
+		carta.icon = null
+		carta.disabled = true
+		carta.expand_icon = true
 
-		var x = (i % 2) * (64 + 16)
-		var y = int(i / 2) * (64 + 16)
-		carta.position = Vector2(x, y)
-
-		add_child(carta)
+		grid.add_child(carta)
 		cartas.append(carta)
-		reveladas.append(false)  # começa como não revelada
-		carta.connect("pressed", Callable(self, "_on_carta_pressed").bind(carta))
+		reveladas.append(false)
 
+		carta.pressed.connect(_on_carta_pressed.bind(carta))
+
+# =========================
+# DISTRIBUIÇÃO
+# =========================
 func distribuir_figuras():
 	posicoes.clear()
+
 	var figuras_embaralhadas = figuras.duplicate()
 	figuras_embaralhadas.shuffle()
 
 	for i in range(cartas.size()):
 		var figura = figuras_embaralhadas[i % figuras_embaralhadas.size()]
-		cartas[i].icon = redimensionar_textura(figura, Vector2(64,64))
-		cartas[i].disabled = true   # bloqueia clique durante memorização
+		cartas[i].icon = figura
 		posicoes.append(figura)
+		cartas[i].disabled = true
 
-func _on_timer_timeout() -> void:
-	# Oculta todas as cartas e ativa para clique
+# =========================
+# MEMORIZAÇÃO → JOGO
+# =========================
+func _on_timer_timeout():
+	# esconder cartas
 	for i in range(cartas.size()):
 		cartas[i].icon = null
 		cartas[i].disabled = false
 		reveladas[i] = false
 
-	# Escolhe figuras-alvo
+	# escolher alvos
 	var posicoes_embaralhadas = posicoes.duplicate()
 	posicoes_embaralhadas.shuffle()
 
 	figuras_alvo.clear()
-	var quantidade = 2
-	for i in range(min(quantidade, posicoes_embaralhadas.size())):
+
+	for i in range(min(2, posicoes_embaralhadas.size())):
 		figuras_alvo.append(posicoes_embaralhadas[i])
 
-	# Remove alvos antigos
-	for child in get_children():
-		if child is Button and child.name.begins_with("Alvo"):
-			remove_child(child)
-			child.queue_free()
+	# limpar alvos antigos
+	for child in alvo_container.get_children():
+		child.queue_free()
 
-	# Calcula altura total ocupada pelas cartas
-	var largura = 64
-	var altura = 64
-	var margem = 16
-	var colunas = 2
-	var linhas = int(ceil(float(cartas.size()) / colunas))
-	var altura_cartas = linhas * (altura + margem)
+	# criar alvos
+	for figura in figuras_alvo:
+		var alvo = TextureRect.new()
+		alvo.texture = figura
+		alvo.custom_minimum_size = Vector2(64, 64)
 
-	# Cria botões de alvos logo abaixo das cartas
-	for i in range(figuras_alvo.size()):
-		var alvo = Button.new()
-		alvo.name = "Alvo" + str(i)
-		alvo.text = ""
-		alvo.custom_minimum_size = Vector2(largura, altura)
-		alvo.icon = redimensionar_textura(figuras_alvo[i], Vector2(largura, altura))
+		alvo.expand = true
+		alvo.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		alvo.custom_minimum_size = Vector2(64, 64)
+		alvo_container.add_child(alvo)
+		alvo_container.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		alvo_container.alignment = BoxContainer.ALIGNMENT_CENTER
 
-		# posiciona em linha abaixo das cartas
-		var x = i * (largura + margem)
-		var y = altura_cartas + margem
-		alvo.position = Vector2(x, y)
-
-		add_child(alvo)
-
-	print("Encontre as figuras:", figuras_alvo)
-
+# =========================
+# INPUT
+# =========================
 func _on_carta_pressed(carta: Button):
 	var index = cartas.find(carta)
-
 	verificar_escolha(index)
 
-	carta.disabled = true
-
+# =========================
+# LÓGICA
+# =========================
 func verificar_escolha(index):
 	var figura_correta = posicoes[index]
+
 	if figura_correta in figuras_alvo:
-		cartas[index].icon = redimensionar_textura(figura_correta, Vector2(64,64))
+		cartas[index].icon = figura_correta
 		reveladas[index] = true
-		cartas[index].disabled = true   # não pode mais clicar
+		cartas[index].disabled = true
+
 		pontuacao += 1
 		figuras_alvo.erase(figura_correta)
-		print("Acertou! Pontos:", pontuacao)
+
+		emit_signal("correct_answer_hit", damage)
 
 		if figuras_alvo.is_empty():
 			reiniciar_jogo()
+
 	else:
-		cartas[index].modulate = Color(1, 0, 0)
-		cartas[index].disabled = true   # errou, também não pode clicar de novo
-		print("Errou!")
+		cartas[index].modulate = Color(1, 0.3, 0.3)
+		cartas[index].disabled = true
 
-func redimensionar_textura(tex: Texture, tamanho: Vector2) -> Texture:
-	var img = tex.get_image()
-	img.resize(tamanho.x, tamanho.y)
-	return ImageTexture.create_from_image(img)  # chamada correta
+		await get_tree().create_timer(0.3).timeout
+		cartas[index].modulate = Color(1, 1, 1)
 
+		emit_signal("wrong_answer")
+		_apply_time_penalty()
+
+# =========================
+# RESET
+# =========================
 func reiniciar_jogo():
-	print("Todas as figuras encontradas! Reiniciando...")
-	pontuacao = 0
 	posicoes.clear()
 	figuras_alvo.clear()
 	reveladas.clear()
 
-	# Remove alvos antigos
-	for child in get_children():
-		if child is Button and child.name.begins_with("Alvo"):
-			remove_child(child)
-			child.queue_free()
+	for child in alvo_container.get_children():
+		child.queue_free()
 
-	# Reseta cartas
 	for i in range(cartas.size()):
-		var carta = cartas[i]
-		carta.icon = null
-		carta.modulate = Color(1,1,1)
-		carta.disabled = true   # ficam bloqueadas até o timer liberar
+		cartas[i].icon = null
+		cartas[i].disabled = true
 		reveladas.append(false)
 
 	distribuir_figuras()
 	timer.start(3.0)
+
+# =========================
+# TEMPO
+# =========================
+func _apply_time_penalty():
+	var remaining = timer_game.time_left
+	var new_time = max(remaining - 2.0, 0.1)
+
+	timer_game.stop()
+	timer_game.wait_time = new_time
+	timer_game.start()
+
+func setup_timers():
+	timer_game.wait_time = State.time
+	timer_game.one_shot = true
+	timer_game.timeout.connect(_on_game_timeout)
+
+	timer_interval.wait_time = 0.1
+	timer_interval.one_shot = true
+	timer_interval.timeout.connect(_on_interval_timeout)
+
+	timer_display.wait_time = 0.1
+	timer_display.one_shot = false
+	timer_display.start()
+
+func _update_timer_display():
+	emit_signal("timer_update", timer_game.time_left)
+
+func _on_interval_timeout():
+	if timer_game.is_stopped():
+		return
+
+func _on_game_timeout():
+	timer_interval.stop()
+	emit_signal("game_finished")

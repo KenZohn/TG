@@ -69,9 +69,9 @@ var games = {
 		"rule": "Clique nos botões na ordem do MENOR valor ao MAIOR."
 	},
 	"m2": {
-		"scene": "",
-		"title": "",
-		"rule": ""
+		"scene": "res://scenes/challenges/game_memory_picture.tscn",
+		"title": "Memória",
+		"rule": "Encontre as cartas escolhidas."
 	},
 	"a2": {
 		"scene": "res://scenes/challenges/game_math.tscn",
