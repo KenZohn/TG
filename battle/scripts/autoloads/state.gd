@@ -68,6 +68,21 @@ func reset_state():
 
 func reset_position():
 	State.player_position = Vector2.ZERO
+	
+func save_skills(health = 0, crit_chance = 0):
+	State.player_health += health
+	State.player_time += time
+	State.player_damage += damage
+	State.player_crit_chance += crit_chance
+	State.player_defense += defense
+	
+	State.save_data["player_health"] = State.player_health
+	State.save_data["player_time"] = State.player_time
+	State.save_data["player_damage"] = State.player_damage
+	State.save_data["player_crit_chance"] = State.player_crit_chance
+	State.save_data["player_defense"] = State.player_defense
+	State.save_data["current_skill_point"] = State.current_skill_point
+	State.save_data[name] = true
 
 # Mochila
 var inventory = Inventory.new()

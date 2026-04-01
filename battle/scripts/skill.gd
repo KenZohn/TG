@@ -33,19 +33,6 @@ func unlock_skill():
 		unlocked = true
 		State.skills[name] = true
 		modulate = Color(1,1,1)
-
-		State.player_health += health
-		State.player_time += time
-		State.player_damage += damage
-		State.player_crit_chance += crit_chance
-		State.player_defense += defense
 		
-		State.save_data["player_health"] = State.player_health
-		State.save_data["player_time"] = State.player_time
-		State.save_data["player_damage"] = State.player_damage
-		State.save_data["player_crit_chance"] = State.player_crit_chance
-		State.save_data["player_defense"] = State.player_defense
-		State.save_data["current_skill_point"] = State.current_skill_point
-		State.save_data[name] = true
-		
+		State.save_skills(health, crit_chance)
 		save_manager.save_game(State.save_path)

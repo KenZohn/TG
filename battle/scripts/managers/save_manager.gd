@@ -57,6 +57,7 @@ func load_game(path):
 	
 func save_game(path):
 	State.save_data["inventory"] = State.inventory.serialize() 
+	State.save_skills()
 	var file = FileAccess.open(path, FileAccess.WRITE)
 	file.store_string(JSON.stringify(State.save_data))
 	file.close()
