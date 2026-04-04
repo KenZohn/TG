@@ -14,6 +14,7 @@ var defense = 0
 var damage = 10
 
 # Estágio
+var current_stage = "1" # Teste no novo sistema de seleção de fase
 var stage = "stage_1"
 var game = "m1"
 var background = "res://assets/sprites/battleback1.png"

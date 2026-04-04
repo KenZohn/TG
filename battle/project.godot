@@ -25,6 +25,7 @@ SESelect="*res://scripts/autoloads/se_select.gd"
 SEMouseEntered="*res://scripts/managers/se_mouse_entered.gd"
 SettingsManager="*res://scripts/managers/settings_manager.gd"
 ItemRegistry="*res://scripts/autoloads/item_registry.gd"
+StageData="*res://scripts/autoloads/stage_data.gd"
 
 [display]
 

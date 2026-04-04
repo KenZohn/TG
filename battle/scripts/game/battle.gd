@@ -38,9 +38,9 @@ var game_scene: Node = null
 var game_cycle: Array = []
 var game_index: int = 0
 var current_game: String
+var stage_skill_points = 0
 
 var map = "res://scenes/game/map.tscn"
-#var map = "res://scenes/stage_select.tscn"
 
 var games = {
 	"m1": {
@@ -110,21 +110,24 @@ var background_paths = {
 }
 
 func _ready():
-	enemy = load(enemy_paths.get(State.enemy))
-	set_hp(enemy_hp_bar, enemy.health, enemy.health)
-	set_hp(player_hp_bar, State.max_hp, State.max_hp)
+	var stage_data = StageData.stages[State.current_stage]
+	
+	stage_skill_points = stage_data.skill_points
+	enemy = load(enemy_paths.get(stage_data.enemy))
+	background.texture = load(background_paths.get(stage_data.background))
 	enemy_texture.texture = enemy.texture
 	
-	background.texture = load(background_paths.get(State.background))
+	set_hp(enemy_hp_bar, enemy.health, enemy.health)
+	set_hp(player_hp_bar, State.max_hp, State.max_hp)
 	
-	current_game = setup_game_cycle()
+	current_player_hp = State.max_hp
+	current_enemy_hp = enemy.health
+	
+	current_game = setup_game_cycle(stage_data)
 	var game_data = games[current_game]
 	
 	rules_label.text = game_data.rule
 	game_title.text = game_data.title
-	
-	current_player_hp = State.max_hp
-	current_enemy_hp = enemy.health
 	
 	BGMManager.play_bgm(load(enemy.bgm))
 	
@@ -217,8 +220,11 @@ func _on_game_finished():
 		var total_battle_time = battle_end_time - battle_start_time
 		stats.time_taken = total_battle_time
 		
+		var stage_key = State.current_stage
+		
 		# Primeira vez completando o estágio
-		if State.save_data[State.stage] == false:
+		if not State.save_data.get(stage_key, false):
+			
 			# Atribuir atributos
 			State.save_data["memory"] += State.memory
 			State.save_data["agility"] += State.agility
@@ -227,13 +233,14 @@ func _on_game_finished():
 			State.save_data["coordination"] += State.coordination
 			
 			# Salvar jogo
-			State.save_data[State.stage] = true
+			State.save_data[stage_key] = true
 			
-			State.save_data["current_skill_point"] += State.stage_skill_point
-			State.current_skill_point += 1
+			State.save_data["current_skill_point"] += stage_skill_points
+			State.current_skill_point += stage_skill_points
 		
 		State.save_data["experience"] += enemy.xp
 		State.save_data["player_position"] = [State.player_position.x, State.player_position.y]
+		
 		save_manager.save_game(State.save_path)
 		
 		display_text("O inimigo foi derrotado! \nVocê sente-se mais sábio... %d XP" % enemy.xp)
@@ -363,15 +370,10 @@ func show_battle_summary(victory, xp):
 	if is_inside_tree():
 		FadeLayer.fade_to_scene(map)
 
-func setup_game_cycle():
-	game_cycle = State.game.split(",")
-	
-	for i in range(game_cycle.size()):
-		game_cycle[i] = game_cycle[i].strip_edges()
-	
+func setup_game_cycle(stage_data):
+	game_cycle = stage_data.games.duplicate()
 	game_cycle.shuffle()
 	game_index = 0
-	
 	return game_cycle[0]
 
 func get_next_game():

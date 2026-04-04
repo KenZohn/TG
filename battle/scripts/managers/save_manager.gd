@@ -15,11 +15,6 @@ func new_game(path):
 		"coordination": 0,
 	}
 	
-	# Apagar depois que alterar para as fases mescladas
-	for prefix in ["m", "a", "f", "r", "c"]:
-		for i in range(1, 13):
-			save_data["%s%d" % [prefix, i]] = false
-	
 	for i in range(1, 61):
 		save_data["stage_%d" % i] = false
 	
