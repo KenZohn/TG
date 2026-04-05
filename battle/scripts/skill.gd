@@ -1,8 +1,6 @@
 class_name SkillNode
 extends TextureButton
 
-var save_manager = preload("res://scripts/managers/save_manager.gd").new()
-
 @export var skill_name : String
 @export var unlocked : bool = false
 @export var cost : int = 0
@@ -31,8 +29,7 @@ func unlock_skill():
 		print("Desbloqueou!")
 		State.spend_skill_point()
 		unlocked = true
-		State.skills[name] = true
+		State.skills[skill_name] = true
 		modulate = Color(1,1,1)
 		
-		State.save_skills(health, crit_chance)
-		save_manager.save_game(State.save_path)
+		State.save_skills(health, time, damage, crit_chance, defense, skill_name)

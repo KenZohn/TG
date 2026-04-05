@@ -119,7 +119,6 @@ func _draw():
 
 func load_skills():
 	print("Carregando skills")
-	print(State.skills)
 	for skill_name in State.skills:
 		if State.skills[skill_name]:
 			var skill = skills.get_node_or_null(skill_name)
@@ -127,6 +126,7 @@ func load_skills():
 			if skill:
 				skill.unlocked = true
 				skill.modulate = Color(1,1,1)
+	print(State.skills)
 
 func update_label():
 	skill_points.text = str(int(State.current_skill_point))

@@ -6,11 +6,9 @@ signal zoom_finished
 @onready var camera = $Camera2D
 
 const SPEED = 150.0
-const JUMP_VELOCITY = -150.0
 
 func _ready():
 	add_to_group("jogador")
-	set_player_position()
 
 	var mapa = get_parent()
 	var stages = mapa.get_node("Stages")
@@ -20,10 +18,6 @@ func _ready():
 			stage.connect("zoom_in_transition", Callable(self, "_on_zoom_in_transition"))
 
 func _physics_process(_delta: float) -> void:
-	# Handle jump.
-	#if Input.is_action_just_pressed("jump") and is_on_floor():
-		#velocity.y = JUMP_VELOCITY
-	
 	# Get the input direction and handle the movement/deceleration.
 	# Horizontal movement (left/right)
 	var direction_x := Input.get_axis("left", "right")
@@ -56,12 +50,8 @@ func _physics_process(_delta: float) -> void:
 			anim.play("andando_frente")
 		#else:
 			#anim.play('idle')
-	#else:
-		#anim.play('jump')
 	
 	move_and_slide()
-	
-	 # colocar o codigo para pular (jump) botao espaço fisico
 
 func _on_zoom_in_transition():
 	var tween = create_tween()
@@ -70,11 +60,3 @@ func _on_zoom_in_transition():
 
 	await tween.finished
 	emit_signal("zoom_finished")
-
-func set_player_position():
-	if State.save_data.has("player_position"):
-		var pos = State.save_data["player_position"]
-		State.player_position = Vector2(pos[0], pos[1])
-	
-	if State.player_position != Vector2.ZERO:
-		get_tree().current_scene.get_node("CharacterBody2D").global_position = State.player_position

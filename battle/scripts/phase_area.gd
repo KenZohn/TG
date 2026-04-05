@@ -21,7 +21,6 @@ signal zoom_in_transition
 var jogador_na_area = false
 
 func _ready():
-	State.reset_state()
 	connect("input_event", Callable(self, "_on_input_event"))
 	
 	var mapa = get_parent().get_parent()
@@ -52,9 +51,6 @@ func enter_stage():
 	State.coordination = coordination
 	State.reasoning = reasoning
 	
-	# Será substituído por esse
-	State.stage_skill_point = skill_point
-	
 	play_enter_stage_se()
 	emit_signal("zoom_in_transition")
 
@@ -79,6 +75,5 @@ func play_enter_stage_se():
 func _on_zoom_finished():
 	var mapa = get_parent().get_parent()
 	var character = mapa.get_node("CharacterBody2D")
-	State.player_position = character.global_position
 	
 	FadeLayer.fade_to_scene("res://scenes/game/battle.tscn")

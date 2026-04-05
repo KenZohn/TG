@@ -202,7 +202,7 @@ func _on_start_button_pressed() -> void:
 		else:
 			print("Erro ao carregar cena:", game_path)
 	else:
-		print("Jogo não encontrado:", State.game)
+		print("Jogo não encontrado")
 
 func _on_game_finished():
 	await get_tree().create_timer(0.5).timeout
@@ -239,7 +239,6 @@ func _on_game_finished():
 			State.current_skill_point += stage_skill_points
 		
 		State.save_data["experience"] += enemy.xp
-		State.save_data["player_position"] = [State.player_position.x, State.player_position.y]
 		
 		save_manager.save_game(State.save_path)
 		
@@ -292,7 +291,6 @@ func enemy_turn():
 		await self.textbox_closed
 		await get_tree().create_timer(0.25).timeout
 		
-		State.save_data["player_position"] = [State.player_position.x, State.player_position.y]
 		save_manager.save_game(State.save_path)
 		
 		# Transformar em função depois, trecho repetindo
@@ -303,9 +301,8 @@ func enemy_turn():
 	else:
 		rules_panel.show()
 
-func _on_correct_answer_hit(dano: int):
-	State.damage = dano
-	var damage = int(ceil(State.damage * State.damage_multiplier))
+func _on_correct_answer_hit(challenge_damage: int):
+	var damage = int(ceil(challenge_damage * State.damage_multiplier))
 
 	# Crítico
 	if randi() % 100 < State.critical:
@@ -380,7 +377,6 @@ func get_next_game():
 	game_index += 1
 	
 	if game_index >= game_cycle.size():
-		#game_cycle.shuffle()
 		game_index = 0
 	
 	var game_key = game_cycle[game_index]

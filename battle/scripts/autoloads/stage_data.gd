@@ -644,6 +644,9 @@ func is_stage_unlocked(id):
 	
 	return false
 
+func is_stage_completed(id):
+	return State.save_data.get(id, false)
+
 # Testar grafo, apagar depois
 func validate_graph():
 	print("Oi")
