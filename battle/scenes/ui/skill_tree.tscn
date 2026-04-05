@@ -83,7 +83,6 @@ texture_normal = ExtResource("3_qabtx")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
-unlocked = true
 
 [node name="Skill_1" type="TextureButton" parent="Skills"]
 anchors_preset = 8

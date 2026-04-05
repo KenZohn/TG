@@ -89,10 +89,14 @@ var connections = [
 var highlighted_path = []
 
 func _ready() -> void:
+	add_to_group("skill_tree")
+	
 	State.skill_points_changed.connect(update_label)
 	
 	update_label()
 	load_skills()
+	
+	assign_skill_tree_to_nodes()
 
 func _process(_delta):
 	queue_redraw()
@@ -108,28 +112,79 @@ func _draw():
 		var pos_a = (a.global_position + a.size / 2) - global_position
 		var pos_b = (b.global_position + b.size / 2) - global_position
 		
-		var color = Color(0.49, 0.49, 0.49, 1.0)
-		var width = 2
-		
-		if c in highlighted_path:
-			color = Color.GOLD
-			width = 5
+		var state = get_connection_state(c[0], c[1])
+
+		var color
+		var width = 3
+
+		match state:
+			"active":
+				color = Color(1.0, 1.0, 1.0, 1.0)
+			
+			"available":
+				color = Color(0.3, 0.3, 0.3)
+			
+			"locked":
+				color = Color(0.3, 0.3, 0.3)
 		
 		draw_line(pos_a, pos_b, color, width)
 
 func load_skills():
-	print("Carregando skills")
 	for skill_name in State.skills:
 		if State.skills[skill_name]:
 			var skill = skills.get_node_or_null(skill_name)
 			
 			if skill:
-				skill.unlocked = true
-				skill.modulate = Color(1,1,1)
-	print(State.skills)
+				skill.is_acquired = true
+	
+	update_all_visuals()
 
 func update_label():
 	skill_points.text = str(int(State.current_skill_point))
 
+func has_unlocked_neighbor(skill_id):
+	for c in connections:
+		var a = c[0]
+		var b = c[1]
+		
+		if skill_id == a and State.skills.get(b, false):
+			return true
+		
+		if skill_id == b and State.skills.get(a, false):
+			return true
+	
+	return false
+
+func update_all_visuals():
+	for skill in skills.get_children():
+		var id = skill.skill_name
+		
+		if skill.is_acquired:
+			skill.modulate = Color(1,1,1)
+		elif has_unlocked_neighbor(id):
+			skill.modulate = Color(0.7,0.7,0.2)
+		else:
+			skill.modulate = Color(0.3,0.3,0.3)
+
+func assign_skill_tree_to_nodes():
+	for skill in skills.get_children():
+		skill.skill_tree = self
+
 func _on_back_button_pressed() -> void:
 	FadeLayer.fade_to_scene("res://scenes/game/map.tscn")
+
+
+
+
+
+func get_connection_state(a, b):
+	var a_acquired = State.skills.get(a, false)
+	var b_acquired = State.skills.get(b, false)
+	
+	if a_acquired and b_acquired:
+		return "active"
+	
+	if a_acquired or b_acquired:
+		return "available"
+	
+	return "locked"
