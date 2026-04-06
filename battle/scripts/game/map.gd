@@ -1,8 +1,6 @@
 @tool
 extends Node2D
 
-@onready var stage_panel = $Stages
-
 var is_moving = false
 var current_stage = null
 
@@ -45,12 +43,12 @@ func _on_enter_button_pressed():
 		FadeLayer.fade_to_scene("res://scenes/game/battle.tscn")
 
 func connect_stages():
-	for stage in stage_panel.get_children():
+	for stage in $Stages.get_children():
 		if stage.has_signal("stage_selected"):
 			stage.stage_selected.connect(_on_stage_selected)
 
 func update_stages():
-	for stage in stage_panel.get_children():
+	for stage in $Stages.get_children():
 		var id = stage.stage_id
 		
 		var unlocked = StageData.is_stage_unlocked(id)
@@ -173,7 +171,7 @@ func get_node_center(node):
 		return node.global_position
 
 func get_stage_node(id):
-	for stage in stage_panel.get_children():
+	for stage in $Stages.get_children():
 		if stage.stage_id == id:
 			return stage
 	return null

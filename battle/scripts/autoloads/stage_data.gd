@@ -3,94 +3,124 @@ extends Node
 var stages = {
 	"W01-1": {
 		"games": ["m1"],
-		"enemy": "slime",
-		"background": "green_field",
 		"skill_points": 1,
-		"description": "A famosa fase 1"
+		"background": "green_field",
+		"description": "A famosa fase 1",
+		"enemy": "slime",
+		"enemy_hp": 50,
+		"enemy_damage": 8
 	},
 	"W01-2": {
 		"games": ["a1"],
-		"enemy": "slime",
+		"skill_points": 1,
 		"background": "green_field",
-		"skill_points": 1
+		"enemy": "slime",
+		"enemy_hp": 50,
+		"enemy_damage": 8
 	},
 	"W01-3": {
 		"games": ["f1"],
-		"enemy": "zombie",
+		"skill_points": 1,
 		"background": "green_field",
-		"skill_points": 1
+		"enemy": "zombie",
+		"enemy_hp": 55,
+		"enemy_damage": 9
 	},
 	"W01-4": {
 		"games": ["c1"],
-		"enemy": "zombie",
+		"skill_points": 1,
 		"background": "green_field",
-		"skill_points": 1
+		"enemy": "zombie",
+		"enemy_hp": 55,
+		"enemy_damage": 9
 	},
 	"W01-5": {
 		"games": ["r1"],
-		"enemy": "goblin",
+		"skill_points": 1,
 		"background": "green_field",
-		"skill_points": 1
+		"enemy": "goblin",
+		"enemy_hp": 60,
+		"enemy_damage": 10
 	},
 	"W01-X": {
 		"games": ["m1", "a1", "f1", "c1", "r1"],
-		"enemy": "goblin",
+		"skill_points": 3,
 		"background": "green_field",
-		"skill_points": 3
+		"enemy": "goblin",
+		"enemy_hp": 80,
+		"enemy_damage": 10
 	},
 	"W02-1": {
 		"games": ["c1", "r1"],
-		"enemy": "slime",
+		"skill_points": 1,
 		"background": "autumn_forest",
-		"skill_points": 1
+		"enemy": "slime",
+		"enemy_hp": 65,
+		"enemy_damage": 10
 	},
 	"W02-2": {
 		"games": ["m1", "c1"],
-		"enemy": "slime",
+		"skill_points": 1,
 		"background": "autumn_forest",
-		"skill_points": 1
+		"enemy": "slime",
+		"enemy_hp": 65,
+		"enemy_damage": 10
 	},
 	"W02-3": {
 		"games": ["m1", "f1"],
-		"enemy": "zombie",
+		"skill_points": 1,
 		"background": "autumn_forest",
-		"skill_points": 1
+		"enemy": "zombie",
+		"enemy_hp": 70,
+		"enemy_damage": 12
 	},
 	"W02-4": {
 		"games": ["f1", "r1"],
-		"enemy": "zombie",
+		"skill_points": 1,
 		"background": "autumn_forest",
-		"skill_points": 1
+		"enemy": "zombie",
+		"enemy_hp": 70,
+		"enemy_damage": 12
 	},
 	"W02-5": {
 		"games": ["f1", "c1"],
-		"enemy": "goblin",
+		"skill_points": 1,
 		"background": "autumn_forest",
-		"skill_points": 1
+		"enemy": "goblin",
+		"enemy_hp": 75,
+		"enemy_damage": 14
 	},
 	"W02-I": {
 		"games": ["f1"],
-		"enemy": "goblin",
+		"skill_points": 0,
 		"background": "autumn_forest",
-		"skill_points": 0
+		"enemy": "goblin",
+		"enemy_hp": 75,
+		"enemy_damage": 14
 	},
 	"W02-X": {
 		"games": ["m1", "a1", "f1", "c1", "r1"],
-		"enemy": "goblin",
+		"skill_points": 3,
 		"background": "autumn_forest",
-		"skill_points": 3
+		"enemy": "goblin",
+		"enemy_hp": 100,
+		"enemy_damage": 15
 	},
 	"W03-1": {
 		"games": ["m1", "r1"],
-		"enemy": "slime",
+		"skill_points": 1,
 		"background": "desert",
-		"skill_points": 1
+		"enemy": "slime",
+		"enemy_hp": 70,
+		"enemy_damage": 12
 	},
 	"W03-2": {
 		"games": ["m1", "a1"],
-		"enemy": "slime",
+		"skill_points": 1,
 		"background": "desert",
-		"skill_points": 1
+		"enemy": "slime",
+		"enemy_hp": 70,
+		"enemy_damage": 12
 	},
 	"W03-3": {
 		"games": ["a1", "f1"],
