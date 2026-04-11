@@ -175,3 +175,16 @@ func get_stage_node(id):
 		if stage.stage_id == id:
 			return stage
 	return null
+
+
+
+
+# Testes
+func _on_debug_button_pressed():
+	unlock_all_stages()
+	update_stages()
+	draw_connections()
+
+func unlock_all_stages():
+	for stage_id in StageData.stage_graph.keys():
+		State.save_data[stage_id] = true
