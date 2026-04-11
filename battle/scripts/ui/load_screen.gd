@@ -64,14 +64,18 @@ func _on_name_dialog_confirmed() -> void:
 		$NameDialog/VBoxContainer/ErrorLabel.text = "Por favor, insira um nome!"
 		return
 	
-	# Creates the save and updates the character's name
+	# Creates the save
 	save_manager.new_game(pending_path)
 	State.save_data["player_name"] = name_input
-	save_manager.save_game(pending_path)  # Save the character with their name
+	save_manager.save_game(pending_path)  
 	
 	State.save_path = pending_path
 	SESelect.play()
-	FadeLayer.fade_to_scene("res://scenes/game/map.tscn")
+	if State.is_new_game:
+		FadeLayer.fade_to_scene("res://scenes/intro_cutscene.tscn")
+	# Teoricamente nunca vai cair no else mas vou manter por fallback
+	else:
+		FadeLayer.fade_to_scene("res://scenes/map.tscn")
 
 func get_save_preview(path: String, slot_index: int) -> Dictionary:
 	if not FileAccess.file_exists(path):
