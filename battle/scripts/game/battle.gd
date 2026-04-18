@@ -240,9 +240,17 @@ func _on_game_finished():
 		
 		State.save_data["experience"] += enemy.xp
 		
+		var item_reward = StageData.get_stage_reward(State.current_stage)
+		var got_item = false
+		if item_reward and not State.inventory.items.has(item_reward):
+			State.inventory.add_item(item_reward)
+			got_item = true
+			
 		save_manager.save_game(State.save_path)
-		
-		display_text("O inimigo foi derrotado! \nVocê sente-se mais sábio... %d XP" % enemy.xp)
+		if got_item:
+			display_text("Vitória! +%d XP\nVocê encontrou: %s!" % [enemy.xp, item_reward.name])
+		else:
+			display_text("O inimigo foi derrotado! \nVocê sente-se mais sábio... %d XP" % enemy.xp)
 		await self.textbox_closed
 		
 		animation.play("enemy_died")

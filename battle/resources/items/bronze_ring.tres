@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3]
+
+[ext_resource type="Texture2D" uid="uid://debmpcxogqkc5" path="res://assets/sprites/bomba.png" id="1_icon"]
+[ext_resource type="Script" uid="uid://cgov0ln02f3i" path="res://scripts/resources/item.gd" id="2_script"]
+
+[resource]
+script = ExtResource("2_script")
+id = "bronze_ring"
+name = "Anel de Bronze"
+description = "Um anel simples. Aumenta memória."
+icon = ExtResource("1_icon")
+memory_bonus = 2
+agility_bonus = 0
+focus_bonus = 0
+reasoning_bonus = 0
+coordination_bonus = 0

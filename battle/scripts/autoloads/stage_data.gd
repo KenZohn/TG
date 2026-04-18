@@ -661,6 +661,19 @@ var stage_graph = {
 	"W12-B": []
 }
 
+var item_rewards = {
+	"W02-I": "res://resources/items/bronze_ring.tres",
+	"W03-I": "res://resources/items/leather_bracelet.tres",
+	"W04-I": "res://resources/items/glass_necklace.tres",
+	"W05-I": "res://resources/items/silver_ring.tres",
+	"W06-I": "res://resources/items/artisan_gloves.tres",
+	"W08-I": "res://resources/items/sage_amulet.tres",
+	"W09-I": "res://resources/items/gold_ring.tres",
+	"W10-I": "res://resources/items/wind_boots.tres",
+	"W11-I": "res://resources/items/thinker_crown.tres",
+	"W12-I": "res://resources/items/perfection_medallion.tres"
+}
+
 func is_stage_unlocked(id):
 	if id == "W01-1":
 		return true
@@ -684,3 +697,8 @@ func validate_graph():
 		for to in stage_graph[from]:
 			if not stage_graph.has(to):
 				print("ERRO: fase não existe:", to)
+				
+func get_stage_reward(stage_id):
+	if item_rewards.has(stage_id):
+		return load(item_rewards[stage_id])
+	return null
