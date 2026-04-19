@@ -1015,6 +1015,14 @@ offset_bottom = 600.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_043wi")
 text = "Talentos"
 
+[node name="TempLojaButton" type="Button" parent="CanvasLayer" groups=["menu_buttons"]]
+offset_left = 1152.0
+offset_top = 525.0
+offset_right = 1250.0
+offset_bottom = 559.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_043wi")
+text = "Loja"
+
 [node name="DebugButton" type="Button" parent="."]
 offset_left = 6.0
 offset_top = 150.0
@@ -1026,4 +1034,5 @@ text = "Liberar todas as fases"
 [connection signal="pressed" from="CanvasLayer/TittleScreenButton" to="." method="_on_tittle_screen_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/BackpackButton" to="." method="_on_backpack_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/SkillTreeButton" to="." method="_on_skill_tree_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/TempLojaButton" to="." method="_on_temp_loja_button_pressed"]
 [connection signal="pressed" from="DebugButton" to="." method="_on_debug_button_pressed"]
