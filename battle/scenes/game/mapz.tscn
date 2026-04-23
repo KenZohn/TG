@@ -52,7 +52,7 @@
 [ext_resource type="Texture2D" uid="uid://crkv58ajjt86f" path="res://assets/sprites/submission_daneeklu/tilesets/fence_alt.png" id="49_e0tyb"]
 [ext_resource type="Script" uid="uid://bmp250dkiorea" path="res://scripts/phase_area.gd" id="50_v5efx"]
 [ext_resource type="PackedScene" uid="uid://d2lkfnq3ewo5a" path="res://scenes/ui/radar_chart.tscn" id="51_c5a8o"]
-[ext_resource type="PackedScene" uid="uid://dgajq8exectl1" path="res://scenes/character_body_2d.tscn" id="52_4tr4v"]
+[ext_resource type="PackedScene" uid="uid://dgajq8exectl1" path="res://scenes/game/character_body_2d.tscn" id="52_4tr4v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tq3f3"]
 texture = ExtResource("2_ogd7i")
@@ -27746,7 +27746,6 @@ position = Vector2(1025, 760)
 shape = SubResource("RectangleShape2D_pku0e")
 
 [node name="casa" type="StaticBody2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="casa"]
 position = Vector2(53, 341)
