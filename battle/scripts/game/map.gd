@@ -188,3 +188,7 @@ func _on_debug_button_pressed():
 func unlock_all_stages():
 	for stage_id in StageData.stage_graph.keys():
 		State.save_data[stage_id] = true
+
+
+func _on_temp_loja_button_pressed() -> void:
+	FadeLayer.fade_to_scene("res://scenes/ui/shop.tscn")
