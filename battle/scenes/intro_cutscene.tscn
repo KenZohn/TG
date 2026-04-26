@@ -33,6 +33,65 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
+[node name="LeftCharacter" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+grow_vertical = 2
+color = Color(0.3, 0.5, 0.8, 1)
+
+[node name="Label" type="Label" parent="LeftCharacter"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -11.5
+offset_right = 60.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Protagonista"
+horizontal_alignment = 1
+
+[node name="RightCharacter" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = -100.0
+offset_bottom = 200.0
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(0.7, 0.5, 0.3, 1)
+
+[node name="Label" type="Label" parent="RightCharacter"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -11.5
+offset_right = 30.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Gugu"
+horizontal_alignment = 1
+
 [node name="DialogBox" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 12
@@ -40,7 +99,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 32.0
-offset_top = -160.0
+offset_top = -180.0
 offset_right = -32.0
 offset_bottom = -32.0
 grow_horizontal = 2
