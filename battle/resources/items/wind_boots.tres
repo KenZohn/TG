@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://caiw0jchnnhu8"]
 
-[ext_resource type="Texture2D" uid="uid://debmpcxogqkc5" path="res://assets/sprites/bomba.png" id="1_icon"]
+[ext_resource type="Texture2D" uid="uid://dimwmdkjv2ssj" path="res://assets/items/bota_vento.png" id="1_qk7ld"]
 [ext_resource type="Script" uid="uid://cgov0ln02f3i" path="res://scripts/resources/item.gd" id="2_script"]
 
 [resource]
@@ -8,9 +8,6 @@ script = ExtResource("2_script")
 id = "wind_boots"
 name = "Botas do Vento"
 description = "Leveza absoluta. Agilidade e coordenação."
-icon = ExtResource("1_icon")
-memory_bonus = 0
+icon = ExtResource("1_qk7ld")
 agility_bonus = 5
-focus_bonus = 0
-reasoning_bonus = 0
 coordination_bonus = 3

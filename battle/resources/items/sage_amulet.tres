@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bxpxhu6fnu7a6"]
 
-[ext_resource type="Texture2D" uid="uid://debmpcxogqkc5" path="res://assets/sprites/bomba.png" id="1_icon"]
+[ext_resource type="Texture2D" uid="uid://61w606w8w0gp" path="res://assets/items/amuleto_sabio.png" id="1_m0r0g"]
 [ext_resource type="Script" uid="uid://cgov0ln02f3i" path="res://scripts/resources/item.gd" id="2_script"]
 
 [resource]
@@ -8,9 +8,6 @@ script = ExtResource("2_script")
 id = "sage_amulet"
 name = "Amuleto do Sábio"
 description = "Conhecimento ancestral. Raciocínio e foco."
-icon = ExtResource("1_icon")
-memory_bonus = 0
-agility_bonus = 0
+icon = ExtResource("1_m0r0g")
 focus_bonus = 3
 reasoning_bonus = 3
-coordination_bonus = 0

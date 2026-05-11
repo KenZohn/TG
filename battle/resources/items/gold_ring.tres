@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bc25xodyl622t"]
 
-[ext_resource type="Texture2D" uid="uid://debmpcxogqkc5" path="res://assets/sprites/bomba.png" id="1_icon"]
+[ext_resource type="Texture2D" uid="uid://mcsefl0ydq5u" path="res://assets/items/anel_ouro.png" id="1_4hsmu"]
 [ext_resource type="Script" uid="uid://cgov0ln02f3i" path="res://scripts/resources/item.gd" id="2_script"]
 
 [resource]
@@ -8,9 +8,7 @@ script = ExtResource("2_script")
 id = "gold_ring"
 name = "Anel de Ouro"
 description = "Luxuoso e raro. Memória, foco e raciocínio."
-icon = ExtResource("1_icon")
+icon = ExtResource("1_4hsmu")
 memory_bonus = 4
-agility_bonus = 0
 focus_bonus = 2
 reasoning_bonus = 3
-coordination_bonus = 0

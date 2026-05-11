@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dadcw00317c5j"]
 
-[ext_resource type="Texture2D" uid="uid://debmpcxogqkc5" path="res://assets/sprites/bomba.png" id="1_icon"]
+[ext_resource type="Texture2D" uid="uid://dbqeididwjuuq" path="res://assets/items/luvas_artesao.png" id="1_jyaiv"]
 [ext_resource type="Script" uid="uid://cgov0ln02f3i" path="res://scripts/resources/item.gd" id="2_script"]
 
 [resource]
@@ -8,9 +8,6 @@ script = ExtResource("2_script")
 id = "artisan_gloves"
 name = "Luvas do Artesão"
 description = "Precisão aprimorada. Coordenação e agilidade."
-icon = ExtResource("1_icon")
-memory_bonus = 0
+icon = ExtResource("1_jyaiv")
 agility_bonus = 2
-focus_bonus = 0
-reasoning_bonus = 0
 coordination_bonus = 3

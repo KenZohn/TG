@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://78d2n53hcd0m"]
 
-[ext_resource type="Texture2D" uid="uid://debmpcxogqkc5" path="res://assets/sprites/bomba.png" id="1_icon"]
+[ext_resource type="Texture2D" uid="uid://ci05al0vlvhbf" path="res://assets/items/anel_prata.png" id="1_jf2hh"]
 [ext_resource type="Script" uid="uid://cgov0ln02f3i" path="res://scripts/resources/item.gd" id="2_script"]
 
 [resource]
@@ -8,9 +8,6 @@ script = ExtResource("2_script")
 id = "silver_ring"
 name = "Anel de Prata"
 description = "Refinado e poderoso. Memória e raciocínio."
-icon = ExtResource("1_icon")
+icon = ExtResource("1_jf2hh")
 memory_bonus = 3
-agility_bonus = 0
-focus_bonus = 0
 reasoning_bonus = 2
-coordination_bonus = 0

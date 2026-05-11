@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dt6kf43ixcp2m"]
 
-[ext_resource type="Texture2D" uid="uid://debmpcxogqkc5" path="res://assets/sprites/bomba.png" id="1_icon"]
+[ext_resource type="Texture2D" uid="uid://3pq6knwrqesr" path="res://assets/items/pulseira_couro.png" id="1_0fxwg"]
 [ext_resource type="Script" uid="uid://cgov0ln02f3i" path="res://scripts/resources/item.gd" id="2_script"]
 
 [resource]
@@ -8,9 +8,5 @@ script = ExtResource("2_script")
 id = "leather_bracelet"
 name = "Pulseira de Couro"
 description = "Leve e confortável. Melhora agilidade."
-icon = ExtResource("1_icon")
-memory_bonus = 0
+icon = ExtResource("1_0fxwg")
 agility_bonus = 2
-focus_bonus = 0
-reasoning_bonus = 0
-coordination_bonus = 0

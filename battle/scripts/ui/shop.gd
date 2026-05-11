@@ -113,4 +113,4 @@ func show_random_phrase():
 	npc_dialog.text = npc_phrases.pick_random()
 
 func _on_close_pressed():
-	FadeLayer.fade_to_scene("res://scenes/map.tscn")
+	FadeLayer.fade_to_scene("res://scenes/game/map.tscn")

@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://d0gg8t2hbc30y"]
 
-[ext_resource type="Texture2D" uid="uid://debmpcxogqkc5" path="res://assets/sprites/bomba.png" id="1_icon"]
+[ext_resource type="Texture2D" uid="uid://kxkuvicmlcsp" path="res://assets/items/coroa_pensador.png" id="1_0b4bn"]
 [ext_resource type="Script" uid="uid://cgov0ln02f3i" path="res://scripts/resources/item.gd" id="2_script"]
 
 [resource]
@@ -8,9 +8,7 @@ script = ExtResource("2_script")
 id = "thinker_crown"
 name = "Coroa do Pensador"
 description = "Clareza mental suprema. Foco, memória e raciocínio."
-icon = ExtResource("1_icon")
+icon = ExtResource("1_0b4bn")
 memory_bonus = 3
-agility_bonus = 0
 focus_bonus = 4
 reasoning_bonus = 4
-coordination_bonus = 0
