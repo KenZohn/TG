@@ -29,9 +29,26 @@ var npc_phrases = [
 	"XP bem gasto é XP investido em poder!"
 ]
 
+# Frases do NPC sobre cada item
+var item_descriptions = {
+	"res://resources/items/bronze_ring.tres": "O Anel de Bronze é perfeito para iniciantes! Vai te ajudar a lembrar de mais coisas!",
+	"res://resources/items/leather_bracelet.tres": "Essa Pulseira de Couro deixa você mais ágil. Ótima para reflexos rápidos!",
+	"res://resources/items/glass_necklace.tres": "O Colar de Vidro é raro! Aumenta seu foco como nada que já vi!",
+	"res://resources/items/silver_ring.tres": "O Anel de Prata combina memória e raciocínio. Uma joia de verdade!",
+	"res://resources/items/artisan_gloves.tres": "Essas Luvas do Artesão melhoram muito a coordenação. Fui eu mesmo que trouxe!",
+	"res://resources/items/sage_amulet.tres": "O Amuleto do Sábio pertenceu a um grande mestre. Poder imenso!",
+	"res://resources/items/gold_ring.tres": "O Anel de Ouro é para quem quer o melhor! Memória, foco e raciocínio!",
+	"res://resources/items/wind_boots.tres": "As Botas do Vento são lendárias! Ninguém é mais rápido com elas!",
+	"res://resources/items/thinker_crown.tres": "A Coroa do Pensador... dizem que pertenceu a um rei genial!",
+	"res://resources/items/perfection_medallion.tres": "O Medalhão da Perfeição! Minha peça mais valiosa. Só para os mais corajosos!"
+}
+
+var default_phrase = ""
+
 func _ready():
 	update_ui()
 	show_random_phrase()
+	default_phrase = npc_dialog.text
 
 func update_ui():
 	xp_label.text = "XP: %d" % State.save_data.get("experience", 0)
@@ -42,55 +59,87 @@ func update_ui():
 	for item_path in shop_items.keys():
 		var item = load(item_path)
 		var price = shop_items[item_path]
-		create_item_card(item, price)
+		create_item_card(item, price, item_path)
 
-func create_item_card(item: Item, price: int) -> VBoxContainer:
-	var card = VBoxContainer.new()
+func create_item_card(item: Item, price: int, item_path: String) -> PanelContainer:
+	var card = PanelContainer.new()
 	card.custom_minimum_size = Vector2(220, 0)
 	
-	var icon_container = PanelContainer.new()
-	icon_container.custom_minimum_size = Vector2(200, 200)
+	var style = StyleBoxFlat.new()
+	style.bg_color = Color(0.15, 0.15, 0.15, 1)
+	style.border_width_left = 2
+	style.border_width_top = 2
+	style.border_width_right = 2
+	style.border_width_bottom = 2
+	style.border_color = Color(0.4, 0.4, 0.4, 0.8)
+	style.corner_radius_top_left = 6
+	style.corner_radius_top_right = 6
+	style.corner_radius_bottom_right = 6
+	style.corner_radius_bottom_left = 6
+	style.content_margin_left = 12
+	style.content_margin_top = 12
+	style.content_margin_right = 12
+	style.content_margin_bottom = 12
+	card.add_theme_stylebox_override("panel", style)
+	
+	var inner = VBoxContainer.new()
+	inner.add_theme_constant_override("separation", 8)
+	card.add_child(inner)
+	
 	var icon = TextureRect.new()
 	icon.texture = item.icon
+	icon.custom_minimum_size = Vector2(0, 150)
 	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	icon.set_anchors_preset(Control.PRESET_FULL_RECT)
-	icon_container.add_child(icon)
-	card.add_child(icon_container)
+	inner.add_child(icon)
+	
+	var sep = HSeparator.new()
+	inner.add_child(sep)
 	
 	var name_label = Label.new()
 	name_label.text = item.name
 	name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	name_label.add_theme_font_size_override("font_size", 18)
-	card.add_child(name_label)
+	name_label.add_theme_font_size_override("font_size", 16)
+	inner.add_child(name_label)
 	
-	var bottom_container = HBoxContainer.new()
-	bottom_container.add_theme_constant_override("separation", 10)
+	var bottom = HBoxContainer.new()
+	bottom.add_theme_constant_override("separation", 8)
 	
 	var price_label = Label.new()
 	price_label.text = "%d XP" % price
 	price_label.add_theme_color_override("font_color", Color(1, 0.84, 0))
-	price_label.add_theme_font_size_override("font_size", 20)
+	price_label.add_theme_font_size_override("font_size", 18)
 	price_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	price_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	bottom_container.add_child(price_label)
+	bottom.add_child(price_label)
 	
 	var buy_button = Button.new()
 	buy_button.text = "Comprar"
-	buy_button.custom_minimum_size = Vector2(100, 35)
+	buy_button.custom_minimum_size = Vector2(90, 32)
 	buy_button.pressed.connect(_on_buy_pressed.bind(item, price))
-	bottom_container.add_child(buy_button)
+	bottom.add_child(buy_button)
 	
-	card.add_child(bottom_container)
+	inner.add_child(bottom)
+	
+	# NPC fala sobre o item
+	card.mouse_entered.connect(_on_item_hovered.bind(item_path))
+	card.mouse_exited.connect(_on_item_unhovered)
 	
 	items_grid.add_child(card)
 	return card
+
+func _on_item_hovered(item_path: String):
+	if item_descriptions.has(item_path):
+		npc_dialog.text = item_descriptions[item_path]
+
+func _on_item_unhovered():
+	npc_dialog.text = default_phrase
 
 func _on_buy_pressed(item: Item, price: int):
 	var current_xp = State.save_data.get("experience", 0)
 	
 	if current_xp < price:
-		npc_dialog.text = "XP insuficiente! Você precisa de %d XP." % (price - current_xp)
+		npc_dialog.text = "XP insuficiente! Você precisa de mais %d XP." % (price - current_xp)
 		return
 	
 	if State.inventory.items.size() >= State.inventory.max_inventory_space:
@@ -103,14 +152,16 @@ func _on_buy_pressed(item: Item, price: int):
 	
 	State.save_data["experience"] -= price
 	State.inventory.add_item(item)
-	
+
 	save_manager.save_game(State.save_path)
 	
-	npc_dialog.text = "Ótima escolha! %s é seu!" % item.name
+	default_phrase = "Ótima escolha! %s é seu!" % item.name
+	npc_dialog.text = default_phrase
 	update_ui()
 
 func show_random_phrase():
 	npc_dialog.text = npc_phrases.pick_random()
+	default_phrase = npc_dialog.text
 
 func _on_close_pressed():
 	FadeLayer.fade_to_scene("res://scenes/game/map.tscn")
