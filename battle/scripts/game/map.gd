@@ -32,10 +32,8 @@ func move_player(target_position):
 	)
 
 func show_stage_info(id):
-	$CanvasLayer/InfoPanel.visible = true
-	
-	$CanvasLayer/InfoPanel/Name.text = "Stage " + str(id)
-	$CanvasLayer/InfoPanel/Description.text = StageData.stages.get(id, {}).get("description", "")
+	$UI/InfoPanel.visible = true
+	$UI/InfoPanel/Name.text = "Stage " + str(id)
 
 func _on_enter_button_pressed():
 	if current_stage != null:
@@ -53,49 +51,49 @@ func update_stages():
 		
 		var unlocked = StageData.is_stage_unlocked(id)
 		var completed = StageData.is_stage_completed(id)
-
+		
 		stage.unlocked = unlocked
-
+		
 		var normal = StyleBoxFlat.new()
 		var hover = StyleBoxFlat.new()
 		var pressed = StyleBoxFlat.new()
-
+		
 		# Borda
 		for s in [normal, hover, pressed]:
 			s.corner_radius_top_left = 5
 			s.corner_radius_top_right = 5
 			s.corner_radius_bottom_left = 5
 			s.corner_radius_bottom_right = 5
-
+			
 			s.border_width_left = 2
 			s.border_width_right = 2
 			s.border_width_top = 2
 			s.border_width_bottom = 2
-
+		
 		if not unlocked:
 			# Bloqueado
 			normal.bg_color = Color(0.4, 0.4, 0.4)
 			hover.bg_color = Color(0.5, 0.5, 0.5)
 			pressed.bg_color = Color(0.3, 0.3, 0.3)
-
+			
 			for s in [normal, hover, pressed]:
 				s.border_color = Color(0.3, 0.3, 0.3)
-
+			
 		elif completed:
 			# Concluído
 			normal.bg_color = Color(0.2, 0.8, 0.2)
 			hover.bg_color = Color(0.3, 0.9, 0.3)
 			pressed.bg_color = Color(0.15, 0.6, 0.15)
-
+			
 			for s in [normal, hover, pressed]:
 				s.border_color = Color.WHITE
-
+			
 		else:
 			# Desbloqueado
 			normal.bg_color = Color(1, 1, 1)
 			hover.bg_color = Color(0.85, 0.85, 0.85)
 			pressed.bg_color = Color(0.7, 0.7, 0.7)
-
+			
 			for s in [normal, hover, pressed]:
 				s.border_color = Color(0.2, 0.2, 0.2)
 		
@@ -112,7 +110,7 @@ func update_stages():
 			stage.add_theme_color_override("font_color", Color(0, 0, 0))
 			stage.add_theme_color_override("font_hover_color", Color(0,0,0))
 			stage.add_theme_color_override("font_pressed_color", Color(0,0,0))
-
+		
 		stage.add_theme_stylebox_override("normal", normal)
 		stage.add_theme_stylebox_override("hover", hover)
 		stage.add_theme_stylebox_override("pressed", pressed)
@@ -145,22 +143,22 @@ func draw_connections():
 			
 			var line = Line2D.new()
 			line.width = 8
-
+			
 			var from_pos = get_node_center(from_node)
 			var to_pos = get_node_center(to_node)
-
+			
 			line.points = [
 				from_pos,
 				to_pos
 			]
-
+			
 			if StageData.is_stage_completed(to_id):
 				line.default_color = Color(0.2, 0.8, 0.2) # verde
 			elif StageData.is_stage_unlocked(to_id):
 				line.default_color = Color.WHITE
 			else:
 				line.default_color = Color(0.3, 0.3, 0.3)
-
+			
 			$Lines.add_child(line)
 
 func get_node_center(node):
@@ -176,7 +174,8 @@ func get_stage_node(id):
 			return stage
 	return null
 
-
+func _on_temp_loja_button_pressed() -> void:
+	FadeLayer.fade_to_scene("res://scenes/ui/shop.tscn")
 
 
 # Testes
@@ -188,7 +187,3 @@ func _on_debug_button_pressed():
 func unlock_all_stages():
 	for stage_id in StageData.stage_graph.keys():
 		State.save_data[stage_id] = true
-
-
-func _on_temp_loja_button_pressed() -> void:
-	FadeLayer.fade_to_scene("res://scenes/ui/shop.tscn")

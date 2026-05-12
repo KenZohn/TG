@@ -1,4 +1,4 @@
-[gd_scene load_steps=183 format=4 uid="uid://ddrr6dc4gsi00"]
+[gd_scene load_steps=183 format=4 uid="uid://chmbt7v76kj5n"]
 
 [ext_resource type="Script" uid="uid://bme3fdf0fhy8r" path="res://scripts/game/map.gd" id="1_fq3dv"]
 [ext_resource type="Texture2D" uid="uid://vvwwfdjgbmx5" path="res://assets/sprites/Tiny Wonder Forest 1.0/tilemaps/summer tilemap.png" id="2_ogd7i"]
@@ -50,7 +50,6 @@
 [ext_resource type="Texture2D" uid="uid://cvtcubmnlxgp3" path="res://assets/sprites/submission_daneeklu/tilesets/sand.png" id="47_62r1m"]
 [ext_resource type="Texture2D" uid="uid://bd8puggcdxyv1" path="res://assets/sprites/submission_daneeklu/tilesets/reed.png" id="48_g3hca"]
 [ext_resource type="Texture2D" uid="uid://crkv58ajjt86f" path="res://assets/sprites/submission_daneeklu/tilesets/fence_alt.png" id="49_e0tyb"]
-[ext_resource type="Script" uid="uid://bmp250dkiorea" path="res://scripts/phase_area.gd" id="50_v5efx"]
 [ext_resource type="PackedScene" uid="uid://d2lkfnq3ewo5a" path="res://scenes/ui/radar_chart.tscn" id="51_c5a8o"]
 [ext_resource type="PackedScene" uid="uid://dgajq8exectl1" path="res://scenes/game/character_body_2d.tscn" id="52_4tr4v"]
 
@@ -25844,6 +25843,88 @@ sources/45 = SubResource("TileSetAtlasSource_7a8b2")
 sources/46 = SubResource("TileSetAtlasSource_8yw2f")
 sources/47 = SubResource("TileSetAtlasSource_eqoa5")
 
+[sub_resource type="GDScript" id="GDScript_wiv6j"]
+script/source = "extends Area2D
+
+signal zoom_in_transition
+
+@export var stage: String
+@export var game: String
+@export var background: String
+@export var bgm: String
+@export var enemy: String
+@export var enemy_hp: int
+@export var enemy_damage: int
+
+@export var memory: int
+@export var agility: int
+@export var focus: int
+@export var coordination: int
+@export var reasoning: int
+
+@export var skill_point: int
+
+var jogador_na_area = false
+
+func _ready():
+	connect(\"input_event\", Callable(self, \"_on_input_event\"))
+	
+	var mapa = get_parent().get_parent()
+	var character = mapa.get_node(\"CharacterBody2D\")
+	character.connect(\"zoom_finished\", Callable(self, \"_on_zoom_finished\"))
+
+func _process(_delta):
+	if jogador_na_area and Input.is_action_just_pressed(\"ui_accept\"):
+		enter_stage()
+
+func _on_input_event(_viewport, event, _shape_idx):
+	if event is InputEventMouseButton and event.pressed:
+		enter_stage()
+
+func enter_stage():
+	State.stage = stage
+	State.game = game
+	State.background = background
+	State.bgm = bgm
+	State.enemy = enemy
+	State.enemy_hp = enemy_hp
+	State.enemy_damage = enemy_damage
+	
+	# Vai deixar de existir
+	State.agility = agility
+	State.memory = memory
+	State.focus = focus
+	State.coordination = coordination
+	State.reasoning = reasoning
+	
+	play_enter_stage_se()
+	emit_signal(\"zoom_in_transition\")
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group(\"jogador\"):
+		jogador_na_area = true
+
+func _on_body_exited(body: Node2D) -> void:
+	if body.is_in_group(\"jogador\"):
+		jogador_na_area = false
+
+func play_enter_stage_se():
+	var enter_stage_se : AudioStream = preload(\"res://assets/audio/se/maou_se_battle02.ogg\")
+	var player = AudioStreamPlayer.new()
+	player.stream = enter_stage_se
+	player.bus= \"SFX\"
+	player.volume_db = -10
+	add_child(player)
+	player.play()
+	player.connect(\"finished\", Callable(player, \"queue_free\"))
+
+func _on_zoom_finished():
+	var mapa = get_parent().get_parent()
+	var character = mapa.get_node(\"CharacterBody2D\")
+	
+	FadeLayer.fade_to_scene(\"res://scenes/game/battle.tscn\")
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qqli0"]
 size = Vector2(35, 35)
 
@@ -26020,7 +26101,7 @@ tile_set = SubResource("TileSet_kbtph")
 
 [node name="M1" type="Area2D" parent="Stages"]
 position = Vector2(293, 143)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "m1"
 game = "m1"
 background = "green_field"
@@ -26068,7 +26149,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="M2" type="Area2D" parent="Stages"]
 position = Vector2(487, 218)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "m2"
 game = "m1, a1"
 background = "green_field"
@@ -26116,7 +26197,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="M3" type="Area2D" parent="Stages"]
 position = Vector2(656, 251)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "m3"
 game = "m1"
 background = "green_field"
@@ -26164,7 +26245,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="A1" type="Area2D" parent="Stages"]
 position = Vector2(713, 353)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "a1"
 game = "a1"
 background = "autumn_forest"
@@ -26212,7 +26293,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="A2" type="Area2D" parent="Stages"]
 position = Vector2(374, 718)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "a2"
 game = "a1"
 background = "autumn_forest"
@@ -26260,7 +26341,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="A3" type="Area2D" parent="Stages"]
 position = Vector2(37, 414)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "a3"
 game = "a1"
 background = "autumn_forest"
@@ -26308,7 +26389,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="F1" type="Area2D" parent="Stages"]
 position = Vector2(627, 570)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "f1"
 game = "f1"
 background = "desert"
@@ -26356,7 +26437,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="F2" type="Area2D" parent="Stages"]
 position = Vector2(1116, 476)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "f2"
 game = "f1"
 background = "desert"
@@ -26404,7 +26485,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="F3" type="Area2D" parent="Stages"]
 position = Vector2(1466, 559)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "f3"
 game = "f1"
 background = "desert"
@@ -26452,7 +26533,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="F4" type="Area2D" parent="Stages"]
 position = Vector2(483, -1)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "f4"
 game = "f2"
 background = "desert"
@@ -26500,7 +26581,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="C1" type="Area2D" parent="Stages"]
 position = Vector2(1625, 714)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "c1"
 game = "c1"
 background = "winter"
@@ -26548,7 +26629,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="C2" type="Area2D" parent="Stages"]
 position = Vector2(1402, 322)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "c2"
 game = "c1"
 background = "winter"
@@ -26596,7 +26677,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="C3" type="Area2D" parent="Stages"]
 position = Vector2(1224, 141)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "c3"
 game = "c1"
 background = "winter"
@@ -26644,7 +26725,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="C4" type="Area2D" parent="Stages"]
 position = Vector2(374, -2)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "c4"
 game = "c2"
 background = "winter"
@@ -26692,7 +26773,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="R1" type="Area2D" parent="Stages"]
 position = Vector2(1334, -21)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "r1"
 game = "r1"
 background = "forest"
@@ -26740,7 +26821,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="R2" type="Area2D" parent="Stages"]
 position = Vector2(1688, 34)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "r2"
 game = "r1"
 background = "forest"
@@ -26788,7 +26869,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="R3" type="Area2D" parent="Stages"]
 position = Vector2(1936, 178)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "r3"
 game = "r1"
 background = "forest"
@@ -26836,7 +26917,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="R4" type="Area2D" parent="Stages"]
 position = Vector2(428, -1)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "r4"
 game = "r2"
 background = "forest"
@@ -26884,7 +26965,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="1" type="Area2D" parent="Stages"]
 position = Vector2(192, -63)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "stage_1"
 game = "m1"
 background = "green_field"
@@ -26936,7 +27017,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="2" type="Area2D" parent="Stages"]
 position = Vector2(192, -141)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "stage_2"
 game = "a1"
 background = "green_field"
@@ -26988,7 +27069,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="3" type="Area2D" parent="Stages"]
 position = Vector2(192, -213)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "stage_3"
 game = "f1"
 background = "green_field"
@@ -27040,7 +27121,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="4" type="Area2D" parent="Stages"]
 position = Vector2(193, -285)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "stage_4"
 game = "c1"
 background = "green_field"
@@ -27092,7 +27173,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="5" type="Area2D" parent="Stages"]
 position = Vector2(192, -344)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "stage_5"
 game = "r1"
 background = "green_field"
@@ -27144,7 +27225,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="6" type="Area2D" parent="Stages"]
 position = Vector2(121, -345)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "stage_6"
 game = "a1, c1"
 background = "green_field"
@@ -27197,7 +27278,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="7" type="Area2D" parent="Stages"]
 position = Vector2(55, -347)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "stage_7"
 game = "a1, r1"
 background = "green_field"
@@ -27250,7 +27331,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="8" type="Area2D" parent="Stages"]
 position = Vector2(56, -406)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "stage_8"
 game = "m1, a1"
 background = "green_field"
@@ -27303,7 +27384,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="9" type="Area2D" parent="Stages"]
 position = Vector2(259, -344)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "stage_9"
 game = "f1, c1"
 background = "green_field"
@@ -27356,7 +27437,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="10" type="Area2D" parent="Stages"]
 position = Vector2(325, -346)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "stage_10"
 game = "f1, r1"
 background = "green_field"
@@ -27409,7 +27490,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="11" type="Area2D" parent="Stages"]
 position = Vector2(327, -411)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "stage_11"
 game = "a1, f1"
 background = "green_field"
@@ -27462,7 +27543,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="12" type="Area2D" parent="Stages"]
 position = Vector2(192, -408)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "stage_12"
 game = "m1, f1"
 background = "green_field"
@@ -27515,7 +27596,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="13" type="Area2D" parent="Stages"]
 position = Vector2(193, -471)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "stage_13"
 game = "m1, c1"
 background = "green_field"
@@ -27568,7 +27649,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="14" type="Area2D" parent="Stages"]
 position = Vector2(193, -530)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "stage_14"
 game = "m1, r1"
 background = "green_field"
@@ -27621,7 +27702,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="15" type="Area2D" parent="Stages"]
 position = Vector2(57, -468)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "stage_15"
 game = "a2"
 background = "green_field"
@@ -27672,7 +27753,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="16" type="Area2D" parent="Stages"]
 position = Vector2(58, -531)
-script = ExtResource("50_v5efx")
+script = SubResource("GDScript_wiv6j")
 stage = "stage_16"
 game = "m2"
 background = "green_field"

@@ -30,7 +30,7 @@ signal textbox_closed
 @onready var player_damage_label = $PlayerPanel/PlayerDamageLabel
 @onready var background = $Background
 
-@export var enemy: Resource = null
+var enemy = {}
 
 var current_player_hp = 0
 var current_enemy_hp = 0
@@ -101,6 +101,12 @@ var enemy_paths = {
 	"goblin": "res://resources/goblin.tres"
 }
 
+var enemy_texture_paths = {
+	"slime": "res://assets/sprites/fantasy_game_character_slime.png",
+	"zombie": "res://assets/sprites/fantasy_zombie_man.png",
+	"goblin": "res://assets/sprites/fantasy_goblin.png"
+}
+
 var background_paths = {
 	"green_field": "res://assets/sprites/battleback10.png",
 	"autumn_forest": "res://assets/sprites/battleback7.png",
@@ -109,11 +115,25 @@ var background_paths = {
 	"forest": "res://assets/sprites/battleback1.png"
 }
 
+var bgm_paths = {
+	"green_field": "res://assets/audio/bgm/battle_green_field_maou_bgm_fantasy15.ogg",
+	"autumn_forest": "res://assets/audio/bgm/battle_autumn_forest_maou_inst_05_halzion.ogg",
+	"winter": "res://assets/audio/bgm/battle_winter_maou_inst_18_vegalost.ogg",
+	"forest": "res://assets/audio/bgm/battle_forest_maou_bgm_fantasy12.ogg"
+}
+
 func _ready():
 	var stage_data = StageData.stages[State.current_stage]
 	
+	enemy = {
+		"name": stage_data.enemy,
+		"health": stage_data.enemy_hp,
+		"damage": stage_data.enemy_damage,
+		"texture": load(enemy_texture_paths.get(stage_data.enemy)),
+		"xp": 20
+	}
+	
 	stage_skill_points = stage_data.skill_points
-	enemy = load(enemy_paths.get(stage_data.enemy))
 	background.texture = load(background_paths.get(stage_data.background))
 	enemy_texture.texture = enemy.texture
 	
@@ -129,7 +149,7 @@ func _ready():
 	rules_label.text = game_data.rule
 	game_title.text = game_data.title
 	
-	BGMManager.play_bgm(load(enemy.bgm))
+	BGMManager.play_bgm(load(bgm_paths.get(stage_data.background))) #### Alterar para bgm por background
 	
 	stats.reset()
 	battle_start_time = Time.get_ticks_msec() / 1000.0
@@ -238,7 +258,7 @@ func _on_game_finished():
 			State.save_data["current_skill_point"] += stage_skill_points
 			State.current_skill_point += stage_skill_points
 		
-		State.save_data["experience"] += enemy.xp
+		State.save_data["experience"] += enemy.xp #### Alterar para XP do stage_data
 		
 		var item_reward = StageData.get_stage_reward(State.current_stage)
 		var got_item = false

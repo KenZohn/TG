@@ -5,7 +5,6 @@ var stages = {
 		"games": ["m1"],
 		"skill_points": 1,
 		"background": "green_field",
-		"description": "A famosa fase 1",
 		"enemy": "slime",
 		"enemy_hp": 50,
 		"enemy_damage": 8
@@ -42,7 +41,7 @@ var stages = {
 		"enemy_hp": 60,
 		"enemy_damage": 10
 	},
-	"W01-X": {
+	"W01-B": {
 		"games": ["m1", "a1", "f1", "c1", "r1"],
 		"skill_points": 3,
 		"background": "green_field",
@@ -53,7 +52,7 @@ var stages = {
 	"W02-1": {
 		"games": ["c1", "r1"],
 		"skill_points": 1,
-		"background": "autumn_forest",
+		"background": "green_field",
 		"enemy": "slime",
 		"enemy_hp": 65,
 		"enemy_damage": 10
@@ -61,7 +60,7 @@ var stages = {
 	"W02-2": {
 		"games": ["m1", "c1"],
 		"skill_points": 1,
-		"background": "autumn_forest",
+		"background": "green_field",
 		"enemy": "slime",
 		"enemy_hp": 65,
 		"enemy_damage": 10
@@ -69,7 +68,7 @@ var stages = {
 	"W02-3": {
 		"games": ["m1", "f1"],
 		"skill_points": 1,
-		"background": "autumn_forest",
+		"background": "green_field",
 		"enemy": "zombie",
 		"enemy_hp": 70,
 		"enemy_damage": 12
@@ -77,7 +76,7 @@ var stages = {
 	"W02-4": {
 		"games": ["f1", "r1"],
 		"skill_points": 1,
-		"background": "autumn_forest",
+		"background": "green_field",
 		"enemy": "zombie",
 		"enemy_hp": 70,
 		"enemy_damage": 12
@@ -85,7 +84,7 @@ var stages = {
 	"W02-5": {
 		"games": ["f1", "c1"],
 		"skill_points": 1,
-		"background": "autumn_forest",
+		"background": "green_field",
 		"enemy": "goblin",
 		"enemy_hp": 75,
 		"enemy_damage": 14
@@ -93,15 +92,15 @@ var stages = {
 	"W02-I": {
 		"games": ["f1"],
 		"skill_points": 0,
-		"background": "autumn_forest",
+		"background": "green_field",
 		"enemy": "goblin",
 		"enemy_hp": 75,
 		"enemy_damage": 14
 	},
-	"W02-X": {
+	"W02-B": {
 		"games": ["m1", "a1", "f1", "c1", "r1"],
 		"skill_points": 3,
-		"background": "autumn_forest",
+		"background": "green_field",
 		"enemy": "goblin",
 		"enemy_hp": 100,
 		"enemy_damage": 15
@@ -109,7 +108,7 @@ var stages = {
 	"W03-1": {
 		"games": ["m1", "r1"],
 		"skill_points": 1,
-		"background": "desert",
+		"background": "forest",
 		"enemy": "slime",
 		"enemy_hp": 70,
 		"enemy_damage": 12
@@ -117,449 +116,583 @@ var stages = {
 	"W03-2": {
 		"games": ["m1", "a1"],
 		"skill_points": 1,
-		"background": "desert",
+		"background": "forest",
 		"enemy": "slime",
 		"enemy_hp": 70,
 		"enemy_damage": 12
 	},
 	"W03-3": {
 		"games": ["a1", "f1"],
+		"background": "forest",
+		"skill_points": 1,
 		"enemy": "zombie",
-		"background": "desert",
-		"skill_points": 1
+		"enemy_hp": 75,
+		"enemy_damage": 14
 	},
 	"W03-4": {
 		"games": ["a1", "c1"],
+		"background": "forest",
+		"skill_points": 1,
 		"enemy": "zombie",
-		"background": "desert",
-		"skill_points": 1
+		"enemy_hp": 75,
+		"enemy_damage": 14
 	},
 	"W03-5": {
 		"games": ["a1", "r1"],
+		"background": "forest",
+		"skill_points": 1,
 		"enemy": "goblin",
-		"background": "desert",
-		"skill_points": 1
+		"enemy_hp": 80,
+		"enemy_damage": 16
 	},
 	"W03-I": {
 		"games": ["a1"],
+		"background": "forest",
+		"skill_points": 0,
 		"enemy": "goblin",
-		"background": "desert",
-		"skill_points": 0
+		"enemy_hp": 80,
+		"enemy_damage": 16
 	},
-	"W03-X": {
+	"W03-B": {
 		"games": ["m1", "a1", "f1", "c1", "r1"],
 		"enemy": "goblin",
-		"background": "desert",
-		"skill_points": 3
+		"background": "forest",
+		"skill_points": 3,
+		"enemy_hp": 110,
+		"enemy_damage": 18
 	},
 	"W04-1": {
 		"games": ["m1", "a1", "f1"],
+		"background": "green_field",
+		"skill_points": 1,
 		"enemy": "slime",
-		"background": "forest",
-		"skill_points": 1
+		"enemy_hp": 80,
+		"enemy_damage": 16
 	},
 	"W04-2": {
 		"games": ["f1", "c1", "r1"],
+		"background": "green_field",
+		"skill_points": 1,
 		"enemy": "slime",
-		"background": "forest",
-		"skill_points": 1
+		"enemy_hp": 80,
+		"enemy_damage": 16
 	},
 	"W04-3": {
 		"games": ["m1", "a1", "r1"],
+		"background": "green_field",
+		"skill_points": 1,
 		"enemy": "zombie",
-		"background": "forest",
-		"skill_points": 1
+		"enemy_hp": 85,
+		"enemy_damage": 18
 	},
 	"W04-4": {
 		"games": ["m1", "f1", "r1"],
+		"background": "green_field",
+		"skill_points": 1,
 		"enemy": "zombie",
-		"background": "forest",
-		"skill_points": 1
+		"enemy_hp": 85,
+		"enemy_damage": 18
 	},
 	"W04-5": {
 		"games": ["a1", "f1", "r1"],
+		"background": "green_field",
+		"skill_points": 1,
 		"enemy": "goblin",
-		"background": "forest",
-		"skill_points": 1
+		"enemy_hp": 90,
+		"enemy_damage": 20
 	},
 	"W04-I": {
 		"games": ["r1"],
+		"background": "green_field",
+		"skill_points": 0,
 		"enemy": "goblin",
-		"background": "forest",
-		"skill_points": 0
+		"enemy_hp": 90,
+		"enemy_damage": 20
 	},
-	"W04-X": {
+	"W04-B": {
 		"games": ["m1", "a1", "f1", "c1", "r1"],
 		"enemy": "goblin",
-		"background": "forest",
-		"skill_points": 3
+		"background": "green_field",
+		"skill_points": 3,
+		"enemy_hp": 130,
+		"enemy_damage": 22
 	},
 	"W05-1": {
 		"games": ["m1", "a1", "c1"],
+		"background": "forest",
+		"skill_points": 1,
 		"enemy": "slime",
-		"background": "winter",
-		"skill_points": 1
+		"enemy_hp": 85,
+		"enemy_damage": 18
 	},
 	"W05-2": {
 		"games": ["m1", "f1", "c1"],
+		"background": "forest",
+		"skill_points": 1,
 		"enemy": "slime",
-		"background": "winter",
-		"skill_points": 1
+		"enemy_hp": 85,
+		"enemy_damage": 18
 	},
 	"W05-3": {
 		"games": ["m1", "c1", "r1"],
+		"background": "forest",
+		"skill_points": 1,
 		"enemy": "zombie",
-		"background": "winter",
-		"skill_points": 1
+		"enemy_hp": 90,
+		"enemy_damage": 20
 	},
 	"W05-4": {
 		"games": ["a1", "f1", "c1"],
+		"background": "forest",
+		"skill_points": 1,
 		"enemy": "zombie",
-		"background": "winter",
-		"skill_points": 1
+		"enemy_hp": 90,
+		"enemy_damage": 20
 	},
 	"W05-5": {
 		"games": ["a1", "c1", "r1"],
+		"background": "forest",
+		"skill_points": 1,
 		"enemy": "goblin",
-		"background": "winter",
-		"skill_points": 1
+		"enemy_hp": 95,
+		"enemy_damage": 22
 	},
 	"W05-I": {
 		"games": ["c1"],
+		"background": "forest",
+		"skill_points": 0,
 		"enemy": "goblin",
-		"background": "winter",
-		"skill_points": 0
+		"enemy_hp": 95,
+		"enemy_damage": 22
 	},
-	"W05-X": {
+	"W05-B": {
 		"games": ["m1", "a1", "f1", "c1", "r1"],
+		"background": "forest",
+		"skill_points": 3,
 		"enemy": "goblin",
-		"background": "winter",
-		"skill_points": 3
+		"enemy_hp": 135,
+		"enemy_damage": 24
 	},
 	"W06-1": {
 		"games": ["m1", "a1", "f1", "c1"],
+		"background": "forest",
+		"skill_points": 1,
 		"enemy": "slime",
-		"background": "green_field",
-		"skill_points": 1
+		"enemy_hp": 95,
+		"enemy_damage": 22
 	},
 	"W06-2": {
 		"games": ["m1", "a1", "f1", "r1"],
+		"background": "forest",
+		"skill_points": 1,
 		"enemy": "slime",
-		"background": "green_field",
-		"skill_points": 1
+		"enemy_hp": 95,
+		"enemy_damage": 22
 	},
 	"W06-3": {
 		"games": ["m1", "a1", "c1", "r1"],
+		"background": "forest",
+		"skill_points": 1,
 		"enemy": "zombie",
-		"background": "green_field",
-		"skill_points": 1
+		"enemy_hp": 100,
+		"enemy_damage": 24
 	},
 	"W06-4": {
 		"games": ["m1", "f1", "c1", "r1"],
+		"background": "forest",
+		"skill_points": 1,
 		"enemy": "zombie",
-		"background": "green_field",
-		"skill_points": 1
+		"enemy_hp": 100,
+		"enemy_damage": 24
 	},
 	"W06-5": {
 		"games": ["a1", "f1", "c1", "r1"],
+		"background": "forest",
+		"skill_points": 1,
 		"enemy": "goblin",
-		"background": "green_field",
-		"skill_points": 1
+		"enemy_hp": 105,
+		"enemy_damage": 26
 	},
 	"W06-I": {
 		"games": ["m1", "a1", "f1", "c1", "r1"],
+		"background": "forest",
+		"skill_points": 0,
 		"enemy": "goblin",
-		"background": "green_field",
-		"skill_points": 0
+		"enemy_hp": 105,
+		"enemy_damage": 26
 	},
-	"W06-X": {
+	"W06-B": {
 		"games": ["m1", "a1", "f1", "c1", "r1"],
+		"background": "forest",
+		"skill_points": 5,
 		"enemy": "goblin",
-		"background": "green_field",
-		"skill_points": 5
+		"enemy_hp": 140,
+		"enemy_damage": 28
 	},
 	"W07-1": {
 		"games": ["r1",
 				  "r2"],
+		"background": "autumn_forest",
+		"skill_points": 1,
 		"enemy": "slime",
-		"background": "green_field",
-		"skill_points": 1
+		"enemy_hp": 105,
+		"enemy_damage": 26
 	},
 	"W07-2": {
 		"games": ["c1",
 				  "c2"],
+		"background": "autumn_forest",
+		"skill_points": 1,
 		"enemy": "slime",
-		"background": "green_field",
-		"skill_points": 1
+		"enemy_hp": 105,
+		"enemy_damage": 26
 	},
 	"W07-3": {
 		"games": ["f1",
 				  "f2"],
+		"background": "autumn_forest",
+		"skill_points": 1,
 		"enemy": "zombie",
-		"background": "green_field",
-		"skill_points": 1
+		"enemy_hp": 110,
+		"enemy_damage": 28
 	},
 	"W07-4": {
 		"games": ["a1",
 				  "a2"],
+		"background": "autumn_forest",
+		"skill_points": 1,
 		"enemy": "zombie",
-		"background": "green_field",
-		"skill_points": 1
+		"enemy_hp": 110,
+		"enemy_damage": 28
 	},
 	"W07-5": {
 		"games": ["m1",
 				  "m2"],
+		"background": "autumn_forest",
+		"skill_points": 1,
 		"enemy": "goblin",
-		"background": "green_field",
-		"skill_points": 1
+		"enemy_hp": 115,
+		"enemy_damage": 30
 	},
-	"W07-X": {
+	"W07-B": {
 		"games": ["m1", "a1", "f1", "c1", "r1",
 				  "m2", "a2", "f2", "c2", "r2"],
+		"background": "autumn_forest",
+		"skill_points": 3,
 		"enemy": "goblin",
-		"background": "green_field",
-		"skill_points": 3
+		"enemy_hp": 150,
+		"enemy_damage": 30
 	},
 	"W08-1": {
 		"games": ["m1", "r1",
 				  "m2", "r2"],
-		"enemy": "slime",
 		"background": "autumn_forest",
-		"skill_points": 1
+		"skill_points": 1,
+		"enemy": "slime",
+		"enemy_hp": 120,
+		"enemy_damage": 32
 	},
 	"W08-2": {
 		"games": ["a1", "r1",
 				  "a2", "r2"],
-		"enemy": "slime",
 		"background": "autumn_forest",
-		"skill_points": 1
+		"skill_points": 1,
+		"enemy": "slime",
+		"enemy_hp": 120,
+		"enemy_damage": 32
 	},
 	"W08-3": {
 		"games": ["m1", "f1",
 				  "m2", "f2"],
-		"enemy": "zombie",
 		"background": "autumn_forest",
-		"skill_points": 1
+		"skill_points": 1,
+		"enemy": "zombie",
+		"enemy_hp": 125,
+		"enemy_damage": 34
 	},
 	"W08-4": {
 		"games": ["a1", "f1",
 				  "a2", "f2"],
-		"enemy": "zombie",
 		"background": "autumn_forest",
-		"skill_points": 1
+		"skill_points": 1,
+		"enemy": "zombie",
+		"enemy_hp": 125,
+		"enemy_damage": 34
 	},
 	"W08-5": {
 		"games": ["f1", "r1",
 				  "f2", "r2"],
-		"enemy": "goblin",
 		"background": "autumn_forest",
-		"skill_points": 1
+		"skill_points": 1,
+		"enemy": "goblin",
+		"enemy_hp": 130,
+		"enemy_damage": 36
 	},
 	"W08-I": {
 		"games": ["f2"],
-		"enemy": "goblin",
 		"background": "autumn_forest",
-		"skill_points": 0
+		"skill_points": 0,
+		"enemy": "goblin",
+		"enemy_hp": 130,
+		"enemy_damage": 36
 	},
-	"W08-X": {
+	"W08-B": {
 		"games": ["m1", "a1", "f1", "c1", "r1",
 				  "m2", "a2", "f2", "c2", "r2"],
-		"enemy": "goblin",
 		"background": "autumn_forest",
-		"skill_points": 3
+		"skill_points": 3,
+		"enemy": "goblin",
+		"enemy_hp": 160,
+		"enemy_damage": 38
 	},
 	"W09-1": {
 		"games": ["m1", "a1",
 				  "m2", "a2"],
+		"background": "winter",
+		"skill_points": 1,
 		"enemy": "slime",
-		"background": "desert",
-		"skill_points": 1
+		"enemy_hp": 125,
+		"enemy_damage": 32
 	},
 	"W09-2": {
 		"games": ["m1", "c1",
 				  "m2", "c2"],
+		"background": "winter",
+		"skill_points": 1,
 		"enemy": "slime",
-		"background": "desert",
-		"skill_points": 1
+		"enemy_hp": 125,
+		"enemy_damage": 32
 	},
 	"W09-3": {
 		"games": ["a1", "c1",
 				  "a2", "c2"],
+		"background": "winter",
+		"skill_points": 1,
 		"enemy": "zombie",
-		"background": "desert",
-		"skill_points": 1
+		"enemy_hp": 130,
+		"enemy_damage": 34
 	},
 	"W09-4": {
 		"games": ["f1", "c1",
 				  "f2", "c2"],
+		"background": "winter",
+		"skill_points": 1,
 		"enemy": "zombie",
-		"background": "desert",
-		"skill_points": 1
+		"enemy_hp": 130,
+		"enemy_damage": 34
 	},
 	"W09-5": {
 		"games": ["c1", "r1",
 				  "c2", "r2"],
+		"background": "winter",
+		"skill_points": 1,
 		"enemy": "goblin",
-		"background": "desert",
-		"skill_points": 1
+		"enemy_hp": 135,
+		"enemy_damage": 36
 	},
 	"W09-I": {
 		"games": ["c2"],
+		"background": "winter",
+		"skill_points": 0,
 		"enemy": "goblin",
-		"background": "desert",
-		"skill_points": 0
+		"enemy_hp": 135,
+		"enemy_damage": 36
 	},
-	"W09-X": {
+	"W09-B": {
 		"games": ["m1", "a1", "f1", "c1", "r1",
 				  "m2", "a2", "f2", "c2", "r2"],
+		"background": "winter",
+		"skill_points": 3,
 		"enemy": "goblin",
-		"background": "desert",
-		"skill_points": 3
+		"enemy_hp": 165,
+		"enemy_damage": 38
 	},
 	"W10-1": {
 		"games": ["m1", "c1", "r1",
 				  "m2", "c2", "r2"],
+		"background": "autumn_forest",
+		"skill_points": 1,
 		"enemy": "slime",
-		"background": "forest",
-		"skill_points": 1
+		"enemy_hp": 135,
+		"enemy_damage": 36
 	},
 	"W10-2": {
 		"games": ["m1", "a1", "f1",
 				  "m2", "a2", "f2"],
+		"background": "autumn_forest",
+		"skill_points": 1,
 		"enemy": "slime",
-		"background": "forest",
-		"skill_points": 1
+		"enemy_hp": 135,
+		"enemy_damage": 36
 	},
 	"W10-3": {
 		"games": ["m1", "a1", "r1",
 				  "m2", "a2", "r2"],
+		"background": "autumn_forest",
+		"skill_points": 1,
 		"enemy": "zombie",
-		"background": "forest",
-		"skill_points": 1
+		"enemy_hp": 140,
+		"enemy_damage": 38
 	},
 	"W10-4": {
 		"games": ["m1", "f1", "c1",
 				  "m2", "f2", "c2"],
+		"background": "autumn_forest",
+		"skill_points": 1,
 		"enemy": "zombie",
-		"background": "forest",
-		"skill_points": 1
+		"enemy_hp": 140,
+		"enemy_damage": 38
 	},
 	"W10-5": {
 		"games": ["m1", "f1", "r1",
 				  "m2", "f2", "r2"],
+		"background": "autumn_forest",
+		"skill_points": 1,
 		"enemy": "goblin",
-		"background": "forest",
-		"skill_points": 1
+		"enemy_hp": 145,
+		"enemy_damage": 40
 	},
 	"W10-I": {
 		"games": ["m2"],
+		"background": "autumn_forest",
+		"skill_points": 0,
 		"enemy": "goblin",
-		"background": "forest",
-		"skill_points": 0
+		"enemy_hp": 145,
+		"enemy_damage": 40
 	},
-	"W10-X": {
+	"W10-B": {
 		"games": ["m1", "a1", "f1", "c1", "r1",
 				  "m2", "a2", "f2", "c2", "r2"],
+		"background": "autumn_forest",
+		"skill_points": 3,
 		"enemy": "goblin",
-		"background": "forest",
-		"skill_points": 3
+		"enemy_hp": 175,
+		"enemy_damage": 42
 	},
 	"W11-1": {
 		"games": ["f1", "c1", "r1",
 				  "f2", "c2", "r2"],
-		"enemy": "slime",
 		"background": "winter",
-		"skill_points": 1
+		"skill_points": 1,
+		"enemy": "slime",
+		"enemy_hp": 140,
+		"enemy_damage": 36
 	},
 	"W11-2": {
 		"games": ["a1", "f1", "c1",
 				  "a2", "f2", "c2"],
-		"enemy": "slime",
 		"background": "winter",
-		"skill_points": 1
+		"skill_points": 1,
+		"enemy": "slime",
+		"enemy_hp": 140,
+		"enemy_damage": 36
 	},
 	"W11-3": {
 		"games": ["a1", "f1", "r1",
 				  "a2", "f2", "r2"],
-		"enemy": "zombie",
 		"background": "winter",
-		"skill_points": 1
+		"skill_points": 1,
+		"enemy": "zombie",
+		"enemy_hp": 145,
+		"enemy_damage": 38
 	},
 	"W11-4": {
 		"games": ["a1", "c1", "r1",
 				  "a2", "c2", "r2"],
-		"enemy": "zombie",
 		"background": "winter",
-		"skill_points": 1
+		"skill_points": 1,
+		"enemy": "zombie",
+		"enemy_hp": 145,
+		"enemy_damage": 38
 	},
 	"W11-5": {
 		"games": ["m1", "a1", "c1",
 				  "m2", "a2", "c2"],
-		"enemy": "goblin",
 		"background": "winter",
-		"skill_points": 1
+		"skill_points": 1,
+		"enemy": "goblin",
+		"enemy_hp": 150,
+		"enemy_damage": 40
 	},
 	"W11-I": {
 		"games": ["a2"],
-		"enemy": "goblin",
 		"background": "winter",
-		"skill_points": 0
+		"skill_points": 0,
+		"enemy": "goblin",
+		"enemy_hp": 150,
+		"enemy_damage": 40
 	},
-	"W11-X": {
+	"W11-B": {
 		"games": ["m1", "a1", "f1", "c1", "r1",
 				  "m2", "a2", "f2", "c2", "r2"],
-		"enemy": "goblin",
 		"background": "winter",
-		"skill_points": 3
+		"skill_points": 3,
+		"enemy": "goblin",
+		"enemy_hp": 180,
+		"enemy_damage": 42
 	},
 	"W12-1": {
 		"games": ["a1", "f1", "c1", "r1",
 				  "a2", "f2", "c2", "r2"],
-		"enemy": "slime",
 		"background": "green_field",
-		"skill_points": 1
+		"skill_points": 1,
+		"enemy": "slime",
+		"enemy_hp": 150,
+		"enemy_damage": 40
 	},
 	"W12-2": {
 		"games": ["m1", "f1", "c1", "r1",
 				  "m2", "f2", "c2", "r2"],
-		"enemy": "slime",
 		"background": "green_field",
-		"skill_points": 1
+		"skill_points": 1,
+		"enemy": "slime",
+		"enemy_hp": 150,
+		"enemy_damage": 40
 	},
 	"W12-3": {
 		"games": ["m1", "a1", "c1", "r1",
 				  "m2", "a2", "c2", "r2"],
-		"enemy": "zombie",
 		"background": "green_field",
-		"skill_points": 1
+		"skill_points": 1,
+		"enemy": "zombie",
+		"enemy_hp": 155,
+		"enemy_damage": 42
 	},
 	"W12-4": {
 		"games": ["m1", "a1", "f1", "r1",
 				  "m2", "a2", "f2", "r2"],
-		"enemy": "zombie",
 		"background": "green_field",
-		"skill_points": 1
+		"skill_points": 1,
+		"enemy": "zombie",
+		"enemy_hp": 155,
+		"enemy_damage": 42
 	},
 	"W12-5": {
 		"games": ["m1", "a1", "f1", "c1",
 				  "m2", "a2", "f2", "c2"],
-		"enemy": "goblin",
 		"background": "green_field",
-		"skill_points": 1
+		"skill_points": 1,
+		"enemy": "goblin",
+		"enemy_hp": 160,
+		"enemy_damage": 44
 	},
 	"W12-I": {
 		"games": ["m1", "a1", "f1", "c1", "r1",
 				  "m2", "a2", "f2", "c2", "r2"],
-		"enemy": "goblin",
 		"background": "green_field",
-		"skill_points": 0
+		"skill_points": 0,
+		"enemy": "goblin",
+		"enemy_hp": 160,
+		"enemy_damage": 44
 	},
-	"W12-X": {
+	"W12-B": {
 		"games": ["m1", "a1", "f1", "c1", "r1",
 				  "m2", "a2", "f2", "c2", "r2"],
-		"enemy": "goblin",
 		"background": "green_field",
-		"skill_points": 5
+		"skill_points": 5,
+		"enemy": "goblin",
+		"enemy_hp": 200,
+		"enemy_damage": 50
 	},
 }
 
