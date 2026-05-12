@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfvsksnlyp6k4"]
+[gd_scene load_steps=6 format=3 uid="uid://bfvsksnlyp6k4"]
 
 [ext_resource type="Script" uid="uid://bwq2csyomu3is" path="res://scripts/ui/backpack.gd" id="1_5gcru"]
 [ext_resource type="Theme" uid="uid://c6u12sw5jxmbr" path="res://themes/OptionsScreen.theme" id="2"]
+[ext_resource type="FontFile" uid="uid://c8l7xewo111n3" path="res://themes/Tinos-Regular.ttf" id="3_font"]
+[ext_resource type="FontFile" uid="uid://svybmpvynbsh" path="res://themes/Roboto-VariableFont_wdth,wght.ttf" id="4_font"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
 bg_color = Color(0.1, 0.1, 0.1, 0.95)
@@ -66,7 +68,7 @@ theme_override_constants/separation = 12
 
 [node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2")
+theme_override_fonts/font = ExtResource("3_font")
 theme_override_font_sizes/font_size = 32
 text = "MOCHILA"
 horizontal_alignment = 1
@@ -80,7 +82,8 @@ theme_override_constants/separation = 10
 
 [node name="EquippedLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/EquippedSection"]
 layout_mode = 2
-theme = ExtResource("2")
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 18
 text = "Equipado:"
 vertical_alignment = 1
 
@@ -101,8 +104,8 @@ stretch_mode = 5
 [node name="EquippedName" type="Label" parent="Panel/MarginContainer/VBoxContainer/EquippedSection"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("2")
 theme_override_colors/font_color = Color(1, 0.8, 0, 1)
+theme_override_fonts/font = ExtResource("4_font")
 theme_override_font_sizes/font_size = 16
 text = "Nenhum"
 vertical_alignment = 1
@@ -119,16 +122,19 @@ layout_mode = 2
 
 [node name="ItemsLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2")
-text = "Itens:"
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 18
+text = "Itens (0/20):"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ItemsGrid" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
 columns = 5

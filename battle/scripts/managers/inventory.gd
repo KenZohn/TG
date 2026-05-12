@@ -27,18 +27,20 @@ func unequip_item():
 		apply_bonus()
 
 func apply_bonus():
-	State.memory = State.save_data.get("memory", 0)
-	State.agility = State.save_data.get("agility", 0)
-	State.focus = State.save_data.get("focus", 0)
-	State.reasoning = State.save_data.get("reasoning", 0)
-	State.coordination = State.save_data.get("coordination", 0)
+	State.player_health = State.save_data.get("player_health", 0)
+	State.player_time = State.save_data.get("player_time", 0)
+	State.player_damage = State.save_data.get("player_damage", 0)
+	State.player_crit_chance = State.save_data.get("player_crit_chance", 0)
+	State.player_defense = State.save_data.get("player_defense", 0)
 	
 	if equipped_item:
-		State.memory += equipped_item.memory_bonus
-		State.agility += equipped_item.agility_bonus
-		State.focus += equipped_item.focus_bonus
-		State.reasoning += equipped_item.reasoning_bonus
-		State.coordination += equipped_item.coordination_bonus
+		State.player_health += equipped_item.memory_bonus
+		State.player_time += equipped_item.agility_bonus
+		State.player_damage += equipped_item.focus_bonus
+		State.player_crit_chance += equipped_item.coordination_bonus
+		State.player_defense += equipped_item.reasoning_bonus
+	
+	State.apply_player_state()
 
 func serialize():
 	return {
