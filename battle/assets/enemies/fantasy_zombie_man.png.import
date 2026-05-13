@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwmbkqq8v4vu8"
-path="res://.godot/imported/battleback10.png-9ce08c61a17ab27fd5b20d124fa72dd0.ctex"
+uid="uid://df4eg57s02n3p"
+path="res://.godot/imported/fantasy_zombie_man.png-6c5aadb2a41172b3d31aa28ec2e3aa4d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/battleback10.png"
-dest_files=["res://.godot/imported/battleback10.png-9ce08c61a17ab27fd5b20d124fa72dd0.ctex"]
+source_file="res://assets/enemies/fantasy_zombie_man.png"
+dest_files=["res://.godot/imported/fantasy_zombie_man.png-6c5aadb2a41172b3d31aa28ec2e3aa4d.ctex"]
 
 [params]
 

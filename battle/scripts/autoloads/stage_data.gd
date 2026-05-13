@@ -13,7 +13,7 @@ var stages = {
 		"games": ["a1"],
 		"skill_points": 1,
 		"background": "green_field",
-		"enemy": "slime",
+		"enemy": "zombie",
 		"enemy_hp": 50,
 		"enemy_damage": 8
 	},
@@ -21,7 +21,7 @@ var stages = {
 		"games": ["f1"],
 		"skill_points": 1,
 		"background": "green_field",
-		"enemy": "zombie",
+		"enemy": "goblin",
 		"enemy_hp": 55,
 		"enemy_damage": 9
 	},
@@ -29,7 +29,7 @@ var stages = {
 		"games": ["c1"],
 		"skill_points": 1,
 		"background": "green_field",
-		"enemy": "zombie",
+		"enemy": "dragon",
 		"enemy_hp": 55,
 		"enemy_damage": 9
 	},
@@ -37,7 +37,7 @@ var stages = {
 		"games": ["r1"],
 		"skill_points": 1,
 		"background": "green_field",
-		"enemy": "goblin",
+		"enemy": "behemoth",
 		"enemy_hp": 60,
 		"enemy_damage": 10
 	},
@@ -45,7 +45,7 @@ var stages = {
 		"games": ["m1", "a1", "f1", "c1", "r1"],
 		"skill_points": 3,
 		"background": "green_field",
-		"enemy": "goblin",
+		"enemy": "golem",
 		"enemy_hp": 80,
 		"enemy_damage": 10
 	},
@@ -61,7 +61,7 @@ var stages = {
 		"games": ["m1", "c1"],
 		"skill_points": 1,
 		"background": "green_field",
-		"enemy": "slime",
+		"enemy": "zombie",
 		"enemy_hp": 65,
 		"enemy_damage": 10
 	},
@@ -69,7 +69,7 @@ var stages = {
 		"games": ["m1", "f1"],
 		"skill_points": 1,
 		"background": "green_field",
-		"enemy": "zombie",
+		"enemy": "goblin",
 		"enemy_hp": 70,
 		"enemy_damage": 12
 	},
@@ -77,7 +77,7 @@ var stages = {
 		"games": ["f1", "r1"],
 		"skill_points": 1,
 		"background": "green_field",
-		"enemy": "zombie",
+		"enemy": "dragon",
 		"enemy_hp": 70,
 		"enemy_damage": 12
 	},
@@ -85,7 +85,7 @@ var stages = {
 		"games": ["f1", "c1"],
 		"skill_points": 1,
 		"background": "green_field",
-		"enemy": "goblin",
+		"enemy": "behemoth",
 		"enemy_hp": 75,
 		"enemy_damage": 14
 	},
@@ -93,7 +93,7 @@ var stages = {
 		"games": ["f1"],
 		"skill_points": 0,
 		"background": "green_field",
-		"enemy": "goblin",
+		"enemy": "mimic",
 		"enemy_hp": 75,
 		"enemy_damage": 14
 	},
@@ -101,7 +101,7 @@ var stages = {
 		"games": ["m1", "a1", "f1", "c1", "r1"],
 		"skill_points": 3,
 		"background": "green_field",
-		"enemy": "goblin",
+		"enemy": "orc",
 		"enemy_hp": 100,
 		"enemy_damage": 15
 	},
@@ -117,7 +117,7 @@ var stages = {
 		"games": ["m1", "a1"],
 		"skill_points": 1,
 		"background": "forest",
-		"enemy": "slime",
+		"enemy": "zombie",
 		"enemy_hp": 70,
 		"enemy_damage": 12
 	},
@@ -125,7 +125,7 @@ var stages = {
 		"games": ["a1", "f1"],
 		"background": "forest",
 		"skill_points": 1,
-		"enemy": "zombie",
+		"enemy": "goblin",
 		"enemy_hp": 75,
 		"enemy_damage": 14
 	},
@@ -133,7 +133,7 @@ var stages = {
 		"games": ["a1", "c1"],
 		"background": "forest",
 		"skill_points": 1,
-		"enemy": "zombie",
+		"enemy": "dragon",
 		"enemy_hp": 75,
 		"enemy_damage": 14
 	},
@@ -141,7 +141,7 @@ var stages = {
 		"games": ["a1", "r1"],
 		"background": "forest",
 		"skill_points": 1,
-		"enemy": "goblin",
+		"enemy": "behemoth",
 		"enemy_hp": 80,
 		"enemy_damage": 16
 	},
@@ -149,15 +149,15 @@ var stages = {
 		"games": ["a1"],
 		"background": "forest",
 		"skill_points": 0,
-		"enemy": "goblin",
+		"enemy": "mimic",
 		"enemy_hp": 80,
 		"enemy_damage": 16
 	},
 	"W03-B": {
 		"games": ["m1", "a1", "f1", "c1", "r1"],
-		"enemy": "goblin",
 		"background": "forest",
 		"skill_points": 3,
+		"enemy": "devil",
 		"enemy_hp": 110,
 		"enemy_damage": 18
 	},
@@ -173,7 +173,7 @@ var stages = {
 		"games": ["f1", "c1", "r1"],
 		"background": "green_field",
 		"skill_points": 1,
-		"enemy": "slime",
+		"enemy": "zombie",
 		"enemy_hp": 80,
 		"enemy_damage": 16
 	},
@@ -181,7 +181,7 @@ var stages = {
 		"games": ["m1", "a1", "r1"],
 		"background": "green_field",
 		"skill_points": 1,
-		"enemy": "zombie",
+		"enemy": "goblin",
 		"enemy_hp": 85,
 		"enemy_damage": 18
 	},
@@ -189,7 +189,7 @@ var stages = {
 		"games": ["m1", "f1", "r1"],
 		"background": "green_field",
 		"skill_points": 1,
-		"enemy": "zombie",
+		"enemy": "dragon",
 		"enemy_hp": 85,
 		"enemy_damage": 18
 	},
@@ -197,7 +197,7 @@ var stages = {
 		"games": ["a1", "f1", "r1"],
 		"background": "green_field",
 		"skill_points": 1,
-		"enemy": "goblin",
+		"enemy": "behemoth",
 		"enemy_hp": 90,
 		"enemy_damage": 20
 	},
@@ -205,15 +205,15 @@ var stages = {
 		"games": ["r1"],
 		"background": "green_field",
 		"skill_points": 0,
-		"enemy": "goblin",
+		"enemy": "mimic",
 		"enemy_hp": 90,
 		"enemy_damage": 20
 	},
 	"W04-B": {
 		"games": ["m1", "a1", "f1", "c1", "r1"],
-		"enemy": "goblin",
 		"background": "green_field",
 		"skill_points": 3,
+		"enemy": "cthulhu",
 		"enemy_hp": 130,
 		"enemy_damage": 22
 	},
@@ -229,7 +229,7 @@ var stages = {
 		"games": ["m1", "f1", "c1"],
 		"background": "forest",
 		"skill_points": 1,
-		"enemy": "slime",
+		"enemy": "zombie",
 		"enemy_hp": 85,
 		"enemy_damage": 18
 	},
@@ -237,7 +237,7 @@ var stages = {
 		"games": ["m1", "c1", "r1"],
 		"background": "forest",
 		"skill_points": 1,
-		"enemy": "zombie",
+		"enemy": "goblin",
 		"enemy_hp": 90,
 		"enemy_damage": 20
 	},
@@ -245,7 +245,7 @@ var stages = {
 		"games": ["a1", "f1", "c1"],
 		"background": "forest",
 		"skill_points": 1,
-		"enemy": "zombie",
+		"enemy": "dragon",
 		"enemy_hp": 90,
 		"enemy_damage": 20
 	},
@@ -253,7 +253,7 @@ var stages = {
 		"games": ["a1", "c1", "r1"],
 		"background": "forest",
 		"skill_points": 1,
-		"enemy": "goblin",
+		"enemy": "behemoth",
 		"enemy_hp": 95,
 		"enemy_damage": 22
 	},
@@ -261,7 +261,7 @@ var stages = {
 		"games": ["c1"],
 		"background": "forest",
 		"skill_points": 0,
-		"enemy": "goblin",
+		"enemy": "mimic",
 		"enemy_hp": 95,
 		"enemy_damage": 22
 	},
@@ -269,7 +269,7 @@ var stages = {
 		"games": ["m1", "a1", "f1", "c1", "r1"],
 		"background": "forest",
 		"skill_points": 3,
-		"enemy": "goblin",
+		"enemy": "dracula",
 		"enemy_hp": 135,
 		"enemy_damage": 24
 	},
@@ -285,7 +285,7 @@ var stages = {
 		"games": ["m1", "a1", "f1", "r1"],
 		"background": "forest",
 		"skill_points": 1,
-		"enemy": "slime",
+		"enemy": "zombie",
 		"enemy_hp": 95,
 		"enemy_damage": 22
 	},
@@ -293,7 +293,7 @@ var stages = {
 		"games": ["m1", "a1", "c1", "r1"],
 		"background": "forest",
 		"skill_points": 1,
-		"enemy": "zombie",
+		"enemy": "goblin",
 		"enemy_hp": 100,
 		"enemy_damage": 24
 	},
@@ -301,7 +301,7 @@ var stages = {
 		"games": ["m1", "f1", "c1", "r1"],
 		"background": "forest",
 		"skill_points": 1,
-		"enemy": "zombie",
+		"enemy": "dragon",
 		"enemy_hp": 100,
 		"enemy_damage": 24
 	},
@@ -309,7 +309,7 @@ var stages = {
 		"games": ["a1", "f1", "c1", "r1"],
 		"background": "forest",
 		"skill_points": 1,
-		"enemy": "goblin",
+		"enemy": "behemoth",
 		"enemy_hp": 105,
 		"enemy_damage": 26
 	},
@@ -317,7 +317,7 @@ var stages = {
 		"games": ["m1", "a1", "f1", "c1", "r1"],
 		"background": "forest",
 		"skill_points": 0,
-		"enemy": "goblin",
+		"enemy": "mimic",
 		"enemy_hp": 105,
 		"enemy_damage": 26
 	},
@@ -325,7 +325,7 @@ var stages = {
 		"games": ["m1", "a1", "f1", "c1", "r1"],
 		"background": "forest",
 		"skill_points": 5,
-		"enemy": "goblin",
+		"enemy": "demon",
 		"enemy_hp": 140,
 		"enemy_damage": 28
 	},
@@ -343,7 +343,7 @@ var stages = {
 				  "c2"],
 		"background": "autumn_forest",
 		"skill_points": 1,
-		"enemy": "slime",
+		"enemy": "zombie",
 		"enemy_hp": 105,
 		"enemy_damage": 26
 	},
@@ -352,7 +352,7 @@ var stages = {
 				  "f2"],
 		"background": "autumn_forest",
 		"skill_points": 1,
-		"enemy": "zombie",
+		"enemy": "goblin",
 		"enemy_hp": 110,
 		"enemy_damage": 28
 	},
@@ -361,7 +361,7 @@ var stages = {
 				  "a2"],
 		"background": "autumn_forest",
 		"skill_points": 1,
-		"enemy": "zombie",
+		"enemy": "dragon",
 		"enemy_hp": 110,
 		"enemy_damage": 28
 	},
@@ -370,7 +370,7 @@ var stages = {
 				  "m2"],
 		"background": "autumn_forest",
 		"skill_points": 1,
-		"enemy": "goblin",
+		"enemy": "behemoth",
 		"enemy_hp": 115,
 		"enemy_damage": 30
 	},
@@ -379,7 +379,7 @@ var stages = {
 				  "m2", "a2", "f2", "c2", "r2"],
 		"background": "autumn_forest",
 		"skill_points": 3,
-		"enemy": "goblin",
+		"enemy": "golem",
 		"enemy_hp": 150,
 		"enemy_damage": 30
 	},
@@ -397,7 +397,7 @@ var stages = {
 				  "a2", "r2"],
 		"background": "autumn_forest",
 		"skill_points": 1,
-		"enemy": "slime",
+		"enemy": "zombie",
 		"enemy_hp": 120,
 		"enemy_damage": 32
 	},
@@ -406,7 +406,7 @@ var stages = {
 				  "m2", "f2"],
 		"background": "autumn_forest",
 		"skill_points": 1,
-		"enemy": "zombie",
+		"enemy": "goblin",
 		"enemy_hp": 125,
 		"enemy_damage": 34
 	},
@@ -415,7 +415,7 @@ var stages = {
 				  "a2", "f2"],
 		"background": "autumn_forest",
 		"skill_points": 1,
-		"enemy": "zombie",
+		"enemy": "dragon",
 		"enemy_hp": 125,
 		"enemy_damage": 34
 	},
@@ -424,7 +424,7 @@ var stages = {
 				  "f2", "r2"],
 		"background": "autumn_forest",
 		"skill_points": 1,
-		"enemy": "goblin",
+		"enemy": "behemoth",
 		"enemy_hp": 130,
 		"enemy_damage": 36
 	},
@@ -432,7 +432,7 @@ var stages = {
 		"games": ["f2"],
 		"background": "autumn_forest",
 		"skill_points": 0,
-		"enemy": "goblin",
+		"enemy": "mimic",
 		"enemy_hp": 130,
 		"enemy_damage": 36
 	},
@@ -441,7 +441,7 @@ var stages = {
 				  "m2", "a2", "f2", "c2", "r2"],
 		"background": "autumn_forest",
 		"skill_points": 3,
-		"enemy": "goblin",
+		"enemy": "orc",
 		"enemy_hp": 160,
 		"enemy_damage": 38
 	},
@@ -459,7 +459,7 @@ var stages = {
 				  "m2", "c2"],
 		"background": "winter",
 		"skill_points": 1,
-		"enemy": "slime",
+		"enemy": "zombie",
 		"enemy_hp": 125,
 		"enemy_damage": 32
 	},
@@ -468,7 +468,7 @@ var stages = {
 				  "a2", "c2"],
 		"background": "winter",
 		"skill_points": 1,
-		"enemy": "zombie",
+		"enemy": "goblin",
 		"enemy_hp": 130,
 		"enemy_damage": 34
 	},
@@ -477,7 +477,7 @@ var stages = {
 				  "f2", "c2"],
 		"background": "winter",
 		"skill_points": 1,
-		"enemy": "zombie",
+		"enemy": "dragon",
 		"enemy_hp": 130,
 		"enemy_damage": 34
 	},
@@ -486,7 +486,7 @@ var stages = {
 				  "c2", "r2"],
 		"background": "winter",
 		"skill_points": 1,
-		"enemy": "goblin",
+		"enemy": "behemoth",
 		"enemy_hp": 135,
 		"enemy_damage": 36
 	},
@@ -494,7 +494,7 @@ var stages = {
 		"games": ["c2"],
 		"background": "winter",
 		"skill_points": 0,
-		"enemy": "goblin",
+		"enemy": "mimic",
 		"enemy_hp": 135,
 		"enemy_damage": 36
 	},
@@ -503,7 +503,7 @@ var stages = {
 				  "m2", "a2", "f2", "c2", "r2"],
 		"background": "winter",
 		"skill_points": 3,
-		"enemy": "goblin",
+		"enemy": "devil",
 		"enemy_hp": 165,
 		"enemy_damage": 38
 	},
@@ -521,7 +521,7 @@ var stages = {
 				  "m2", "a2", "f2"],
 		"background": "autumn_forest",
 		"skill_points": 1,
-		"enemy": "slime",
+		"enemy": "zombie",
 		"enemy_hp": 135,
 		"enemy_damage": 36
 	},
@@ -530,7 +530,7 @@ var stages = {
 				  "m2", "a2", "r2"],
 		"background": "autumn_forest",
 		"skill_points": 1,
-		"enemy": "zombie",
+		"enemy": "goblin",
 		"enemy_hp": 140,
 		"enemy_damage": 38
 	},
@@ -539,7 +539,7 @@ var stages = {
 				  "m2", "f2", "c2"],
 		"background": "autumn_forest",
 		"skill_points": 1,
-		"enemy": "zombie",
+		"enemy": "dragon",
 		"enemy_hp": 140,
 		"enemy_damage": 38
 	},
@@ -548,7 +548,7 @@ var stages = {
 				  "m2", "f2", "r2"],
 		"background": "autumn_forest",
 		"skill_points": 1,
-		"enemy": "goblin",
+		"enemy": "behemoth",
 		"enemy_hp": 145,
 		"enemy_damage": 40
 	},
@@ -556,7 +556,7 @@ var stages = {
 		"games": ["m2"],
 		"background": "autumn_forest",
 		"skill_points": 0,
-		"enemy": "goblin",
+		"enemy": "mimic",
 		"enemy_hp": 145,
 		"enemy_damage": 40
 	},
@@ -565,7 +565,7 @@ var stages = {
 				  "m2", "a2", "f2", "c2", "r2"],
 		"background": "autumn_forest",
 		"skill_points": 3,
-		"enemy": "goblin",
+		"enemy": "cthulhu",
 		"enemy_hp": 175,
 		"enemy_damage": 42
 	},
@@ -583,7 +583,7 @@ var stages = {
 				  "a2", "f2", "c2"],
 		"background": "winter",
 		"skill_points": 1,
-		"enemy": "slime",
+		"enemy": "zombie",
 		"enemy_hp": 140,
 		"enemy_damage": 36
 	},
@@ -592,7 +592,7 @@ var stages = {
 				  "a2", "f2", "r2"],
 		"background": "winter",
 		"skill_points": 1,
-		"enemy": "zombie",
+		"enemy": "goblin",
 		"enemy_hp": 145,
 		"enemy_damage": 38
 	},
@@ -601,7 +601,7 @@ var stages = {
 				  "a2", "c2", "r2"],
 		"background": "winter",
 		"skill_points": 1,
-		"enemy": "zombie",
+		"enemy": "dragon",
 		"enemy_hp": 145,
 		"enemy_damage": 38
 	},
@@ -610,7 +610,7 @@ var stages = {
 				  "m2", "a2", "c2"],
 		"background": "winter",
 		"skill_points": 1,
-		"enemy": "goblin",
+		"enemy": "behemoth",
 		"enemy_hp": 150,
 		"enemy_damage": 40
 	},
@@ -618,7 +618,7 @@ var stages = {
 		"games": ["a2"],
 		"background": "winter",
 		"skill_points": 0,
-		"enemy": "goblin",
+		"enemy": "mimic",
 		"enemy_hp": 150,
 		"enemy_damage": 40
 	},
@@ -627,7 +627,7 @@ var stages = {
 				  "m2", "a2", "f2", "c2", "r2"],
 		"background": "winter",
 		"skill_points": 3,
-		"enemy": "goblin",
+		"enemy": "dracula",
 		"enemy_hp": 180,
 		"enemy_damage": 42
 	},
@@ -645,7 +645,7 @@ var stages = {
 				  "m2", "f2", "c2", "r2"],
 		"background": "green_field",
 		"skill_points": 1,
-		"enemy": "slime",
+		"enemy": "zombie",
 		"enemy_hp": 150,
 		"enemy_damage": 40
 	},
@@ -654,7 +654,7 @@ var stages = {
 				  "m2", "a2", "c2", "r2"],
 		"background": "green_field",
 		"skill_points": 1,
-		"enemy": "zombie",
+		"enemy": "goblin",
 		"enemy_hp": 155,
 		"enemy_damage": 42
 	},
@@ -663,7 +663,7 @@ var stages = {
 				  "m2", "a2", "f2", "r2"],
 		"background": "green_field",
 		"skill_points": 1,
-		"enemy": "zombie",
+		"enemy": "dragon",
 		"enemy_hp": 155,
 		"enemy_damage": 42
 	},
@@ -672,7 +672,7 @@ var stages = {
 				  "m2", "a2", "f2", "c2"],
 		"background": "green_field",
 		"skill_points": 1,
-		"enemy": "goblin",
+		"enemy": "behemoth",
 		"enemy_hp": 160,
 		"enemy_damage": 44
 	},
@@ -681,7 +681,7 @@ var stages = {
 				  "m2", "a2", "f2", "c2", "r2"],
 		"background": "green_field",
 		"skill_points": 0,
-		"enemy": "goblin",
+		"enemy": "mimic",
 		"enemy_hp": 160,
 		"enemy_damage": 44
 	},
@@ -690,7 +690,7 @@ var stages = {
 				  "m2", "a2", "f2", "c2", "r2"],
 		"background": "green_field",
 		"skill_points": 5,
-		"enemy": "goblin",
+		"enemy": "demon",
 		"enemy_hp": 200,
 		"enemy_damage": 50
 	},

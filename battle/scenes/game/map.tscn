@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://sjocgq176ntc"]
+[gd_scene load_steps=26 format=4 uid="uid://sjocgq176ntc"]
 
 [ext_resource type="Script" uid="uid://bme3fdf0fhy8r" path="res://scripts/game/map.gd" id="1_vejw5"]
 [ext_resource type="TileSet" uid="uid://de3o0qq0gv4g4" path="res://map.tres" id="3_8kpgt"]
@@ -28,16 +28,11 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8kpgt"]
+bg_color = Color(0, 0, 0, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_043wi"]
 bg_color = Color(0.20871, 0.20871, 0.20871, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8kpgt"]
 size = Vector2(4276.5, 72.5)
@@ -1004,9 +999,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -105.0
-offset_top = -130.0
+offset_top = -170.0
 offset_right = 105.0
-offset_bottom = -20.0
+offset_bottom = -60.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7g61j")
@@ -1034,53 +1029,67 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -67.75
-offset_top = -55.0
+offset_top = -60.0
 offset_right = 67.75
-offset_bottom = -12.0
+offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_lkyxg")
 text = "Entrar"
 
-[node name="TittleScreenButton" type="Button" parent="UI" groups=["menu_buttons"]]
-offset_left = 1000.0
-offset_top = 650.0
-offset_right = 1250.0
-offset_bottom = 700.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_043wi")
-text = "Voltar para o Menu Inicial"
+[node name="DebugButton" type="Button" parent="UI"]
+offset_left = 20.0
+offset_top = 633.0
+offset_right = 142.0
+offset_bottom = 664.0
+text = "Liberar fases"
 
-[node name="BackpackButton" type="Button" parent="UI" groups=["menu_buttons"]]
-offset_left = 1152.0
-offset_top = 610.0
-offset_right = 1250.0
-offset_bottom = 644.0
+[node name="PanelContainer" type="Panel" parent="UI"]
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8kpgt")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/PanelContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackpackButton" type="Button" parent="UI/PanelContainer/HBoxContainer" groups=["menu_buttons"]]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_043wi")
 text = "Mochila"
 
-[node name="SkillTreeButton" type="Button" parent="UI" groups=["menu_buttons"]]
-offset_left = 1152.0
-offset_top = 566.0
-offset_right = 1250.0
-offset_bottom = 600.0
+[node name="SkillTreeButton" type="Button" parent="UI/PanelContainer/HBoxContainer" groups=["menu_buttons"]]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_043wi")
 text = "Talentos"
 
-[node name="TempLojaButton" type="Button" parent="UI" groups=["menu_buttons"]]
-offset_left = 1152.0
-offset_top = 525.0
-offset_right = 1250.0
-offset_bottom = 559.0
+[node name="TempLojaButton" type="Button" parent="UI/PanelContainer/HBoxContainer" groups=["menu_buttons"]]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_043wi")
 text = "Loja"
 
-[node name="DebugButton" type="Button" parent="UI"]
-offset_left = 19.0
-offset_top = 672.0
-offset_right = 195.0
-offset_bottom = 703.0
-text = "Liberar todas as fases"
+[node name="TittleScreenButton" type="Button" parent="UI/PanelContainer/HBoxContainer" groups=["menu_buttons"]]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_043wi")
+text = "Sair"
 
 [node name="Barreira" type="StaticBody2D" parent="."]
 position = Vector2(2, 2)
@@ -1520,8 +1529,8 @@ position = Vector2(3179, -138)
 shape = SubResource("RectangleShape2D_foclx")
 
 [connection signal="pressed" from="UI/InfoPanel/enter_button" to="." method="_on_enter_button_pressed"]
-[connection signal="pressed" from="UI/TittleScreenButton" to="." method="_on_tittle_screen_button_pressed"]
-[connection signal="pressed" from="UI/BackpackButton" to="." method="_on_backpack_button_pressed"]
-[connection signal="pressed" from="UI/SkillTreeButton" to="." method="_on_skill_tree_button_pressed"]
-[connection signal="pressed" from="UI/TempLojaButton" to="." method="_on_temp_loja_button_pressed"]
 [connection signal="pressed" from="UI/DebugButton" to="." method="_on_debug_button_pressed"]
+[connection signal="pressed" from="UI/PanelContainer/HBoxContainer/BackpackButton" to="." method="_on_backpack_button_pressed"]
+[connection signal="pressed" from="UI/PanelContainer/HBoxContainer/SkillTreeButton" to="." method="_on_skill_tree_button_pressed"]
+[connection signal="pressed" from="UI/PanelContainer/HBoxContainer/TempLojaButton" to="." method="_on_temp_loja_button_pressed"]
+[connection signal="pressed" from="UI/PanelContainer/HBoxContainer/TittleScreenButton" to="." method="_on_tittle_screen_button_pressed"]

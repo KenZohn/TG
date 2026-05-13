@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://colu0v60kq8y6"
-path="res://.godot/imported/fantasy_zombie_woman.png-e2d7d12d18feca6133ed411923331fc4.ctex"
+uid="uid://bmwklmsxi2vrc"
+path="res://.godot/imported/fantasy_maou_devil.png-b463fa9b45fcb5bdcb6853b36a4125c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/fantasy_zombie_woman.png"
-dest_files=["res://.godot/imported/fantasy_zombie_woman.png-e2d7d12d18feca6133ed411923331fc4.ctex"]
+source_file="res://assets/enemies/fantasy_maou_devil.png"
+dest_files=["res://.godot/imported/fantasy_maou_devil.png-b463fa9b45fcb5bdcb6853b36a4125c4.ctex"]
 
 [params]
 

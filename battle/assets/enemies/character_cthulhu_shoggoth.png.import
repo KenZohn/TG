@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmwklmsxi2vrc"
-path="res://.godot/imported/fantasy_maou_devil.png-3291155e9a52441912cad229944bbfde.ctex"
+uid="uid://ua644sdapemi"
+path="res://.godot/imported/character_cthulhu_shoggoth.png-066a04b023494a94c9209da57f034e7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/fantasy_maou_devil.png"
-dest_files=["res://.godot/imported/fantasy_maou_devil.png-3291155e9a52441912cad229944bbfde.ctex"]
+source_file="res://assets/enemies/character_cthulhu_shoggoth.png"
+dest_files=["res://.godot/imported/character_cthulhu_shoggoth.png-066a04b023494a94c9209da57f034e7d.ctex"]
 
 [params]
 

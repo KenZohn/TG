@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dr5esskorrbnv"
-path="res://.godot/imported/battleback7.png-68e4861e9cb3da3f8a6d455abba00bba.ctex"
+uid="uid://b86l8clvtc7x"
+path="res://.godot/imported/fantasy_golem.png-080a7ecdee4f1c9a370ad8b1151c7a65.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/battleback7.png"
-dest_files=["res://.godot/imported/battleback7.png-68e4861e9cb3da3f8a6d455abba00bba.ctex"]
+source_file="res://assets/enemies/fantasy_golem.png"
+dest_files=["res://.godot/imported/fantasy_golem.png-080a7ecdee4f1c9a370ad8b1151c7a65.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ua644sdapemi"
-path="res://.godot/imported/character_cthulhu_shoggoth.png-8005e400e8911f24040e92195bd05e87.ctex"
+uid="uid://dwmbkqq8v4vu8"
+path="res://.godot/imported/battleback10.png-93a07ff559b942d22187f771ba90d252.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/character_cthulhu_shoggoth.png"
-dest_files=["res://.godot/imported/character_cthulhu_shoggoth.png-8005e400e8911f24040e92195bd05e87.ctex"]
+source_file="res://assets/background/battleback10.png"
+dest_files=["res://.godot/imported/battleback10.png-93a07ff559b942d22187f771ba90d252.ctex"]
 
 [params]
 

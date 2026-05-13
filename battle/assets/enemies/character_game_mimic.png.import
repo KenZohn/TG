@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs12qjukyc33r"
-path="res://.godot/imported/fantasy_goblin.png-78a3518e0b93c7a2687f18992bef5cd0.ctex"
+uid="uid://d010eldkddcd6"
+path="res://.godot/imported/character_game_mimic.png-7277063f6c8100b8f78227bce7796899.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/fantasy_goblin.png"
-dest_files=["res://.godot/imported/fantasy_goblin.png-78a3518e0b93c7a2687f18992bef5cd0.ctex"]
+source_file="res://assets/enemies/character_game_mimic.png"
+dest_files=["res://.godot/imported/character_game_mimic.png-7277063f6c8100b8f78227bce7796899.ctex"]
 
 [params]
 

@@ -1,9 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://b1jg0kxl8nmsf"]
+[gd_scene load_steps=29 format=3 uid="uid://b1jg0kxl8nmsf"]
 
 [ext_resource type="Script" uid="uid://b4qmf3jjfoct4" path="res://scripts/game/battle.gd" id="1_2cxp4"]
-[ext_resource type="Resource" uid="uid://c4vqalnrxhtqu" path="res://resources/slime.tres" id="2_7xoqm"]
-[ext_resource type="Texture2D" uid="uid://dwmbkqq8v4vu8" path="res://assets/sprites/battleback10.png" id="3_ob7dw"]
-[ext_resource type="Texture2D" uid="uid://b5lesekpnmdum" path="res://assets/sprites/fantasy_game_character_slime.png" id="4_8umis"]
+[ext_resource type="Texture2D" uid="uid://dwmbkqq8v4vu8" path="res://assets/background/battleback10.png" id="3_ob7dw"]
+[ext_resource type="Texture2D" uid="uid://b5lesekpnmdum" path="res://assets/enemies/fantasy_game_character_slime.png" id="4_8umis"]
 [ext_resource type="AudioStream" uid="uid://ciybav3gxs2aq" path="res://assets/audio/se/maou_se_battle03.ogg" id="5_ora22"]
 [ext_resource type="AudioStream" uid="uid://dp3plhnp2lk5t" path="res://assets/audio/se/maou_se_battle17.ogg" id="6_v7i3o"]
 [ext_resource type="AudioStream" uid="uid://bvlmnj0qrihu6" path="res://assets/audio/se/maou_se_battle12.ogg" id="7_8h0x3"]
@@ -318,7 +317,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2cxp4")
-enemy = ExtResource("2_7xoqm")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmpmac6s1a0q4"
-path="res://.godot/imported/character_cthulhu_night_gaunts.png-e6ccbdd5c87ba8ea130ab637ca178e4e.ctex"
+uid="uid://dd1n6ucltkdxb"
+path="res://.godot/imported/battleback3.png-3c4510eecfe660c9eaf604396f61351d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/character_cthulhu_night_gaunts.png"
-dest_files=["res://.godot/imported/character_cthulhu_night_gaunts.png-e6ccbdd5c87ba8ea130ab637ca178e4e.ctex"]
+source_file="res://assets/background/battleback3.png"
+dest_files=["res://.godot/imported/battleback3.png-3c4510eecfe660c9eaf604396f61351d.ctex"]
 
 [params]
 

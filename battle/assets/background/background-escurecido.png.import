@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d010eldkddcd6"
-path="res://.godot/imported/character_game_mimic.png-5bdb414e3f4316f1af41a66a1efb2519.ctex"
+uid="uid://c67xpnj35t4a2"
+path="res://.godot/imported/background-escurecido.png-eff99f0f0874153ee3cb72bc15bd4328.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/character_game_mimic.png"
-dest_files=["res://.godot/imported/character_game_mimic.png-5bdb414e3f4316f1af41a66a1efb2519.ctex"]
+source_file="res://assets/background/background-escurecido.png"
+dest_files=["res://.godot/imported/background-escurecido.png-eff99f0f0874153ee3cb72bc15bd4328.ctex"]
 
 [params]
 

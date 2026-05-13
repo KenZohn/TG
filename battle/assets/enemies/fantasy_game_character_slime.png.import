@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://df4eg57s02n3p"
-path="res://.godot/imported/fantasy_zombie_man.png-38540fbe7ce75df2de3ae24555227dc5.ctex"
+uid="uid://b5lesekpnmdum"
+path="res://.godot/imported/fantasy_game_character_slime.png-fe636fd5282c3b3d5f7c9cb0e3c6588d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/fantasy_zombie_man.png"
-dest_files=["res://.godot/imported/fantasy_zombie_man.png-38540fbe7ce75df2de3ae24555227dc5.ctex"]
+source_file="res://assets/enemies/fantasy_game_character_slime.png"
+dest_files=["res://.godot/imported/fantasy_game_character_slime.png-fe636fd5282c3b3d5f7c9cb0e3c6588d.ctex"]
 
 [params]
 

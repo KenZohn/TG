@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5lesekpnmdum"
-path="res://.godot/imported/fantasy_game_character_slime.png-8ba7286b6b9cc51ec7e6b36e520b7d84.ctex"
+uid="uid://buavasswufkb2"
+path="res://.godot/imported/fantasy_dragon.png-d976a5e0f063e92f94e1d3b49e18aff1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/fantasy_game_character_slime.png"
-dest_files=["res://.godot/imported/fantasy_game_character_slime.png-8ba7286b6b9cc51ec7e6b36e520b7d84.ctex"]
+source_file="res://assets/enemies/fantasy_dragon.png"
+dest_files=["res://.godot/imported/fantasy_dragon.png-d976a5e0f063e92f94e1d3b49e18aff1.ctex"]
 
 [params]
 

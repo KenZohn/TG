@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c67xpnj35t4a2"
-path="res://.godot/imported/background-escurecido.png-dcc9c718aea074d9872c2060fcbde83f.ctex"
+uid="uid://bujjkoqm5it6w"
+path="res://.godot/imported/fantasy_behemoth.png-3770da092460aca92b64624f44e9ec48.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/background-escurecido.png"
-dest_files=["res://.godot/imported/background-escurecido.png-dcc9c718aea074d9872c2060fcbde83f.ctex"]
+source_file="res://assets/enemies/fantasy_behemoth.png"
+dest_files=["res://.godot/imported/fantasy_behemoth.png-3770da092460aca92b64624f44e9ec48.ctex"]
 
 [params]
 

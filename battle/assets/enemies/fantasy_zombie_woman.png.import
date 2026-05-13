@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd15aqhgxfwin"
-path="res://.godot/imported/fantasy_orc.png-2de9f88ff0cc03750103ae91cbbeb4b8.ctex"
+uid="uid://colu0v60kq8y6"
+path="res://.godot/imported/fantasy_zombie_woman.png-58e4d262a86df4f9491d7c4c08aafd4d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/fantasy_orc.png"
-dest_files=["res://.godot/imported/fantasy_orc.png-2de9f88ff0cc03750103ae91cbbeb4b8.ctex"]
+source_file="res://assets/enemies/fantasy_zombie_woman.png"
+dest_files=["res://.godot/imported/fantasy_zombie_woman.png-58e4d262a86df4f9491d7c4c08aafd4d.ctex"]
 
 [params]
 

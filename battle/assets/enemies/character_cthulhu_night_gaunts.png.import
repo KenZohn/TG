@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0m8dnyaeteac"
-path="res://.godot/imported/fantasy_dracula2.png-a4be7b0c6f644bd9a3ed034883cdc3d0.ctex"
+uid="uid://cmpmac6s1a0q4"
+path="res://.godot/imported/character_cthulhu_night_gaunts.png-0c0272e02f36f0fd282b0581ff2d11a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/fantasy_dracula2.png"
-dest_files=["res://.godot/imported/fantasy_dracula2.png-a4be7b0c6f644bd9a3ed034883cdc3d0.ctex"]
+source_file="res://assets/enemies/character_cthulhu_night_gaunts.png"
+dest_files=["res://.godot/imported/character_cthulhu_night_gaunts.png-0c0272e02f36f0fd282b0581ff2d11a9.ctex"]
 
 [params]
 

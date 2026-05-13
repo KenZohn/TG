@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6u2ubylj4l86"
-path="res://.godot/imported/battleback1.png-be0e4a3b9380d77bfc0c796acd87c36b.ctex"
+uid="uid://dd15aqhgxfwin"
+path="res://.godot/imported/fantasy_orc.png-79a59b05bb3b9b775c34fece23bbbe7f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/battleback1.png"
-dest_files=["res://.godot/imported/battleback1.png-be0e4a3b9380d77bfc0c796acd87c36b.ctex"]
+source_file="res://assets/enemies/fantasy_orc.png"
+dest_files=["res://.godot/imported/fantasy_orc.png-79a59b05bb3b9b775c34fece23bbbe7f.ctex"]
 
 [params]
 

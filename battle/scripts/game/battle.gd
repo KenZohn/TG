@@ -95,24 +95,27 @@ var games = {
 	}
 }
 
-var enemy_paths = {
-	"slime": "res://resources/slime.tres",
-	"zombie": "res://resources/zombie.tres",
-	"goblin": "res://resources/goblin.tres"
-}
-
 var enemy_texture_paths = {
-	"slime": "res://assets/sprites/fantasy_game_character_slime.png",
-	"zombie": "res://assets/sprites/fantasy_zombie_man.png",
-	"goblin": "res://assets/sprites/fantasy_goblin.png"
+	"slime": "res://assets/enemies/fantasy_game_character_slime.png",
+	"zombie": "res://assets/enemies/fantasy_zombie_man.png",
+	"goblin": "res://assets/enemies/fantasy_goblin.png",
+	"dragon": "res://assets/enemies/fantasy_dragon.png",
+	"behemoth": "res://assets/enemies/fantasy_behemoth.png",
+	"mimic": "res://assets/enemies/character_game_mimic.png",
+	"golem": "res://assets/enemies/fantasy_golem.png",
+	"orc": "res://assets/enemies/fantasy_orc.png",
+	"devil": "res://assets/enemies/character_cthulhu_night_gaunts.png",
+	"cthulhu": "res://assets/enemies/character_cthulhu_shoggoth.png",
+	"dracula": "res://assets/enemies/fantasy_dracula2.png",
+	"demon": "res://assets/enemies/fantasy_maou_devil.png",
 }
 
 var background_paths = {
-	"green_field": "res://assets/sprites/battleback10.png",
-	"autumn_forest": "res://assets/sprites/battleback7.png",
-	"desert": "res://assets/sprites/battleback3.png",
-	"winter": "res://assets/sprites/battleback2.png",
-	"forest": "res://assets/sprites/battleback1.png"
+	"green_field": "res://assets/background/battleback10.png",
+	"autumn_forest": "res://assets/background/battleback7.png",
+	"desert": "res://assets/background/battleback3.png",
+	"winter": "res://assets/background/battleback2.png",
+	"forest": "res://assets/background/battleback1.png"
 }
 
 var bgm_paths = {
@@ -185,8 +188,8 @@ func _ready():
 		b.connect("mouse_entered", Callable(self, "_on_any_button_entered"))
 
 func set_hp(progress_bar, hp, max_hp):
-	progress_bar.value = hp
 	progress_bar.max_value = max_hp
+	progress_bar.value = hp
 	progress_bar.get_node("HPLabel").text = "%d/%d" % [hp, max_hp]
 
 func _input(_event):

@@ -33,7 +33,7 @@ func move_player(target_position):
 
 func show_stage_info(id):
 	$UI/InfoPanel.visible = true
-	$UI/InfoPanel/Name.text = "Stage " + str(id)
+	$UI/InfoPanel/Name.text = str(id)
 
 func _on_enter_button_pressed():
 	if current_stage != null:
