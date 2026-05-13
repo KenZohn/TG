@@ -1,7 +1,6 @@
 extends Control
 
 @onready var skills = $"Skills"
-@onready var skill_points = $"LabelSkillPointValue"
 
 var connections = [
 	["Start", "Skill_1"],
@@ -86,7 +85,118 @@ var connections = [
 	["Skill_59", "Skill_60"]
 ]
 
+var description = {
+	"health": {
+		"title": "Vida é Bela",
+		"text": "Aumenta a vida máxima."
+	},
+	"time":  {
+		"title": "Tempo Precioso",
+		"text": "Aumenta o tempo para solucionar os desafios."
+	},
+	"damage":  {
+		"title": "Dano é Poder",
+		"text": "Aumenta o dano máximo."
+	},
+	"critical":  {
+		"title": "Crítico Certeiro",
+		"text": "Aumenta a chance de dano crítico."
+	},
+	"defense": {
+		"title": "Defesa Dura",
+		"text": "Reduz o dano recebido."
+	},
+	"all": {
+		"title": "Equilíbrio Mental",
+		"text": "Melhora todos os cinco atributos."
+	},
+	"s_health": {
+		"title": "Regeneração",
+		"text": "Cura 5% da vida máxima por turno."
+	},
+	"s_time": {
+		"title": "Volta no Tempo",
+		"text": "Ao ser derrotado, volte com 25% de vida um vez por batalha"
+	},
+	"s_damage": {
+		"title": "Evolução Constante",
+		"text": "Aumenta 5% do dano a cada turno"
+	},
+	"s_critical": {
+		"title": "Sorte em Dia",
+		"text": "Causa 2x de dano crítico"
+	},
+	"s_defense": {
+		"title": "Esquiva Perfeita",
+		"text": "15% de chance de bloquear 100% do dano"
+	}
+}
+
+var skill_description = {
+	"Skill_1": description.health,
+	"Skill_2": description.time,
+	"Skill_3": description.damage,
+	"Skill_4": description.critical,
+	"Skill_5": description.defense,
+	"Skill_6": description.health,
+	"Skill_7": description.critical,
+	"Skill_8": description.time,
+	"Skill_9": description.defense,
+	"Skill_10": description.damage,
+	"Skill_11": description.health,
+	"Skill_12": description.critical,
+	"Skill_13": description.time,
+	"Skill_14": description.defense,
+	"Skill_15": description.damage,
+	"Skill_16": description.health,
+	"Skill_17": description.health,
+	"Skill_18": description.all,
+	"Skill_19": description.critical,
+	"Skill_20": description.damage,
+	"Skill_21": description.time,
+	"Skill_22": description.time,
+	"Skill_23": description.all,
+	"Skill_24": description.defense,
+	"Skill_25": description.critical,
+	"Skill_26": description.damage,
+	"Skill_27": description.damage,
+	"Skill_28": description.all,
+	"Skill_29": description.health,
+	"Skill_30": description.defense,
+	"Skill_31": description.critical,
+	"Skill_32": description.critical,
+	"Skill_33": description.all,
+	"Skill_34": description.time,
+	"Skill_35": description.health,
+	"Skill_36": description.defense,
+	"Skill_37": description.defense,
+	"Skill_38": description.all,
+	"Skill_39": description.damage,
+	"Skill_40": description.time,
+	"Skill_41": description.defense,
+	"Skill_42": description.health,
+	"Skill_43": description.all,
+	"Skill_44": description.s_health,
+	"Skill_45": description.health,
+	"Skill_46": description.time,
+	"Skill_47": description.all,
+	"Skill_48": description.s_time,
+	"Skill_49": description.time,
+	"Skill_50": description.damage,
+	"Skill_51": description.all,
+	"Skill_52": description.s_damage,
+	"Skill_53": description.damage,
+	"Skill_54": description.critical,
+	"Skill_55": description.all,
+	"Skill_56": description.s_critical,
+	"Skill_57": description.critical,
+	"Skill_58": description.defense,
+	"Skill_59": description.all,
+	"Skill_60": description.s_defense,
+}
+
 var highlighted_path = []
+var selected_skill = null
 
 func _ready() -> void:
 	add_to_group("skill_tree")
@@ -140,7 +250,7 @@ func load_skills():
 	update_all_visuals()
 
 func update_label():
-	skill_points.text = str(int(State.current_skill_point))
+	$UI/PanelPoints/SkillPoints.text = str(int(State.current_skill_point))
 
 func has_unlocked_neighbor(skill_id):
 	for c in connections:
@@ -159,7 +269,9 @@ func update_all_visuals():
 	for skill in skills.get_children():
 		var id = skill.skill_name
 		
-		if skill.is_acquired:
+		if skill == selected_skill:
+			skill.modulate = Color(0.341, 0.825, 1.0, 1.0)
+		elif skill.is_acquired:
 			skill.modulate = Color(1,1,1)
 		elif has_unlocked_neighbor(id):
 			skill.modulate = Color(0.7,0.7,0.2)
@@ -173,10 +285,6 @@ func assign_skill_tree_to_nodes():
 func _on_back_button_pressed() -> void:
 	FadeLayer.fade_to_scene("res://scenes/game/map.tscn")
 
-
-
-
-
 func get_connection_state(a, b):
 	var a_acquired = State.skills.get(a, false)
 	var b_acquired = State.skills.get(b, false)
@@ -188,3 +296,50 @@ func get_connection_state(a, b):
 		return "available"
 	
 	return "locked"
+
+func show_description(skill):
+	selected_skill = skill
+	$UI/PanelDescription/Title.text = skill_description[selected_skill.skill_name].title
+	$UI/PanelDescription/Description.text = skill_description[selected_skill.skill_name].text
+	update_all_visuals()
+	
+	if selected_skill.is_acquired:
+		$UI/PanelDescription/ConfirmButton.text = "Adquirida"
+		$UI/PanelDescription/ConfirmButton.disabled = true
+	elif not has_unlocked_neighbor(selected_skill.skill_name):
+		$UI/PanelDescription/ConfirmButton.text = "Bloqueada"
+		$UI/PanelDescription/ConfirmButton.disabled = true
+	else:
+		$UI/PanelDescription/ConfirmButton.text = "Adquirir"
+		$UI/PanelDescription/ConfirmButton.disabled = false
+
+func _on_confirm_button_pressed() -> void:
+	unlock_skill()
+
+func unlock_skill():
+	if selected_skill.is_acquired:
+		print("Já adquirida")
+		return
+	
+	if selected_skill.skill_tree == null:
+		push_error("Skill tree não encontrada!")
+		return
+	
+	if not has_unlocked_neighbor(selected_skill.skill_name):
+		print("Skill bloqueada")
+		return
+	
+	if State.current_skill_point < selected_skill.cost:
+		print("Sem pontos")
+		return
+	
+	State.spend_skill_point()
+	selected_skill.is_acquired = true
+	State.skills[selected_skill.skill_name] = true
+	
+	modulate = Color(1,1,1)
+	
+	State.save_skills(selected_skill.health, selected_skill.time, selected_skill.damage, selected_skill.crit_chance, selected_skill.defense, selected_skill.skill_name)
+	
+	update_all_visuals()
+	print("Adquirida")

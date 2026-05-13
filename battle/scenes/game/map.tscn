@@ -1046,7 +1046,7 @@ offset_bottom = 664.0
 text = "Liberar fases"
 
 [node name="PanelContainer" type="Panel" parent="UI"]
-anchors_preset = -1
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0

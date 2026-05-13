@@ -133,10 +133,11 @@ func _ready():
 		"health": stage_data.enemy_hp,
 		"damage": stage_data.enemy_damage,
 		"texture": load(enemy_texture_paths.get(stage_data.enemy)),
-		"xp": 20
+		"xp": stage_data.xp
 	}
 	
 	stage_skill_points = stage_data.skill_points
+	
 	background.texture = load(background_paths.get(stage_data.background))
 	enemy_texture.texture = enemy.texture
 	
@@ -261,7 +262,7 @@ func _on_game_finished():
 			State.save_data["current_skill_point"] += stage_skill_points
 			State.current_skill_point += stage_skill_points
 		
-		State.save_data["experience"] += enemy.xp #### Alterar para XP do stage_data
+		State.save_data["experience"] += enemy.xp
 		
 		var item_reward = StageData.get_stage_reward(State.current_stage)
 		var got_item = false

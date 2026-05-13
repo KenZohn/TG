@@ -59,6 +59,7 @@ func _on_button_pressed(operation: int):
 	else:
 		print("Errou!")
 		emit_signal("wrong_answer")
+		_apply_time_penalty()
 	
 	# Gera nova equação
 	await get_tree().create_timer(0.5).timeout
@@ -84,3 +85,10 @@ func _update_timer_display():
 
 func _on_game_timeout():
 	emit_signal("game_finished")
+
+func _apply_time_penalty():
+	var remaining = $TimerGame.time_left
+	var new_time = max(remaining - 2.0, 0.1)
+	$TimerGame.stop()
+	$TimerGame.wait_time = new_time
+	$TimerGame.start()
