@@ -129,10 +129,15 @@ var description = {
 	"s_defense": {
 		"title": "Esquiva Perfeita",
 		"text": "15% de chance de bloquear 100% do dano"
+	},
+	"start": {
+		"title": "-",
+		"text": "-"
 	}
 }
 
 var skill_description = {
+	"Start": description.start,
 	"Skill_1": description.health,
 	"Skill_2": description.time,
 	"Skill_3": description.damage,
@@ -343,3 +348,13 @@ func unlock_skill():
 	
 	update_all_visuals()
 	print("Adquirida")
+
+
+# Teste
+func _on_debug_button_pressed() -> void:
+	for skill in skills.get_children():
+		if not skill.is_acquired:
+			skill.is_acquired = true
+			State.skills[skill.skill_name] = true
+			State.save_skills(skill.health, skill.time, skill.damage, skill.crit_chance, skill.defense, skill.skill_name)
+	update_all_visuals()

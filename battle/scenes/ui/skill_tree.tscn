@@ -85,6 +85,7 @@ texture_normal = ExtResource("3_qabtx")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("4_nsdrr")
+skill_name = "Start"
 metadata/_edit_lock_ = true
 
 [node name="Skill_1" type="TextureButton" parent="Skills"]
@@ -1483,5 +1484,13 @@ theme_override_font_sizes/font_size = 18
 disabled = true
 text = "ADQUIRIR"
 
+[node name="DebugButton" type="Button" parent="UI"]
+offset_left = 35.0
+offset_top = 661.0
+offset_right = 157.0
+offset_bottom = 692.0
+text = "Liberar skills"
+
 [connection signal="pressed" from="UI/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="UI/PanelDescription/ConfirmButton" to="." method="_on_confirm_button_pressed"]
+[connection signal="pressed" from="UI/DebugButton" to="." method="_on_debug_button_pressed"]

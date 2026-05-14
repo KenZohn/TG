@@ -14,9 +14,6 @@ extends TextureButton
 var skill_tree : Node = null
 
 func _ready():
-	if not is_acquired:
-		modulate = Color(0.4,0.4,0.4)
-		
 	pressed.connect(_on_pressed)
 
 func _on_pressed():

@@ -1,10 +1,12 @@
 extends Control
 
 var save_manager = preload("res://scripts/managers/save_manager.gd").new()
+var s_skills = preload("res://scripts/s_skills.gd").new()
 var battle_summary_scene = preload("res://scenes/ui/battle_summary.tscn")
 
 var stats = Stats.new()
 var battle_start_time: float = 0.0
+var can_revive = true
 
 signal textbox_closed
 
@@ -34,6 +36,8 @@ var enemy = {}
 
 var current_player_hp = 0
 var current_enemy_hp = 0
+var player_base_damage = 0
+var current_player_damage = 0
 var game_scene: Node = null
 var game_cycle: Array = []
 var game_index: int = 0
@@ -146,6 +150,8 @@ func _ready():
 	
 	current_player_hp = State.max_hp
 	current_enemy_hp = enemy.health
+	player_base_damage = State.damage_multiplier
+	current_player_damage = State.damage_multiplier
 	
 	current_game = setup_game_cycle(stage_data)
 	var game_data = games[current_game]
@@ -298,7 +304,10 @@ func _on_game_finished():
 		timer_bar.value = State.time
 
 func enemy_turn():
-	var enemy_damage = enemy.damage - State.defense
+	var enemy_damage = int(enemy.damage - State.defense)
+	
+	if State.s_defense and s_skills.apply_s_defense():
+		enemy_damage = 0
 	
 	current_player_hp = max(0, current_player_hp - enemy_damage)
 	set_hp(player_hp_bar, current_player_hp, State.max_hp)
@@ -319,6 +328,13 @@ func enemy_turn():
 	await self.textbox_closed
 		
 	if current_player_hp == 0:
+		if can_revive and State.s_time:
+			current_player_hp = s_skills.apply_s_time(State.max_hp)
+			set_hp(player_hp_bar, current_player_hp, State.max_hp)
+			can_revive = false
+			rules_panel.show()
+			return
+		
 		display_text("Você perdeu!")
 		await self.textbox_closed
 		await get_tree().create_timer(0.25).timeout
@@ -332,13 +348,25 @@ func enemy_turn():
 		show_battle_summary(false, 0)
 	else:
 		rules_panel.show()
+		
+		if State.s_health:
+			# Cura 5% a cada turno
+			current_player_hp = s_skills.apply_s_health(current_player_hp, State.max_hp)
+			set_hp(player_hp_bar, current_player_hp, State.max_hp)
+		
+		if State.s_damage:
+			# Aumenta dano em 5% a cada turno
+			current_player_damage = s_skills.apply_s_damage(current_player_damage, player_base_damage)
 
 func _on_correct_answer_hit(challenge_damage: int):
-	var damage = int(ceil(challenge_damage * State.damage_multiplier))
+	var damage = int(ceil(challenge_damage * current_player_damage))
 
 	# Crítico
 	if randi() % 100 < State.critical:
-		damage = int(floor(damage * 1.25))
+		if State.s_critical:
+			damage = int(floor(damage * 2))
+		else:
+			damage = int(floor(damage * 1.25))
 		enemy_damage_label.label_settings.font_color = Color.RED
 	else:
 		enemy_damage_label.label_settings.font_color = Color.WHITE

@@ -33,12 +33,17 @@ var player_defense = 0
 
 # Árvore de talentos
 signal skill_points_changed
-
 var current_skill_point = 0
-
 var skills = {
 	"Start": true
 }
+
+# Habilidades Especiais
+var s_health = false
+var s_time = false
+var s_damage = false
+var s_critical = false
+var s_defense = false
 
 func spend_skill_point():
 	current_skill_point -= 1
@@ -69,6 +74,20 @@ func apply_player_state():
 	State.damage_multiplier = 1 + State.player_damage * 0.1
 	State.critical = State.player_crit_chance * 0.5
 	State.defense = State.player_defense * 0.5
+	load_s_skills()
+
+func load_s_skills():
+	for skill_name in State.skills:
+		if skill_name == "Skill_44":
+			s_health = true
+		if skill_name == "Skill_48":
+			s_time = true
+		if skill_name == "Skill_52":
+			s_damage = true
+		if skill_name == "Skill_56":
+			s_critical = true
+		if skill_name == "Skill_60":
+			s_defense = true
 
 # Mochila
 var inventory = Inventory.new()

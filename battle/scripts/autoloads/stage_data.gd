@@ -905,14 +905,6 @@ func is_stage_unlocked(id):
 func is_stage_completed(id):
 	return State.save_data.get(id, false)
 
-# Testar grafo, apagar depois
-func validate_graph():
-	print("Oi")
-	for from in stage_graph:
-		for to in stage_graph[from]:
-			if not stage_graph.has(to):
-				print("ERRO: fase não existe:", to)
-				
 func get_stage_reward(stage_id):
 	if item_rewards.has(stage_id):
 		return load(item_rewards[stage_id])
