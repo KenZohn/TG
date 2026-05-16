@@ -1183,7 +1183,7 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_lkyxg")
-text = "Entrar"
+text = "INICIAR"
 
 [node name="DebugButton" type="Button" parent="UI"]
 offset_left = 20.0

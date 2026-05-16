@@ -17,13 +17,6 @@ var defense = 0
 # Estágio
 var current_stage = "W01-1"
 
-# Habilidades cognitivas
-var memory = 0
-var agility = 0
-var focus = 0
-var coordination = 0
-var reasoning = 0
-
 # Atributos
 var player_health = 0
 var player_time = 0

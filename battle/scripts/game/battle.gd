@@ -253,9 +253,9 @@ func _on_game_finished():
 		var stage_key = State.current_stage
 		
 		# Primeira vez completando o estágio
-		if not State.save_data.get(stage_key, false):
+		if !State.save_data.get("stages", {}).get(stage_key, false):
 			# Salvar jogo
-			State.save_data[stage_key] = true
+			State.save_data["stages"][stage_key] = true
 			
 			State.save_data["current_skill_point"] += stage_skill_points
 			State.current_skill_point += stage_skill_points

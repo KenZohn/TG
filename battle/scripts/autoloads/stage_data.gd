@@ -353,7 +353,7 @@ var stages = {
 		"xp": 17
 	},
 	"W06-I": {
-		"games": ["m1", "a1", "f1", "c1", "r1"],
+		"games": ["m1"],
 		"background": "forest",
 		"skill_points": 0,
 		"enemy": "mimic",
@@ -757,8 +757,8 @@ var stages = {
 		"xp": 32
 	},
 	"W12-I": {
-		"games": ["m1", "a1", "f1", "c1", "r1",
-				  "m2", "a2", "f2", "c2", "r2"],
+		"games": ["r1",
+				  "r2"],
 		"background": "green_field",
 		"skill_points": 0,
 		"enemy": "mimic",
@@ -894,7 +894,7 @@ func is_stage_unlocked(id):
 		return true
 	
 	for stage_id in stage_graph.keys():
-		var completed = State.save_data.get(stage_id, false)
+		var completed = State.save_data["stages"].get(stage_id, false)
 		
 		if completed:
 			if id in stage_graph[stage_id]:
@@ -903,7 +903,7 @@ func is_stage_unlocked(id):
 	return false
 
 func is_stage_completed(id):
-	return State.save_data.get(id, false)
+	return State.save_data["stages"].get(id, false)
 
 func get_stage_reward(stage_id):
 	if item_rewards.has(stage_id):

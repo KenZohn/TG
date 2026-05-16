@@ -3,14 +3,9 @@ extends Node
 func new_game(path):
 	var save_data = {
 		"player_name": '',
+		"stages": {},
 		"experience": 0,
 		"inventory": {"items": [], "equipped": ""},
-		
-		"memory": 0,
-		"agility": 0,
-		"focus": 0,
-		"reasoning": 0,
-		"coordination": 0,
 		
 		"player_health": 0,
 		"player_time": 0,

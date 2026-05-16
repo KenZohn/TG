@@ -200,7 +200,6 @@ func _on_temp_loja_button_pressed() -> void:
 # Testes
 func _on_debug_button_pressed():
 	for stage_id in StageData.stage_graph.keys():
-		State.save_data[stage_id] = true
+		State.save_data["stages"][stage_id] = true
 	update_stages()
 	draw_connections()
-	
