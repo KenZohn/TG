@@ -1,19 +1,14 @@
-extends Node2D
+extends Control
 
-var values = [State.save_data["memory"]/30,
-			  State.save_data["agility"]/30,
-			  State.save_data["focus"]/30,
-			  State.save_data["reasoning"]/30,
-			  State.save_data["coordination"]/30]
-			  
-var radius = 100.0
-var attributes = [
-	{"name": "Memória", "value": int(State.save_data["memory"])},
-	{"name": "Agilidade", "value": int(State.save_data["agility"])},
-	{"name": "Foco", "value": int(State.save_data["focus"])},
-	{"name": "Raciocínio", "value": int(State.save_data["reasoning"])},
-	{"name": "Coordenação", "value": int(State.save_data["coordination"])}
+var values = [
+	int(State.memory * 100 / 44),
+	int(State.agility * 100 / 44),
+	int(State.focus * 100 / 44),
+	int(State.coordination * 100 / 44),
+	int(State.reasoning * 100 / 44)
 ]
+
+var radius = 100.0
 
 func _ready():
 	var points = get_radar_points()
@@ -32,8 +27,11 @@ func get_radar_points() -> Array:
 	return result
 
 func show_stats():
-	$LabelMemory.text = str(int(State.save_data["memory"]))
-	$LabelAgility.text = str(int(State.save_data["agility"]))
-	$LabelFocus.text = str(int(State.save_data["focus"]))
-	$LabelReasoning.text = str(int(State.save_data["reasoning"]))
-	$LabelCoordination.text = str(int(State.save_data["coordination"]))
+	$LabelMemory.text = str(values[0])
+	$LabelAgility.text = str(values[1])
+	$LabelFocus.text = str(values[2])
+	$LabelCoordination.text = str(values[3])
+	$LabelReasoning.text = str(values[4])
+
+func calc_stats():
+	pass

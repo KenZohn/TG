@@ -1,21 +1,15 @@
-[gd_scene load_steps=31 format=4 uid="uid://sjocgq176ntc"]
+[gd_scene load_steps=32 format=4 uid="uid://sjocgq176ntc"]
 
 [ext_resource type="Script" uid="uid://bme3fdf0fhy8r" path="res://scripts/game/map.gd" id="1_vejw5"]
 [ext_resource type="TileSet" uid="uid://de3o0qq0gv4g4" path="res://map.tres" id="3_8kpgt"]
 [ext_resource type="Script" uid="uid://bxkyy77kjo75o" path="res://scripts/stage.gd" id="3_lkyxg"]
+[ext_resource type="PackedScene" uid="uid://d2lkfnq3ewo5a" path="res://scenes/ui/radar_chart.tscn" id="5_lkyxg"]
 [ext_resource type="PackedScene" uid="uid://dgajq8exectl1" path="res://scenes/game/character_body_2d.tscn" id="53_uf2fp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7g61j"]
 bg_color = Color(0.11858138, 0.11858138, 0.11858138, 1)
 border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
 border_color = Color(0.19607843, 0.19607843, 0.19607843, 0.78431374)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhmgq"]
 bg_color = Color(0.68, 0.92, 1, 1)
@@ -1032,17 +1026,13 @@ position = Vector2(17, 83)
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="InfoPanel" type="Panel" parent="UI"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 388.0
-offset_top = -401.0
-offset_right = 610.0
-offset_bottom = -84.0
-grow_horizontal = 2
-grow_vertical = 0
+offset_left = -257.0
+grow_horizontal = 0
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_7g61j")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/InfoPanel"]
@@ -1053,12 +1043,34 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 10
+theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/InfoPanel/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
+
+[node name="Radar" type="Panel" parent="UI/InfoPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="RadarChart" parent="UI/InfoPanel/MarginContainer/VBoxContainer/Radar" instance=ExtResource("5_lkyxg")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.85, 0.85)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HSeparator" type="HSeparator" parent="UI/InfoPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
 
 [node name="Name" type="Label" parent="UI/InfoPanel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
@@ -1163,7 +1175,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="HSeparator" type="HSeparator" parent="UI/InfoPanel/MarginContainer/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="UI/InfoPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="enter_button" type="Button" parent="UI/InfoPanel/MarginContainer/VBoxContainer"]

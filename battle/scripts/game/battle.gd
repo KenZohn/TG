@@ -254,14 +254,6 @@ func _on_game_finished():
 		
 		# Primeira vez completando o estágio
 		if not State.save_data.get(stage_key, false):
-			
-			# Atribuir atributos
-			State.save_data["memory"] += State.memory
-			State.save_data["agility"] += State.agility
-			State.save_data["focus"] += State.focus
-			State.save_data["reasoning"] += State.reasoning
-			State.save_data["coordination"] += State.coordination
-			
 			# Salvar jogo
 			State.save_data[stage_key] = true
 			
