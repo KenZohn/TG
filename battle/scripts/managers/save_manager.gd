@@ -45,7 +45,7 @@ func load_game(path):
 		for key in State.save_data:
 			if key.begins_with("Skill_"):
 				State.skills[key] = State.save_data[key]
-		
+		create_stages_for_save()
 		return true
 	return false
 	
@@ -54,3 +54,7 @@ func save_game(path):
 	var file = FileAccess.open(path, FileAccess.WRITE)
 	file.store_string(JSON.stringify(State.save_data))
 	file.close()
+
+func create_stages_for_save():
+	if !State.save_data.has("stages"):
+		State.save_data["stages"] = {}
