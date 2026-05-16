@@ -324,7 +324,7 @@ func show_description(skill, skill_total_cost):
 	update_all_visuals()
 	
 	if selected_skill.is_acquired:
-		ui_skill_confirm.text = "ADQUIRIDA"
+		ui_skill_confirm.text = "ADQUIRIDO"
 		ui_skill_confirm.disabled = true
 		ui_skill_confirm.modulate = Color(0.0, 1.0, 0.117, 1.0)
 	elif State.current_skill_point < skill_total_cost:
@@ -341,7 +341,7 @@ func _on_confirm_button_pressed() -> void:
 
 func unlock_skill():
 	if selected_skill.is_acquired:
-		print("Já adquirida")
+		print("Já adquirido")
 		return
 	
 	if selected_skill.skill_tree == null:
@@ -363,11 +363,11 @@ func unlock_skill():
 		State.save_skills(skill_to_acquire.health, skill_to_acquire.time, skill_to_acquire.damage, skill_to_acquire.crit_chance, skill_to_acquire.defense, skill_to_acquire.skill_name)
 		
 		update_all_visuals()
-		print("Adquirida")
+		print("Adquiriu")
 	
 	highlighted_path.clear()
 	ui_total_cost.text = "0"
-	ui_skill_confirm.text = "ADQUIRIDA"
+	ui_skill_confirm.text = "ADQUIRIDO"
 	ui_skill_confirm.disabled = true
 	ui_skill_confirm.modulate = Color(0.0, 1.0, 0.117, 1.0)
 

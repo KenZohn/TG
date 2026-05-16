@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://sjocgq176ntc"]
+[gd_scene load_steps=31 format=4 uid="uid://sjocgq176ntc"]
 
 [ext_resource type="Script" uid="uid://bme3fdf0fhy8r" path="res://scripts/game/map.gd" id="1_vejw5"]
 [ext_resource type="TileSet" uid="uid://de3o0qq0gv4g4" path="res://map.tres" id="3_8kpgt"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dgajq8exectl1" path="res://scenes/game/character_body_2d.tscn" id="53_uf2fp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7g61j"]
-bg_color = Color(0, 0, 0, 0.78431374)
+bg_color = Color(0.11858138, 0.11858138, 0.11858138, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -16,6 +16,46 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhmgq"]
+bg_color = Color(0.68, 0.92, 1, 1)
+border_color = Color(0.93, 0.93, 0.93, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xalg"]
+bg_color = Color(0.48970002, 0.83, 0.63716334, 1)
+border_color = Color(0.93, 0.93, 0.93, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v0kwn"]
+bg_color = Color(1, 0.906, 0.53, 1)
+border_color = Color(0.93, 0.93, 0.93, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_foclx"]
+bg_color = Color(1, 0.595, 0.55, 1)
+border_color = Color(0.9254902, 0.9254902, 0.9254902, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0c38w"]
+bg_color = Color(0.8920001, 0.64, 1, 1)
+border_color = Color(0.93, 0.93, 0.93, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lkyxg"]
 bg_color = Color(0.20784314, 0.20784314, 0.20784314, 1)
@@ -992,48 +1032,143 @@ position = Vector2(17, 83)
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="InfoPanel" type="Panel" parent="UI"]
-visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -105.0
-offset_top = -170.0
-offset_right = 105.0
-offset_bottom = -60.0
+offset_left = 388.0
+offset_top = -401.0
+offset_right = 610.0
+offset_bottom = -84.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7g61j")
 
-[node name="Name" type="Label" parent="UI/InfoPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/InfoPanel"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -21.0
-offset_top = 15.0
-offset_right = 21.0
-offset_bottom = 43.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/InfoPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Name" type="Label" parent="UI/InfoPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="enter_button" type="Button" parent="UI/InfoPanel"]
+[node name="Memory" type="Panel" parent="UI/InfoPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jhmgq")
+
+[node name="Label" type="Label" parent="UI/InfoPanel/MarginContainer/VBoxContainer/Memory"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -67.75
-offset_top = -60.0
-offset_right = 67.75
-offset_bottom = -17.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "Memória"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Agility" type="Panel" parent="UI/InfoPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8xalg")
+
+[node name="Label" type="Label" parent="UI/InfoPanel/MarginContainer/VBoxContainer/Agility"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "Agilidade"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Focus" type="Panel" parent="UI/InfoPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0kwn")
+
+[node name="Label" type="Label" parent="UI/InfoPanel/MarginContainer/VBoxContainer/Focus"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "Foco"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Coordination" type="Panel" parent="UI/InfoPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_foclx")
+
+[node name="Label" type="Label" parent="UI/InfoPanel/MarginContainer/VBoxContainer/Coordination"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "Coordenação"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Reasoning" type="Panel" parent="UI/InfoPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0c38w")
+
+[node name="Label" type="Label" parent="UI/InfoPanel/MarginContainer/VBoxContainer/Reasoning"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "Raciocínio"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="HSeparator" type="HSeparator" parent="UI/InfoPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="enter_button" type="Button" parent="UI/InfoPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_lkyxg")
 text = "Entrar"
@@ -1095,7 +1230,7 @@ text = "Sair"
 position = Vector2(2, 2)
 
 [node name="superior_total" type="CollisionShape2D" parent="Barreira"]
-position = Vector2(1533, -491.25)
+position = Vector2(1533, -554)
 shape = SubResource("RectangleShape2D_8kpgt")
 
 [node name="Inferior_area_verde" type="CollisionShape2D" parent="Barreira"]
@@ -1493,7 +1628,7 @@ position = Vector2(3065, 179)
 shape = SubResource("CircleShape2D_8kpgt")
 
 [node name="Fuji" type="CollisionShape2D" parent="Barreira"]
-position = Vector2(2723, -439)
+position = Vector2(2723, -414)
 shape = SubResource("CircleShape2D_jhmgq")
 
 [node name="Cerca_vilarejo" type="CollisionShape2D" parent="Barreira"]
@@ -1528,7 +1663,7 @@ shape = SubResource("RectangleShape2D_foclx")
 position = Vector2(3179, -138)
 shape = SubResource("RectangleShape2D_foclx")
 
-[connection signal="pressed" from="UI/InfoPanel/enter_button" to="." method="_on_enter_button_pressed"]
+[connection signal="pressed" from="UI/InfoPanel/MarginContainer/VBoxContainer/enter_button" to="." method="_on_enter_button_pressed"]
 [connection signal="pressed" from="UI/DebugButton" to="." method="_on_debug_button_pressed"]
 [connection signal="pressed" from="UI/PanelContainer/HBoxContainer/BackpackButton" to="." method="_on_backpack_button_pressed"]
 [connection signal="pressed" from="UI/PanelContainer/HBoxContainer/SkillTreeButton" to="." method="_on_skill_tree_button_pressed"]
