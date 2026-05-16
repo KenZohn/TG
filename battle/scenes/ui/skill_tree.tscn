@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bdngd81e07g1t"]
+[gd_scene load_steps=23 format=3 uid="uid://bdngd81e07g1t"]
 
 [ext_resource type="Script" uid="uid://bhaxh448kqa02" path="res://scripts/ui/skill_tree.gd" id="1_6rj6t"]
 [ext_resource type="Texture2D" uid="uid://5ueteykrvw8y" path="res://assets/icons/start.png" id="3_qabtx"]
@@ -50,6 +50,40 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l5rv0"]
+bg_color = Color(0.12941177, 0.12941177, 0.12941177, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rdlo8"]
+bg_color = Color(0.15, 0.15, 0.15, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sr3md"]
+bg_color = Color(0.1, 0.1, 0.1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2738727, 0.27387276, 0.27387258, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qabtx"]
 bg_color = Color(0.20871, 0.20871, 0.20871, 1)
@@ -1619,6 +1653,9 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_l5rv0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rdlo8")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_sr3md")
 disabled = true
 text = "ADQUIRIR"
 
@@ -1630,7 +1667,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ptwwp")
 text = "Voltar"
 
 [node name="DebugButton" type="Button" parent="MarginContainer/Panel/UI"]
-visible = false
 offset_left = 90.0
 offset_top = 644.0
 offset_right = 212.0

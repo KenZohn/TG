@@ -317,7 +317,7 @@ func get_connection_state(a, b):
 	
 	return "locked"
 
-func show_description(skill):
+func show_description(skill, skill_total_cost):
 	selected_skill = skill
 	ui_skill_title.text = skill_description[selected_skill.skill_name].title
 	ui_skill_description.text = skill_description[selected_skill.skill_name].text
@@ -326,15 +326,15 @@ func show_description(skill):
 	if selected_skill.is_acquired:
 		ui_skill_confirm.text = "ADQUIRIDA"
 		ui_skill_confirm.disabled = true
-	elif not has_unlocked_neighbor(selected_skill.skill_name):
-		ui_skill_confirm.text = "BLOQUEADA"
-		ui_skill_confirm.disabled = true
-	elif State.current_skill_point < selected_skill.cost:
+		ui_skill_confirm.modulate = Color(0.0, 1.0, 0.117, 1.0)
+	elif State.current_skill_point < skill_total_cost:
 		ui_skill_confirm.text = "PONTOS INSUFICIENTE"
 		ui_skill_confirm.disabled = true
+		ui_skill_confirm.modulate = Color(1.0, 0.0, 0.0, 1.0)
 	else:
 		ui_skill_confirm.text = "ADQUIRIR"
 		ui_skill_confirm.disabled = false
+		ui_skill_confirm.modulate = Color(1,1,1)
 
 func _on_confirm_button_pressed() -> void:
 	unlock_skill()
@@ -348,24 +348,28 @@ func unlock_skill():
 		push_error("Skill tree não encontrada!")
 		return
 	
-	if not has_unlocked_neighbor(selected_skill.skill_name):
-		print("Skill bloqueada")
-		return
+	for skill_to_acquire in highlighted_path.slice(1):
+		skill_to_acquire = get_skill(skill_to_acquire)
+		
+		if skill_to_acquire.is_acquired:
+			continue
+		
+		State.spend_skill_point(skill_to_acquire.cost)
+		skill_to_acquire.is_acquired = true
+		State.skills[skill_to_acquire.skill_name] = true
+		
+		modulate = Color(1,1,1)
+		
+		State.save_skills(skill_to_acquire.health, skill_to_acquire.time, skill_to_acquire.damage, skill_to_acquire.crit_chance, skill_to_acquire.defense, skill_to_acquire.skill_name)
+		
+		update_all_visuals()
+		print("Adquirida")
 	
-	if State.current_skill_point < selected_skill.cost:
-		print("Sem pontos")
-		return
-	
-	State.spend_skill_point()
-	selected_skill.is_acquired = true
-	State.skills[selected_skill.skill_name] = true
-	
-	modulate = Color(1,1,1)
-	
-	State.save_skills(selected_skill.health, selected_skill.time, selected_skill.damage, selected_skill.crit_chance, selected_skill.defense, selected_skill.skill_name)
-	
-	update_all_visuals()
-	print("Adquirida")
+	highlighted_path.clear()
+	ui_total_cost.text = "0"
+	ui_skill_confirm.text = "ADQUIRIDA"
+	ui_skill_confirm.disabled = true
+	ui_skill_confirm.modulate = Color(0.0, 1.0, 0.117, 1.0)
 
 
 # Teste
@@ -464,9 +468,7 @@ func custo_uniforme_multiorigem(objetivo):
 	var grafo = criar_grafo()
 	var origens = obter_origens_validas(grafo)
 	
-	# caso nenhuma skill liberada seja válida
-	if origens.is_empty():
-		origens.append("Start")
+	origens.append("Start")
 	
 	var lista = []
 	var visitado = {}

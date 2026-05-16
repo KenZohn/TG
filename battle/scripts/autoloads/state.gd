@@ -45,8 +45,8 @@ var s_damage = false
 var s_critical = false
 var s_defense = false
 
-func spend_skill_point():
-	current_skill_point -= 1
+func spend_skill_point(skill_cost):
+	current_skill_point -= skill_cost
 	skill_points_changed.emit()
 
 # Save

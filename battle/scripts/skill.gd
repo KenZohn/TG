@@ -17,7 +17,6 @@ func _ready():
 	pressed.connect(_on_pressed)
 
 func _on_pressed():
-	skill_tree.show_description(self)
 	var resultado = skill_tree.custo_uniforme_multiorigem(skill_name)
 	
 	if resultado != null:
@@ -25,6 +24,7 @@ func _on_pressed():
 		skill_tree.queue_redraw()
 	
 	skill_tree.show_cost(cost, resultado.cost)
-	
+	skill_tree.show_description(self, resultado.cost)
 	print(resultado.path)
-	print(resultado.cost)
+	
+	
