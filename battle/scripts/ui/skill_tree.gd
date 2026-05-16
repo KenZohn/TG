@@ -1,6 +1,10 @@
 extends Control
 
-@onready var skills = $"Skills"
+@onready var skills = $"MarginContainer/Panel/Skills"
+@onready var ui_skill_title = $MarginContainer/Panel/UI/VBoxContainer/PanelDescription/MarginContainer/VBoxContainer/Title
+@onready var ui_skill_description = $MarginContainer/Panel/UI/VBoxContainer/PanelDescription/MarginContainer/VBoxContainer/Description
+@onready var ui_skill_confirm = $MarginContainer/Panel/UI/VBoxContainer/PanelDescription/MarginContainer/VBoxContainer/ConfirmButton
+@onready var ui_skill_points = $MarginContainer/Panel/UI/VBoxContainer/PanelPoints/MarginContainer/VBoxContainer/SkillPoints
 
 var connections = [
 	["Start", "Skill_1"],
@@ -116,23 +120,23 @@ var description = {
 	},
 	"s_time": {
 		"title": "Volta no Tempo",
-		"text": "Ao ser derrotado, volte com 25% de vida um vez por batalha"
+		"text": "Ao ser derrotado, volte com 25% de vida um vez por batalha."
 	},
 	"s_damage": {
 		"title": "Evolução Constante",
-		"text": "Aumenta 5% do dano a cada turno"
+		"text": "Aumenta 5% do dano a cada turno."
 	},
 	"s_critical": {
 		"title": "Sorte em Dia",
-		"text": "Causa 2x de dano crítico"
+		"text": "Causa 2x de dano crítico."
 	},
 	"s_defense": {
 		"title": "Esquiva Perfeita",
-		"text": "15% de chance de bloquear 100% do dano"
+		"text": "15% de chance de bloquear 100% do dano."
 	},
 	"start": {
-		"title": "-",
-		"text": "-"
+		"title": "",
+		"text": ""
 	}
 }
 
@@ -208,6 +212,7 @@ func _ready() -> void:
 	
 	State.skill_points_changed.connect(update_label)
 	
+	initial_settings()
 	update_label()
 	load_skills()
 	
@@ -255,7 +260,7 @@ func load_skills():
 	update_all_visuals()
 
 func update_label():
-	$UI/PanelPoints/SkillPoints.text = str(int(State.current_skill_point))
+	ui_skill_points.text = str(int(State.current_skill_point))
 
 func has_unlocked_neighbor(skill_id):
 	for c in connections:
@@ -304,19 +309,22 @@ func get_connection_state(a, b):
 
 func show_description(skill):
 	selected_skill = skill
-	$UI/PanelDescription/Title.text = skill_description[selected_skill.skill_name].title
-	$UI/PanelDescription/Description.text = skill_description[selected_skill.skill_name].text
+	ui_skill_title.text = skill_description[selected_skill.skill_name].title
+	ui_skill_description.text = skill_description[selected_skill.skill_name].text
 	update_all_visuals()
 	
 	if selected_skill.is_acquired:
-		$UI/PanelDescription/ConfirmButton.text = "Adquirida"
-		$UI/PanelDescription/ConfirmButton.disabled = true
+		ui_skill_confirm.text = "ADQUIRIDA"
+		ui_skill_confirm.disabled = true
 	elif not has_unlocked_neighbor(selected_skill.skill_name):
-		$UI/PanelDescription/ConfirmButton.text = "Bloqueada"
-		$UI/PanelDescription/ConfirmButton.disabled = true
+		ui_skill_confirm.text = "BLOQUEADA"
+		ui_skill_confirm.disabled = true
+	elif State.current_skill_point < selected_skill.cost:
+		ui_skill_confirm.text = "PONTOS INSUFICIENTE"
+		ui_skill_confirm.disabled = true
 	else:
-		$UI/PanelDescription/ConfirmButton.text = "Adquirir"
-		$UI/PanelDescription/ConfirmButton.disabled = false
+		ui_skill_confirm.text = "ADQUIRIR"
+		ui_skill_confirm.disabled = false
 
 func _on_confirm_button_pressed() -> void:
 	unlock_skill()
@@ -358,3 +366,7 @@ func _on_debug_button_pressed() -> void:
 			State.skills[skill.skill_name] = true
 			State.save_skills(skill.health, skill.time, skill.damage, skill.crit_chance, skill.defense, skill.skill_name)
 	update_all_visuals()
+
+func initial_settings():
+	ui_skill_title.text = ""
+	ui_skill_description.text = ""
