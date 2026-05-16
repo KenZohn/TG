@@ -5,6 +5,8 @@ extends Control
 @onready var ui_skill_description = $MarginContainer/Panel/UI/VBoxContainer/PanelDescription/MarginContainer/VBoxContainer/Description
 @onready var ui_skill_confirm = $MarginContainer/Panel/UI/VBoxContainer/PanelDescription/MarginContainer/VBoxContainer/ConfirmButton
 @onready var ui_skill_points = $MarginContainer/Panel/UI/VBoxContainer/PanelPoints/MarginContainer/VBoxContainer/SkillPoints
+@onready var ui_cost = $MarginContainer/Panel/UI/VBoxContainer/PanelDescription/MarginContainer/VBoxContainer/HBoxContainer/PanelCost/MarginContainer/VBoxContainer/Cost
+@onready var ui_total_cost = $MarginContainer/Panel/UI/VBoxContainer/PanelDescription/MarginContainer/VBoxContainer/HBoxContainer/PanelTotalCost/MarginContainer/VBoxContainer/Cost
 
 var connections = [
 	["Start", "Skill_1"],
@@ -233,19 +235,24 @@ func _draw():
 		var pos_b = (b.global_position + b.size / 2) - global_position
 		
 		var state = get_connection_state(c[0], c[1])
-
+		
 		var color
 		var width = 3
-
-		match state:
-			"active":
-				color = Color(1.0, 1.0, 1.0, 1.0)
-			
-			"available":
-				color = Color(0.3, 0.3, 0.3)
-			
-			"locked":
-				color = Color(0.3, 0.3, 0.3)
+		
+		if is_connection_highlighted(c[0], c[1]):
+			color = Color(0.2, 0.9, 1.0)
+			width = 7
+		
+		else:
+			match state:
+				"active":
+					color = Color(1.0, 1.0, 1.0, 1.0)
+				
+				"available":
+					color = Color(0.3, 0.3, 0.3)
+				
+				"locked":
+					color = Color(0.3, 0.3, 0.3)
 		
 		draw_line(pos_a, pos_b, color, width)
 
@@ -267,10 +274,13 @@ func has_unlocked_neighbor(skill_id):
 		var a = c[0]
 		var b = c[1]
 		
-		if skill_id == a and State.skills.get(b, false):
+		var a_unlocked = a == "Start" or State.skills.get(a, false)
+		var b_unlocked = b == "Start" or State.skills.get(b, false)
+		
+		if skill_id == a and b_unlocked:
 			return true
 		
-		if skill_id == b and State.skills.get(a, false):
+		if skill_id == b and a_unlocked:
 			return true
 	
 	return false
@@ -370,3 +380,193 @@ func _on_debug_button_pressed() -> void:
 func initial_settings():
 	ui_skill_title.text = ""
 	ui_skill_description.text = ""
+
+func show_cost(cost, total_cost):
+	ui_cost.text = str(cost)
+	ui_total_cost.text = str(total_cost)
+
+
+
+
+# Busca de melhor caminho
+class NodeP:
+	var pai
+	var estado
+	var v1
+	var v2
+	
+	func _init(_pai, _estado, _v1, _v2):
+		pai = _pai
+		estado = _estado
+		v1 = _v1
+		v2 = _v2
+		
+func criar_grafo():
+	var grafo = {}
+	
+	for con in connections:
+		
+		var a = con[0]
+		var b = con[1]
+		
+		if !grafo.has(a):
+			grafo[a] = []
+		
+		if !grafo.has(b):
+			grafo[b] = []
+		
+		var custo_b = get_skill_cost(b)
+		var custo_a = get_skill_cost(a)
+		
+		# ir para B custa o valor de B
+		grafo[a].append([b, custo_b])
+		
+		# ir para A custa o valor de A
+		grafo[b].append([a, custo_a])
+	
+	return grafo
+
+func obter_origens_validas(grafo):
+	var origens = []
+	
+	for skill_name in grafo.keys():
+		
+		if skill_name == "Start":
+			continue
+		
+		var skill = get_skill(skill_name)
+		
+		if !skill.is_acquired:
+			continue
+		
+		var possui_vizinho_bloqueado = false
+		
+		for vizinho in grafo[skill_name]:
+			var vizinho_nome = vizinho[0]
+			
+			if vizinho_nome == "Start":
+				continue
+			
+			var vizinho_node = get_node("MarginContainer/Panel/Skills/" + vizinho_nome)
+			
+			if !vizinho_node.is_acquired:
+				possui_vizinho_bloqueado = true
+				break
+		
+		# só entra se ainda houver expansão possível
+		if possui_vizinho_bloqueado:
+			origens.append(skill_name)
+	
+	return origens
+
+func custo_uniforme_multiorigem(objetivo):
+	
+	var grafo = criar_grafo()
+	var origens = obter_origens_validas(grafo)
+	
+	# caso nenhuma skill liberada seja válida
+	if origens.is_empty():
+		origens.append("Start")
+	
+	var lista = []
+	var visitado = {}
+	
+	# adiciona todas origens
+	for origem in origens:
+		
+		var raiz = NodeP.new(null, origem, 0, 0)
+		
+		lista.append(raiz)
+		visitado[origem] = raiz
+	
+	# ordena fila inicial
+	lista.sort_custom(func(a, b): return a.v1 < b.v1)
+	
+	
+	# =====================================================
+	# LOOP
+	# =====================================================
+	
+	while !lista.is_empty():
+		
+		var atual = lista.pop_front()
+		
+		# chegou no objetivo
+		if atual.estado == objetivo:
+			return {
+				"path": exibir_caminho(atual),
+				"cost": atual.v2
+			}
+		
+		# sucessores
+		for novo in grafo[atual.estado]:
+			
+			var prox_nome = novo[0]
+			var custo_aresta = novo[1]
+			
+			var novo_custo = atual.v2
+
+			if prox_nome != "Start":
+				var skill_node = get_skill(prox_nome)
+				
+				if !skill_node.is_acquired:
+					novo_custo += custo_aresta
+			
+			if !visitado.has(prox_nome) or novo_custo < visitado[prox_nome].v2:
+				
+				var filho = NodeP.new(
+					atual,
+					prox_nome,
+					novo_custo,
+					novo_custo
+				)
+				
+				visitado[prox_nome] = filho
+				
+				inserir_ordenado(lista, filho)
+	
+	return null
+
+func exibir_caminho(node):
+	
+	var caminho = []
+	
+	while node != null:
+		caminho.push_front(node.estado)
+		node = node.pai
+	
+	return caminho
+
+func inserir_ordenado(lista, no):
+	
+	for i in range(lista.size()):
+		
+		if no.v1 < lista[i].v1:
+			lista.insert(i, no)
+			return
+	
+	lista.append(no)
+
+func get_skill_cost(skill_name):
+	
+	if skill_name == "Start":
+		return 0
+	
+	var skill_node = skills.get_node(skill_name)
+	return skill_node.cost
+
+func get_skill(skill_name):
+	return skills.get_node(skill_name)
+
+func is_connection_highlighted(a, b):
+	
+	for i in range(highlighted_path.size() - 1):
+		
+		var p1 = highlighted_path[i]
+		var p2 = highlighted_path[i + 1]
+		
+		# considera ambos sentidos
+		if (p1 == a and p2 == b) or (p1 == b and p2 == a):
+			return true
+	
+	return false

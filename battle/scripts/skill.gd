@@ -18,3 +18,13 @@ func _ready():
 
 func _on_pressed():
 	skill_tree.show_description(self)
+	var resultado = skill_tree.custo_uniforme_multiorigem(skill_name)
+	
+	if resultado != null:
+		skill_tree.highlighted_path = resultado.path
+		skill_tree.queue_redraw()
+	
+	skill_tree.show_cost(cost, resultado.cost)
+	
+	print(resultado.path)
+	print(resultado.cost)

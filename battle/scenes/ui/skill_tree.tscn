@@ -1437,7 +1437,7 @@ offset_left = 873.0
 offset_top = 55.0
 offset_right = 1193.0
 offset_bottom = 677.0
-theme_override_constants/separation = 30
+theme_override_constants/separation = 13
 
 [node name="Title" type="Label" parent="MarginContainer/Panel/UI/VBoxContainer"]
 layout_mode = 2
@@ -1447,7 +1447,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PanelPoints" type="Panel" parent="MarginContainer/Panel/UI/VBoxContainer"]
-custom_minimum_size = Vector2(0, 145)
+custom_minimum_size = Vector2(0, 110)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_oo0et")
 
@@ -1465,13 +1465,13 @@ theme_override_constants/margin_bottom = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/UI/VBoxContainer/PanelPoints/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 5
+theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="MarginContainer/Panel/UI/VBoxContainer/PanelPoints/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
-text = "Pontos restantes:"
+text = "Pontos de Talentos:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1479,7 +1479,7 @@ vertical_alignment = 1
 layout_mode = 2
 
 [node name="SkillPoints" type="Label" parent="MarginContainer/Panel/UI/VBoxContainer/PanelPoints/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 70)
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "0"
@@ -1487,7 +1487,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PanelDescription" type="Panel" parent="MarginContainer/Panel/UI/VBoxContainer"]
-custom_minimum_size = Vector2(0, 240)
+custom_minimum_size = Vector2(0, 370)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xv45t")
 
@@ -1505,6 +1505,7 @@ theme_override_constants/margin_bottom = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/UI/VBoxContainer/PanelDescription/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 9
 
 [node name="Title" type="Label" parent="MarginContainer/Panel/UI/VBoxContainer/PanelDescription/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
@@ -1519,7 +1520,7 @@ autowrap_mode = 2
 layout_mode = 2
 
 [node name="Description" type="Label" parent="MarginContainer/Panel/UI/VBoxContainer/PanelDescription/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "Descrição"
@@ -1527,7 +1528,91 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="HSeparator2" type="HSeparator" parent="MarginContainer/Panel/UI/VBoxContainer/PanelDescription/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/UI/VBoxContainer/PanelDescription/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="PanelCost" type="Panel" parent="MarginContainer/Panel/UI/VBoxContainer/PanelDescription/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(130, 110)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oo0et")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/UI/VBoxContainer/PanelDescription/MarginContainer/VBoxContainer/HBoxContainer/PanelCost"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/UI/VBoxContainer/PanelDescription/MarginContainer/VBoxContainer/HBoxContainer/PanelCost/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/UI/VBoxContainer/PanelDescription/MarginContainer/VBoxContainer/HBoxContainer/PanelCost/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Custo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/Panel/UI/VBoxContainer/PanelDescription/MarginContainer/VBoxContainer/HBoxContainer/PanelCost/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Cost" type="Label" parent="MarginContainer/Panel/UI/VBoxContainer/PanelDescription/MarginContainer/VBoxContainer/HBoxContainer/PanelCost/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelTotalCost" type="Panel" parent="MarginContainer/Panel/UI/VBoxContainer/PanelDescription/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(130, 110)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oo0et")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/UI/VBoxContainer/PanelDescription/MarginContainer/VBoxContainer/HBoxContainer/PanelTotalCost"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/UI/VBoxContainer/PanelDescription/MarginContainer/VBoxContainer/HBoxContainer/PanelTotalCost/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/UI/VBoxContainer/PanelDescription/MarginContainer/VBoxContainer/HBoxContainer/PanelTotalCost/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Custo Total"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/Panel/UI/VBoxContainer/PanelDescription/MarginContainer/VBoxContainer/HBoxContainer/PanelTotalCost/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Cost" type="Label" parent="MarginContainer/Panel/UI/VBoxContainer/PanelDescription/MarginContainer/VBoxContainer/HBoxContainer/PanelTotalCost/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/Panel/UI/VBoxContainer/PanelDescription/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="ConfirmButton" type="Button" parent="MarginContainer/Panel/UI/VBoxContainer/PanelDescription/MarginContainer/VBoxContainer"]
@@ -1537,10 +1622,6 @@ theme_override_font_sizes/font_size = 18
 disabled = true
 text = "ADQUIRIR"
 
-[node name="Control" type="Control" parent="MarginContainer/Panel/UI/VBoxContainer"]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-
 [node name="BackButton" type="Button" parent="MarginContainer/Panel/UI/VBoxContainer" groups=["menu_buttons"]]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
@@ -1549,6 +1630,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ptwwp")
 text = "Voltar"
 
 [node name="DebugButton" type="Button" parent="MarginContainer/Panel/UI"]
+visible = false
 offset_left = 90.0
 offset_top = 644.0
 offset_right = 212.0
