@@ -1,8 +1,8 @@
 extends Control
 var save_data = {}
 
-@onready var titulo = $"MarginContainer/HBoxContainer/VBoxContainer/Titulo"
-@onready var subtitulo = $"MarginContainer/HBoxContainer/VBoxContainer/Subtítulo"
+@onready var titulo = $"TitleContainer/Titulo"
+@onready var subtitulo = $"TitleContainer/Subtítulo"
 
 @onready var press_start = $Start
 

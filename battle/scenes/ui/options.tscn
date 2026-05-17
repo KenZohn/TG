@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dyvywwxa4u4af"]
 
 [ext_resource type="Script" uid="uid://reh64sax3356" path="res://scripts/ui/options.gd" id="1_yjkok"]
-[ext_resource type="Texture2D" uid="uid://c67xpnj35t4a2" path="res://assets/sprites/background-escurecido.png" id="2_ckjey"]
+[ext_resource type="Texture2D" uid="uid://dsjlmfno5jq8v" path="res://assets/background/seraquefoi_upscayl_2x_upscayl-standard-4x.png" id="2_pykmj"]
 [ext_resource type="Theme" uid="uid://c6u12sw5jxmbr" path="res://themes/OptionsScreen.theme" id="3_nmn1p"]
 [ext_resource type="FontFile" uid="uid://svybmpvynbsh" path="res://themes/Roboto-VariableFont_wdth,wght.ttf" id="3_pxqj8"]
 [ext_resource type="Theme" uid="uid://dctpcbq0vp6lp" path="res://themes/TitleScreen.theme" id="3_s26ps"]
@@ -42,13 +42,14 @@ metadata/_edit_group_ = true
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.55, 0.6, 0.65, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_ckjey")
+texture = ExtResource("2_pykmj")
 expand_mode = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -67,6 +68,9 @@ alignment = 1
 [node name="Options" type="Label" parent="CenterContainer/OptionsContainer"]
 layout_mode = 2
 theme = ExtResource("3_s26ps")
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 8
 text = "OPÇÕES"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -95,6 +99,7 @@ theme_override_constants/v_separation = 10
 
 [node name="Music" type="Label" parent="CenterContainer/OptionsContainer/PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.7, 1)
 theme_override_fonts/font = ExtResource("3_pxqj8")
 theme_override_font_sizes/font_size = 18
 text = "Música"
@@ -111,6 +116,7 @@ max_value = 5.0
 
 [node name="SFX" type="Label" parent="CenterContainer/OptionsContainer/PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.7, 1)
 theme_override_fonts/font = ExtResource("3_pxqj8")
 theme_override_font_sizes/font_size = 18
 text = "Efeitos Sonoros"
@@ -135,6 +141,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("3_nmn1p")
+theme_override_colors/font_color = Color(1, 0.95, 0.7, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0.4, 1)
 theme_override_font_sizes/font_size = 18
 text = "Voltar"
 script = ExtResource("5_w238l")
