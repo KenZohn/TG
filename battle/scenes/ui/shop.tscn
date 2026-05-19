@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgg310stqkvoh"]
+[gd_scene load_steps=8 format=3 uid="uid://dgg310stqkvoh"]
 
 [ext_resource type="Script" uid="uid://dqinmr6acqmvs" path="res://scripts/ui/shop.gd" id="1"]
 [ext_resource type="Theme" uid="uid://c6u12sw5jxmbr" path="res://themes/OptionsScreen.theme" id="2"]
 [ext_resource type="FontFile" uid="uid://c8l7xewo111n3" path="res://themes/Tinos-Regular.ttf" id="2_85p0y"]
 [ext_resource type="FontFile" uid="uid://svybmpvynbsh" path="res://themes/Roboto-VariableFont_wdth,wght.ttf" id="3_kdvrj"]
+[ext_resource type="Texture2D" uid="uid://cr38um7fq4kwl" path="res://assets/characters/fish_character_kurage.png" id="5_kdvrj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
 bg_color = Color(0.1, 0.1, 0.1, 0.95)
@@ -16,6 +17,13 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_atewb"]
+bg_color = Color(0.25929368, 0.25929374, 0.2592936, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -141,25 +149,26 @@ theme_override_font_sizes/font_size = 24
 text = "Mercador"
 horizontal_alignment = 1
 
-[node name="NPCImage" type="ColorRect" parent="MainContainer/NPCPanel/MarginContainer/VBoxContainer"]
+[node name="NPCImage" type="Panel" parent="MainContainer/NPCPanel/MarginContainer/VBoxContainer"]
+clip_contents = true
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
-color = Color(0.3, 0.3, 0.3, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_atewb")
 
-[node name="Label" type="Label" parent="MainContainer/NPCPanel/MarginContainer/VBoxContainer/NPCImage"]
+[node name="TextureRect" type="TextureRect" parent="MainContainer/NPCPanel/MarginContainer/VBoxContainer/NPCImage"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -11.5
-offset_right = 40.0
-offset_bottom = 11.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 15.0
+offset_right = -15.0
+offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "cara lindo"
+texture = ExtResource("5_kdvrj")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="NPCDialog" type="Label" parent="MainContainer/NPCPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
