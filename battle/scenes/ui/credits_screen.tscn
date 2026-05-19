@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bpsodtfd5xin0"]
 
 [ext_resource type="Script" uid="uid://cjk5lm7rjhj56" path="res://scripts/ui/credits_screen.gd" id="1_2exbt"]
-[ext_resource type="Texture2D" uid="uid://c67xpnj35t4a2" path="res://assets/sprites/background-escurecido.png" id="2_r4ows"]
+[ext_resource type="Texture2D" uid="uid://dsjlmfno5jq8v" path="res://assets/background/seraquefoi_upscayl_2x_upscayl-standard-4x.png" id="2_r4ows"]
 [ext_resource type="Theme" uid="uid://dctpcbq0vp6lp" path="res://themes/TitleScreen.theme" id="3_uvb84"]
 [ext_resource type="Theme" uid="uid://c6u12sw5jxmbr" path="res://themes/OptionsScreen.theme" id="4_86cog"]
 [ext_resource type="Script" uid="uid://c51w6abbk0yqj" path="res://scripts/animated_button.gd" id="5_7fp6e"]
@@ -37,16 +37,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+modulate = Color(0.55, 0.6, 0.65, 1)
 texture = ExtResource("2_r4ows")
 expand_mode = 2
-
-[node name="CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="OptionsContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -67,6 +60,12 @@ alignment = 1
 [node name="Credits" type="Label" parent="OptionsContainer"]
 layout_mode = 2
 theme = ExtResource("3_uvb84")
+theme_override_colors/font_color = Color(1, 0.92, 0.3, 1)
+theme_override_colors/font_outline_color = Color(0.15, 0.05, 0.0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
 text = "CRÉDITOS"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -102,7 +101,7 @@ text = "João Guilherme Faria"
 
 [node name="Role" type="Label" parent="OptionsContainer/PanelContainer/MarginContainer/VBoxContainer/JoaoContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1.2360035, 1.2360035, 1.2360035, 0.70000005)
+theme_override_colors/font_color = Color(1, 1, 1, 0.7)
 theme_override_font_sizes/font_size = 16
 text = "Desenvolvedor"
 
@@ -121,7 +120,7 @@ text = "Johnny Mukai"
 
 [node name="Role" type="Label" parent="OptionsContainer/PanelContainer/MarginContainer/VBoxContainer/JohnnyContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.7019608)
+theme_override_colors/font_color = Color(1, 1, 1, 0.7)
 theme_override_font_sizes/font_size = 16
 text = "Desenvolvedor"
 
@@ -140,7 +139,7 @@ text = "Thais Capucho"
 
 [node name="Role" type="Label" parent="OptionsContainer/PanelContainer/MarginContainer/VBoxContainer/ThaisContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.7019608)
+theme_override_colors/font_color = Color(1, 1, 1, 0.7)
 theme_override_font_sizes/font_size = 16
 text = "Desenvolvedora"
 
@@ -159,7 +158,7 @@ text = "MaouDamashii"
 
 [node name="Role" type="Label" parent="OptionsContainer/PanelContainer/MarginContainer/VBoxContainer/MaouContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.7019608)
+theme_override_colors/font_color = Color(1, 1, 1, 0.7)
 theme_override_font_sizes/font_size = 16
 text = "BGM & Efeito Sonoro"
 
@@ -182,6 +181,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("4_86cog")
 theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 0.95, 0.7, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0.4, 1)
 text = "Voltar"
 script = ExtResource("5_7fp6e")
 
