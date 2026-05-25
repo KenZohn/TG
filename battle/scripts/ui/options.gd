@@ -32,3 +32,7 @@ func _on_sfx_control_value_changed(value: float) -> void:
 func _on_return_pressed() -> void:
 	SettingsManager.save_settings(music_slider.value, sfx_slider.value)
 	get_tree().change_scene_to_file("res://scenes/ui/title_screen.tscn")
+
+
+func _on_load_online_pressed() -> void:
+	FadeLayer.fade_to_scene("res://scenes/ui/restore_saves.tscn")

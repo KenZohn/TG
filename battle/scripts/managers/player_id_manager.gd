@@ -15,7 +15,17 @@ func load_or_create_id() -> String:
 		return id
 	
 	var new_id = "%d_%d" % [Time.get_unix_time_from_system(), randi()]
-	var file = FileAccess.open(path, FileAccess.WRITE)
-	file.store_string(new_id)
-	file.close()
+	save_id(new_id)
 	return new_id
+
+func save_id(id: String) -> void:
+	var path = "user://player_id.txt"
+	
+	var file = FileAccess.open(path, FileAccess.WRITE)
+	file.store_string(id)
+	file.close()
+
+func override_id(new_id: String) -> void:
+	player_id = new_id
+	save_id(new_id)
+	print("Player ID alterado para: ", new_id)

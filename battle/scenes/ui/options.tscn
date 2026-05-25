@@ -135,6 +135,18 @@ layout_mode = 2
 theme_override_constants/separation = 15
 theme_override_styles/separator = SubResource("StyleBoxLine_w238l")
 
+[node name="LoadOnline" type="Button" parent="CenterContainer/OptionsContainer/PanelContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_nmn1p")
+theme_override_colors/font_color = Color(1, 0.95, 0.7, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0.4, 1)
+theme_override_font_sizes/font_size = 18
+text = "Carregar Save"
+script = ExtResource("5_w238l")
+
 [node name="Return" type="Button" parent="CenterContainer/OptionsContainer/PanelContainer/MarginContainer/GridContainer"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
@@ -149,4 +161,5 @@ script = ExtResource("5_w238l")
 
 [connection signal="value_changed" from="CenterContainer/OptionsContainer/PanelContainer/MarginContainer/GridContainer/MusicControl" to="." method="_on_sound_control_value_changed"]
 [connection signal="value_changed" from="CenterContainer/OptionsContainer/PanelContainer/MarginContainer/GridContainer/SFXControl" to="." method="_on_sfx_control_value_changed"]
+[connection signal="pressed" from="CenterContainer/OptionsContainer/PanelContainer/MarginContainer/GridContainer/LoadOnline" to="." method="_on_load_online_pressed"]
 [connection signal="pressed" from="CenterContainer/OptionsContainer/PanelContainer/MarginContainer/GridContainer/Return" to="." method="_on_return_pressed"]
