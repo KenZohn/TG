@@ -1,6 +1,8 @@
 @tool
 extends Node2D
 
+var save_manager = preload("res://scripts/managers/save_manager.gd").new()
+
 var is_moving = false
 var current_stage = null
 
@@ -12,6 +14,7 @@ func _ready():
 	connect_stages()
 	update_stages()
 	draw_connections()
+	load_player_position()
 
 func _on_stage_selected(id, target_position):
 	current_stage = id
@@ -49,6 +52,7 @@ func show_stage_info(id):
 
 func _on_enter_button_pressed():
 	if current_stage != null:
+		save_player_position()
 		State.current_stage = current_stage
 		FadeLayer.fade_to_scene("res://scenes/game/battle.tscn")
 
@@ -196,6 +200,21 @@ func apply_initial_settings():
 func _on_temp_loja_button_pressed() -> void:
 	FadeLayer.fade_to_scene("res://scenes/ui/shop.tscn")
 
+func save_player_position():
+	State.player_position = $PlayerIcon.global_position
+	
+	State.save_data["player_position"] = {
+		"x": State.player_position.x,
+		"y": State.player_position.y
+	}
+	
+	save_manager.save_game(State.save_path)
+
+func load_player_position():
+	if State.player_position:
+		$PlayerIcon.global_position = State.player_position
+	else:
+		$PlayerIcon.global_position = Vector2(17, 83)
 
 # Testes
 func _on_debug_button_pressed():

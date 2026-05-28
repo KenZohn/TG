@@ -14,6 +14,9 @@ var damage_multiplier = 0
 var critical = 0
 var defense = 0
 
+# Mapa
+var player_position: Vector2 = Vector2.ZERO
+
 # Estágio
 var current_stage = "W01-1"
 
