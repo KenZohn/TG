@@ -3,14 +3,9 @@ extends Node
 func new_game(path):
 	var save_data = {
 		"player_name": '',
+		"stages": {},
 		"experience": 0,
 		"inventory": {"items": [], "equipped": ""},
-		
-		"memory": 0,
-		"agility": 0,
-		"focus": 0,
-		"reasoning": 0,
-		"coordination": 0,
 		
 		"player_health": 0,
 		"player_time": 0,
@@ -43,6 +38,10 @@ func load_game(path):
 		State.player_defense = State.save_data["player_defense"]
 		State.current_skill_point = State.save_data["current_skill_point"]
 		
+		create_player_position_for_save() # Para que o save antigo funcione. Deletar quando atualizar todos.
+		var pos = State.save_data["player_position"]
+		State.player_position = Vector2(pos["x"], pos["y"])
+		
 		State.skills = {
 			"Start": true
 		}
@@ -50,7 +49,7 @@ func load_game(path):
 		for key in State.save_data:
 			if key.begins_with("Skill_"):
 				State.skills[key] = State.save_data[key]
-		
+		create_stages_for_save() # Para que o save antigo funcione. Deletar quando atualizar todos.
 		return true
 	return false
 	
@@ -59,3 +58,22 @@ func save_game(path):
 	var file = FileAccess.open(path, FileAccess.WRITE)
 	file.store_string(JSON.stringify(State.save_data))
 	file.close()
+	
+	var slot = 1
+	if "save2" in path: slot = 2
+	elif "save3" in path: slot = 3
+	
+	OnlineManager.sync_save(slot, State.save_data)
+	OnlineManager.submit_leaderboard(
+		int(State.save_data.get("experience", 0)),
+		State.save_data.get("player_name", "Anônimo")
+	)
+
+# Para que o save antigo funcione. Deletar quando atualizar todos.
+func create_stages_for_save():
+	if !State.save_data.has("stages"):
+		State.save_data["stages"] = {}
+# Para que o save antigo funcione. Deletar quando atualizar todos.
+func create_player_position_for_save():
+	if !State.save_data.has("player_position"):
+		State.save_data["player_position"] = Vector2.ZERO

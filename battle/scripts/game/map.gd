@@ -1,22 +1,38 @@
 @tool
 extends Node2D
 
+var save_manager = preload("res://scripts/managers/save_manager.gd").new()
+
 var is_moving = false
 var current_stage = null
 
 func _ready():
 	BGMManager.play_bgm(BGMManager.bgm_stage_select)
 	State.inventory.apply_bonus()
+	State.apply_player_state()
+	apply_initial_settings()
 	connect_stages()
 	update_stages()
-	State.apply_player_state()
 	draw_connections()
+	load_player_position()
 
 func _on_stage_selected(id, target_position):
 	current_stage = id
 	
+	apply_initial_settings()
 	move_player(target_position)
 	show_stage_info(id)
+	
+	if StageData.stages[id]["games"].any(func(g): return g.begins_with("m")):
+		$UI/InfoPanel/MarginContainer/VBoxContainer/Memory.modulate.a = 1
+	if StageData.stages[id]["games"].any(func(g): return g.begins_with("a")):
+		$UI/InfoPanel/MarginContainer/VBoxContainer/Agility.modulate.a = 1
+	if StageData.stages[id]["games"].any(func(g): return g.begins_with("f")):
+		$UI/InfoPanel/MarginContainer/VBoxContainer/Focus.modulate.a = 1
+	if StageData.stages[id]["games"].any(func(g): return g.begins_with("c")):
+		$UI/InfoPanel/MarginContainer/VBoxContainer/Coordination.modulate.a = 1
+	if StageData.stages[id]["games"].any(func(g): return g.begins_with("r")):
+		$UI/InfoPanel/MarginContainer/VBoxContainer/Reasoning.modulate.a = 1
 
 func move_player(target_position):
 	if is_moving:
@@ -32,11 +48,11 @@ func move_player(target_position):
 	)
 
 func show_stage_info(id):
-	$UI/InfoPanel.visible = true
-	$UI/InfoPanel/Name.text = str(id)
+	$UI/InfoPanel/MarginContainer/VBoxContainer/Name.text = str(id)
 
 func _on_enter_button_pressed():
 	if current_stage != null:
+		save_player_position()
 		State.current_stage = current_stage
 		FadeLayer.fade_to_scene("res://scenes/game/battle.tscn")
 
@@ -174,16 +190,35 @@ func get_stage_node(id):
 			return stage
 	return null
 
+func apply_initial_settings():
+	$UI/InfoPanel/MarginContainer/VBoxContainer/Memory.modulate.a = 0.2
+	$UI/InfoPanel/MarginContainer/VBoxContainer/Agility.modulate.a = 0.2
+	$UI/InfoPanel/MarginContainer/VBoxContainer/Focus.modulate.a = 0.2
+	$UI/InfoPanel/MarginContainer/VBoxContainer/Coordination.modulate.a = 0.2
+	$UI/InfoPanel/MarginContainer/VBoxContainer/Reasoning.modulate.a = 0.2
+
 func _on_temp_loja_button_pressed() -> void:
 	FadeLayer.fade_to_scene("res://scenes/ui/shop.tscn")
 
+func save_player_position():
+	State.player_position = $PlayerIcon.global_position
+	
+	State.save_data["player_position"] = {
+		"x": State.player_position.x,
+		"y": State.player_position.y
+	}
+	
+	save_manager.save_game(State.save_path)
+
+func load_player_position():
+	if State.player_position:
+		$PlayerIcon.global_position = State.player_position
+	else:
+		$PlayerIcon.global_position = Vector2(17, 83)
 
 # Testes
 func _on_debug_button_pressed():
-	unlock_all_stages()
+	for stage_id in StageData.stage_graph.keys():
+		State.save_data["stages"][stage_id] = true
 	update_stages()
 	draw_connections()
-
-func unlock_all_stages():
-	for stage_id in StageData.stage_graph.keys():
-		State.save_data[stage_id] = true

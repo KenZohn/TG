@@ -14,15 +14,11 @@ var damage_multiplier = 0
 var critical = 0
 var defense = 0
 
+# Mapa
+var player_position: Vector2 = Vector2.ZERO
+
 # Estágio
 var current_stage = "W01-1"
-
-# Habilidades cognitivas
-var memory = 0
-var agility = 0
-var focus = 0
-var coordination = 0
-var reasoning = 0
 
 # Atributos
 var player_health = 0
@@ -45,8 +41,8 @@ var s_damage = false
 var s_critical = false
 var s_defense = false
 
-func spend_skill_point():
-	current_skill_point -= 1
+func spend_skill_point(skill_cost):
+	current_skill_point -= skill_cost
 	skill_points_changed.emit()
 
 # Save

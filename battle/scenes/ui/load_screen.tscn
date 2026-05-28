@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dvjxi7iw3ivl4"]
 
 [ext_resource type="Script" uid="uid://bqyki1qv1e0nx" path="res://scripts/ui/load_screen.gd" id="1_ocbus"]
-[ext_resource type="Texture2D" uid="uid://c67xpnj35t4a2" path="res://assets/sprites/background-escurecido.png" id="2_ff1ah"]
+[ext_resource type="Texture2D" uid="uid://dsjlmfno5jq8v" path="res://assets/background/seraquefoi_upscayl_2x_upscayl-standard-4x.png" id="2_ff1ah"]
 [ext_resource type="Theme" uid="uid://dctpcbq0vp6lp" path="res://themes/TitleScreen.theme" id="3_8bpee"]
 [ext_resource type="FontFile" uid="uid://svybmpvynbsh" path="res://themes/Roboto-VariableFont_wdth,wght.ttf" id="3_ff1ah"]
 [ext_resource type="Theme" uid="uid://c6u12sw5jxmbr" path="res://themes/OptionsScreen.theme" id="4_yk5qj"]
@@ -17,6 +17,7 @@ grow_vertical = 2
 script = ExtResource("1_ocbus")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.55, 0.6, 0.65, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -120,6 +121,9 @@ alignment = 1
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("3_8bpee")
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 8
 text = "CARREGAR JOGO"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -146,6 +150,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme = ExtResource("4_yk5qj")
+theme_override_colors/font_color = Color(1, 0.95, 0.7, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0.4, 1)
 text = "Voltar"
 script = ExtResource("6_srf86")
 

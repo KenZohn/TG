@@ -1,22 +1,20 @@
-extends Node2D
+extends Control
 
-var values = [State.save_data["memory"]/30,
-			  State.save_data["agility"]/30,
-			  State.save_data["focus"]/30,
-			  State.save_data["reasoning"]/30,
-			  State.save_data["coordination"]/30]
-			  
+var values = []
+
 var radius = 100.0
-var attributes = [
-	{"name": "Memória", "value": int(State.save_data["memory"])},
-	{"name": "Agilidade", "value": int(State.save_data["agility"])},
-	{"name": "Foco", "value": int(State.save_data["focus"])},
-	{"name": "Raciocínio", "value": int(State.save_data["reasoning"])},
-	{"name": "Coordenação", "value": int(State.save_data["coordination"])}
-]
+
+var memory = 0
+var agility = 0
+var focus = 0
+var coordination = 0
+var reasoning = 0
 
 func _ready():
+	calc_stats()
+	
 	var points = get_radar_points()
+	
 	$RadarChart/Polygon2D.polygon = points
 	$RadarChart/Polygon2D.color = Color(0.213, 0.749, 0.749, 0.5)
 	
@@ -32,8 +30,37 @@ func get_radar_points() -> Array:
 	return result
 
 func show_stats():
-	$LabelMemory.text = str(int(State.save_data["memory"]))
-	$LabelAgility.text = str(int(State.save_data["agility"]))
-	$LabelFocus.text = str(int(State.save_data["focus"]))
-	$LabelReasoning.text = str(int(State.save_data["reasoning"]))
-	$LabelCoordination.text = str(int(State.save_data["coordination"]))
+	$LabelMemory.text = str(int(values[0] * 100))
+	$LabelAgility.text = str(int(values[1] * 100))
+	$LabelFocus.text = str(int(values[2] * 100))
+	$LabelCoordination.text = str(int(values[3] * 100))
+	$LabelReasoning.text = str(int(values[4] * 100))
+
+func calc_stats():
+	memory = 0
+	agility = 0
+	focus = 0
+	coordination = 0
+	reasoning = 0
+	
+	for stage in State.save_data["stages"]:
+		if stage == "Start":
+			continue
+		if StageData.stages[stage]["games"].any(func(g): return g.begins_with("m")):
+			memory += 1
+		if StageData.stages[stage]["games"].any(func(g): return g.begins_with("a")):
+			agility += 1
+		if StageData.stages[stage]["games"].any(func(g): return g.begins_with("f")):
+			focus += 1
+		if StageData.stages[stage]["games"].any(func(g): return g.begins_with("c")):
+			coordination += 1
+		if StageData.stages[stage]["games"].any(func(g): return g.begins_with("r")):
+			reasoning += 1
+	
+	values = [
+		memory / 44.0,
+		agility / 44.0,
+		focus / 44.0,
+		coordination / 44.0,
+		reasoning / 44.0
+	]
