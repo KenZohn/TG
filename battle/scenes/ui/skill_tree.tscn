@@ -1667,6 +1667,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ptwwp")
 text = "Voltar"
 
 [node name="DebugButton" type="Button" parent="MarginContainer/Panel/UI"]
+visible = false
 offset_left = 90.0
 offset_top = 644.0
 offset_right = 212.0

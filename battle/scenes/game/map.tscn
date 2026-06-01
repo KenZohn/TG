@@ -1076,7 +1076,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "Title"
+text = "-"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1186,6 +1186,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_lkyxg")
 text = "INICIAR"
 
 [node name="DebugButton" type="Button" parent="UI"]
+visible = false
 offset_left = 20.0
 offset_top = 633.0
 offset_right = 142.0

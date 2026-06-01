@@ -13,7 +13,7 @@ var pontuacao = 0
 var quantidade_cartas = 4
 var cartas = []
 var reveladas = []
-var damage = 4
+var damage = 5
 
 @onready var grid = $ColorRect/CenterContainer/VBoxContainer/MarginContainer/GridContainer
 @onready var alvo_container = $ColorRect/CenterContainer/VBoxContainer/HBoxContainer

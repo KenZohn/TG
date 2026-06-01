@@ -41,6 +41,7 @@ func load_game(path):
 		create_player_position_for_save() # Para que o save antigo funcione. Deletar quando atualizar todos.
 		var pos = State.save_data["player_position"]
 		State.player_position = Vector2(pos["x"], pos["y"])
+		State.player_stage = State.save_data["player_stage"]
 		
 		State.skills = {
 			"Start": true
@@ -77,3 +78,5 @@ func create_stages_for_save():
 func create_player_position_for_save():
 	if !State.save_data.has("player_position"):
 		State.save_data["player_position"] = Vector2.ZERO
+	if !State.save_data.has("player_stage"):
+		State.save_data["player_stage"] = "W01-1"

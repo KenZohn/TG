@@ -328,7 +328,7 @@ func show_description(skill, skill_total_cost):
 		ui_skill_confirm.disabled = true
 		ui_skill_confirm.modulate = Color(0.0, 1.0, 0.117, 1.0)
 	elif State.current_skill_point < skill_total_cost:
-		ui_skill_confirm.text = "PONTOS INSUFICIENTE"
+		ui_skill_confirm.text = "PONTOS INSUFICIENTES"
 		ui_skill_confirm.disabled = true
 		ui_skill_confirm.modulate = Color(1.0, 0.0, 0.0, 1.0)
 	else:

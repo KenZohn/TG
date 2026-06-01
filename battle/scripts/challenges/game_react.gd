@@ -8,7 +8,7 @@ signal timer_update(time)
 var start_time: float = 0.0
 var reaction_time: float = 0.0
 var ready_to_react: bool = false
-var damage = 30
+var damage = 20
 
 func _ready():
 	$Panel/LabelMensage.text = ""
@@ -23,7 +23,12 @@ func _on_WaitTimer_timeout():
 	start_time = Time.get_ticks_msec() / 1000.0
 
 func _on_react_button_pressed():
-	if ready_to_react:
+	if reaction_time > 0.6:
+		$Panel/ReactButton.disabled = true
+		$Panel/LabelMensage.text = "Atrasado"
+		emit_signal("wrong_answer")
+		emit_signal("game_finished")
+	elif ready_to_react:
 		$Panel/ReactButton.disabled = true
 		reaction_time = (Time.get_ticks_msec() / 1000.0) - start_time
 		$Panel/LabelMensage.text = "%.3f segundos" % reaction_time

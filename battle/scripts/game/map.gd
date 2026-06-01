@@ -135,9 +135,11 @@ func _on_tittle_screen_button_pressed() -> void:
 	FadeLayer.fade_to_scene("res://scenes/ui/title_screen.tscn")
 
 func _on_backpack_button_pressed() -> void:
+	save_player_position()
 	FadeLayer.fade_to_scene("res://scenes/ui/backpack.tscn")
 
 func _on_skill_tree_button_pressed() -> void:
+	save_player_position()
 	FadeLayer.fade_to_scene("res://scenes/ui/skill_tree.tscn")
 
 # Linhas das fases
@@ -198,11 +200,14 @@ func apply_initial_settings():
 	$UI/InfoPanel/MarginContainer/VBoxContainer/Reasoning.modulate.a = 0.2
 
 func _on_temp_loja_button_pressed() -> void:
+	save_player_position()
 	FadeLayer.fade_to_scene("res://scenes/ui/shop.tscn")
 
 func save_player_position():
+	State.player_stage = current_stage
 	State.player_position = $PlayerIcon.global_position
 	
+	State.save_data["player_stage"] = current_stage
 	State.save_data["player_position"] = {
 		"x": State.player_position.x,
 		"y": State.player_position.y
@@ -213,6 +218,7 @@ func save_player_position():
 func load_player_position():
 	if State.player_position:
 		$PlayerIcon.global_position = State.player_position
+		_on_stage_selected(State.player_stage, State.player_position)
 	else:
 		$PlayerIcon.global_position = Vector2(17, 83)
 

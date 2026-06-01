@@ -16,6 +16,7 @@ var defense = 0
 
 # Mapa
 var player_position: Vector2 = Vector2.ZERO
+var player_stage = ""
 
 # Estágio
 var current_stage = "W01-1"
