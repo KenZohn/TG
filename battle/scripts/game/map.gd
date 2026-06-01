@@ -21,6 +21,11 @@ func _on_stage_selected(id, target_position):
 	
 	apply_initial_settings()
 	move_player(target_position)
+	
+	# HOTFIX
+	if not StageData.stages.has(id):
+		return
+		
 	show_stage_info(id)
 	
 	if StageData.stages[id]["games"].any(func(g): return g.begins_with("m")):
