@@ -102,7 +102,7 @@ func _on_restore_fetched(result, response_code, headers, body, http, target_id: 
 		
 		var stages = save.get("stages_completed", [])
 		for stage in stages:
-			save_data[stage] = true
+			save_data["stages"][stage] = true
 		
 		var file = FileAccess.open(path, FileAccess.WRITE)
 		file.store_string(JSON.stringify(save_data))
@@ -116,8 +116,7 @@ func _upload_save(slot: int, save_data: Dictionary) -> void:
 	
 	# Extrai fases completadas
 	var stages: Array = []
-	for key in save_data:
-		if key.begins_with("W") and save_data[key] == true:
+	for key in save_data.get("stages"):
 			stages.append(key)
 	
 	var inventory = save_data.get("inventory", {})
