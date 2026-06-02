@@ -389,9 +389,6 @@ func show_cost(cost, total_cost):
 	ui_cost.text = str(cost)
 	ui_total_cost.text = str(total_cost)
 
-
-
-
 # Busca de melhor caminho
 class NodeP:
 	var pai
@@ -404,12 +401,11 @@ class NodeP:
 		estado = _estado
 		v1 = _v1
 		v2 = _v2
-		
+
 func criar_grafo():
 	var grafo = {}
 	
 	for con in connections:
-		
 		var a = con[0]
 		var b = con[1]
 		
@@ -422,10 +418,10 @@ func criar_grafo():
 		var custo_b = get_skill_cost(b)
 		var custo_a = get_skill_cost(a)
 		
-		# ir para B custa o valor de B
+		# Custo para B
 		grafo[a].append([b, custo_b])
 		
-		# ir para A custa o valor de A
+		# Custo para A
 		grafo[b].append([a, custo_a])
 	
 	return grafo
@@ -434,7 +430,6 @@ func obter_origens_validas(grafo):
 	var origens = []
 	
 	for skill_name in grafo.keys():
-		
 		if skill_name == "Start":
 			continue
 		
@@ -457,14 +452,12 @@ func obter_origens_validas(grafo):
 				possui_vizinho_bloqueado = true
 				break
 		
-		# só entra se ainda houver expansão possível
 		if possui_vizinho_bloqueado:
 			origens.append(skill_name)
 	
 	return origens
 
 func custo_uniforme_multiorigem(objetivo):
-	
 	var grafo = criar_grafo()
 	var origens = obter_origens_validas(grafo)
 	
@@ -473,41 +466,31 @@ func custo_uniforme_multiorigem(objetivo):
 	var lista = []
 	var visitado = {}
 	
-	# adiciona todas origens
+	# Adiciona todas origens
 	for origem in origens:
-		
 		var raiz = NodeP.new(null, origem, 0, 0)
 		
 		lista.append(raiz)
 		visitado[origem] = raiz
 	
-	# ordena fila inicial
+	# Ordena fila inicial
 	lista.sort_custom(func(a, b): return a.v1 < b.v1)
 	
-	
-	# =====================================================
-	# LOOP
-	# =====================================================
-	
 	while !lista.is_empty():
-		
 		var atual = lista.pop_front()
 		
-		# chegou no objetivo
 		if atual.estado == objetivo:
 			return {
 				"path": exibir_caminho(atual),
 				"cost": atual.v2
 			}
 		
-		# sucessores
+		# Sucessores
 		for novo in grafo[atual.estado]:
-			
 			var prox_nome = novo[0]
 			var custo_aresta = novo[1]
-			
 			var novo_custo = atual.v2
-
+			
 			if prox_nome != "Start":
 				var skill_node = get_skill(prox_nome)
 				
@@ -515,7 +498,6 @@ func custo_uniforme_multiorigem(objetivo):
 					novo_custo += custo_aresta
 			
 			if !visitado.has(prox_nome) or novo_custo < visitado[prox_nome].v2:
-				
 				var filho = NodeP.new(
 					atual,
 					prox_nome,
@@ -530,7 +512,6 @@ func custo_uniforme_multiorigem(objetivo):
 	return null
 
 func exibir_caminho(node):
-	
 	var caminho = []
 	
 	while node != null:
@@ -540,9 +521,7 @@ func exibir_caminho(node):
 	return caminho
 
 func inserir_ordenado(lista, no):
-	
 	for i in range(lista.size()):
-		
 		if no.v1 < lista[i].v1:
 			lista.insert(i, no)
 			return
@@ -550,7 +529,6 @@ func inserir_ordenado(lista, no):
 	lista.append(no)
 
 func get_skill_cost(skill_name):
-	
 	if skill_name == "Start":
 		return 0
 	
@@ -561,13 +539,11 @@ func get_skill(skill_name):
 	return skills.get_node(skill_name)
 
 func is_connection_highlighted(a, b):
-	
 	for i in range(highlighted_path.size() - 1):
-		
 		var p1 = highlighted_path[i]
 		var p2 = highlighted_path[i + 1]
 		
-		# considera ambos sentidos
+		# Considera ambos sentidos
 		if (p1 == a and p2 == b) or (p1 == b and p2 == a):
 			return true
 	
