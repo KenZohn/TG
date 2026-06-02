@@ -3,7 +3,6 @@ extends Control
 signal correct_answer_hit(damage)
 signal wrong_answer()
 signal game_finished()
-signal timer_update(time)
 
 var start_time: float = 0.0
 var reaction_time: float = 0.0
@@ -23,20 +22,20 @@ func _on_WaitTimer_timeout():
 	start_time = Time.get_ticks_msec() / 1000.0
 
 func _on_react_button_pressed():
-	if reaction_time > 0.6:
-		$Panel/ReactButton.disabled = true
-		$Panel/LabelMensage.text = "Atrasado"
-		emit_signal("wrong_answer")
-		emit_signal("game_finished")
-	elif ready_to_react:
-		$Panel/ReactButton.disabled = true
+	$Panel/ReactButton.disabled = true
+	
+	if ready_to_react:
 		reaction_time = (Time.get_ticks_msec() / 1000.0) - start_time
 		$Panel/LabelMensage.text = "%.3f segundos" % reaction_time
-		ready_to_react = false
-		emit_signal("correct_answer_hit", damage)
-		emit_signal("game_finished")
+		if reaction_time > 0.6:
+			$Panel/LabelMensage.text = "%.3f segundos\nAtrasado" % reaction_time
+			emit_signal("wrong_answer")
+			emit_signal("game_finished")
+		else:
+			ready_to_react = false
+			emit_signal("correct_answer_hit", damage)
+			emit_signal("game_finished")
 	else:
-		$Panel/ReactButton.disabled = true
 		$Panel/LabelMensage.text = "Adiantado"
 		emit_signal("wrong_answer")
 		emit_signal("game_finished")

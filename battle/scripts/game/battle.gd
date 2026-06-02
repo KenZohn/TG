@@ -60,7 +60,7 @@ var games = {
 	"f1": {
 		"scene": "res://scenes/challenges/game_react.tscn",
 		"title": "Reação",
-		"rule": "Clique no botão o mais rápido possível quando o sinal aparecer."
+		"rule": "Clique no botão em até 0.6 segundos após o sinal."
 	},
 	"c1": {
 		"scene": "res://scenes/challenges/game_reflex.tscn",
