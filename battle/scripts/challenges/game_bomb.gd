@@ -12,10 +12,12 @@ var trail = []
 var dragging = false
 var start_dot = null
 var damage = 20
+var finished := false
 
 var bomb_sprite = preload("res://assets/sprites/bomba.png")
 
 func _ready():
+	print("MINIGAME READY: ", get_instance_id())
 	generate_cells()
 	generate_points()
 	await generate_bombs()
@@ -206,12 +208,12 @@ func _on_cell_mouse_entered(index):
 					emit_signal("wrong_answer")
 					$AudioBomb.play()
 					await reveal_bombs()
-					emit_signal("game_finished")
+					finish_game()
 				else:
 					print("Pontos conectados com sucesso!")
 					await get_tree().create_timer(1.0).timeout
 					emit_signal("correct_answer_hit", damage) 
-					emit_signal("game_finished")
+					finish_game()
 				reset_trail()
 
 func _on_cell_gui_input(event, index):
@@ -227,7 +229,7 @@ func _on_cell_gui_input(event, index):
 				if dragging:
 					print("Arrasto interrompido.")
 					emit_signal("wrong_answer")
-					emit_signal("game_finished")
+					finish_game()
 					reset_trail()
 
 # Timers
@@ -249,4 +251,12 @@ func _update_timer_display():
 	emit_signal("timer_update", remaining)
 
 func _on_game_timeout():
+	finish_game()
+
+func finish_game():
+	if finished:
+		return
+	
+	$TimerDisplay.stop()
+	finished = true
 	emit_signal("game_finished")
